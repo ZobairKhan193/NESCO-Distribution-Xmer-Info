@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Transformer Inspection Report</title>
+
+  <!-- Google Fonts: Rajdhani (industrial display) + Source Sans 3 (readable body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- SheetJS: lets us read Excel / CSV files in the browser -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════════════════════ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-logo">
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="10" width="36" height="22" rx="3" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="20" y1="2" x2="20" y2="10" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="20" y1="32" x2="20" y2="38" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
+          <line x1="32" y1="2" x2="32" y2="6" stroke="currentColor" stroke-width="2"/>
+          <circle cx="20" cy="21" r="5" stroke="currentColor" stroke-width="2"/>
+          <line x1="2" y1="21" x2="15" y2="21" stroke="currentColor" stroke-width="2"/>
+          <line x1="25" y1="21" x2="38" y2="21" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <div>
+          <span class="logo-title">TransInspect</span>
+          <span class="logo-sub">Transformer Inspection Portal</span>
+        </div>
+      </div>
+      <nav class="header-nav">
+        <button class="nav-btn active" onclick="showSection('form-section')">➕ Add Record</button>
+        <button class="nav-btn" onclick="showSection('table-section')">📋 View Records</button>
+        <button class="nav-btn" onclick="showSection('import-section')">📥 Import CSV/Excel</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════
+       MAIN CONTENT
+  ═══════════════════════════════════════════════════════ -->
+  <main class="main-content">
+
+    <!-- ─── STATUS BANNER (shown when Firebase isn't configured) ─── -->
+    <div id="config-banner" class="config-banner">
+      ⚙️ <strong>Setup Required:</strong> Open <code>script.js</code> and paste your Firebase config to activate database storage.
+      &nbsp;<a href="#setup-guide">Read the guide below ↓</a>
+    </div>
+
+    <!-- ══════════════════════════════════════════════
+         SECTION 1 — DATA ENTRY FORM
+    ══════════════════════════════════════════════ -->
+    <section id="form-section" class="section active">
+      <div class="section-header">
+        <h2>New Inspection Record</h2>
+        <p>Fill in all fields and click Submit to save the record.</p>
+      </div>
+
+      <form id="inspection-form" novalidate>
+
+        <!-- ── BLOCK A: Basic Info ── -->
+        <div class="form-block">
+          <h3 class="block-title"><span class="block-num">A</span> Basic Information</h3>
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label for="sl_no">Serial No. <span class="req">*</span></label>
+              <input type="text" id="sl_no" name="sl_no" placeholder="e.g. 01" required />
+              <span class="error-msg" id="err-sl_no"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="feeder_name">Feeder Name <span class="req">*</span></label>
+              <input type="text" id="feeder_name" name="feeder_name" placeholder="e.g. Binodpur" required />
+              <span class="error-msg" id="err-feeder_name"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="substation_name">Substation Name <span class="req">*</span></label>
+              <input type="text" id="substation_name" name="substation_name" placeholder="e.g. Talaimary" required />
+              <span class="error-msg" id="err-substation_name"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="transformer_name">Transformer / Local Name <span class="req">*</span></label>
+              <input type="text" id="transformer_name" name="transformer_name" placeholder="e.g. Hanufar Mor West" required />
+              <span class="error-msg" id="err-transformer_name"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="gis_id">GIS ID</label>
+              <input type="text" id="gis_id" name="gis_id" placeholder="e.g. 2085135" />
+            </div>
+
+            <div class="form-group">
+              <label for="capacity_kva">Transformer Capacity (kVA) <span class="req">*</span></label>
+              <select id="capacity_kva" name="capacity_kva" required>
+                <option value="">-- Select --</option>
+                <option value="50">50 kVA</option>
+                <option value="100">100 kVA</option>
+                <option value="200">200 kVA</option>
+                <option value="250">250 kVA</option>
+                <option value="315">315 kVA</option>
+                <option value="500">500 kVA</option>
+                <option value="other">Other</option>
+              </select>
+              <span class="error-msg" id="err-capacity_kva"></span>
+            </div>
+
+            <!-- Google Maps location -->
+            <div class="form-group full-width">
+              <label for="map_location">Google Maps Link</label>
+              <div class="input-with-icon">
+                <input type="url" id="map_location" name="map_location"
+                       placeholder="https://maps.google.com/..." />
+                <button type="button" class="icon-btn" id="open-map-btn"
+                        onclick="openMap()" title="Open in Google Maps">🗺️</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── BLOCK B: Equipment Status ── -->
+        <div class="form-block">
+          <h3 class="block-title"><span class="block-num">B</span> Equipment Status</h3>
+          <div class="form-grid">
+
+            <!-- 11 kV LA -->
+            <div class="form-group">
+              <label>11 kV LA — Present? <span class="req">*</span></label>
+              <div class="radio-group">
+                <label class="radio-label"><input type="radio" name="la_present" value="Yes" required /> Yes</label>
+                <label class="radio-label"><input type="radio" name="la_present" value="No"  /> No</label>
+              </div>
+              <span class="error-msg" id="err-la_present"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="la_condition">11 kV LA — Condition</label>
+              <select id="la_condition" name="la_condition">
+                <option value="">-- N/A --</option>
+                <option value="Good">Good</option>
+                <option value="Bad">Bad</option>
+              </select>
+            </div>
+
+            <!-- 11 kV DOFC -->
+            <div class="form-group">
+              <label>11 kV DOFC — Present? <span class="req">*</span></label>
+              <div class="radio-group">
+                <label class="radio-label"><input type="radio" name="dofc_present" value="Yes" required /> Yes</label>
+                <label class="radio-label"><input type="radio" name="dofc_present" value="No"  /> No</label>
+              </div>
+              <span class="error-msg" id="err-dofc_present"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="dofc_condition">11 kV DOFC — Condition</label>
+              <select id="dofc_condition" name="dofc_condition">
+                <option value="">-- N/A --</option>
+                <option value="Good">Good</option>
+                <option value="Bad">Bad</option>
+              </select>
+            </div>
+
+            <!-- 0.4 kV MCCB -->
+            <div class="form-group">
+              <label>0.4 kV MCCB — Present? <span class="req">*</span></label>
+              <div class="radio-group">
+                <label class="radio-label"><input type="radio" name="mccb_present" value="Yes" required /> Yes</label>
+                <label class="radio-label"><input type="radio" name="mccb_present" value="No"  /> No</label>
+              </div>
+              <span class="error-msg" id="err-mccb_present"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="mccb_condition">0.4 kV MCCB — Condition</label>
+              <select id="mccb_condition" name="mccb_condition">
+                <option value="">-- N/A --</option>
+                <option value="Good">Good</option>
+                <option value="Bad">Bad</option>
+              </select>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── BLOCK C: Grounding & LT Loop ── -->
+        <div class="form-block">
+          <h3 class="block-title"><span class="block-num">C</span> Grounding &amp; LT Loop</h3>
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label>Grounding — Present? <span class="req">*</span></label>
+              <div class="radio-group">
+                <label class="radio-label"><input type="radio" name="grounding_present" value="Yes" required /> Yes</label>
+                <label class="radio-label"><input type="radio" name="grounding_present" value="No"  /> No</label>
+              </div>
+              <span class="error-msg" id="err-grounding_present"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="grounding_qty">Grounding Quantity</label>
+              <input type="number" id="grounding_qty" name="grounding_qty" min="0" placeholder="e.g. 1" />
+            </div>
+
+            <div class="form-group">
+              <label for="lt_loop_material">LT Loop — Material</label>
+              <select id="lt_loop_material" name="lt_loop_material">
+                <option value="">-- Select --</option>
+                <option value="Copper">Copper</option>
+                <option value="Aluminium">Aluminium</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="notes">Additional Notes</label>
+              <textarea id="notes" name="notes" rows="3"
+                        placeholder="Any additional observations or remarks..."></textarea>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+          <button type="button" class="btn-secondary" onclick="resetForm()">🔄 Clear Form</button>
+          <button type="submit" class="btn-primary" id="submit-btn">
+            <span class="btn-text">✅ Submit Record</span>
+            <span class="btn-loader" style="display:none">⏳ Saving...</span>
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Success Toast -->
+      <div id="toast" class="toast" style="display:none">
+        ✅ Record saved successfully!
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         SECTION 2 — RECORDS TABLE
+    ══════════════════════════════════════════════ -->
+    <section id="table-section" class="section">
+      <div class="section-header">
+        <h2>Inspection Records</h2>
+        <div class="table-controls">
+          <input type="text" id="search-input" placeholder="🔍 Search records..." oninput="filterTable()" />
+          <button class="btn-secondary" onclick="exportToCSV()">⬇️ Export CSV</button>
+          <button class="btn-primary" onclick="loadRecords()">🔄 Refresh</button>
+        </div>
+      </div>
+
+      <!-- Summary Cards -->
+      <div class="summary-cards" id="summary-cards">
+        <div class="card"><span class="card-val" id="stat-total">—</span><span class="card-lbl">Total Records</span></div>
+        <div class="card card-green"><span class="card-val" id="stat-la">—</span><span class="card-lbl">LA Present</span></div>
+        <div class="card card-blue"><span class="card-val" id="stat-dofc">—</span><span class="card-lbl">DOFC Present</span></div>
+        <div class="card card-purple"><span class="card-val" id="stat-mccb">—</span><span class="card-lbl">MCCB Present</span></div>
+      </div>
+
+      <div class="table-wrapper">
+        <table id="records-table">
+          <thead>
+            <tr>
+              <th>Sl.</th>
+              <th>Feeder</th>
+              <th>Substation</th>
+              <th>Transformer Name</th>
+              <th>kVA</th>
+              <th>LA</th>
+              <th>DOFC</th>
+              <th>MCCB</th>
+              <th>Grounding</th>
+              <th>LT Loop</th>
+              <th>Map</th>
+              <th>Notes</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="records-body">
+            <tr><td colspan="13" class="empty-state">No records yet. Add your first record!</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         SECTION 3 — IMPORT CSV / EXCEL
+    ══════════════════════════════════════════════ -->
+    <section id="import-section" class="section">
+      <div class="section-header">
+        <h2>Import CSV / Excel File</h2>
+        <p>Upload your existing spreadsheet to bulk-import records into the database.</p>
+      </div>
+
+      <div class="import-card">
+        <div class="drop-zone" id="drop-zone"
+             ondragover="handleDragOver(event)"
+             ondrop="handleDrop(event)"
+             onclick="document.getElementById('file-input').click()">
+          <div class="drop-icon">📂</div>
+          <p class="drop-title">Click or drag &amp; drop your file here</p>
+          <p class="drop-sub">Supports .csv, .xlsx, .xls</p>
+          <input type="file" id="file-input" accept=".csv,.xlsx,.xls"
+                 style="display:none" onchange="handleFileSelect(event)" />
+        </div>
+
+        <div id="import-preview" style="display:none">
+          <h3>Preview (first 5 rows)</h3>
+          <div class="table-wrapper">
+            <table id="preview-table"></table>
+          </div>
+          <div class="column-mapping" id="column-mapping"></div>
+          <div class="form-actions">
+            <button class="btn-secondary" onclick="cancelImport()">❌ Cancel</button>
+            <button class="btn-primary" id="import-btn" onclick="importData()">
+              ⬆️ Import All Rows to Database
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column mapping guide -->
+      <div class="mapping-guide">
+        <h3>📌 Column Name Guide</h3>
+        <p>Your CSV/Excel file should have column headers. The importer will try to match
+           these automatically. Recommended column names:</p>
+        <div class="mapping-grid">
+          <div class="mapping-item"><code>sl_no</code> Serial Number</div>
+          <div class="mapping-item"><code>feeder_name</code> Feeder Name</div>
+          <div class="mapping-item"><code>substation_name</code> Substation</div>
+          <div class="mapping-item"><code>transformer_name</code> Local Name</div>
+          <div class="mapping-item"><code>gis_id</code> GIS ID</div>
+          <div class="mapping-item"><code>capacity_kva</code> kVA Rating</div>
+          <div class="mapping-item"><code>la_present</code> LA Present (Yes/No)</div>
+          <div class="mapping-item"><code>la_condition</code> LA Condition</div>
+          <div class="mapping-item"><code>dofc_present</code> DOFC Present</div>
+          <div class="mapping-item"><code>dofc_condition</code> DOFC Condition</div>
+          <div class="mapping-item"><code>mccb_present</code> MCCB Present</div>
+          <div class="mapping-item"><code>mccb_condition</code> MCCB Condition</div>
+          <div class="mapping-item"><code>grounding_present</code> Grounding Present</div>
+          <div class="mapping-item"><code>grounding_qty</code> Grounding Qty</div>
+          <div class="mapping-item"><code>lt_loop_material</code> LT Loop Material</div>
+          <div class="mapping-item"><code>notes</code> Notes</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         SETUP GUIDE
+    ══════════════════════════════════════════════ -->
+    <section id="setup-guide" class="setup-guide">
+      <h2>🔧 Setup Guide — Firebase + GitHub Pages</h2>
+
+      <div class="guide-steps">
+
+        <div class="guide-step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>Create a Free Firebase Project</h3>
+            <ol>
+              <li>Go to <a href="https://console.firebase.google.com" target="_blank">console.firebase.google.com</a></li>
+              <li>Click <strong>"Add project"</strong> → give it a name (e.g. <em>transformer-inspect</em>)</li>
+              <li>Disable Google Analytics (not needed) → <strong>"Create project"</strong></li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>Enable Firestore Database</h3>
+            <ol>
+              <li>In your project, click <strong>Firestore Database</strong> in the left menu</li>
+              <li>Click <strong>"Create database"</strong></li>
+              <li>Choose <strong>Test mode</strong> (allows reading/writing for 30 days — fine for starting)</li>
+              <li>Select a location → <strong>"Enable"</strong></li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3>Get Your Firebase Config Keys</h3>
+            <ol>
+              <li>Click the ⚙️ gear icon → <strong>"Project settings"</strong></li>
+              <li>Scroll down to <strong>"Your apps"</strong> → click <strong>&lt;/&gt; Web</strong></li>
+              <li>Register the app (any nickname) → you'll see a config block like this:</li>
+            </ol>
+            <pre class="code-block">const firebaseConfig = {
+  apiKey: "AIza...",
+  authDomain: "your-project.firebaseapp.com",
+  projectId: "your-project-id",
+  storageBucket: "your-project.appspot.com",
+  messagingSenderId: "123456789",
+  appId: "1:123..."
+};</pre>
+            <li>Copy this entire block — you'll paste it into <code>script.js</code></li>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h3>Paste Config into script.js</h3>
+            <p>Open <code>script.js</code> and find the section labeled
+               <code>// ★ PASTE YOUR FIREBASE CONFIG HERE ★</code>
+               Replace the placeholder values with your real keys.</p>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h3>Deploy to GitHub Pages</h3>
+            <ol>
+              <li>Go to <a href="https://github.com" target="_blank">github.com</a> → Sign in or create account</li>
+              <li>Click <strong>"New repository"</strong> → name it (e.g. <em>transformer-inspect</em>)</li>
+              <li>Set to <strong>Public</strong> → <strong>"Create repository"</strong></li>
+              <li>Upload your 3 files: <code>index.html</code>, <code>style.css</code>, <code>script.js</code></li>
+              <li>Go to <strong>Settings → Pages</strong> → Source: <strong>Deploy from branch → main</strong></li>
+              <li>Click Save → your site will be live at:<br/>
+                  <code>https://YOUR-USERNAME.github.io/transformer-inspect/</code></li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <h3>Fix Firebase Security Rules (Important!)</h3>
+            <p>After testing, update Firestore rules so random people can't delete your data.
+               In Firebase Console → Firestore → Rules, replace with:</p>
+            <pre class="code-block">rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /inspections/{document} {
+      allow read: if true;        // Anyone can view
+      allow write: if true;       // Anyone can add (change to auth-based later)
+    }
+  }
+}</pre>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <p>TransInspect — Transformer Inspection Portal &nbsp;|&nbsp; Powered by Firebase + GitHub Pages</p>
+  </footer>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="delete-modal" class="modal-overlay" style="display:none">
+    <div class="modal-box">
+      <h3>⚠️ Delete Record?</h3>
+      <p>This action cannot be undone.</p>
+      <div class="modal-actions">
+        <button class="btn-secondary" onclick="closeModal()">Cancel</button>
+        <button class="btn-danger" onclick="confirmDelete()">Yes, Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- type="module" is required for Firebase SDK imports to work -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>

@@ -75,44 +75,49 @@
 
     <ul class="nav-menu" id="nav-menu">
 
-      <li><a class="nav-link" data-section="dashboard" href="#">
-        <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
+      <!-- 1. Home -->
+      <li><a class="nav-link" data-section="home" href="#">
+        <i class="fas fa-home"></i><span>Home</span>
       </a></li>
 
+      <!-- 2. 33/11 kV Substations -->
       <li class="has-dd">
         <a class="nav-link dd-toggle" href="#">
-          <i class="fas fa-bolt"></i><span>33/11 kV Substation</span><i class="fas fa-chevron-down dd-arrow"></i>
+          <i class="fas fa-bolt"></i><span>33/11 kV Substations</span><i class="fas fa-chevron-down dd-arrow"></i>
         </a>
         <ul class="dropdown">
-          <li><a data-section="substation-summary" href="#"><i class="fas fa-th"></i>Substation Summary</a></li>
-          <li><a data-section="line-33kv" href="#"><i class="fas fa-route"></i>33 kV Line Summary</a></li>
-          <li><a data-section="power-transformer" href="#"><i class="fas fa-circle-nodes"></i>Power Transformer Summary</a></li>
-          <li><a data-section="switchgear-11kv" href="#"><i class="fas fa-sitemap"></i>11 kV Switchgear Summary</a></li>
+          <li><a data-section="ss-summary" href="#"><i class="fas fa-table"></i> Substation Summary</a></li>
         </ul>
       </li>
 
+      <!-- 3. 33 kV Switching Substations -->
+      <li><a class="nav-link" data-section="switching-ss" href="#">
+        <i class="fas fa-network-wired"></i><span>33 kV Switching SS</span>
+      </a></li>
+
+      <!-- 4. Distribution Transformer -->
       <li class="has-dd">
         <a class="nav-link dd-toggle" href="#">
           <i class="fas fa-circle-half-stroke"></i><span>Distribution Transformer</span><i class="fas fa-chevron-down dd-arrow"></i>
         </a>
         <ul class="dropdown">
-          <li><a data-section="dt-capacity" href="#"><i class="fas fa-weight-hanging"></i>Capacity &amp; Load Summary</a></li>
-          <li><a data-section="dt-equipment" href="#"><i class="fas fa-tools"></i>Location / LA / DOFC / MCCB</a></li>
+          <li><a data-section="dt-summary" href="#"><i class="fas fa-layer-group"></i> Substation-wise Summary</a></li>
+          <li><a data-section="dt-load" href="#"><i class="fas fa-tachometer-alt"></i> DT Load</a></li>
+          <li><a data-section="dt-equipment" href="#"><i class="fas fa-tools"></i> Equipment Status (LA/DOFC/MCCB)</a></li>
         </ul>
       </li>
 
+      <!-- 5. Ongoing Projects -->
       <li><a class="nav-link" data-section="ongoing-projects" href="#">
         <i class="fas fa-hard-hat"></i><span>Ongoing Projects</span>
       </a></li>
 
+      <!-- 6. Upcoming Projects -->
       <li><a class="nav-link" data-section="upcoming-projects" href="#">
         <i class="fas fa-calendar-plus"></i><span>Upcoming Projects</span>
       </a></li>
 
-      <li><a class="nav-link" data-section="switching-substations" href="#">
-        <i class="fas fa-toggle-on"></i><span>Switching Substations</span>
-      </a></li>
-
+      <!-- 7. Load History -->
       <li><a class="nav-link" data-section="load-history" href="#">
         <i class="fas fa-chart-line"></i><span>Load History</span>
       </a></li>

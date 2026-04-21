@@ -16,13 +16,12 @@ import { getFirestore, collection, doc, addDoc, getDoc,
   from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAklct5CT07Medb_aCKouodofrebHhaavs",
-  authDomain: "distribution-transformer-info.firebaseapp.com",
-  projectId: "distribution-transformer-info",
-  storageBucket: "distribution-transformer-info.firebasestorage.app",
-  messagingSenderId: "256439246815",
-  appId: "1:256439246815:web:5e2f54a78693b3a203ee6a",
-  measurementId: "G-WMHSJLFYPX"
+  apiKey:            "YOUR_API_KEY",
+  authDomain:        "YOUR_PROJECT_ID.firebaseapp.com",
+  projectId:         "YOUR_PROJECT_ID",
+  storageBucket:     "YOUR_PROJECT_ID.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId:             "YOUR_APP_ID"
 };
 
 const IS_CONFIGURED = firebaseConfig.apiKey !== "YOUR_API_KEY";
@@ -314,8 +313,12 @@ if (IS_CONFIGURED) {
 ══════════════════════════════════════════════════ */
 const SECTION_LABELS = {
   'home':              'Home',
-  'ss-summary':        '33/11 kV Substations › Summary',
+  'ss-summary':        '33/11 kV Substations › Substation Summary',
   'ss-detail':         '33/11 kV Substations › Detail View',
+  'all-33kv':          '33/11 kV Substations › 33 kV Line Feeder & Equipment',
+  'all-pt-sw':         '33/11 kV Substations › Power Transformer Feeder Equipment',
+  'all-pt-load':       '33/11 kV Substations › Power Transformer Loading & Operating Parameters',
+  'all-11kv':          '33/11 kV Substations › 11 kV Feeder Info',
   'switching-ss':      '33 kV Switching Substations',
   'dt-summary':        'Distribution Transformer › Substation-wise Summary',
   'dt-load':           'Distribution Transformer › Load',
@@ -346,6 +349,10 @@ function showSection(sec, param = null) {
     'home':              renderHome,
     'ss-summary':        renderSSSummary,
     'ss-detail':         () => renderSSDetail(param),
+    'all-33kv':          renderAll33kv,
+    'all-pt-sw':         renderAllPTSw,
+    'all-pt-load':       renderAllPTLoad,
+    'all-11kv':          renderAll11kv,
     'switching-ss':      renderSwitchingSS,
     'dt-summary':        renderDTSummary,
     'dt-load':           () => renderDTLoad(param),
@@ -1560,6 +1567,504 @@ window.exportLoadCSV = () => {
   LOAD_HISTORY.labels.forEach((m,i)=>rows.push([m+' 2024',LOAD_HISTORY.T1[i],LOAD_HISTORY.T2[i],LOAD_HISTORY.total[i],Math.round(LOAD_HISTORY.total[i]/40*100)+'%']));
   const a=Object.assign(document.createElement('a'),{href:URL.createObjectURL(new Blob([rows.map(r=>r.join(',')).join('\n')],{type:'text/csv'})),download:'load_history_2024.csv'});
   a.click(); showToast('Exported!','success');
+};
+
+
+/* ══════════════════════════════════════════════════
+   SECTION 18b — COMBINED ALL-SUBSTATION VIEWS
+   Each shows data for ALL substations in one table
+══════════════════════════════════════════════════ */
+
+/* ── Helpers ── */
+function ssSearchBar(filterId, placeholder) {
+  return `<input class="search-input" id="${filterId}" placeholder="${placeholder}"
+    oninput="window.filterCombinedTable('${filterId}')" style="max-width:280px">`;
+}
+
+function kpiRow(items) {
+  return `<div class="kpi-row" style="grid-template-columns:repeat(${items.length},1fr);margin-bottom:20px">
+    ${items.map(([val,lbl,cls])=>`<div class="kpi-card ${cls||''}"><div class="kpi-val">${val}</div><div class="kpi-sub">${lbl}</div></div>`).join('')}
+  </div>`;
+}
+
+/* ══════════════════════════════════════════════════
+   ALL-SS: 33 kV LINE FEEDER & EQUIPMENT
+══════════════════════════════════════════════════ */
+function renderAll33kv() {
+  const allLines = ALL_SUBSTATIONS.flatMap(ss =>
+    (ss.lines_33kv||[]).map(l => ({...l, ss_name: ss.name||ss.sheet_name, ss_id: ss.id}))
+  );
+  window._combined = allLines;
+
+  const totalLen  = allLines.reduce((s,l)=>s+(parseFloat(l.length_km)||0),0);
+  const sources   = allLines.filter(l=>(l.source_ring||l.remarks||'').toLowerCase().includes('source')).length;
+  const rings     = allLines.filter(l=>(l.source_ring||l.remarks||'').toLowerCase().includes('ring')).length;
+  const marlin    = allLines.filter(l=>(l.conductor||'').toLowerCase().includes('marlin')).length;
+
+  document.getElementById('content').innerHTML = `
+  <div class="sec-head">
+    <div class="sec-head-left">
+      <h2>33 kV Line Feeder &amp; Equipment — All Substations</h2>
+      <p>${allLines.length} lines across ${ALL_SUBSTATIONS.length} substations</p>
+    </div>
+    <div class="sec-head-right">
+      ${ssSearchBar('comb-search','🔍 Search substation or line…')}
+      <select class="filter-sel" id="comb-type-filter" onchange="window.filterCombinedTable('comb-search')">
+        <option value="">All Types</option>
+        <option value="source">Source Lines</option>
+        <option value="ring">Ring Lines</option>
+      </select>
+      <button class="btn btn-sm btn-secondary" onclick="window.exportCombinedCSV('33kv_lines')"><i class="fas fa-download"></i> CSV</button>
+    </div>
+  </div>
+
+  ${kpiRow([
+    [allLines.length, 'Total Lines', 'navy'],
+    [sources,         'Source Lines', ''],
+    [rings,           'Ring Lines', ''],
+    [totalLen.toFixed(1)+' km', 'Total Length', 'amber'],
+    [marlin,          'Old Marlin Conductor', 'red'],
+  ])}
+
+  <div class="panel">
+    <div class="panel-head">
+      <h3>All 33 kV Lines</h3>
+      <span id="comb-count" style="font-size:.82rem;color:var(--text3)">${allLines.length} records</span>
+    </div>
+    <div class="panel-body no-pad"><div class="tbl-wrap">
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th>Sl.</th>
+          <th>Substation</th>
+          <th>Name of the Feeder / Line</th>
+          <th>Source / Ring</th>
+          <th>Length (km)</th>
+          <th>Conductor</th>
+          <th>Circuit Breaker</th>
+          <th>PCM Panel</th>
+          <th>Remarks</th>
+          <th>Map</th>
+        </tr>
+      </thead>
+      <tbody id="comb-tbody">
+        ${render33kvRows(allLines)}
+      </tbody>
+    </table>
+    </div></div>
+  </div>
+  `;
+}
+
+function render33kvRows(rows) {
+  if (!rows.length) return `<tr><td colspan="10" class="tbl-empty">No records found.</td></tr>`;
+  return rows.map((l,i) => {
+    const isSource = (l.source_ring||l.remarks||'').toLowerCase().includes('source');
+    const isRing   = (l.source_ring||l.remarks||'').toLowerCase().includes('ring');
+    const typeLabel = isSource ? 'Source' : isRing ? 'Ring' : D(l.source_ring);
+    const typeBadge = isSource ? 'badge-blue' : 'badge-gray';
+    return `<tr>
+      <td>${i+1}</td>
+      <td>
+        <a href="#" onclick="window.showSection('ss-detail','${l.ss_id}');return false"
+           style="color:var(--blue);font-weight:600;font-size:.82rem">${l.ss_name}</a>
+      </td>
+      <td><strong>${D(l.name)}</strong></td>
+      <td><span class="badge ${typeBadge}">${typeLabel}</span></td>
+      <td class="num">${l.length_km!=null ? l.length_km+' km' : '—'}</td>
+      <td>${D(l.conductor)}</td>
+      <td>${D(l.breaker)}</td>
+      <td>${D(l.panel)}</td>
+      <td style="font-size:.78rem;color:var(--text3)">${D(l.remarks)}</td>
+      <td>${l.ss_gps_lat ? `<a href="https://maps.google.com/?q=${l.ss_gps_lat},${l.ss_gps_lng}" target="_blank"><i class="fas fa-map-marker-alt" style="color:var(--red2)"></i></a>` : '—'}</td>
+    </tr>`;
+  }).join('');
+}
+
+/* ══════════════════════════════════════════════════
+   ALL-SS: POWER TRANSFORMER FEEDER EQUIPMENT
+   (CB, CT, PCM Panel info)
+══════════════════════════════════════════════════ */
+function renderAllPTSw() {
+  const allTxs = ALL_SUBSTATIONS.flatMap(ss =>
+    (ss.power_transformers||[]).map(t => ({...t, ss_name: ss.name||ss.sheet_name, ss_id: ss.id}))
+  );
+  window._combined = allTxs;
+
+  const brands   = [...new Set(allTxs.map(t=>t.brand||t.breaker).filter(Boolean))].length;
+  const gisCount = allTxs.filter(t=>(t.ais_gis||'').toUpperCase()==='GIS').length;
+  const aged     = allTxs.filter(t=>t.year && parseInt(t.year)<2000).length;
+  const newTx    = allTxs.filter(t=>t.year && parseInt(t.year)>=2020).length;
+
+  document.getElementById('content').innerHTML = `
+  <div class="sec-head">
+    <div class="sec-head-left">
+      <h2>Power Transformer Feeder Equipment — All Substations</h2>
+      <p>${allTxs.length} power transformers across ${ALL_SUBSTATIONS.length} substations</p>
+    </div>
+    <div class="sec-head-right">
+      ${ssSearchBar('comb-search','🔍 Search substation or brand…')}
+      <select class="filter-sel" id="comb-type-filter" onchange="window.filterCombinedTable('comb-search')">
+        <option value="">AIS / GIS: All</option>
+        <option value="AIS">AIS</option>
+        <option value="GIS">GIS</option>
+      </select>
+      <button class="btn btn-sm btn-secondary" onclick="window.exportCombinedCSV('pt_equipment')"><i class="fas fa-download"></i> CSV</button>
+    </div>
+  </div>
+
+  ${kpiRow([
+    [allTxs.length, 'Total Power TXs', 'navy'],
+    [gisCount,      'GIS Type', 'blue'],
+    [aged,          'Aged (Pre-2000)', 'red'],
+    [newTx,         'New (2020+)', 'green'],
+    [brands,        'CB/Panel Brands', ''],
+  ])}
+
+  <div class="panel">
+    <div class="panel-head">
+      <h3>Power Transformer — CB &amp; Panel (Feeder Equipment)</h3>
+      <span id="comb-count" style="font-size:.82rem;color:var(--text3)">${allTxs.length} records</span>
+    </div>
+    <div class="panel-body no-pad"><div class="tbl-wrap">
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th>Sl.</th>
+          <th>Substation</th>
+          <th>TX Name</th>
+          <th>Capacity (MVA)</th>
+          <th>AIS / GIS</th>
+          <th>CB Type</th>
+          <th>CB Manufacturer</th>
+          <th>CB Mfg. Year</th>
+          <th>CT Manufacturer</th>
+          <th>CT Mfg. Year</th>
+          <th>PCM Panel Mfr.</th>
+          <th>PCM Panel Year</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+      <tbody id="comb-tbody">
+        ${renderPTSwRows(allTxs)}
+      </tbody>
+    </table>
+    </div></div>
+  </div>
+  `;
+}
+
+function renderPTSwRows(rows) {
+  if (!rows.length) return `<tr><td colspan="13" class="tbl-empty">No records found.</td></tr>`;
+  return rows.map((t,i) => `<tr>
+    <td>${i+1}</td>
+    <td>
+      <a href="#" onclick="window.showSection('ss-detail','${t.ss_id}');return false"
+         style="color:var(--blue);font-weight:600;font-size:.82rem">${t.ss_name}</a>
+    </td>
+    <td><strong>${D(t.name)}</strong></td>
+    <td class="num">${D(t.capacity)}</td>
+    <td><span class="badge ${(t.ais_gis||'')=='GIS'?'badge-blue':'badge-gray'}">${D(t.ais_gis)}</span></td>
+    <td>${D(t.cb_type)}</td>
+    <td>${D(t.breaker)}</td>
+    <td>${D(t.cb_year||t.year)}</td>
+    <td>${D(t.ct_manufacturer)}</td>
+    <td>${D(t.ct_year)}</td>
+    <td>${D(t.panel)}</td>
+    <td>${D(t.panel_year||t.year)}</td>
+    <td style="font-size:.78rem;color:var(--text3)">${D(t.comment)}</td>
+  </tr>`).join('');
+}
+
+/* ══════════════════════════════════════════════════
+   ALL-SS: POWER TRANSFORMER LOADING & OPERATING PARAMETERS
+══════════════════════════════════════════════════ */
+function renderAllPTLoad() {
+  const allTxs = ALL_SUBSTATIONS.flatMap(ss =>
+    (ss.power_transformers||[]).map(t => ({...t, ss_name: ss.name||ss.sheet_name, ss_id: ss.id}))
+  );
+  window._combined = allTxs;
+
+  const withLoad   = allTxs.filter(t=>t.max_load_mw!=null);
+  const overloaded = withLoad.filter(t=>{
+    const cap=parseFloat(t.capacity||0), load=parseFloat(t.max_load_mw||0);
+    return cap&&load&&(load/cap*100)>80;
+  }).length;
+  const totalLoad  = withLoad.reduce((s,t)=>s+(parseFloat(t.max_load_mw)||0),0);
+
+  document.getElementById('content').innerHTML = `
+  <div class="sec-head">
+    <div class="sec-head-left">
+      <h2>Power Transformer Loading &amp; Operating Parameters — All Substations</h2>
+      <p>${allTxs.length} power transformers · ${withLoad.length} with load data</p>
+    </div>
+    <div class="sec-head-right">
+      ${ssSearchBar('comb-search','🔍 Search substation or manufacturer…')}
+      <select class="filter-sel" id="comb-type-filter" onchange="window.filterCombinedTable('comb-search')">
+        <option value="">All</option>
+        <option value="overloaded">Overloaded (&gt;80%)</option>
+        <option value="high">High Load (60–80%)</option>
+        <option value="normal">Normal (&lt;60%)</option>
+      </select>
+      <button class="btn btn-sm btn-secondary" onclick="window.exportCombinedCSV('pt_loading')"><i class="fas fa-download"></i> CSV</button>
+    </div>
+  </div>
+
+  ${kpiRow([
+    [allTxs.length,          'Total Power TXs',      'navy'],
+    [totalLoad.toFixed(0)+' MW', 'Total Load (MW)',   'amber'],
+    [overloaded,             'Overloaded (&gt;80%)',  'red'],
+    [withLoad.length - overloaded, 'Normal Load',     'green'],
+    [allTxs.length - withLoad.length, 'No Load Data', ''],
+  ])}
+
+  <div class="panel">
+    <div class="panel-head">
+      <h3>Power Transformer — Loading &amp; Operating Parameters</h3>
+      <span id="comb-count" style="font-size:.82rem;color:var(--text3)">${allTxs.length} records</span>
+    </div>
+    <div class="panel-body no-pad"><div class="tbl-wrap">
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th>Sl.</th>
+          <th>Substation</th>
+          <th>TX Name</th>
+          <th>Capacity (MVA)</th>
+          <th>Max Load (MW)</th>
+          <th>Loading %</th>
+          <th>% Impedance</th>
+          <th>Manufacturer</th>
+          <th>Mfg. Year</th>
+          <th>OLTC Mfr.</th>
+          <th>Oil BDV</th>
+          <th>OTI Highest (°C)</th>
+          <th>OTI Date</th>
+          <th>HT WTI (°C)</th>
+          <th>HT WTI Date</th>
+          <th>LT WTI (°C)</th>
+          <th>LT WTI Date</th>
+        </tr>
+      </thead>
+      <tbody id="comb-tbody">
+        ${renderPTLoadRows(allTxs)}
+      </tbody>
+    </table>
+    </div></div>
+  </div>
+  `;
+}
+
+function renderPTLoadRows(rows) {
+  if (!rows.length) return `<tr><td colspan="17" class="tbl-empty">No records found.</td></tr>`;
+  return rows.map((t,i) => {
+    const cap  = parseFloat(t.capacity||0);
+    const load = parseFloat(t.max_load_mw||0);
+    const pct  = cap&&load ? Math.round(load/cap*100) : null;
+    const pctColor = pct>80?'var(--red2)':pct>60?'var(--amber2)':'var(--green2)';
+    return `<tr>
+      <td>${i+1}</td>
+      <td>
+        <a href="#" onclick="window.showSection('ss-detail','${t.ss_id}');return false"
+           style="color:var(--blue);font-weight:600;font-size:.82rem">${t.ss_name}</a>
+      </td>
+      <td><strong>${D(t.name)}</strong></td>
+      <td class="num">${D(t.capacity)}</td>
+      <td class="num">${t.max_load_mw!=null ? t.max_load_mw+' MW' : '—'}</td>
+      <td>${pct!=null ? `<div style="display:flex;align-items:center;gap:6px">
+        <div class="progress-bar" style="width:55px"><div class="progress-fill ${pct>80?'danger':pct>60?'warn':'ok'}" style="width:${pct}%"></div></div>
+        <span style="font-size:.78rem;font-weight:700;color:${pctColor}">${pct}%</span>
+      </div>` : '—'}</td>
+      <td class="num">${t.impedance_pct!=null ? t.impedance_pct+'%' : D(t.impedance)}</td>
+      <td>${D(t.brand)}</td>
+      <td>${D(t.year)}</td>
+      <td>${D(t.oltc_manufacturer)}</td>
+      <td class="num">${D(t.oil_breakdown_voltage)}</td>
+      <td class="num">${D(t.oti_temp)}</td>
+      <td>${D(t.oti_date)}</td>
+      <td class="num">${D(t.ht_wti_temp)}</td>
+      <td>${D(t.ht_wti_date)}</td>
+      <td class="num">${D(t.lt_wti_temp)}</td>
+      <td>${D(t.lt_wti_date)}</td>
+    </tr>`;
+  }).join('');
+}
+
+/* ══════════════════════════════════════════════════
+   ALL-SS: 11 kV FEEDER INFO
+══════════════════════════════════════════════════ */
+function renderAll11kv() {
+  const allFeeders = ALL_SUBSTATIONS.flatMap(ss =>
+    (ss.feeders_11kv||[]).map(f => ({...f, ss_name: ss.name||ss.sheet_name, ss_id: ss.id}))
+  );
+  window._combined = allFeeders;
+
+  const totalLen  = allFeeders.reduce((s,f)=>s+(parseFloat(f.length_km)||0),0);
+  const highLoad  = allFeeders.filter(f=>f.max_load_mw!=null && f.max_load_mw>=3).length;
+  const longLines = allFeeders.filter(f=>f.length_km!=null  && f.length_km>=50).length;
+
+  document.getElementById('content').innerHTML = `
+  <div class="sec-head">
+    <div class="sec-head-left">
+      <h2>11 kV Feeder Info — All Substations</h2>
+      <p>${allFeeders.length} feeders across ${ALL_SUBSTATIONS.length} substations</p>
+    </div>
+    <div class="sec-head-right">
+      ${ssSearchBar('comb-search','🔍 Search substation or feeder…')}
+      <select class="filter-sel" id="comb-type-filter" onchange="window.filterCombinedTable('comb-search')">
+        <option value="">All</option>
+        <option value="high">High Load (≥3 MW)</option>
+        <option value="long">Long Line (≥50 km)</option>
+      </select>
+      <select class="filter-sel" id="comb-tx-filter" onchange="window.filterCombinedTable('comb-search')">
+        <option value="">All Transformers</option>
+        <option value="T1">T1</option>
+        <option value="T2">T2</option>
+        <option value="T3">T3</option>
+        <option value="T4">T4</option>
+      </select>
+      <button class="btn btn-sm btn-secondary" onclick="window.exportCombinedCSV('11kv_feeders')"><i class="fas fa-download"></i> CSV</button>
+    </div>
+  </div>
+
+  ${kpiRow([
+    [allFeeders.length,      'Total 11 kV Feeders', 'navy'],
+    [totalLen.toFixed(0)+' km','Total Feeder Length',''],
+    [highLoad,               'High Load (≥3 MW)',   'red'],
+    [longLines,              'Long Lines (≥50 km)', 'amber'],
+    [[...new Set(allFeeders.map(f=>f.panel).filter(Boolean))].length, 'Panel Brands', ''],
+  ])}
+
+  <div class="panel">
+    <div class="panel-head">
+      <h3>11 kV Feeder Information</h3>
+      <span id="comb-count" style="font-size:.82rem;color:var(--text3)">${allFeeders.length} records</span>
+    </div>
+    <div class="panel-body no-pad"><div class="tbl-wrap">
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th>Sl.</th>
+          <th>Substation</th>
+          <th>Transformer</th>
+          <th>TX Capacity (MVA)</th>
+          <th>11 kV Feeder Name</th>
+          <th>Max Load (MW)</th>
+          <th>Feeder Length (km)</th>
+          <th>Panel Manufacturer</th>
+          <th>Panel Mfg. Year</th>
+          <th>Remarks</th>
+        </tr>
+      </thead>
+      <tbody id="comb-tbody">
+        ${render11kvRows(allFeeders)}
+      </tbody>
+    </table>
+    </div></div>
+  </div>
+  `;
+}
+
+function render11kvRows(rows) {
+  if (!rows.length) return `<tr><td colspan="10" class="tbl-empty">No records found.</td></tr>`;
+  return rows.map((f,i) => `<tr>
+    <td>${i+1}</td>
+    <td>
+      <a href="#" onclick="window.showSection('ss-detail','${f.ss_id}');return false"
+         style="color:var(--blue);font-weight:600;font-size:.82rem">${f.ss_name}</a>
+    </td>
+    <td><span class="badge badge-blue">${D(f.transformer)}</span></td>
+    <td class="num">${D(f.capacity)}</td>
+    <td><strong>${D(f.name)}</strong></td>
+    <td class="num">${f.max_load_mw!=null ? f.max_load_mw+' MW' : '—'}</td>
+    <td class="num">${f.length_km!=null ? f.length_km+' km' : '—'}</td>
+    <td>${D(f.panel)}</td>
+    <td>${D(f.panel_year)}</td>
+    <td style="font-size:.78rem;color:var(--text3)">${D(f.remarks)}</td>
+  </tr>`).join('');
+}
+
+/* ══════════════════════════════════════════════════
+   SHARED: FILTER + EXPORT for combined tables
+══════════════════════════════════════════════════ */
+window.filterCombinedTable = (searchId) => {
+  const q        = (document.getElementById(searchId)?.value||'').toLowerCase();
+  const typeVal  = (document.getElementById('comb-type-filter')?.value||'').toLowerCase();
+  const txFilter = (document.getElementById('comb-tx-filter')?.value||'');
+  const sec      = currentSection;
+
+  let filtered = (window._combined||[]).filter(item => {
+    const text = JSON.stringify(item).toLowerCase();
+    const qOk = !q || text.includes(q);
+
+    // Type-specific filters
+    let typeOk = true;
+    if (typeVal) {
+      if (sec==='all-33kv') {
+        const lineType = (item.source_ring||item.remarks||'').toLowerCase();
+        typeOk = lineType.includes(typeVal);
+      } else if (sec==='all-pt-sw') {
+        typeOk = (item.ais_gis||'').toUpperCase() === typeVal.toUpperCase();
+      } else if (sec==='all-pt-load') {
+        const cap=parseFloat(item.capacity||0), load=parseFloat(item.max_load_mw||0);
+        const pct = cap&&load ? load/cap*100 : 0;
+        if (typeVal==='overloaded') typeOk = pct>80;
+        else if (typeVal==='high')  typeOk = pct>60 && pct<=80;
+        else if (typeVal==='normal')typeOk = pct<=60;
+      } else if (sec==='all-11kv') {
+        if (typeVal==='high') typeOk = (item.max_load_mw||0)>=3;
+        else if (typeVal==='long') typeOk = (item.length_km||0)>=50;
+      }
+    }
+
+    const txOk = !txFilter || (item.transformer||'')===txFilter;
+    return qOk && typeOk && txOk;
+  });
+
+  const tbody = document.getElementById('comb-tbody');
+  const count = document.getElementById('comb-count');
+  if (count) count.textContent = filtered.length + ' records';
+  if (!tbody) return;
+
+  const renderers = {
+    'all-33kv':   render33kvRows,
+    'all-pt-sw':  renderPTSwRows,
+    'all-pt-load':renderPTLoadRows,
+    'all-11kv':   render11kvRows,
+  };
+  tbody.innerHTML = (renderers[sec]||(() => ''))(filtered);
+};
+
+window.exportCombinedCSV = (name) => {
+  const sec = currentSection;
+  const rows = [];
+
+  if (sec==='all-33kv') {
+    rows.push(['Substation','Line Name','Type','Length (km)','Conductor','Breaker','Panel','Remarks']);
+    (window._combined||[]).forEach(l=>rows.push([l.ss_name,l.name,l.source_ring||l.remarks||'',l.length_km,l.conductor,l.breaker,l.panel,l.remarks]));
+  } else if (sec==='all-pt-sw') {
+    rows.push(['Substation','TX Name','Capacity','AIS/GIS','CB Type','CB Mfr','CB Year','CT Mfr','CT Year','Panel Mfr','Panel Year','Comment']);
+    (window._combined||[]).forEach(t=>rows.push([t.ss_name,t.name,t.capacity,t.ais_gis,t.cb_type,t.breaker,t.cb_year||t.year,t.ct_manufacturer,t.ct_year,t.panel,t.panel_year||t.year,t.comment]));
+  } else if (sec==='all-pt-load') {
+    rows.push(['Substation','TX Name','Capacity (MVA)','Max Load (MW)','Loading %','% Impedance','Manufacturer','Year','OLTC Mfr','Oil BDV']);
+    (window._combined||[]).forEach(t=>{
+      const cap=parseFloat(t.capacity||0),load=parseFloat(t.max_load_mw||0);
+      const pct=cap&&load?Math.round(load/cap*100):'';
+      rows.push([t.ss_name,t.name,t.capacity,t.max_load_mw,pct,t.impedance_pct||t.impedance,t.brand,t.year,t.oltc_manufacturer,t.oil_breakdown_voltage]);
+    });
+  } else if (sec==='all-11kv') {
+    rows.push(['Substation','Transformer','TX Capacity','Feeder Name','Max Load (MW)','Length (km)','Panel Mfr','Panel Year','Remarks']);
+    (window._combined||[]).forEach(f=>rows.push([f.ss_name,f.transformer,f.capacity,f.name,f.max_load_mw,f.length_km,f.panel,f.panel_year,f.remarks]));
+  }
+
+  if (!rows.length) { showToast('No data to export','warn'); return; }
+  const csv = rows.map(r=>r.map(v=>v==null?'':String(v).replace(/,/g,' ')).join(',')).join('\n');
+  const a = Object.assign(document.createElement('a'),{
+    href: URL.createObjectURL(new Blob([csv],{type:'text/csv'})),
+    download: `nesco_${name}.csv`
+  });
+  a.click();
+  showToast('CSV exported!','success');
 };
 
 /* ══════════════════════════════════════════════════

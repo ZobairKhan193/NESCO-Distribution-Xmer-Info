@@ -16,12 +16,13 @@ import { getFirestore, collection, doc, addDoc, getDoc,
   from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey:            "YOUR_API_KEY",
-  authDomain:        "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId:         "YOUR_PROJECT_ID",
-  storageBucket:     "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId:             "YOUR_APP_ID"
+  apiKey: "AIzaSyAklct5CT07Medb_aCKouodofrebHhaavs",
+  authDomain: "distribution-transformer-info.firebaseapp.com",
+  projectId: "distribution-transformer-info",
+  storageBucket: "distribution-transformer-info.firebasestorage.app",
+  messagingSenderId: "256439246815",
+  appId: "1:256439246815:web:5e2f54a78693b3a203ee6a",
+  measurementId: "G-WMHSJLFYPX"
 };
 
 const IS_CONFIGURED = firebaseConfig.apiKey !== "YOUR_API_KEY";

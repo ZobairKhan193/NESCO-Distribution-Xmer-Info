@@ -95,9 +95,14 @@
       </li>
 
       <!-- 3. 33 kV Switching Substations -->
-      <li><a class="nav-link" data-section="switching-ss" href="#">
-        <i class="fas fa-network-wired"></i><span>33 kV Switching SS</span>
-      </a></li>
+      <li class="has-dd">
+        <a class="nav-link dd-toggle" href="#">
+          <i class="fas fa-network-wired"></i><span>33 kV Switching SS</span><i class="fas fa-chevron-down dd-arrow"></i>
+        </a>
+        <ul class="dropdown">
+          <li><a data-section="switching-ss" href="#"><i class="fas fa-route"></i> Grid SS-wise NESCO Feeder List</a></li>
+        </ul>
+      </li>
 
       <!-- 4. Distribution Transformer -->
       <li class="has-dd">
@@ -105,9 +110,9 @@
           <i class="fas fa-circle-half-stroke"></i><span>Distribution Transformer</span><i class="fas fa-chevron-down dd-arrow"></i>
         </a>
         <ul class="dropdown">
-          <li><a data-section="dt-summary" href="#"><i class="fas fa-layer-group"></i> Substation-wise Summary</a></li>
-          <li><a data-section="dt-load" href="#"><i class="fas fa-tachometer-alt"></i> DT Load</a></li>
-          <li><a data-section="dt-equipment" href="#"><i class="fas fa-tools"></i> Equipment Status (LA/DOFC/MCCB)</a></li>
+          <li><a data-section="dt-overall"    href="#"><i class="fas fa-globe"></i> Overall Summary</a></li>
+          <li><a data-section="dt-sdd-summary" href="#"><i class="fas fa-layer-group"></i> SDD/ESU-wise Summary</a></li>
+          <li><a data-section="dt-operating"  href="#"><i class="fas fa-tachometer-alt"></i> DT Operating Values</a></li>
         </ul>
       </li>
 

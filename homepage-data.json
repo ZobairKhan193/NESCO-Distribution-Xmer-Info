@@ -1,0 +1,153 @@
+{
+  "title": "NESCO — Technical Highlights",
+  "subtitle": "Last seven fiscal years",
+  "years": [
+    "2018-2019",
+    "2019-2020",
+    "2020-2021",
+    "2021-2022",
+    "2022-2023",
+    "2023-2024"
+  ],
+  "metrics": [
+    {
+      "label": "132/33 KV Grid Substations (Nos)",
+      "values": [
+        "19",
+        "19",
+        "21",
+        "23",
+        "25",
+        "25"
+      ]
+    },
+    {
+      "label": "33/11 KV Sub-station (Nos)",
+      "values": [
+        "63",
+        "64",
+        "69",
+        "77",
+        "82",
+        "82"
+      ]
+    },
+    {
+      "label": "Capacity of 33/11 KV Sub-Station (MVA)",
+      "values": [
+        "1392.12/1892.47",
+        "1408.12/1912.47",
+        "1512.12/2045.47",
+        "1906/2541",
+        "2038/2711",
+        "2221/ 2936"
+      ]
+    },
+    {
+      "label": "Maximum Demand (MW)",
+      "values": [
+        "790",
+        "810",
+        "830",
+        "856",
+        "896",
+        "915"
+      ]
+    },
+    {
+      "label": "33KV Overhead Line (KM)",
+      "values": [
+        "1110.45",
+        "1301.98",
+        "1455.48",
+        "1480",
+        "1492",
+        "1610.6"
+      ]
+    },
+    {
+      "label": "11KV Overhead Line (KM)",
+      "values": [
+        "5925.62",
+        "6284.78",
+        "6819.43",
+        "6,937",
+        "7011",
+        "7397.5"
+      ]
+    },
+    {
+      "label": "11/0.4 KV Overhead Line (KM)",
+      "values": [
+        "5670",
+        "5820",
+        "6906",
+        "7304",
+        "7346",
+        "7629.4"
+      ]
+    },
+    {
+      "label": "0.4 KV Overhead Line (KM)",
+      "values": [
+        "6775",
+        "7745",
+        "7386",
+        "8470",
+        "9252",
+        "10168.2"
+      ]
+    },
+    {
+      "label": "Distribution Transformer (No.)",
+      "values": [
+        "7850",
+        "9072",
+        "9484",
+        "10200",
+        "12110",
+        "13943"
+      ]
+    },
+    {
+      "label": "33 KV Feeder (Nos)",
+      "values": [
+        "85",
+        "87",
+        "92",
+        "104",
+        "119",
+        "124"
+      ]
+    },
+    {
+      "label": "11 KV Feeder (Nos)",
+      "values": [
+        "303",
+        "320",
+        "335",
+        "377",
+        "506",
+        "510"
+      ]
+    }
+  ],
+  "commentary": [
+    {
+      "heading": "Maximum Demand",
+      "text": "Maximum load demand was 896 MW in FY 2022-2023 and in FY 2022-2023 it has been raised to  915 MW."
+    },
+    {
+      "heading": "33/11 KV Substations",
+      "text": "The capacity of 33/11 KV Sub-Stations has been raised to 2221/2936 MVA by June-2024 with a total count of 82 nos."
+    },
+    {
+      "heading": "Category wise Distribution Line",
+      "text": "Distribution Transformer"
+    },
+    {
+      "heading": "Distribution Transformer",
+      "text": "Number of Distribution Transformer has been raised to 13,943 nos in FY-2023-2024."
+    }
+  ]
+}

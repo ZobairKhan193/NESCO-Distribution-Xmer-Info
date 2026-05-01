@@ -1,0 +1,313 @@
+{
+  "nidmp": {
+    "id": "nidmp",
+    "name": "Network Infrastructure Development & Modernization of Power Distribution System in NESCO Area (NIDMP)",
+    "short": "NIDMP",
+    "stage": "Upcoming",
+    "funding": "ADB-funded",
+    "scope": [
+      "Upgrade 9 substations (Fakirpara, Balubari, Uposohor, Setabgonj, Panchagarh, Katkipara, Mahiganj, Dhangora, Niamotpur & Golahat).",
+      "Upgrade 4 GIS substations (S&D-1 Capai Nawabganj, S&D-1 Rangpur, S&D-1 Bogura, Chandipur Rajshahi).",
+      "Construct 4 new GIS Switching Substations including Miapur 21-bay & Katakhali 11-bay.",
+      "Construct 4 new AIS Switching Substations.",
+      "Lay underground 11 kV cable in core city zones.",
+      "Replace ~14 ageing 33 kV breakers and panels.",
+      "Add 2,000 LA / 2,000 DOFC / 2,000 MCCB sets and 2,570 distribution transformers.",
+      "Install 800,000 Smart Meters (SMP) — single & three-phase.",
+      "Energy storage systems × 4 lots, IED + fault locator package, cybersecurity scope, training & workshops."
+    ],
+    "totals": {
+      "ss_upgrade_9_bdt_with_vat": 1266785442.48,
+      "ss_upgrade_9_usd_with_vat": 10470278.87,
+      "ss_upgrade_gis_4_bdt_with_vat": 1726014423.64,
+      "ss_upgrade_gis_4_usd_with_vat": 14147659.21,
+      "ss_ais_dinajpur_bdt_with_vat": 365186113.76,
+      "ss_ais_dinajpur_usd_with_vat": 2993328.8,
+      "additional_scope_bdt": 9232015393.0
+    },
+    "ss_upgrade_list": [
+      {
+        "sl": 1,
+        "name": "Fakirpara",
+        "zone": "Dinajpur",
+        "bdt": 135207681.92
+      },
+      {
+        "sl": 2,
+        "name": "Balubari",
+        "zone": "Dinajpur",
+        "bdt": 145281815.18
+      },
+      {
+        "sl": 3,
+        "name": "Uposohor",
+        "zone": "Dinajpur",
+        "bdt": 107967352.18
+      },
+      {
+        "sl": 4,
+        "name": "Setabgonj",
+        "zone": "Dinajpur",
+        "bdt": 126360901.94
+      },
+      {
+        "sl": 5,
+        "name": "Panchagarh",
+        "zone": "Panchagarh",
+        "bdt": 116652945.14
+      },
+      {
+        "sl": 6,
+        "name": "Katkipara",
+        "zone": "Rangpur",
+        "bdt": 164506806.73
+      },
+      {
+        "sl": 7,
+        "name": "Mahiganj",
+        "zone": "Rangpur",
+        "bdt": 108479800.41
+      },
+      {
+        "sl": 8,
+        "name": "Dhangora",
+        "zone": "Rangpur",
+        "bdt": 107665400.41
+      },
+      {
+        "sl": 9,
+        "name": "Niamotpur & Golahat",
+        "zone": "Nilphamari",
+        "bdt": 254662738.58
+      }
+    ],
+    "ss_gis_list": [
+      {
+        "sl": 1,
+        "name": "S&D-1 Capai Nawabganj",
+        "zone": "Rajshahi",
+        "bdt": 116910477.67
+      },
+      {
+        "sl": 2,
+        "name": "S&D-1 Rangpur",
+        "zone": "Rangpur",
+        "bdt": 522588017.68
+      },
+      {
+        "sl": 3,
+        "name": "S&D-1 Bogura",
+        "zone": "Bogura",
+        "bdt": 532393667.96
+      },
+      {
+        "sl": 4,
+        "name": "Chandipur, Rajshahi",
+        "zone": "Rajshahi",
+        "bdt": 554122260.33
+      }
+    ],
+    "additional_scopes": [
+      {
+        "item": "Smart Meters (SMP)",
+        "qty": "800,000 nos",
+        "cost_lac": 49705.16
+      },
+      {
+        "item": "LA + DOFC + MCCB",
+        "qty": "2000+2000+2000",
+        "cost_lac": 2139.54
+      },
+      {
+        "item": "Distribution Transformer",
+        "qty": "2,570 nos",
+        "cost_lac": 18181.93
+      },
+      {
+        "item": "Energy Storage System",
+        "qty": "4 lots",
+        "cost_lac": 10084.6
+      },
+      {
+        "item": "Underground Cable",
+        "qty": "14 km",
+        "cost_lac": 8208.93
+      },
+      {
+        "item": "Cyber-security",
+        "qty": "lumpsum",
+        "cost_lac": 4000.0
+      }
+    ]
+  },
+  "pdssp": {
+    "id": "pdssp",
+    "name": "Power Distribution System Strengthening Project (PDSSP)",
+    "short": "PDSSP",
+    "stage": "Ongoing",
+    "funding": "NDB-funded",
+    "scope": [
+      "Strengthen and renovate 8 existing 33/11 kV substations.",
+      "Replace ageing power transformers with new 10/13.33 MVA & 20/26.66 MVA units fitted with OLTC.",
+      "Install 33 kV VCBs (36 kV, 1600 A, 31.5 kA) and PCM panels.",
+      "Replace 11 kV switchgear (incomers, line feeders, bus couplers).",
+      "Construct G+1 control rooms where existing buildings are inadequate."
+    ],
+    "substations": [
+      {
+        "sl": 1,
+        "zone": "Rajshahi Zone",
+        "name": "Godagari",
+        "district": "Rajshahi",
+        "power_xfr": "1× 10/13.33 MVA, 33/11 kV (with OLTC)+RTCC",
+        "vcb": "1 set, 36 kV, 1600 A, 31.5 kA",
+        "pcm_panel": "01 no. Power Tranformer Panel)",
+        "switchgear": "1 Inc + 5 Line Feeder + 1 Bus Coupler + 1 Adaptation",
+        "control_room": "No — existing control room retained (washroom & battery room relocated from 1st floor to ground floor)"
+      },
+      {
+        "sl": 2,
+        "zone": "Rajshahi Zone",
+        "name": "Katakhali",
+        "district": "Rajshahi",
+        "power_xfr": "1× 10/13.33 MVA, 33/11 kV (with OLTC)+RTCC",
+        "vcb": null,
+        "pcm_panel": null,
+        "switchgear": "1 Inc + 5 Line Feeder + 1 Bus Coupler + 1 Adaptation",
+        "control_room": "Yes — G+1 side extension to existing building, 12 m × 8 m × 2 floors = 192 sqm"
+      },
+      {
+        "sl": 3,
+        "zone": "Rajshahi Zone",
+        "name": "Matidali",
+        "district": "Bogra",
+        "power_xfr": "1× 20/26.66 MVA, 33/11 kV (with OLTC)+RTCC",
+        "vcb": "33 kV GIS — 4 bays (2 Line Inc/Out + 1 Bus Coupler with Riser + 1 Xmer Feeder); no outdoor VCB",
+        "pcm_panel": null,
+        "switchgear": "1 Inc + 6 Line Feeder + 1 Bus Coupler + 1 Adaptation",
+        "control_room": "No"
+      },
+      {
+        "sl": 4,
+        "zone": "Rajshahi Zone",
+        "name": "Sherpur",
+        "district": "Bogra",
+        "power_xfr": "Not in scope (existing transformers operational)",
+        "vcb": null,
+        "pcm_panel": "02 nos. Power Transformer Panel, 01 no. Line Panel",
+        "switchgear": " 2 Inc + 10 Line Feeder + 2 Bus Coupler + 1 Adaptation",
+        "control_room": "Partial — finishing of new portion already built by BPDB (water-tightening, 38 mm patent stone flooring, drainage)"
+      },
+      {
+        "sl": 5,
+        "zone": "Rajshahi Zone",
+        "name": "Puran Bogra",
+        "district": "Bogra",
+        "power_xfr": "1× 20/26.66 MVA, 33/11 kV (with OLTC)",
+        "vcb": "2 sets, 36 kV, 1600 A, 31.5 kA",
+        "pcm_panel": "03 nos. Power Transformer Panel, 01 no. Line Panel",
+        "switchgear": "3 Inc + 16 Line Feeder + 3 Bus Coupler + 1 Adaptation",
+        "control_room": "Yes — G+1 control building (3-storied foundation), 300 sqm / floor ≈ 500 sqm total"
+      },
+      {
+        "sl": 6,
+        "zone": "Rajshahi Zone",
+        "name": "Khonjonpur",
+        "district": "Joypurhat",
+        "power_xfr": "Relocation of 1× 10/13.33 MVA Xmer from Matidali (no new supply); RTCC supplied",
+        "vcb": "2 sets, 36 kV, 1600 A, 31.5 kA",
+        "pcm_panel": null,
+        "switchgear": "Not in scope — existing 11 kV panels (2 Inc + Bus Coupler/Riser + 2 PT + outgoing) relocated to new control building",
+        "control_room": "Yes — G+1 control building (3-storied foundation), 225 sqm / floor = 450 sqm total"
+      },
+      {
+        "sl": 7,
+        "zone": "Rajshahi Zone",
+        "name": "Baludanga",
+        "district": "Naogaon",
+        "power_xfr": "Not in scope",
+        "vcb": "2 sets, 36 kV, 1600 A, 31.5 kA",
+        "pcm_panel": null,
+        "switchgear": "2 sets new 11 kV SG panels (per site note; no detailed BOQ line items)",
+        "control_room": "No"
+      },
+      {
+        "sl": 8,
+        "zone": "Rajshahi Zone",
+        "name": "Arji Naogaon",
+        "district": "Naogaon",
+        "power_xfr": "Not in scope",
+        "vcb": null,
+        "pcm_panel": null,
+        "switchgear": "1 Inc + 5 Line Feeder + 1 Bus Coupler + 1 Adaptation",
+        "control_room": "No"
+      },
+      {
+        "sl": 9,
+        "zone": "Rajshahi Zone",
+        "name": "Kathaltoli",
+        "district": "Naogaon",
+        "power_xfr": "1× 20/26.66 MVA, 33/11 kV (with OLTC)",
+        "vcb": null,
+        "pcm_panel": null,
+        "switchgear": "Not in scope",
+        "control_room": "No"
+      },
+      {
+        "sl": 10,
+        "zone": "Rangpur Zone",
+        "name": "Masterpara",
+        "district": "Gaibandha",
+        "power_xfr": "Not in scope (only 1× Station Transformer 33/0.4 kV, 100 kVA)",
+        "vcb": "4 sets, 36 kV, 1600 A, 31.5 kA",
+        "pcm_panel": "02 nos. Power Transformer Panel",
+        "switchgear": "2 Inc + 10 Line Feeder + 1 Bus Coupler + 1 Adaptation",
+        "control_room": "No"
+      },
+      {
+        "sl": 11,
+        "zone": "Rangpur Zone",
+        "name": "Hatibandha-1",
+        "district": "Lalmonirhat",
+        "power_xfr": "1× 10/13.33 MVA, 33/11 kV (with OLTC) + 1× Station Xmer 33/0.4 kV, 100 kVA",
+        "vcb": "3 sets, 36 kV, 1600 A, 31.5 kA",
+        "pcm_panel": "01 no. Power Transformer Panel, 02 nos. Line Panel",
+        "switchgear": "1 Inc + 5 Line Feeder",
+        "control_room": "Yes — G+1 control building (3-storied foundation), 200 sqm / floor = 400 sqm total"
+      },
+      {
+        "sl": 12,
+        "zone": "Rangpur Zone",
+        "name": "Kukhapara",
+        "district": "Nilphamari",
+        "power_xfr": "1× 16/20 MVA, 33/11 kV (with OLTC)",
+        "vcb": "5 sets, 36 kV, 1600 A, 31.5 kA",
+        "pcm_panel": "02 nos. Power Transformer Panel, 03 nos. Line Panel",
+        "switchgear": "2 Inc + 10 Line Feeder + 1 Bus Coupler",
+        "control_room": "No — 38 mm pattern stone on roof of existing CR + cable-trench extension/renovation"
+      },
+      {
+        "sl": 13,
+        "zone": "Rangpur Zone",
+        "name": "Goyalpara",
+        "district": "Thakurgaon",
+        "power_xfr": "1× 10/13.33 MVA, 33/11 kV (with OLTC)",
+        "vcb": "2 sets, 36 kV, 1600 A, 31.5 kA",
+        "pcm_panel": "01 no. Power Transformer Panel",
+        "switchgear": "1 Inc + 5 Line Feeder + 1 Bus Coupler + 2 Adaptation",
+        "control_room": "No"
+      },
+      {
+        "sl": 14,
+        "zone": "Rangpur Zone",
+        "name": "DPS",
+        "district": "Thakurgaon",
+        "power_xfr": "1× 10/13.33 MVA, 33/11 kV (with OLTC)+RTCC",
+        "vcb": "2 sets, 36 kV, 1600 A, 31.5 kA",
+        "pcm_panel": null,
+        "switchgear": "Not in scope",
+        "control_room": "No"
+      }
+    ]
+  }
+}

@@ -4431,40 +4431,126 @@ window.pdsspRenderLineView = () => {
   if (body) body.innerHTML = html;
 };
 
-/* ── Renewable Energy: render the .docx blocks as an article ── */
+/* ── Renewable Energy: structured renderer ──
+   Skips the duplicated title + intro paragraphs (blocks 0-2) per
+   owner request, surfaces the "Snapshot at a Glance" stats as
+   prominent KPI tiles, and groups every numbered section into its
+   own visual card with a themed icon. */
 function renderRenewable() {
   if (!RENEWABLE_DATA) {
     document.getElementById('content').innerHTML = `<div class="page-loader">Loading…</div>`;
     return;
   }
-  const blocks = RENEWABLE_DATA.blocks || [];
-  const inner = blocks.map(b => {
-    if (b.kind === 'heading') {
-      const lvl = Math.max(1, Math.min(3, b.level || 1));
-      return `<h${lvl} class="art-h${lvl}">${esc(b.text)}</h${lvl}>`;
+  const blocks = (RENEWABLE_DATA.blocks || []).slice(0);
+
+  // Drop the intro: first 3 blocks are the duplicated title + tagline
+  // + opening paragraph that the owner asked to remove. They are
+  // followed by the "Snapshot at a Glance" H1.
+  const firstHeadingIdx = blocks.findIndex(b => b.kind === 'heading');
+  const usable = firstHeadingIdx >= 0 ? blocks.slice(firstHeadingIdx) : blocks;
+
+  // Group blocks under each H1 heading. The first H1 ("Snapshot at a
+  // Glance") gets special KPI-tile treatment.
+  const sections = [];
+  let current = null;
+  for (const b of usable) {
+    if (b.kind === 'heading' && (b.level || 1) === 1) {
+      current = { title: b.text, blocks: [] };
+      sections.push(current);
+    } else if (current) {
+      current.blocks.push(b);
     }
-    if (b.kind === 'paragraph') {
-      return `<p class="art-p">${esc(b.text)}</p>`;
+  }
+
+  // First section is "Snapshot at a Glance" with a 7×2 table.
+  let snapshotHtml = '';
+  let snapshot = sections.shift();
+  if (snapshot) {
+    const table = snapshot.blocks.find(b => b.kind === 'table');
+    if (table && table.rows && table.rows.length) {
+      // Each row is [metric label, value]
+      const tiles = table.rows.map((r, i) => {
+        const palette = ['t-green','t-teal','t-indigo','t-amber','t-pink','t-purple','t-orange'];
+        const lbl = esc(r[0]);
+        const val = esc(r[1]);
+        return `<div class="metric-tile ${palette[i % palette.length]}">
+          <i class="fas fa-solar-panel mt-icon"></i>
+          <div class="mt-label">${lbl}</div>
+          <div class="mt-val">${val}</div>
+        </div>`;
+      }).join('');
+      snapshotHtml = `
+        <h2 style="font-family:var(--fh);font-weight:800;color:#0b1d3f;margin:6px 0 12px;font-size:1.3rem">
+          <i class="fas fa-chart-pie" style="color:#10b981;margin-right:8px"></i>${esc(snapshot.title)}
+        </h2>
+        <div class="metric-row">${tiles}</div>`;
+    } else {
+      // Fallback: put it back as a regular section
+      sections.unshift(snapshot);
     }
-    if (b.kind === 'table' && b.rows && b.rows.length) {
-      const [head, ...body] = b.rows;
-      const ths = head.map(c => `<th>${esc(c)}</th>`).join('');
-      const trs = body.map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('');
-      return `<div class="tbl-wrap"><table class="tbl">
-        <thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`;
-    }
-    return '';
-  }).join('');
+  }
+
+  // Iconography by section keyword
+  const iconFor = (title) => {
+    const t = title.toLowerCase();
+    if (t.includes('rooftop') && t.includes('net'))      return 'fa-house-chimney';
+    if (t.includes('floating'))                          return 'fa-water';
+    if (t.includes('office') || t.includes('substation')) return 'fa-building';
+    if (t.includes('opex'))                              return 'fa-handshake';
+    if (t.includes('battery') || t.includes('charging')) return 'fa-car-battery';
+    if (t.includes('ipp') || t.includes('evacuation'))   return 'fa-plug-circle-bolt';
+    if (t.includes('future') || t.includes('plan'))      return 'fa-rocket';
+    if (t.includes('looking ahead'))                     return 'fa-leaf';
+    return 'fa-solar-panel';
+  };
+
+  // Render a non-snapshot section as a glass card
+  const sectionCard = (sec) => {
+    const icon = iconFor(sec.title);
+    const inner = sec.blocks.map(b => {
+      if (b.kind === 'heading') {
+        const lvl = Math.max(2, Math.min(3, b.level || 2));
+        return `<h${lvl} class="art-h${lvl}">${esc(b.text)}</h${lvl}>`;
+      }
+      if (b.kind === 'paragraph') {
+        const t = b.text;
+        // Render bullet-style paragraphs (start with "- " or a bullet
+        // mark or contain " — capacity ") as list items in a UL.
+        return `<p class="art-p">${esc(t)}</p>`;
+      }
+      if (b.kind === 'table' && b.rows && b.rows.length) {
+        const [head, ...body] = b.rows;
+        const ths = head.map(c => `<th>${esc(c)}</th>`).join('');
+        const trs = body.map(r =>
+          `<tr>${r.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('');
+        return `<div class="tbl-wrap" style="margin-top:10px"><table class="tbl">
+          <thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`;
+      }
+      return '';
+    }).join('');
+    return `
+      <div class="renew-card">
+        <div class="renew-card-head">
+          <div class="renew-icon"><i class="fas ${icon}"></i></div>
+          <h3 class="renew-title">${esc(sec.title)}</h3>
+        </div>
+        <div class="renew-card-body">${inner}</div>
+      </div>`;
+  };
 
   document.getElementById('content').innerHTML = `
-    <div class="proj-hero" style="background:linear-gradient(135deg,#047857 0%,#10b981 60%,#34d399 100%)">
-      <span class="proj-tag">Renewable Energy</span>
-      <h1>${esc(RENEWABLE_DATA.title || 'NESCO Renewable Energy Overview')}</h1>
-      <p>Solar + grid-tied renewable energy assets across the NESCO distribution area.</p>
+    <div class="proj-hero" style="background:linear-gradient(135deg,#047857 0%,#10b981 55%,#34d399 100%)">
+      <span class="proj-tag"><i class="fas fa-leaf"></i> &nbsp;Renewable Energy</span>
+      <h1>NESCO Renewable Energy Portfolio</h1>
+      <p>Solar, floating solar, battery charging, and grid-tied IPP evacuation across the NESCO service area.</p>
     </div>
-    <div class="article">
-      <div class="article-block">${inner}</div>
-    </div>`;
+
+    ${snapshotHtml}
+
+    <div class="renew-grid">
+      ${sections.map(sectionCard).join('')}
+    </div>
+  `;
 }
 
 /* ── Store — Substation Equipment Info  /  Line Equipment Info ── */

@@ -73,25 +73,46 @@ def parse_pdssp_summary():
 
 
 def parse_pdssp_lines():
-    """Each sheet is a circle or zone with a header row at row 3 (and rows
-    1-2 contain an outer title block). We emit one entry per sheet."""
+    """Each sheet is one of:
+      - a CIRCLE sheet (rows = S&DDs/ESUs in that Circle)
+      - a ZONE sheet (rows = Circles in that Zone)
+      - the GRAND SUMMARY sheet (rows = Zones + a Total= row)
+      - a per-SS detail sheet (Rangpur Circle-2, Dinajpur Circle — rows
+        = substations under an S&DD)
+    We classify by inspecting the header row and emit one entry per
+    sheet so the UI can pick the right rendering.
+    """
     wb = open_wb(PDSSP_LINES)
     out = []
     for sn in wb.sheetnames:
         ws = wb[sn]
-        # Find the header row — first row with "Sr. No." or "Name of the SDD"
         header_row = None
+        kind = None
+        # Find the first row that has a recognisable name column.
         for r in range(1, min(10, ws.max_row) + 1):
-            cells = [s(c.value).lower() for c in ws[r] if c.value]
-            if any("sdd" in c for c in cells) and any("substation" in c for c in cells):
-                header_row = r
+            cells_low = [s(c.value).lower() for c in ws[r] if c.value]
+            joined = " | ".join(cells_low)
+            if not cells_low:
+                continue
+            if "name of the sdd" in joined and "substation" in joined:
+                header_row, kind = r, "substation"
+                break
+            if "name of s&dd" in joined or "name of  s&dd" in joined or "name of the s&dd" in joined:
+                header_row, kind = r, "sdd"
+                break
+            if joined.startswith("circle name") or "circle name" in cells_low:
+                header_row, kind = r, "zone"
+                break
+            if cells_low[0] == "zone":
+                header_row, kind = r, "grand"
                 break
         if not header_row:
             continue
+
         headers = [s(c.value) for c in ws[header_row]]
         rows = []
         for r in ws.iter_rows(min_row=header_row + 1, values_only=True):
-            if not r or r[0] is None:
+            if not r:
                 continue
             rec = {}
             for i, h in enumerate(headers):
@@ -102,7 +123,12 @@ def parse_pdssp_lines():
             if any(v not in ("", None) for v in rec.values()):
                 rows.append(rec)
         if rows:
-            out.append({"sheet": sn, "headers": [h for h in headers if h], "rows": rows})
+            out.append({
+                "sheet": sn,
+                "kind": kind,
+                "headers": [h for h in headers if h],
+                "rows": rows,
+            })
     return out
 
 

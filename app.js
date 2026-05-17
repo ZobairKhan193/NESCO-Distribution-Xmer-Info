@@ -3470,118 +3470,53 @@ function _renderNESCOFiveYearLoadChart() {
 }
 
 function renderLoadHistory() {
+  // §7 — only the NESCO-wide last-5-FY maximum demand chart on this page.
   document.getElementById('content').innerHTML = `
   <div class="sec-head">
     <div class="sec-head-left"><h2>Load History</h2>
-      <p>NESCO-wide annual peak demand (last 5 FYs) + per-substation monthly drill-down.</p>
-    </div>
-    <div class="sec-head-right">
-      <select class="filter-sel"><option>2024</option><option>2023</option></select>
-      <button class="btn btn-sm btn-secondary" onclick="window.exportLoadCSV()"><i class="fas fa-download"></i> Export CSV</button>
+      <p>NESCO-wide annual peak demand — last 5 fiscal years.</p>
     </div>
   </div>
 
   ${_renderNESCOFiveYearLoadChart()}
-  <div class="kpi-row" style="grid-template-columns:repeat(5,1fr)">
-    <div class="kpi-card amber"><div class="kpi-val">${Math.max(...LOAD_HISTORY.total)} MW</div><div class="kpi-sub">Peak Load (2024)</div></div>
-    <div class="kpi-card"><div class="kpi-val">${(LOAD_HISTORY.total.reduce((a,b)=>a+b)/12).toFixed(1)} MW</div><div class="kpi-sub">Average Load</div></div>
-    <div class="kpi-card green"><div class="kpi-val">${Math.min(...LOAD_HISTORY.total)} MW</div><div class="kpi-sub">Min Load</div></div>
-    <div class="kpi-card"><div class="kpi-val">${Math.round(Math.max(...LOAD_HISTORY.total)/40*100)}%</div><div class="kpi-sub">Peak Load Factor</div></div>
-    <div class="kpi-card navy"><div class="kpi-val">40 MVA</div><div class="kpi-sub">Installed Capacity</div></div>
-  </div>
-  <div style="display:grid;grid-template-columns:2fr 1fr;gap:16px">
-    <div class="panel">
-      <div class="panel-head"><h3><i class="fas fa-chart-line"></i> Monthly Load Trend</h3></div>
-      <div class="panel-body"><div class="chart-container"><canvas id="chart-load-line"></canvas></div></div>
-    </div>
-    <div class="panel">
-      <div class="panel-head"><h3><i class="fas fa-chart-pie"></i> T1 vs T2 Share</h3></div>
-      <div class="panel-body"><div class="chart-container"><canvas id="chart-load-pie"></canvas></div></div>
-    </div>
-  </div>
-  <div class="panel" style="margin-top:16px">
-    <div class="panel-head"><h3>Monthly Load Data</h3></div>
-    <div class="panel-body no-pad"><div class="tbl-wrap">
-    <table class="tbl">
-      <thead><tr><th>Month</th><th>T1 Load (MW)</th><th>T2 Load (MW)</th><th>Total (MW)</th><th>Loading %</th></tr></thead>
-      <tbody>${LOAD_HISTORY.labels.map((m,i)=>{
-        const pct=Math.round(LOAD_HISTORY.total[i]/40*100);
-        return `<tr>
-          <td><strong>${m} 2024</strong></td>
-          <td class="num">${LOAD_HISTORY.T1[i]}</td>
-          <td class="num">${LOAD_HISTORY.T2[i]}</td>
-          <td class="num"><strong>${LOAD_HISTORY.total[i]}</strong></td>
-          <td><span class="badge ${pct>70?'badge-bad':pct>50?'badge-partial':'badge-good'}">${pct}%</span></td>
-        </tr>`;
-      }).join('')}</tbody>
-    </table>
-    </div></div>
-  </div>
   `;
   setTimeout(() => {
-    // NESCO 5-year demand chart (uses homepage-data.json)
     const ctxN = document.getElementById('nesco-5y-load');
-    if (ctxN && HOME_DATA) {
-      const demand = HOME_DATA.metrics.find(m => /maximum demand/i.test(m.label));
-      if (demand) {
-        const yrs = HOME_DATA.years.slice(-5);
-        const vals = demand.values.slice(-5).map(v => {
-          const m = String(v).replace(/,/g,'').match(/[\d.]+/);
-          return m ? parseFloat(m[0]) : null;
-        });
-        charts['nesco5y'] = new Chart(ctxN, {
-          type: 'line',
-          data: {
-            labels: yrs.map(y => `FY ${y}`),
-            datasets: [{
-              label: 'Maximum Demand (MW)',
-              data: vals,
-              borderColor: '#6366f1',
-              backgroundColor: 'rgba(99,102,241,.18)',
-              fill: true, tension: 0.32, pointRadius: 6, pointHoverRadius: 8,
-              pointBackgroundColor: '#4f46e5',
-            }],
-          },
-          options: {
-            responsive: true, maintainAspectRatio: false,
-            plugins: {
-              legend: { display: false },
-              tooltip: { callbacks: { label: c => `${c.parsed.y} MW` } },
-            },
-            scales: {
-              x: { grid: { display: false } },
-              y: { beginAtZero: false, title: { display: true, text: 'Maximum Demand (MW)' } },
-            },
-          },
-        });
-      }
-    }
-
-    const ctx1 = document.getElementById('chart-load-line');
-    if (ctx1) charts['load-line'] = new Chart(ctx1, {
-      type:'line',
-      data:{labels:LOAD_HISTORY.labels,datasets:[
-        {label:'T1 (MW)',   data:LOAD_HISTORY.T1,   borderColor:'#1565c0',backgroundColor:'rgba(21,101,192,.1)',tension:0.4,fill:true,pointRadius:5},
-        {label:'T2 (MW)',   data:LOAD_HISTORY.T2,   borderColor:'#059669',backgroundColor:'rgba(5,150,105,.1)', tension:0.4,fill:true,pointRadius:5},
-        {label:'Total (MW)',data:LOAD_HISTORY.total,borderColor:'#d97706',backgroundColor:'transparent',        tension:0.4,borderDash:[5,4],pointRadius:3},
-      ]},
-      options:{responsive:true,maintainAspectRatio:false,scales:{y:{beginAtZero:false,title:{display:true,text:'Load (MW)'}}},plugins:{legend:{position:'top'}}}
+    if (!ctxN || !HOME_DATA) return;
+    const demand = HOME_DATA.metrics.find(m => /maximum demand/i.test(m.label));
+    if (!demand) return;
+    const yrs = HOME_DATA.years.slice(-5);
+    const vals = demand.values.slice(-5).map(v => {
+      const m = String(v).replace(/,/g,'').match(/[\d.]+/);
+      return m ? parseFloat(m[0]) : null;
     });
-    const ctx2 = document.getElementById('chart-load-pie');
-    if (ctx2) charts['load-pie'] = new Chart(ctx2, {
-      type:'doughnut',
-      data:{labels:['T1 Load','T2 Load'],datasets:[{data:[LOAD_HISTORY.T1.reduce((a,b)=>a+b),LOAD_HISTORY.T2.reduce((a,b)=>a+b)],backgroundColor:['#1565c0','#059669'],borderWidth:2}]},
-      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}}}
+    charts['nesco5y'] = new Chart(ctxN, {
+      type: 'line',
+      data: {
+        labels: yrs.map(y => `FY ${y}`),
+        datasets: [{
+          label: 'Maximum Demand (MW)',
+          data: vals,
+          borderColor: '#1d4ed8',
+          backgroundColor: 'rgba(29,78,216,.18)',
+          fill: true, tension: 0.32, pointRadius: 6, pointHoverRadius: 8,
+          pointBackgroundColor: '#1e3a8a',
+        }],
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: c => `${c.parsed.y} MW` } },
+        },
+        scales: {
+          x: { grid: { display: false } },
+          y: { beginAtZero: false, title: { display: true, text: 'Maximum Demand (MW)' } },
+        },
+      },
     });
   }, 100);
 }
-
-window.exportLoadCSV = () => {
-  const rows=[['Month','T1 (MW)','T2 (MW)','Total (MW)','Loading %']];
-  LOAD_HISTORY.labels.forEach((m,i)=>rows.push([m+' 2024',LOAD_HISTORY.T1[i],LOAD_HISTORY.T2[i],LOAD_HISTORY.total[i],Math.round(LOAD_HISTORY.total[i]/40*100)+'%']));
-  const a=Object.assign(document.createElement('a'),{href:URL.createObjectURL(new Blob([rows.map(r=>r.join(',')).join('\n')],{type:'text/csv'})),download:'load_history_2024.csv'});
-  a.click(); showToast('Exported!','success');
-};
 
 
 /* ══════════════════════════════════════════════════
@@ -3998,7 +3933,6 @@ function renderAll11kv() {
     </div>
     <div class="sec-head-right">
       ${ssSearchBar('comb-search','🔍 Search substation or feeder…')}
-      ${comb33kvFilterBar()}
       <select class="filter-sel" id="comb-type-filter" onchange="window.filterCombinedTable('comb-search')">
         <option value="">All</option>
         <option value="high">High Load (≥3 MW)</option>
@@ -4274,13 +4208,7 @@ function _renderProjectDetail(projectId, heroClass) {
       </div>`;
   }
   if (Array.isArray(lineReqs) && lineReqs.length) {
-    extras += lineReqs.map(zone => `
-      <div class="panel" style="margin-top:18px">
-        <div class="panel-head"><h3><i class="fas fa-route"></i> Line Requirement — ${esc(zone.sheet)}</h3>
-          <span style="font-size:.78rem;color:var(--text3)">${zone.rows.length} rows</span>
-        </div>
-        ${tableHTML(zone)}
-      </div>`).join('');
+    extras += _renderPdsspLineReqViews(lineReqs);
   }
 
   document.getElementById('content').innerHTML = `
@@ -4303,10 +4231,110 @@ function _renderProjectDetail(projectId, heroClass) {
     <div class="panel">${tableHTML(summary)}</div>
     ${extras}
   `;
+
+  // If the line-requirements rollup panel was rendered, populate the
+  // initial Grand-Total view so users see data before touching the menu.
+  if (extras.includes('pdssp-lr-view')) {
+    setTimeout(() => window.pdsspRenderLineView(), 0);
+  }
 }
 
 function renderNIDMP() { _renderProjectDetail('nidmp', 'proj-hero-go'); }
 function renderPDSSP() { _renderProjectDetail('pdssp', 'proj-hero-up'); }
+
+/* §5 — PDSSP Line Requirement rollups.
+   Renders three views: Grand Total, Zone-wise, Circle-wise (with a
+   dropdown to pick the Circle sheet). The data is already pre-rolled
+   in the source workbook (Grand Summary / Zone / Circle sheets), we
+   just expose them cleanly. */
+let _pdsspLineReqsCache = null;
+function _renderPdsspLineReqViews(lineReqs) {
+  _pdsspLineReqsCache = lineReqs;
+  const grand   = lineReqs.find(s => s.kind === 'grand');
+  const zones   = lineReqs.filter(s => s.kind === 'zone');
+  const circles = lineReqs.filter(s => s.kind === 'sdd' || s.kind === 'substation');
+
+  const viewOptions = [];
+  if (grand)        viewOptions.push(`<option value="grand">Grand Total — across all Zones</option>`);
+  if (zones.length) viewOptions.push(`<option value="zone">Zone-wise summary</option>`);
+  if (circles.length) viewOptions.push(`<option value="circle">Circle-wise detail</option>`);
+
+  return `
+    <div class="panel" style="margin-top:18px">
+      <div class="panel-head">
+        <h3><i class="fas fa-route"></i> Line Requirement — All SDDs (rollups)</h3>
+        <span style="font-size:.78rem;color:var(--text3)">${lineReqs.length} sheets · pre-rolled in source workbook</span>
+      </div>
+      <div class="panel-body" style="padding-bottom:0">
+        <div class="zrs-controls" style="margin-bottom:14px">
+          <label>View</label>
+          <select class="filter-sel" id="pdssp-lr-view" onchange="window.pdsspRenderLineView()">
+            ${viewOptions.join('')}
+          </select>
+          <span id="pdssp-lr-extra" style="display:contents"></span>
+        </div>
+        <div id="pdssp-lr-body" class="no-pad" style="margin:0 -20px -20px">
+          <!-- filled by pdsspRenderLineView() -->
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+window.pdsspRenderLineView = () => {
+  if (!_pdsspLineReqsCache) return;
+  const lr = _pdsspLineReqsCache;
+  const view = (document.getElementById('pdssp-lr-view')?.value) || 'grand';
+
+  const tableHTML = (data) => {
+    if (!data || !data.headers || !data.headers.length) return '<div class="placeholder-card"><p>No data.</p></div>';
+    const head = data.headers.map(h => `<th>${esc(h)}</th>`).join('');
+    const body = (data.rows || []).map(r => {
+      const cells = data.headers.map(h => {
+        const v = r[h];
+        const isNum = typeof v === 'number';
+        return `<td class="${isNum?'num':''}">${esc(v ?? '')}</td>`;
+      }).join('');
+      return `<tr>${cells}</tr>`;
+    }).join('');
+    return `<div class="tbl-wrap scrollable">
+      <table class="tbl"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>
+    </div>`;
+  };
+
+  let html = '';
+  // Reset any auxiliary controls
+  const extra = document.getElementById('pdssp-lr-extra');
+  if (extra) extra.innerHTML = '';
+
+  if (view === 'grand') {
+    const g = lr.find(s => s.kind === 'grand');
+    html = g ? tableHTML(g) : '<div class="placeholder-card"><p>No Grand Summary sheet found.</p></div>';
+  } else if (view === 'zone') {
+    const zones = lr.filter(s => s.kind === 'zone');
+    html = zones.map(z => `
+      <div style="padding:14px 20px 6px"><h4 style="font-family:var(--fh);font-weight:800;color:#0b1d3f">${esc(z.sheet)}</h4></div>
+      ${tableHTML(z)}
+    `).join('');
+  } else if (view === 'circle') {
+    const circles = lr.filter(s => s.kind === 'sdd' || s.kind === 'substation');
+    // Aux dropdown for which circle to show
+    if (extra) {
+      extra.innerHTML = `
+        <label style="margin-left:14px">Circle</label>
+        <select class="filter-sel" id="pdssp-lr-circle" onchange="window.pdsspRenderLineView()">
+          ${circles.map((c,i) => `<option value="${i}">${esc(c.sheet)} (${c.rows.length} rows)</option>`).join('')}
+        </select>
+      `;
+    }
+    const idx = parseInt(document.getElementById('pdssp-lr-circle')?.value || '0', 10) || 0;
+    const pick = circles[idx];
+    html = pick ? tableHTML(pick) : '<div class="placeholder-card"><p>No Circle sheets found.</p></div>';
+  }
+
+  const body = document.getElementById('pdssp-lr-body');
+  if (body) body.innerHTML = html;
+};
 
 /* ── Renewable Energy: render the .docx blocks as an article ── */
 function renderRenewable() {
@@ -4575,12 +4603,28 @@ function renderZRS() {
     </div>
 
     <div class="panel" style="margin-top:18px">
+      <div class="panel-head"><h3><i class="fas fa-building"></i> S&amp;DD-wise and ESU-wise Delivery Summary</h3>
+        <span style="font-size:.78rem;color:var(--text3)">Aggregated qty of transformers delivered to receiving offices</span>
+      </div>
+      <div class="panel-body no-pad"><div class="tbl-wrap scrollable" style="max-height:380px">
+        <table class="tbl">
+          <thead><tr>
+            <th>Office Type</th><th>Receiving Office</th>
+            ${ZRS_DATA.zrs_locations.map(z => `<th class="num">${esc(z)}</th>`).join('')}
+            <th class="num"><strong>Total Qty</strong></th>
+          </tr></thead>
+          <tbody>${_zrsOfficeBreakdownRows()}</tbody>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="panel" style="margin-top:18px">
       <div class="panel-head"><h3><i class="fas fa-truck-fast"></i> Deliveries Detail</h3>
-        <span style="font-size:.78rem;color:var(--text3)">${ZRS_DATA.deliveries.length} rows</span>
+        <span style="font-size:.78rem;color:var(--text3)">${ZRS_DATA.deliveries.length} rows · ${_zrsOfficeOptions().length} receiving offices</span>
       </div>
       <div class="panel-body no-pad">
         <div style="padding:12px 14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--glass-border-2)">
-          <input class="search-input" id="zrs-deliv-q" placeholder="Search office / kVA / month…" oninput="window.zrsFilterDeliv()" style="max-width:280px">
+          <input class="search-input" id="zrs-deliv-q" placeholder="Search office / kVA / month…" oninput="window.zrsFilterDeliv()" style="max-width:240px">
           <select class="filter-sel" id="zrs-deliv-zrs" onchange="window.zrsFilterDeliv()">
             <option value="">All ZRS</option>
             ${ZRS_DATA.zrs_locations.map(z => `<option>${esc(z)}</option>`).join('')}
@@ -4589,12 +4633,21 @@ function renderZRS() {
             <option value="">All Months</option>
             ${ZRS_DATA.months_present.map(m => `<option>${esc(m)}</option>`).join('')}
           </select>
+          <select class="filter-sel" id="zrs-deliv-otype" onchange="window.zrsRebuildOfficeOpts(); window.zrsFilterDeliv()">
+            <option value="">All Office Types</option>
+            <option value="S&DD">S&amp;DD only</option>
+            <option value="ESU">ESU only</option>
+          </select>
+          <select class="filter-sel" id="zrs-deliv-office" onchange="window.zrsFilterDeliv()">
+            <option value="">All Offices</option>
+            ${_zrsOfficeOptions().map(o => `<option>${esc(o)}</option>`).join('')}
+          </select>
           <span id="zrs-deliv-count" style="font-size:.8rem;color:var(--text3);margin-left:auto"></span>
         </div>
         <div class="tbl-wrap scrollable" style="max-height:480px">
           <table class="tbl">
             <thead><tr>
-              <th>Month</th><th>ZRS</th><th>Receiving Office</th><th>kVA</th><th class="num">Quantity</th>
+              <th>Month</th><th>ZRS</th><th>Office Type</th><th>Receiving Office</th><th>kVA</th><th class="num">Quantity</th>
             </tr></thead>
             <tbody id="zrs-deliv-tbody"></tbody>
           </table>
@@ -4605,6 +4658,75 @@ function renderZRS() {
 
   window.zrsFilterDeliv();
   _drawZRSTrend();
+}
+
+/* Classify a "Receiving Office" string into 'S&DD' or 'ESU' (or 'Other'). */
+function _zrsOfficeType(office) {
+  if (!office) return 'Other';
+  const o = String(office).trim().toUpperCase();
+  if (o.startsWith('S&DD')) return 'S&DD';
+  if (o.startsWith('ESU'))  return 'ESU';
+  return 'Other';
+}
+
+function _zrsOfficeOptions(typeFilter) {
+  if (!ZRS_DATA) return [];
+  const set = new Set();
+  for (const d of ZRS_DATA.deliveries) {
+    if (typeFilter && _zrsOfficeType(d.office) !== typeFilter) continue;
+    if (d.office) set.add(d.office);
+  }
+  return [...set].sort((a,b)=>a.localeCompare(b));
+}
+
+window.zrsRebuildOfficeOpts = () => {
+  const sel = document.getElementById('zrs-deliv-office');
+  const type = document.getElementById('zrs-deliv-otype')?.value || '';
+  if (!sel) return;
+  const opts = _zrsOfficeOptions(type);
+  sel.innerHTML = `<option value="">All Offices</option>` +
+    opts.map(o => `<option>${esc(o)}</option>`).join('');
+};
+
+/* Build the rows for the S&DD/ESU breakdown table.
+   Office × ZRS pivot, with a row total. Grouped by office type. */
+function _zrsOfficeBreakdownRows() {
+  if (!ZRS_DATA) return '';
+  // tree[type][office][zrs] = qty
+  const tree = {};
+  for (const d of ZRS_DATA.deliveries) {
+    const t = _zrsOfficeType(d.office);
+    if (!tree[t]) tree[t] = {};
+    if (!tree[t][d.office]) tree[t][d.office] = {};
+    tree[t][d.office][d.zrs] = (tree[t][d.office][d.zrs] || 0) + (d.qty || 0);
+  }
+  const order = ['S&DD', 'ESU', 'Other'];
+  const tagCls = (t) => t === 'S&DD' ? 'badge-blue' : t === 'ESU' ? 'badge-good' : 'badge-gray';
+
+  let html = '';
+  for (const t of order) {
+    if (!tree[t]) continue;
+    const offices = Object.keys(tree[t]).sort((a,b)=>a.localeCompare(b));
+    // Type header row
+    const typeTotal = offices.reduce((sum, o) =>
+      sum + ZRS_DATA.zrs_locations.reduce((s,z) => s + (tree[t][o][z] || 0), 0), 0);
+    html += `<tr class="store-cat-head"><td colspan="${ZRS_DATA.zrs_locations.length + 2}"><span class="badge ${tagCls(t)}">${esc(t)}</span> &nbsp; ${offices.length} office(s)</td><td class="num"><strong>${typeTotal.toLocaleString()}</strong></td></tr>`;
+
+    for (const o of offices) {
+      const cells = ZRS_DATA.zrs_locations.map(z => {
+        const v = tree[t][o][z];
+        return `<td class="num">${v ? v.toLocaleString() : '—'}</td>`;
+      }).join('');
+      const rowTot = ZRS_DATA.zrs_locations.reduce((s,z) => s + (tree[t][o][z] || 0), 0);
+      html += `<tr>
+        <td><span class="badge ${tagCls(t)}">${esc(t)}</span></td>
+        <td>${esc(o)}</td>
+        ${cells}
+        <td class="num"><strong>${rowTot.toLocaleString()}</strong></td>
+      </tr>`;
+    }
+  }
+  return html;
 }
 
 function _drawZRSTrend() {
@@ -4655,12 +4777,16 @@ window.zrsSetMetric = (v) => { ZRS_UI.metric = v; renderZRS(); };
 
 window.zrsFilterDeliv = () => {
   if (!ZRS_DATA) return;
-  const q     = (document.getElementById('zrs-deliv-q')?.value || '').toLowerCase();
-  const fzrs  = document.getElementById('zrs-deliv-zrs')?.value || '';
-  const fmon  = document.getElementById('zrs-deliv-month')?.value || '';
-  const rows  = ZRS_DATA.deliveries.filter(d => {
-    if (fzrs && d.zrs !== fzrs) return false;
-    if (fmon && d.month !== fmon) return false;
+  const q       = (document.getElementById('zrs-deliv-q')?.value || '').toLowerCase();
+  const fzrs    = document.getElementById('zrs-deliv-zrs')?.value || '';
+  const fmon    = document.getElementById('zrs-deliv-month')?.value || '';
+  const fotype  = document.getElementById('zrs-deliv-otype')?.value || '';
+  const foffice = document.getElementById('zrs-deliv-office')?.value || '';
+  const rows    = ZRS_DATA.deliveries.filter(d => {
+    if (fzrs   && d.zrs !== fzrs)                       return false;
+    if (fmon   && d.month !== fmon)                     return false;
+    if (fotype && _zrsOfficeType(d.office) !== fotype)  return false;
+    if (foffice&& d.office !== foffice)                 return false;
     if (q) {
       const blob = (d.office + ' ' + d.kva + ' ' + d.month + ' ' + d.zrs).toLowerCase();
       if (!blob.includes(q)) return false;
@@ -4670,14 +4796,19 @@ window.zrsFilterDeliv = () => {
   document.getElementById('zrs-deliv-count').textContent = `${rows.length} of ${ZRS_DATA.deliveries.length} rows`;
   const tbody = document.getElementById('zrs-deliv-tbody');
   tbody.innerHTML = rows.length
-    ? rows.map(r => `<tr>
-        <td>${esc(r.month)}</td>
-        <td>${esc(r.zrs)}</td>
-        <td>${esc(r.office)}</td>
-        <td>${esc(r.kva || '—')}</td>
-        <td class="num">${esc(r.qty)}</td>
-      </tr>`).join('')
-    : `<tr><td colspan="5" class="tbl-empty">No deliveries match these filters.</td></tr>`;
+    ? rows.map(r => {
+        const t = _zrsOfficeType(r.office);
+        const tagCls = t === 'S&DD' ? 'badge-blue' : t === 'ESU' ? 'badge-good' : 'badge-gray';
+        return `<tr>
+          <td>${esc(r.month)}</td>
+          <td>${esc(r.zrs)}</td>
+          <td><span class="badge ${tagCls}">${esc(t)}</span></td>
+          <td>${esc(r.office)}</td>
+          <td>${esc(r.kva || '—')}</td>
+          <td class="num">${esc(r.qty)}</td>
+        </tr>`;
+      }).join('')
+    : `<tr><td colspan="6" class="tbl-empty">No deliveries match these filters.</td></tr>`;
 };
 
 /* ── ZRS — per-ZRS detail page (clicking a ZRS name) ── */

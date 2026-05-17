@@ -782,17 +782,21 @@ table.tbl tbody tr:hover{
      Fault Level placeholder.
 ════════════════════════════════════════════════════════════════ */
 :root{
-  /* Surface tokens for the glass system */
-  --glass-bg:        rgba(255,255,255,.62);
-  --glass-bg-strong: rgba(255,255,255,.78);
+  /* Surface tokens for the glass system — lightened for legibility.
+     User feedback: previous tables were too dark; force lighter surface
+     + pure-black text for maximum readability on every background. */
+  --glass-bg:        rgba(255,255,255,.88);
+  --glass-bg-strong: rgba(255,255,255,.94);
   --glass-bg-dark:   rgba(17,28,46,.55);
-  --glass-border:    rgba(255,255,255,.55);
-  --glass-border-2:  rgba(99,102,241,.18);
-  --glass-shadow:    0 8px 32px rgba(15,30,55,.10), 0 2px 6px rgba(15,30,55,.06);
-  --glass-blur:      14px;
-  --glass-row-alt:   rgba(241,245,251,.55);
-  --glass-row-hover: rgba(99,102,241,.10);
+  --glass-border:    rgba(15,23,42,.10);
+  --glass-border-2:  rgba(15,23,42,.14);
+  --glass-shadow:    0 8px 28px rgba(15,30,55,.08), 0 2px 6px rgba(15,30,55,.04);
+  --glass-blur:      10px;
+  --glass-row-alt:   rgba(243,247,253,.92);
+  --glass-row-hover: rgba(219,234,254,.85);
   --glass-stripe:    rgba(99,102,241,.04);
+  --table-ink:       #000;     /* black font in tables */
+  --table-ink-soft:  #1f2937;
 }
 
 /* Refreshed body backdrop — soft, multi-stop gradient + ambient blobs. */
@@ -814,39 +818,67 @@ body{
   box-shadow:var(--glass-shadow);
 }
 
-/* ════════════ GLASS TABLE — every table inherits ════════════ */
+/* ════════════ GLASS TABLE — every table inherits ════════════
+   v2: lighter surface, pure-black ink, calmer single-tone header so
+   multi-row headers (e.g. DT Operating/Equipment) don't visually crowd
+   the column titles. */
 table.tbl{
-  /* layered backgrounds: glass surface + zebra stripes via gradient */
   background:var(--glass-bg);
-  backdrop-filter:blur(var(--glass-blur)) saturate(140%);
-  -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(140%);
+  backdrop-filter:blur(var(--glass-blur)) saturate(135%);
+  -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(135%);
   border:1px solid var(--glass-border);
   border-radius:12px;
   overflow:hidden;
   box-shadow:var(--glass-shadow);
   isolation:isolate;
+  color:var(--table-ink);
 }
 table.tbl thead tr{
-  /* High-contrast header band on a translucent surface */
-  background:linear-gradient(90deg,
-    rgba(99,102,241,.18) 0%,
-    rgba(14,165,233,.14) 50%,
-    rgba(236,72,153,.14) 100%) !important;
+  /* Soft, single-tone header — no more rainbow gradient */
+  background:#eef3fb !important;
   border-bottom:1px solid var(--glass-border-2);
-  backdrop-filter:blur(var(--glass-blur)) saturate(160%);
   position:sticky;top:0;z-index:5;
 }
+table.tbl thead tr:nth-child(2){
+  /* Subheader row (kVA buckets etc.) — slightly different tone, but
+     still calm enough that the value rows below stay the focus. */
+  background:#f4f7fc !important;
+  border-bottom:1px solid var(--glass-border-2);
+  z-index:4;
+}
 table.tbl thead th{
-  color:#1e1b4b !important;
-  font-weight:800;font-size:.74rem;letter-spacing:.6px;
-  border-right:1px solid rgba(255,255,255,.4);
+  color:#0b1d3f !important;
+  font-weight:700;
+  font-size:.78rem;
+  letter-spacing:.3px;
+  line-height:1.3;
+  padding:12px 14px;
+  text-align:left;
+  vertical-align:middle;
+  border-right:1px solid rgba(15,23,42,.06);
   background:transparent;
+  white-space:normal;     /* allow wrap so long titles don't overflow */
+  word-break:break-word;
+}
+table.tbl thead tr:nth-child(2) th{
+  font-size:.72rem;
+  font-weight:600;
+  color:#475569 !important;
+  padding:8px 12px;
+  text-align:center;
+}
+table.tbl thead th[colspan]{
+  text-align:center;
+  font-size:.8rem;
 }
 table.tbl thead th:last-child{border-right:none}
 table.tbl tbody td{
-  color:#0f172a;
-  border-bottom:1px solid rgba(148,163,184,.18);
+  color:var(--table-ink) !important;
+  font-weight:500;
+  border-bottom:1px solid rgba(148,163,184,.22);
   background:transparent;
+  padding:10px 14px;
+  vertical-align:middle;
 }
 table.tbl tbody tr:nth-child(even){
   background:var(--glass-row-alt);
@@ -854,9 +886,10 @@ table.tbl tbody tr:nth-child(even){
 table.tbl tbody tr:hover{
   background:var(--glass-row-hover) !important;
 }
-table.tbl tbody tr:hover td{color:#0b1726}
+table.tbl tbody tr:hover td{color:#000 !important}
 table.tbl tbody tr:last-child td{border-bottom:none}
-/* sticky first column on wide tables */
+table.tbl .num{font-variant-numeric:tabular-nums}
+
 .tbl-wrap{
   overflow:auto;border-radius:12px;
   max-width:100%;
@@ -864,23 +897,20 @@ table.tbl tbody tr:last-child td{border-bottom:none}
 }
 .tbl-wrap.scrollable{max-height:560px}
 
-/* Strong contrast even on a dark backdrop */
+/* Dark-mode legibility: keep ink readable but lighter surface still wins. */
 @media (prefers-color-scheme: dark){
-  /* tables stay light-on-dark; values must remain legible */
   table.tbl{
-    background:var(--glass-bg-dark);
-    border-color:rgba(255,255,255,.18);
+    background:rgba(255,255,255,.94);   /* user said: always readable */
+    border-color:rgba(15,23,42,.18);
+    color:#000;
   }
-  table.tbl thead tr{
-    background:linear-gradient(90deg,
-      rgba(99,102,241,.55),
-      rgba(14,165,233,.35),
-      rgba(236,72,153,.35)) !important;
-  }
-  table.tbl thead th{color:#fff !important}
-  table.tbl tbody td{color:#e6eaf2;border-bottom-color:rgba(255,255,255,.10)}
-  table.tbl tbody tr:nth-child(even){background:rgba(255,255,255,.04)}
-  table.tbl tbody tr:hover{background:rgba(255,255,255,.10) !important}
+  table.tbl thead tr{background:#e4ebf6 !important}
+  table.tbl thead tr:nth-child(2){background:#eef3fb !important}
+  table.tbl thead th{color:#0b1d3f !important}
+  table.tbl tbody td{color:#000 !important;border-bottom-color:rgba(15,23,42,.12)}
+  table.tbl tbody tr:nth-child(even){background:rgba(243,247,253,.95)}
+  table.tbl tbody tr:hover{background:#dbeafe !important}
+  table.tbl tbody tr:hover td{color:#000 !important}
 }
 
 /* Section panels using glass too */

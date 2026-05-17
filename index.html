@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NESCO DNMS — Distribution Network Management System</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <link rel="stylesheet" href="style.css">
@@ -80,10 +78,10 @@
         <i class="fas fa-home"></i><span>Home</span>
       </a></li>
 
-      <!-- 2. 33/11 kV Substations -->
+      <!-- 2. 33/11 kV Substation -->
       <li class="has-dd">
         <a class="nav-link dd-toggle" href="#">
-          <i class="fas fa-bolt"></i><span>33/11 kV Substations</span><i class="fas fa-chevron-down dd-arrow"></i>
+          <i class="fas fa-bolt"></i><span>33/11 kV Substation</span><i class="fas fa-chevron-down dd-arrow"></i>
         </a>
         <ul class="dropdown">
           <li><a data-section="ss-summary"   href="#"><i class="fas fa-table"></i> Substation Summary</a></li>
@@ -94,17 +92,7 @@
         </ul>
       </li>
 
-      <!-- 3. 33 kV Switching Substations -->
-      <li class="has-dd">
-        <a class="nav-link dd-toggle" href="#">
-          <i class="fas fa-network-wired"></i><span>33 kV Switching SS</span><i class="fas fa-chevron-down dd-arrow"></i>
-        </a>
-        <ul class="dropdown">
-          <li><a data-section="switching-ss" href="#"><i class="fas fa-route"></i> Grid SS-wise NESCO Feeder List</a></li>
-        </ul>
-      </li>
-
-      <!-- 4. Distribution Transformer -->
+      <!-- 3. Distribution Transformer -->
       <li class="has-dd">
         <a class="nav-link dd-toggle" href="#">
           <i class="fas fa-circle-half-stroke"></i><span>Distribution Transformer</span><i class="fas fa-chevron-down dd-arrow"></i>
@@ -117,18 +105,50 @@
         </ul>
       </li>
 
-      <!-- 5. Projects & Programs -->
+      <!-- 4. Switching Substations -->
       <li class="has-dd">
         <a class="nav-link dd-toggle" href="#">
-          <i class="fas fa-diagram-project"></i><span>Projects &amp; Programs</span><i class="fas fa-chevron-down dd-arrow"></i>
+          <i class="fas fa-network-wired"></i><span>Switching Substations</span><i class="fas fa-chevron-down dd-arrow"></i>
         </a>
         <ul class="dropdown">
-          <li><a data-section="pdssp" href="#"><i class="fas fa-hard-hat"></i> PDSSP <span class="nav-tag tag-go">Ongoing</span></a></li>
-          <li><a data-section="nidmp" href="#"><i class="fas fa-calendar-plus"></i> NIDMP <span class="nav-tag tag-up">Upcoming</span></a></li>
+          <li><a data-section="switching-ss"   href="#"><i class="fas fa-route"></i> Grid SS-wise NESCO Feeder List</a></li>
+          <li><a data-section="fault-level"    href="#"><i class="fas fa-bolt-lightning"></i> Fault Level</a></li>
         </ul>
       </li>
 
-      <!-- 7. Load History -->
+      <!-- 5. Projects -->
+      <li class="has-dd">
+        <a class="nav-link dd-toggle" href="#">
+          <i class="fas fa-diagram-project"></i><span>Projects</span><i class="fas fa-chevron-down dd-arrow"></i>
+        </a>
+        <ul class="dropdown">
+          <li><a data-section="ongoing-projects"  href="#"><i class="fas fa-hard-hat"></i> Ongoing Projects</a></li>
+          <li><a data-section="upcoming-projects" href="#"><i class="fas fa-calendar-plus"></i> Upcoming Projects</a></li>
+        </ul>
+      </li>
+
+      <!-- 6. Renewable Energy -->
+      <li><a class="nav-link" data-section="renewable-energy" href="#">
+        <i class="fas fa-solar-panel"></i><span>Renewable Energy</span>
+      </a></li>
+
+      <!-- 7. Store -->
+      <li class="has-dd">
+        <a class="nav-link dd-toggle" href="#">
+          <i class="fas fa-warehouse"></i><span>Store</span><i class="fas fa-chevron-down dd-arrow"></i>
+        </a>
+        <ul class="dropdown">
+          <li><a data-section="store-substation" href="#"><i class="fas fa-cubes"></i> Substation Equipment Info</a></li>
+          <li><a data-section="store-line"       href="#"><i class="fas fa-grip-lines"></i> Line Equipment Info</a></li>
+        </ul>
+      </li>
+
+      <!-- 8. ZRS (Zonal Repair Shop) -->
+      <li><a class="nav-link" data-section="zrs" href="#">
+        <i class="fas fa-screwdriver-wrench"></i><span>ZRS</span>
+      </a></li>
+
+      <!-- 9. Load History (separate top-level chart) -->
       <li><a class="nav-link" data-section="load-history" href="#">
         <i class="fas fa-chart-line"></i><span>Load History</span>
       </a></li>

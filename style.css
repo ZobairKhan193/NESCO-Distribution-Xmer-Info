@@ -5,7 +5,8 @@
    Fonts: Barlow Semi Condensed (headers) + DM Sans (body)
 ════════════════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap');
+/* Typography: Times New Roman site-wide per owner's brand decision.
+   Native to every OS so no @import / network call is needed. */
 
 /* ── Variables ───────────────────────────────────────────────── */
 :root {
@@ -49,8 +50,10 @@
   --shadow-lg: 0 8px 24px rgba(11,37,69,.12), 0 3px 8px rgba(11,37,69,.06);
   --tr:        0.17s ease;
 
-  --fh: 'Barlow Semi Condensed', sans-serif;
-  --fb: 'DM Sans', sans-serif;
+  /* Both font variables resolve to Times New Roman — kept as separate
+     tokens so future swap (if any) is a one-place edit. */
+  --fh: "Times New Roman", Times, serif;
+  --fb: "Times New Roman", Times, serif;
 }
 
 /* ── Reset ───────────────────────────────────────────────────── */
@@ -766,3 +769,318 @@ table.tbl tbody tr:hover{
 
 /* Make filter bar wrap nicely */
 .sec-head-right .filter-sel{font-size:.82rem;padding:6px 10px}
+
+/* ════════════════════════════════════════════════════════════════
+   DNMS REFRESH 2026 — modern glassmorphism + new section styling
+   --------------------------------------------------------------------
+   • Soft animated body backdrop so the blur on tables/cards is visible
+   • Every table site-wide uses a semi-transparent glass surface
+     with subtle borders, zebra striping, sticky header, and high-contrast
+     values readable on both light and dark backgrounds.
+   • Adds layout primitives for the new sections: ZRS dashboard, Store
+     equipment tables, Renewable Energy article view, Projects landing,
+     Fault Level placeholder.
+════════════════════════════════════════════════════════════════ */
+:root{
+  /* Surface tokens for the glass system */
+  --glass-bg:        rgba(255,255,255,.62);
+  --glass-bg-strong: rgba(255,255,255,.78);
+  --glass-bg-dark:   rgba(17,28,46,.55);
+  --glass-border:    rgba(255,255,255,.55);
+  --glass-border-2:  rgba(99,102,241,.18);
+  --glass-shadow:    0 8px 32px rgba(15,30,55,.10), 0 2px 6px rgba(15,30,55,.06);
+  --glass-blur:      14px;
+  --glass-row-alt:   rgba(241,245,251,.55);
+  --glass-row-hover: rgba(99,102,241,.10);
+  --glass-stripe:    rgba(99,102,241,.04);
+}
+
+/* Refreshed body backdrop — soft, multi-stop gradient + ambient blobs. */
+body{
+  background:
+    radial-gradient(1100px 600px at 8% -10%, rgba(99,102,241,.18), transparent 60%),
+    radial-gradient(900px 700px at 100% 10%, rgba(14,165,233,.14), transparent 65%),
+    radial-gradient(900px 700px at 50% 110%, rgba(244,114,182,.10), transparent 65%),
+    linear-gradient(180deg,#eef2ff 0%,#f1f5fb 50%,#f8fafc 100%) fixed;
+}
+
+/* ── Glass surface utility used by tables, KPIs, modals ── */
+.glass{
+  background:var(--glass-bg);
+  backdrop-filter:blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(140%);
+  border:1px solid var(--glass-border);
+  border-radius:14px;
+  box-shadow:var(--glass-shadow);
+}
+
+/* ════════════ GLASS TABLE — every table inherits ════════════ */
+table.tbl{
+  /* layered backgrounds: glass surface + zebra stripes via gradient */
+  background:var(--glass-bg);
+  backdrop-filter:blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(140%);
+  border:1px solid var(--glass-border);
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:var(--glass-shadow);
+  isolation:isolate;
+}
+table.tbl thead tr{
+  /* High-contrast header band on a translucent surface */
+  background:linear-gradient(90deg,
+    rgba(99,102,241,.18) 0%,
+    rgba(14,165,233,.14) 50%,
+    rgba(236,72,153,.14) 100%) !important;
+  border-bottom:1px solid var(--glass-border-2);
+  backdrop-filter:blur(var(--glass-blur)) saturate(160%);
+  position:sticky;top:0;z-index:5;
+}
+table.tbl thead th{
+  color:#1e1b4b !important;
+  font-weight:800;font-size:.74rem;letter-spacing:.6px;
+  border-right:1px solid rgba(255,255,255,.4);
+  background:transparent;
+}
+table.tbl thead th:last-child{border-right:none}
+table.tbl tbody td{
+  color:#0f172a;
+  border-bottom:1px solid rgba(148,163,184,.18);
+  background:transparent;
+}
+table.tbl tbody tr:nth-child(even){
+  background:var(--glass-row-alt);
+}
+table.tbl tbody tr:hover{
+  background:var(--glass-row-hover) !important;
+}
+table.tbl tbody tr:hover td{color:#0b1726}
+table.tbl tbody tr:last-child td{border-bottom:none}
+/* sticky first column on wide tables */
+.tbl-wrap{
+  overflow:auto;border-radius:12px;
+  max-width:100%;
+  background:transparent;
+}
+.tbl-wrap.scrollable{max-height:560px}
+
+/* Strong contrast even on a dark backdrop */
+@media (prefers-color-scheme: dark){
+  /* tables stay light-on-dark; values must remain legible */
+  table.tbl{
+    background:var(--glass-bg-dark);
+    border-color:rgba(255,255,255,.18);
+  }
+  table.tbl thead tr{
+    background:linear-gradient(90deg,
+      rgba(99,102,241,.55),
+      rgba(14,165,233,.35),
+      rgba(236,72,153,.35)) !important;
+  }
+  table.tbl thead th{color:#fff !important}
+  table.tbl tbody td{color:#e6eaf2;border-bottom-color:rgba(255,255,255,.10)}
+  table.tbl tbody tr:nth-child(even){background:rgba(255,255,255,.04)}
+  table.tbl tbody tr:hover{background:rgba(255,255,255,.10) !important}
+}
+
+/* Section panels using glass too */
+.panel{
+  background:var(--glass-bg-strong);
+  backdrop-filter:blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(140%);
+  border:1px solid var(--glass-border);
+}
+.panel-head{
+  background:linear-gradient(90deg,
+    rgba(238,242,255,.7) 0%,
+    rgba(254,242,248,.7) 100%);
+  border-bottom:1px solid var(--glass-border-2);
+}
+
+/* KPI cards: tint glass */
+.kpi-card{
+  background:var(--glass-bg-strong) !important;
+  backdrop-filter:blur(10px) saturate(140%);
+  -webkit-backdrop-filter:blur(10px) saturate(140%);
+}
+
+/* ════════════ PROJECTS LANDING CARDS ════════════ */
+.projlist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;margin-top:8px}
+.projlist-card{
+  background:var(--glass-bg-strong);
+  backdrop-filter:blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(140%);
+  border:1px solid var(--glass-border);
+  border-radius:14px;padding:22px 24px;
+  display:flex;flex-direction:column;gap:10px;
+  transition:transform var(--tr),box-shadow var(--tr);
+  position:relative;overflow:hidden;
+}
+.projlist-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-glow)}
+.projlist-card::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at top right,rgba(99,102,241,.22),transparent 60%);
+  pointer-events:none;
+}
+.projlist-card .pl-code{
+  align-self:flex-start;
+  font-family:var(--fh);font-weight:800;letter-spacing:.7px;
+  font-size:.78rem;padding:3px 10px;border-radius:14px;
+  background:var(--grad-indigo);color:#fff;
+}
+.projlist-card .pl-name{font-family:var(--fh);font-size:1.18rem;font-weight:800;color:#0b1d3f;line-height:1.3;position:relative}
+.projlist-card .pl-summary{color:var(--text2);font-size:.86rem;line-height:1.55;flex:1}
+.projlist-card .pl-cta{
+  align-self:flex-start;color:var(--blue);font-weight:700;text-decoration:none;
+  display:inline-flex;gap:6px;align-items:center;font-size:.86rem;margin-top:4px;
+}
+.projlist-empty{
+  background:var(--glass-bg);backdrop-filter:blur(8px);
+  border:1px dashed var(--glass-border-2);border-radius:12px;
+  padding:24px;color:var(--text3);font-size:.9rem;text-align:center;
+}
+
+/* ════════════ ZRS MODULE ════════════ */
+.zrs-controls{
+  display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+  background:var(--glass-bg);backdrop-filter:blur(10px) saturate(140%);
+  -webkit-backdrop-filter:blur(10px) saturate(140%);
+  border:1px solid var(--glass-border);border-radius:12px;
+  padding:12px 14px;margin-bottom:16px;
+}
+.zrs-controls label{font-size:.74rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-right:4px}
+.zrs-controls .filter-sel{font-size:.85rem}
+.zrs-kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:16px}
+.zrs-section-title{font-family:var(--fh);font-weight:800;color:#1e1b4b;font-size:1.1rem;margin:18px 0 10px;display:flex;align-items:center;gap:8px}
+.zrs-section-title i{color:#6366f1}
+.zrs-pipeline{
+  display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;margin:12px 0 6px;
+}
+.zrs-pipe-node{
+  flex:1;min-width:140px;
+  background:var(--glass-bg-strong);
+  backdrop-filter:blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(140%);
+  border:1px solid var(--glass-border);border-radius:12px;
+  padding:12px 14px;text-align:center;position:relative;
+}
+.zrs-pipe-node .lbl{font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.6px;font-weight:700}
+.zrs-pipe-node .val{font-family:var(--fh);font-size:1.6rem;font-weight:900;color:#0b1d3f;line-height:1}
+.zrs-pipe-node.received .val{color:#1d4ed8}
+.zrs-pipe-node.repaired .val{color:#047857}
+.zrs-pipe-node.supplied .val{color:#7c2d12}
+.zrs-pipe-node.unrepair .val{color:#991b1b}
+.zrs-pipe-arrow{
+  align-self:center;color:#6366f1;font-size:1.3rem;flex:0 0 24px;text-align:center;
+}
+.zrs-note{
+  background:linear-gradient(90deg,rgba(253,224,71,.35),rgba(254,205,211,.35));
+  border:1px solid rgba(245,158,11,.35);
+  border-radius:10px;padding:9px 14px;
+  font-size:.84rem;color:#7c2d12;
+  display:flex;gap:10px;align-items:center;margin:6px 0 14px;
+}
+.zrs-note i{color:#b45309}
+.zrs-stock{color:#5b21b6;font-weight:700}
+.zrs-flow{color:#065f46;font-weight:700}
+
+/* ════════════ STORE EQUIPMENT TABLES ════════════ */
+.store-cat-head td{
+  background:linear-gradient(90deg,
+    rgba(99,102,241,.18),
+    rgba(14,165,233,.12)) !important;
+  font-family:var(--fh);font-weight:800;color:#1e1b4b !important;
+  letter-spacing:.4px;font-size:.84rem;
+}
+
+/* ════════════ RENEWABLE ENERGY ARTICLE ════════════ */
+.article{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.article .article-block{
+  background:var(--glass-bg-strong);
+  backdrop-filter:blur(10px) saturate(140%);
+  -webkit-backdrop-filter:blur(10px) saturate(140%);
+  border:1px solid var(--glass-border);
+  border-radius:12px;padding:18px 22px;
+}
+.article h1.art-h1{font-family:var(--fh);font-size:1.7rem;font-weight:800;color:#0b1d3f;margin:6px 0}
+.article h2.art-h2{font-family:var(--fh);font-size:1.25rem;font-weight:800;color:#1e1b4b;margin:8px 0 4px}
+.article h3.art-h3{font-family:var(--fh);font-size:1.05rem;font-weight:700;color:#312e81;margin:6px 0 2px}
+.article p.art-p{color:var(--text2);font-size:.95rem;line-height:1.65}
+
+/* ════════════ FAULT LEVEL placeholder ════════════ */
+.placeholder-card{
+  background:var(--glass-bg-strong);
+  backdrop-filter:blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(140%);
+  border:1px dashed var(--glass-border-2);border-radius:14px;
+  padding:38px;text-align:center;color:var(--text3);
+}
+.placeholder-card i{font-size:2.4rem;color:#6366f1;display:block;margin-bottom:10px}
+.placeholder-card h3{font-family:var(--fh);font-size:1.1rem;color:#1e1b4b;margin-bottom:6px}
+
+/* ════════════ HOMEPAGE METRICS GRID ════════════ */
+.metric-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:18px}
+.metric-tile{
+  background:var(--glass-bg-strong);
+  backdrop-filter:blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(140%);
+  border:1px solid var(--glass-border);
+  border-radius:14px;padding:14px 16px;
+  position:relative;overflow:hidden;
+  transition:transform var(--tr),box-shadow var(--tr);
+}
+.metric-tile:hover{transform:translateY(-3px);box-shadow:var(--shadow-glow)}
+.metric-tile::after{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:5px;
+  background:var(--grad-blue);border-radius:14px 0 0 14px;
+}
+.metric-tile.t-green::after { background:var(--grad-green)  }
+.metric-tile.t-red::after   { background:var(--grad-red)    }
+.metric-tile.t-amber::after { background:var(--grad-amber)  }
+.metric-tile.t-purple::after{ background:var(--grad-purple) }
+.metric-tile.t-teal::after  { background:var(--grad-teal)   }
+.metric-tile.t-pink::after  { background:var(--grad-pink)   }
+.metric-tile.t-orange::after{ background:var(--grad-orange) }
+.metric-tile.t-indigo::after{ background:var(--grad-indigo) }
+.metric-tile .mt-icon{
+  position:absolute;top:10px;right:12px;font-size:1.3rem;color:#a5b4fc;opacity:.55;
+}
+.metric-tile .mt-label{font-size:.72rem;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:.7px;padding-left:8px}
+.metric-tile .mt-val{
+  font-family:var(--fh);font-weight:900;font-size:1.85rem;line-height:1;
+  background:var(--grad-navy);-webkit-background-clip:text;background-clip:text;color:transparent;padding-left:8px;margin-top:4px;
+}
+.metric-tile.t-green .mt-val{background:var(--grad-green);-webkit-background-clip:text;background-clip:text;color:transparent}
+.metric-tile.t-red .mt-val{background:var(--grad-red);-webkit-background-clip:text;background-clip:text;color:transparent}
+.metric-tile.t-amber .mt-val{background:var(--grad-amber);-webkit-background-clip:text;background-clip:text;color:transparent}
+.metric-tile.t-purple .mt-val{background:var(--grad-purple);-webkit-background-clip:text;background-clip:text;color:transparent}
+.metric-tile.t-teal .mt-val{background:var(--grad-teal);-webkit-background-clip:text;background-clip:text;color:transparent}
+.metric-tile.t-pink .mt-val{background:var(--grad-pink);-webkit-background-clip:text;background-clip:text;color:transparent}
+.metric-tile.t-orange .mt-val{background:var(--grad-orange);-webkit-background-clip:text;background-clip:text;color:transparent}
+.metric-tile.t-indigo .mt-val{background:var(--grad-indigo);-webkit-background-clip:text;background-clip:text;color:transparent}
+.metric-tile .mt-trend{font-size:.74rem;font-weight:700;color:var(--green2);padding-left:8px;margin-top:3px}
+.metric-tile .mt-trend.dn{color:var(--red2)}
+
+/* ════════════ PT FILTER BAR ════════════ */
+.pt-filter-bar{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:12px;
+  background:var(--glass-bg);backdrop-filter:blur(10px) saturate(140%);
+  -webkit-backdrop-filter:blur(10px) saturate(140%);
+  border:1px solid var(--glass-border);border-radius:12px;
+  padding:14px 16px;margin-bottom:14px;
+}
+.pt-filter-bar .fg label{font-size:.72rem;text-transform:uppercase;letter-spacing:.6px;color:var(--text3);font-weight:700}
+.pt-filter-bar .range-line{display:flex;align-items:center;gap:8px}
+.pt-filter-bar input[type=range]{flex:1;accent-color:#6366f1}
+.pt-filter-bar .range-val{font-family:var(--fh);font-weight:800;color:#1e1b4b;min-width:42px;text-align:right;font-size:.85rem}
+
+/* ════════════ MOBILE TUNING ════════════ */
+@media (max-width: 768px){
+  .zrs-pipe-arrow{display:none}
+  .zrs-pipeline{flex-direction:column}
+  table.tbl thead th{font-size:.66rem;padding:8px 6px}
+  table.tbl tbody td{padding:8px 6px;font-size:.78rem}
+  .pt-filter-bar{grid-template-columns:1fr}
+}

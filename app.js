@@ -242,30 +242,62 @@ function findSDD(idOrName) {
 
 
 /* ══════════════════════════════════════════════════
-   SECTION 3c — HOMEPAGE  +  PROJECTS  DATA
+   SECTION 3c — HOMEPAGE / PROJECTS / NEW MODULES DATA
 ══════════════════════════════════════════════════ */
-let HOME_DATA     = null;     // from homepage-data.json
-let PROJECTS_DATA = null;     // from projects.json
+let HOME_DATA      = null;   // from homepage-data.json
+let PROJECTS_DATA  = null;   // from projects.json (NIDMP + PDSSP)
+let ZRS_DATA       = null;   // from zrs.json (new — Zonal Repair Shop)
+let STORE_DATA     = null;   // from store.json (new)
+let SWITCHING_DATA = null;   // from switching-ss.json (new)
+let RENEWABLE_DATA = null;   // from renewable-energy.json (new)
+
+// Cache-busting query string — bump v= whenever a JSON file changes so
+// browsers don't serve stale data. The build script could update this in
+// future; for now it's a per-session timestamp.
+const DATA_V = `v=${Date.now()}`;
+
+async function _loadJson(filename) {
+  const r = await fetch(`./${filename}?${DATA_V}`);
+  if (!r.ok) throw new Error(`HTTP ${r.status} for ${filename}`);
+  return await r.json();
+}
 
 async function loadHomepageData() {
   try {
-    const r = await fetch('./homepage-data.json');
-    if (!r.ok) throw new Error(`HTTP ${r.status}`);
-    HOME_DATA = await r.json();
-    console.log(`✓ Loaded homepage data: ${HOME_DATA.metrics.length} metrics over ${HOME_DATA.years.length} years`);
-  } catch (err) {
-    console.warn('homepage-data.json missing — falling back to defaults:', err);
-  }
+    HOME_DATA = await _loadJson('homepage-data.json');
+    console.log(`✓ homepage: ${HOME_DATA.metrics.length} metrics × ${HOME_DATA.years.length} years`);
+  } catch (err) { console.warn('homepage-data.json:', err.message); }
 }
 async function loadProjectsData() {
   try {
-    const r = await fetch('./projects.json');
-    if (!r.ok) throw new Error(`HTTP ${r.status}`);
-    PROJECTS_DATA = await r.json();
-    console.log(`✓ Loaded projects data: ${Object.keys(PROJECTS_DATA).length} projects`);
-  } catch (err) {
-    console.warn('projects.json missing — falling back to defaults:', err);
-  }
+    PROJECTS_DATA = await _loadJson('projects.json');
+    const total = (PROJECTS_DATA.categories || []).reduce((n,c)=>n+c.projects.length,0);
+    console.log(`✓ projects: ${total} project(s) across ${PROJECTS_DATA.categories.length} categories`);
+  } catch (err) { console.warn('projects.json:', err.message); }
+}
+async function loadZrsData() {
+  try {
+    ZRS_DATA = await _loadJson('zrs.json');
+    console.log(`✓ zrs: ${ZRS_DATA.long_rows.length} measurement rows, ${ZRS_DATA.deliveries.length} deliveries`);
+  } catch (err) { console.warn('zrs.json:', err.message); }
+}
+async function loadStoreData() {
+  try {
+    STORE_DATA = await _loadJson('store.json');
+    console.log(`✓ store: ${STORE_DATA.substation_equipment.items.length} SS items, ${STORE_DATA.line_equipment.items.length} line items`);
+  } catch (err) { console.warn('store.json:', err.message); }
+}
+async function loadSwitchingData() {
+  try {
+    SWITCHING_DATA = await _loadJson('switching-ss.json');
+    console.log(`✓ switching-ss: ${SWITCHING_DATA.grid_feeders.rows.length} feeders, ${SWITCHING_DATA.grid_substations.rows.length} grid SS`);
+  } catch (err) { console.warn('switching-ss.json:', err.message); }
+}
+async function loadRenewableData() {
+  try {
+    RENEWABLE_DATA = await _loadJson('renewable-energy.json');
+    console.log(`✓ renewable: ${RENEWABLE_DATA.blocks.length} blocks`);
+  } catch (err) { console.warn('renewable-energy.json:', err.message); }
 }
 
 /* ══════════════════════════════════════════════════
@@ -477,25 +509,31 @@ if (IS_CONFIGURED) {
    SECTION 8 — NAVIGATION
 ══════════════════════════════════════════════════ */
 const SECTION_LABELS = {
-  'pdssp':              'Projects & Programs › PDSSP (Power Distribution System Strengthening Project)',
-  'nidmp':              'Projects & Programs › NIDMP (Network Infrastructure Development & Modernization)',
-  'dt-oil':             'Distribution Transformer › Oil Parameters',
   'home':              'Home',
-  'ss-summary':        '33/11 kV Substations › Substation Summary',
-  'ss-detail':         '33/11 kV Substations › Detail View',
-  'all-33kv':          '33/11 kV Substations › 33 kV Line Feeder & Equipment',
-  'all-pt-sw':         '33/11 kV Substations › Power Transformer Feeder Equipment',
-  'all-pt-load':       '33/11 kV Substations › Power Transformer Loading & Operating Parameters',
-  'all-11kv':          '33/11 kV Substations › 11 kV Feeder Info',
-  'switching-ss':      '33 kV Switching Substations › Grid SS-wise NESCO Feeder List',
+  'ss-summary':        '33/11 kV Substation › Substation Summary',
+  'ss-detail':         '33/11 kV Substation › Detail View',
+  'all-33kv':          '33/11 kV Substation › 33 kV Line Feeder & Equipment',
+  'all-pt-sw':         '33/11 kV Substation › Power Transformer Feeder Equipment',
+  'all-pt-load':       '33/11 kV Substation › Power Transformer Loading & Operating Parameters',
+  'all-11kv':          '33/11 kV Substation › 11 kV Feeder Info',
   'dt-overall':        'Distribution Transformer › Overall Summary',
   'dt-sdd-summary':    'Distribution Transformer › SDD/ESU-wise Summary',
   'dt-details':        'Distribution Transformer › Transformer Details',
-  'dt-operating':      'Distribution Transformer › Operating Values',
+  'dt-operating':      'Distribution Transformer › Operating Parameters',
+  'dt-oil':            'Distribution Transformer › Oil Parameters',
   'dt-load':           'Distribution Transformer › DT Load',
   'dt-equipment':      'Distribution Transformer › Equipment Status',
-  'ongoing-projects':  'Ongoing Projects',
-  'upcoming-projects': 'Upcoming Projects',
+  'switching-ss':      'Switching Substations › Grid SS-wise NESCO Feeder List',
+  'fault-level':       'Switching Substations › Fault Level',
+  'ongoing-projects':  'Projects › Ongoing Projects',
+  'upcoming-projects': 'Projects › Upcoming Projects',
+  'nidmp':             'Projects › Ongoing › NIDMP',
+  'pdssp':             'Projects › Upcoming › PDSSP',
+  'renewable-energy':  'Renewable Energy',
+  'store-substation':  'Store › Substation Equipment Info',
+  'store-line':        'Store › Line Equipment Info',
+  'zrs':               'ZRS — Zonal Repair Shop',
+  'zrs-detail':        'ZRS — Zonal Repair Shop › Detail',
   'load-history':      'Load History',
 };
 
@@ -525,8 +563,16 @@ function showSection(sec, param = null) {
     'all-pt-load':       renderAllPTLoad,
     'all-11kv':          renderAll11kv,
     'switching-ss':      renderSwitchingSS,
-    'pdssp':             renderPDSSP,
+    'fault-level':       renderFaultLevel,
+    'ongoing-projects':  renderOngoingProjects,
+    'upcoming-projects': renderUpcomingProjects,
     'nidmp':             renderNIDMP,
+    'pdssp':             renderPDSSP,
+    'renewable-energy':  renderRenewable,
+    'store-substation':  () => renderStoreEquipment('substation'),
+    'store-line':        () => renderStoreEquipment('line'),
+    'zrs':               renderZRS,
+    'zrs-detail':        () => renderZRSDetail(param),
     'dt-oil':            renderDTOil,
     'dt-overall':        renderDTOverallSummary,
     'dt-sdd-summary':    renderDTSDDSummary,
@@ -534,9 +580,6 @@ function showSection(sec, param = null) {
     'dt-operating':      renderDTOperating,
     'dt-load':           () => renderDTLoad(param),
     'dt-equipment':      renderDTEquipment,
-    'ongoing-projects':  renderPDSSP,   // legacy alias → PDSSP
-    'upcoming-projects': renderNIDMP,   // legacy alias → NIDMP
-    '_ongoing_disabled': renderOngoing,
     'load-history':      renderLoadHistory,
   };
   (R[sec] || (() => { document.getElementById('content').innerHTML = `<div class="page-loader">Coming soon.</div>`; }))();
@@ -592,9 +635,8 @@ function renderHomeFromData() {
   <div class="hero-card">
     <div class="hero-icon"><i class="fas fa-bolt"></i></div>
     <div class="hero-text">
-      <h1>NESCO Distribution Network Management System</h1>
+      <h1>NESCO DNMS — Distribution Network Management System</h1>
       <p>Northern Electricity Supply Company Limited · Bangladesh</p>
-      <p class="hero-sub">Technical Highlights for the last seven fiscal years (FY ${yrs[0]} – FY ${yrs[yrs.length-1]})</p>
     </div>
   </div>
 
@@ -1358,6 +1400,40 @@ window.filterSSTable = () => {
 /* ══════════════════════════════════════════════════
    SECTION 11 — SUBSTATION DETAIL (serial sections, no tabs)
 ══════════════════════════════════════════════════ */
+/* §6b — Previous 5 years (FY 2020-2021 .. FY 2024-2025) of max load,
+   rendered as a compact horizontal table so years are columns.
+   If the source data does not (yet) contain a per-substation load
+   history, we show "—" cells with a small note. */
+const FIVE_YEAR_FYS = [
+  '2020-2021', '2021-2022', '2022-2023', '2023-2024', '2024-2025',
+];
+function _renderFiveYearLoadTable(ss) {
+  const history = ss.load_history_5yr || {};   // shape: { "2024-2025": 23.0, ... }
+  const cells = FIVE_YEAR_FYS.map(fy => {
+    const v = history[fy];
+    return `<td class="num">${v == null ? '—' : `${v} MW`}</td>`;
+  }).join('');
+  const hasAny = FIVE_YEAR_FYS.some(fy => history[fy] != null);
+  return `
+    <div class="panel" style="margin-bottom:20px">
+      <div class="panel-head" style="background:var(--navy);color:#fff">
+        <h3 style="color:#fff;font-size:.85rem">1b. PREVIOUS 5 YEARS LOAD <span style="color:rgba(255,255,255,.6);font-weight:500;font-size:.75rem;text-transform:none">— Maximum recorded per fiscal year</span></h3>
+      </div>
+      <div class="panel-body no-pad">
+        <table class="tbl ss-load-tbl">
+          <thead><tr>
+            <th>Metric</th>
+            ${FIVE_YEAR_FYS.map(fy => `<th class="num">FY ${fy}</th>`).join('')}
+          </tr></thead>
+          <tbody>
+            <tr><td><strong>Max Load (MW)</strong></td>${cells}</tr>
+          </tbody>
+        </table>
+        ${hasAny ? '' : `<div style="padding:10px 16px;font-size:.78rem;color:var(--text3);font-style:italic">Load-history values not yet populated in the source workbook. They will appear here automatically once the Excel master file is updated and the JSON regenerated.</div>`}
+      </div>
+    </div>`;
+}
+
 function renderSSDetail(id) {
   const ss = (id ? ALL_SUBSTATIONS.find(s=>s.id===id) : null) || TALAIMARY_SS;
   if (!ss) return;
@@ -1408,13 +1484,16 @@ function renderSSDetail(id) {
           <tr>
             <td style="font-weight:600;color:var(--text3);font-size:.82rem">Grounding Resistance (Ω)</td>
             <td>${D(ss.grounding_resistance)}</td>
-            <td style="font-weight:600;color:var(--text3);font-size:.82rem">Date of Measurement</td>
+            <td style="font-weight:600;color:var(--text3);font-size:.82rem">Date of Measurement (Grounding Resistance)</td>
             <td>${D(ss.grounding_date)}</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
+
+  <!-- ══ 1b. PREVIOUS 5 YEARS LOAD  (per AGENT_BRIEF §6b) ══ -->
+  ${_renderFiveYearLoadTable(ss)}
 
   <!-- ══ 2. 33 kV LINE FEEDER & EQUIPMENT ══ -->
   <div class="panel" style="margin-bottom:20px">
@@ -3491,18 +3570,50 @@ function renderUpcoming() {
 
 /* ══════════════════════════════════════════════════
    SECTION 18 — LOAD HISTORY
+   §7: NESCO-wide last 5 fiscal years of total Maximum Demand,
+        rendered as a single clean chart above the existing
+        Talaimary monthly drill-down.
 ══════════════════════════════════════════════════ */
+function _renderNESCOFiveYearLoadChart() {
+  // Pull "Maximum Demand (MW)" series out of homepage-data.json and take
+  // the last 5 fiscal years.
+  if (!HOME_DATA) {
+    return `<div class="panel" style="margin-bottom:18px"><div class="panel-body" style="text-align:center;color:var(--text3);font-size:.9rem">Homepage data not loaded yet — NESCO 5-year demand chart unavailable.</div></div>`;
+  }
+  const demand = HOME_DATA.metrics.find(m =>
+    /maximum demand/i.test(m.label));
+  if (!demand) return '';
+  const years = HOME_DATA.years.slice(-5);
+  const values = demand.values.slice(-5).map(v => {
+    const m = String(v).replace(/,/g,'').match(/[\d.]+/);
+    return m ? parseFloat(m[0]) : null;
+  });
+  const peak = Math.max(...values.filter(v => v != null));
+  return `
+    <div class="panel" style="margin-bottom:18px">
+      <div class="panel-head">
+        <h3><i class="fas fa-chart-line"></i> NESCO Total Maximum Demand — Last 5 Fiscal Years</h3>
+        <span style="font-size:.78rem;color:var(--text3)">Peak: <strong>${peak} MW</strong></span>
+      </div>
+      <div class="panel-body">
+        <div style="height:320px;position:relative"><canvas id="nesco-5y-load"></canvas></div>
+      </div>
+    </div>`;
+}
+
 function renderLoadHistory() {
   document.getElementById('content').innerHTML = `
   <div class="sec-head">
     <div class="sec-head-left"><h2>Load History</h2>
-      <p>Monthly load trends — Talaimary 33/11 kV (2024)</p>
+      <p>NESCO-wide annual peak demand (last 5 FYs) + per-substation monthly drill-down.</p>
     </div>
     <div class="sec-head-right">
       <select class="filter-sel"><option>2024</option><option>2023</option></select>
       <button class="btn btn-sm btn-secondary" onclick="window.exportLoadCSV()"><i class="fas fa-download"></i> Export CSV</button>
     </div>
   </div>
+
+  ${_renderNESCOFiveYearLoadChart()}
   <div class="kpi-row" style="grid-template-columns:repeat(5,1fr)">
     <div class="kpi-card amber"><div class="kpi-val">${Math.max(...LOAD_HISTORY.total)} MW</div><div class="kpi-sub">Peak Load (2024)</div></div>
     <div class="kpi-card"><div class="kpi-val">${(LOAD_HISTORY.total.reduce((a,b)=>a+b)/12).toFixed(1)} MW</div><div class="kpi-sub">Average Load</div></div>
@@ -3540,6 +3651,44 @@ function renderLoadHistory() {
   </div>
   `;
   setTimeout(() => {
+    // NESCO 5-year demand chart (uses homepage-data.json)
+    const ctxN = document.getElementById('nesco-5y-load');
+    if (ctxN && HOME_DATA) {
+      const demand = HOME_DATA.metrics.find(m => /maximum demand/i.test(m.label));
+      if (demand) {
+        const yrs = HOME_DATA.years.slice(-5);
+        const vals = demand.values.slice(-5).map(v => {
+          const m = String(v).replace(/,/g,'').match(/[\d.]+/);
+          return m ? parseFloat(m[0]) : null;
+        });
+        charts['nesco5y'] = new Chart(ctxN, {
+          type: 'line',
+          data: {
+            labels: yrs.map(y => `FY ${y}`),
+            datasets: [{
+              label: 'Maximum Demand (MW)',
+              data: vals,
+              borderColor: '#6366f1',
+              backgroundColor: 'rgba(99,102,241,.18)',
+              fill: true, tension: 0.32, pointRadius: 6, pointHoverRadius: 8,
+              pointBackgroundColor: '#4f46e5',
+            }],
+          },
+          options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: { callbacks: { label: c => `${c.parsed.y} MW` } },
+            },
+            scales: {
+              x: { grid: { display: false } },
+              y: { beginAtZero: false, title: { display: true, text: 'Maximum Demand (MW)' } },
+            },
+          },
+        });
+      }
+    }
+
     const ctx1 = document.getElementById('chart-load-line');
     if (ctx1) charts['load-line'] = new Chart(ctx1, {
       type:'line',
@@ -3582,6 +3731,77 @@ function kpiRow(items) {
   return `<div class="kpi-row" style="grid-template-columns:repeat(${items.length},1fr);margin-bottom:20px">
     ${items.map(([val,lbl,cls])=>`<div class="kpi-card ${cls||''}"><div class="kpi-val">${val}</div><div class="kpi-sub">${lbl}</div></div>`).join('')}
   </div>`;
+}
+
+/* ── §6d PT filter bar — only on Power Transformer submenu pages ──
+   Real-time filters that combine with AND logic on top of any other
+   filters (type, search). Renders manufacturing-year buckets + a feeder
+   length slider. */
+const PT_FILTER_DEFAULTS = { mfgYear: '', feederLenMax: 100 };
+function combPTFilterBar() {
+  return `
+    <div class="pt-filter-bar" style="grid-column:1/-1">
+      <div class="fg">
+        <label><i class="fas fa-calendar-day"></i> TX Manufacturing Year</label>
+        <select class="filter-sel" id="pt-mfg-year" onchange="window.filterCombinedTable('comb-search')">
+          <option value="">All years</option>
+          <option value="lt2000">Before 2000</option>
+          <option value="2000_2010">2000 – 2010</option>
+          <option value="2010_2020">2010 – 2020</option>
+          <option value="ge2020">2020 and later</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label><i class="fas fa-road"></i> Max 11 kV Feeder Length <span class="range-val" id="pt-feeder-val">100 km</span></label>
+        <div class="range-line">
+          <input type="range" id="pt-feeder-len" min="1" max="100" value="100"
+                 oninput="document.getElementById('pt-feeder-val').textContent=this.value+' km'; window.filterCombinedTable('comb-search')">
+        </div>
+      </div>
+      <div class="fg" style="justify-content:end">
+        <button type="button" class="btn btn-sm btn-secondary" onclick="window.ptResetFilters()">
+          <i class="fas fa-rotate-left"></i> Reset PT filters
+        </button>
+      </div>
+    </div>`;
+}
+window.ptResetFilters = () => {
+  const my = document.getElementById('pt-mfg-year');
+  const fl = document.getElementById('pt-feeder-len');
+  const fv = document.getElementById('pt-feeder-val');
+  if (my) my.value = '';
+  if (fl) fl.value = PT_FILTER_DEFAULTS.feederLenMax;
+  if (fv) fv.textContent = PT_FILTER_DEFAULTS.feederLenMax + ' km';
+  window.filterCombinedTable('comb-search');
+};
+
+/* Helper: does a TX object pass the active PT filters?
+   Used by filterCombinedTable when on all-pt-sw or all-pt-load. */
+function _passesPTFilters(t) {
+  const mfg = (document.getElementById('pt-mfg-year') || {}).value || '';
+  const feederCap = parseInt((document.getElementById('pt-feeder-len') || {}).value || '100', 10);
+
+  // Mfg year (look at TX year OR cb_year as fallback)
+  if (mfg) {
+    const yr = parseInt(t.year || t.cb_year || 0, 10);
+    if (!yr) return false;
+    if (mfg === 'lt2000'    && !(yr < 2000))                return false;
+    if (mfg === '2000_2010' && !(yr >= 2000 && yr <= 2010)) return false;
+    if (mfg === '2010_2020' && !(yr >  2010 && yr <= 2020)) return false;
+    if (mfg === 'ge2020'    && !(yr >= 2020))               return false;
+  }
+
+  // Feeder length cap — keep TX if its longest associated 11 kV feeder is
+  // within the cap (across the parent substation).
+  if (feederCap < 100) {
+    const ss = ALL_SUBSTATIONS.find(s => s.id === t.ss_id);
+    const maxLen = ss
+      ? Math.max(0, ...((ss.feeders_11kv || []).filter(f => f.transformer === t.name)
+                                              .map(f => parseFloat(f.length_km) || 0)))
+      : 0;
+    if (maxLen > feederCap) return false;
+  }
+  return true;
 }
 
 /* ══════════════════════════════════════════════════
@@ -4018,7 +4238,12 @@ window.filterCombinedTable = (searchId) => {
     }
 
     const txOk = !txFilter || (item.transformer||'')===txFilter;
-    return qOk && typeOk && txOk;
+
+    // §6d: PT filters apply only on the Power Transformer submenu pages.
+    const ptOk = (sec === 'all-pt-sw' || sec === 'all-pt-load')
+      ? _passesPTFilters(item) : true;
+
+    return qOk && typeOk && txOk && ptOk;
   });
 
   const tbody = document.getElementById('comb-tbody');
@@ -4066,6 +4291,613 @@ window.exportCombinedCSV = (name) => {
   a.click();
   showToast('CSV exported!','success');
 };
+
+/* ══════════════════════════════════════════════════
+   SECTION 18b — NEW SECTIONS (v4.0): Projects landings,
+   NIDMP / PDSSP detail, Renewable Energy, Store, ZRS,
+   Fault Level
+══════════════════════════════════════════════════ */
+
+/* ── helper: escape a value for safe HTML interpolation ── */
+function esc(v) {
+  if (v == null) return '';
+  return String(v).replace(/[&<>"']/g, c => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[c]));
+}
+
+function _getProjCategory(catId) {
+  if (!PROJECTS_DATA) return null;
+  return (PROJECTS_DATA.categories || []).find(c => c.id === catId) || null;
+}
+
+/* ── Projects landing pages (Ongoing / Upcoming) ── */
+function _renderProjectsLanding(catId, title, subtitle, heroClass) {
+  const cat = _getProjCategory(catId);
+  const projects = cat ? cat.projects : [];
+  const cards = projects.map(p => `
+    <div class="projlist-card">
+      <span class="pl-code">${esc(p.code)}</span>
+      <div class="pl-name">${esc(p.name)}</div>
+      <div class="pl-summary">${esc(p.summary || '')}</div>
+      <a href="#" class="pl-cta" onclick="window.showSection('${esc(p.id)}');return false;">
+        Open project <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>`).join('');
+
+  document.getElementById('content').innerHTML = `
+    <div class="proj-hero ${heroClass}">
+      <span class="proj-tag">${title}</span>
+      <h1>${title}</h1>
+      <p>${esc(subtitle)}</p>
+    </div>
+    ${projects.length
+      ? `<div class="projlist-grid">${cards}</div>`
+      : `<div class="projlist-empty">No projects in this category yet.</div>`}
+  `;
+}
+
+function renderOngoingProjects() {
+  _renderProjectsLanding(
+    'ongoing',
+    'Ongoing Projects',
+    'NESCO development projects currently under implementation. Click a project for full substation-wise scope and BOQ.',
+    'proj-hero-go'
+  );
+}
+function renderUpcomingProjects() {
+  _renderProjectsLanding(
+    'upcoming',
+    'Upcoming Projects',
+    'NESCO development projects in planning / pre-implementation stage.',
+    'proj-hero-up'
+  );
+}
+
+/* ── NIDMP / PDSSP detail rendering driven entirely by projects.json
+   so adding a new project = adding a new entry to that JSON. ── */
+function _findProject(projectId) {
+  if (!PROJECTS_DATA) return null;
+  for (const cat of PROJECTS_DATA.categories || []) {
+    const p = cat.projects.find(p => p.id === projectId);
+    if (p) return { project: p, category: cat };
+  }
+  return null;
+}
+
+function _renderProjectDetail(projectId, heroClass) {
+  const hit = _findProject(projectId);
+  if (!hit) {
+    document.getElementById('content').innerHTML = `
+      <div class="placeholder-card">
+        <i class="fas fa-folder-open"></i>
+        <h3>Project not found</h3>
+        <p>projects.json does not contain a project with id "<code>${esc(projectId)}</code>".</p>
+      </div>`;
+    return;
+  }
+  const p = hit.project;
+  const backSection = hit.category.id === 'ongoing' ? 'ongoing-projects' : 'upcoming-projects';
+  const summary = p.substation_summary || { headers: [], rows: [] };
+  const bays = p.grid_bay_breakers;
+  const lineReqs = p.line_requirements;
+
+  const tableHTML = (data) => {
+    if (!data || !data.headers || !data.headers.length) return '';
+    const head = data.headers.map(h => `<th>${esc(h)}</th>`).join('');
+    const body = (data.rows || []).map(r => {
+      const cells = data.headers.map(h => `<td>${esc(r[h] ?? '')}</td>`).join('');
+      return `<tr>${cells}</tr>`;
+    }).join('');
+    return `
+      <div class="panel-body no-pad"><div class="tbl-wrap scrollable">
+        <table class="tbl"><thead><tr>${head}</tr></thead><tbody>${body || `<tr><td colspan="${data.headers.length}" class="tbl-empty">No rows.</td></tr>`}</tbody></table>
+      </div></div>`;
+  };
+
+  let extras = '';
+  if (bays && bays.rows && bays.rows.length) {
+    extras += `
+      <div class="panel" style="margin-top:18px">
+        <div class="panel-head"><h3><i class="fas fa-microchip"></i> Grid Bay-Breakers</h3>
+          <span style="font-size:.78rem;color:var(--text3)">${bays.rows.length} rows</span>
+        </div>
+        ${tableHTML(bays)}
+      </div>`;
+  }
+  if (Array.isArray(lineReqs) && lineReqs.length) {
+    extras += lineReqs.map(zone => `
+      <div class="panel" style="margin-top:18px">
+        <div class="panel-head"><h3><i class="fas fa-route"></i> Line Requirement — ${esc(zone.sheet)}</h3>
+          <span style="font-size:.78rem;color:var(--text3)">${zone.rows.length} rows</span>
+        </div>
+        ${tableHTML(zone)}
+      </div>`).join('');
+  }
+
+  document.getElementById('content').innerHTML = `
+    <div class="proj-hero ${heroClass}">
+      <span class="proj-tag">${esc(p.code)}</span>
+      <h1>${esc(p.name)}</h1>
+      <p>${esc(p.summary || '')}</p>
+    </div>
+    <div class="sec-head">
+      <div class="sec-head-left">
+        <h2>${esc(p.code)} — Substation-wise BOQ Summary</h2>
+        <p>${(summary.rows || []).length} substations · ${(summary.headers || []).length} columns</p>
+      </div>
+      <div class="sec-head-right">
+        <button class="btn btn-sm btn-secondary" onclick="window.showSection('${backSection}')">
+          <i class="fas fa-arrow-left"></i> Back
+        </button>
+      </div>
+    </div>
+    <div class="panel">${tableHTML(summary)}</div>
+    ${extras}
+  `;
+}
+
+function renderNIDMP() { _renderProjectDetail('nidmp', 'proj-hero-go'); }
+function renderPDSSP() { _renderProjectDetail('pdssp', 'proj-hero-up'); }
+
+/* ── Renewable Energy: render the .docx blocks as an article ── */
+function renderRenewable() {
+  if (!RENEWABLE_DATA) {
+    document.getElementById('content').innerHTML = `<div class="page-loader">Loading…</div>`;
+    return;
+  }
+  const blocks = RENEWABLE_DATA.blocks || [];
+  const inner = blocks.map(b => {
+    if (b.kind === 'heading') {
+      const lvl = Math.max(1, Math.min(3, b.level || 1));
+      return `<h${lvl} class="art-h${lvl}">${esc(b.text)}</h${lvl}>`;
+    }
+    if (b.kind === 'paragraph') {
+      return `<p class="art-p">${esc(b.text)}</p>`;
+    }
+    if (b.kind === 'table' && b.rows && b.rows.length) {
+      const [head, ...body] = b.rows;
+      const ths = head.map(c => `<th>${esc(c)}</th>`).join('');
+      const trs = body.map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('');
+      return `<div class="tbl-wrap"><table class="tbl">
+        <thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`;
+    }
+    return '';
+  }).join('');
+
+  document.getElementById('content').innerHTML = `
+    <div class="proj-hero" style="background:linear-gradient(135deg,#047857 0%,#10b981 60%,#34d399 100%)">
+      <span class="proj-tag">Renewable Energy</span>
+      <h1>${esc(RENEWABLE_DATA.title || 'NESCO Renewable Energy Overview')}</h1>
+      <p>Solar + grid-tied renewable energy assets across the NESCO distribution area.</p>
+    </div>
+    <div class="article">
+      <div class="article-block">${inner}</div>
+    </div>`;
+}
+
+/* ── Store — Substation Equipment Info  /  Line Equipment Info ── */
+function renderStoreEquipment(kind) {
+  if (!STORE_DATA) {
+    document.getElementById('content').innerHTML = `<div class="page-loader">Loading…</div>`;
+    return;
+  }
+  const sub = kind === 'substation';
+  const data = sub ? STORE_DATA.substation_equipment : STORE_DATA.line_equipment;
+  const items = data.items || [];
+
+  // Group by category
+  const byCat = new Map();
+  for (const it of items) {
+    const k = it.category || 'Other';
+    if (!byCat.has(k)) byCat.set(k, []);
+    byCat.get(k).push(it);
+  }
+
+  const colCount = sub ? 6 : 6;
+  const headers = sub
+    ? ['Equipment Name', 'Voltage Class', 'Rating / Capacity', 'Unit', 'Quantity', 'Notes']
+    : ['Equipment Name', 'Voltage Class', 'Description',        'Unit', 'Quantity', 'Notes'];
+
+  let body = '';
+  for (const [cat, list] of byCat) {
+    body += `<tr class="store-cat-head"><td colspan="${colCount}">${esc(cat)}</td></tr>`;
+    for (const it of list) {
+      const c2 = sub ? esc(it.rating) : esc(it.description);
+      body += `<tr>
+        <td>${esc(it.name)}</td>
+        <td>${esc(it.voltage_class)}</td>
+        <td>${c2}</td>
+        <td>${esc(it.unit)}</td>
+        <td class="num">${it.quantity != null ? esc(it.quantity) : '—'}</td>
+        <td></td>
+      </tr>`;
+    }
+  }
+
+  const title  = sub ? 'Substation Equipment Info' : 'Line Equipment Info';
+  const intro  = sub
+    ? 'Inventory of substation-grade equipment specifications (power transformers, switchgear, control panels, etc.).'
+    : 'Inventory of distribution-line equipment specifications (poles, conductors, transformers, accessories).';
+
+  document.getElementById('content').innerHTML = `
+    <div class="sec-head">
+      <div class="sec-head-left">
+        <h2>${title}</h2>
+        <p>${intro} · ${items.length} items across ${byCat.size} categories.</p>
+      </div>
+    </div>
+    <div class="panel"><div class="panel-body no-pad"><div class="tbl-wrap scrollable">
+      <table class="tbl">
+        <thead><tr>${headers.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead>
+        <tbody>${body || `<tr><td colspan="${colCount}" class="tbl-empty">No items.</td></tr>`}</tbody>
+      </table>
+    </div></div></div>`;
+}
+
+/* ── Fault Level placeholder (data not yet supplied) ── */
+function renderFaultLevel() {
+  document.getElementById('content').innerHTML = `
+    <div class="sec-head">
+      <div class="sec-head-left">
+        <h2>Switching Substations — Fault Level</h2>
+        <p>Per-substation 3-phase &amp; single-line-to-ground fault levels at the 33 kV bus.</p>
+      </div>
+    </div>
+    <div class="placeholder-card">
+      <i class="fas fa-bolt-lightning"></i>
+      <h3>Fault Level data not yet supplied</h3>
+      <p>Once the owner adds a <code>Fault Level</code> sheet (or a separate workbook) to <code>Switching Substations Info/</code>,
+         the build_switching.py converter will pick it up automatically and this page will render the table.</p>
+    </div>`;
+}
+
+/* ══════════════════════════════════════════════════
+   ZRS — Zonal Repair Shop (full module per AGENT_BRIEF §9)
+══════════════════════════════════════════════════ */
+
+// UI state for the ZRS section
+const ZRS_UI = {
+  selectedZRS: 'All',     // 'All' or one of ZRS_DATA.zrs_locations
+  kva:         'Total',   // '250' | '200' | '100' | 'Total'
+  metric:      'repaired',// for the trend chart
+  months:      'all',     // 'all' or a specific month
+};
+
+function _zrsTotalsAllZRS(metricSlug, kva) {
+  if (!ZRS_DATA) return null;
+  let sum = 0, latest = null, latestMnum = -1;
+  const kind = (ZRS_DATA.metrics.find(m => m.slug === metricSlug) || {}).kind;
+  for (const r of ZRS_DATA.long_rows) {
+    if (r.metric !== metricSlug || r.kva !== kva || r.value == null) continue;
+    if (kind === 'flow') {
+      sum += r.value;
+    } else if (r.month_num > latestMnum) {
+      latestMnum = r.month_num;
+      latest = r.value;
+    }
+  }
+  return kind === 'flow' ? sum : latest;
+}
+
+function _zrsYTDByZRS(metricSlug, kva) {
+  /* For each ZRS returns the YTD value (sum if flow, latest if stock). */
+  if (!ZRS_DATA) return {};
+  const out = {};
+  const kind = (ZRS_DATA.metrics.find(m => m.slug === metricSlug) || {}).kind;
+  for (const zrs of ZRS_DATA.zrs_locations) {
+    let sum = 0, latest = null, latestMnum = -1;
+    for (const r of ZRS_DATA.long_rows) {
+      if (r.zrs !== zrs || r.metric !== metricSlug || r.kva !== kva || r.value == null) continue;
+      if (kind === 'flow') sum += r.value;
+      else if (r.month_num > latestMnum) { latestMnum = r.month_num; latest = r.value; }
+    }
+    out[zrs] = kind === 'flow' ? sum : latest;
+  }
+  return out;
+}
+
+function renderZRS() {
+  if (!ZRS_DATA) {
+    document.getElementById('content').innerHTML = `<div class="page-loader">Loading ZRS data…</div>`;
+    return;
+  }
+  const kva = ZRS_UI.kva;
+
+  // YTD KPI tiles
+  const cards = [
+    { slug:'received',     label:'Received YTD',           tone:'t-indigo', icon:'fa-inbox' },
+    { slug:'repaired',     label:'Repaired YTD',           tone:'t-green',  icon:'fa-wrench' },
+    { slug:'supplied',     label:'Supplied YTD',           tone:'t-orange', icon:'fa-truck' },
+    { slug:'unrepairable', label:'Unrepairable YTD',       tone:'t-red',    icon:'fa-ban' },
+    { slug:'cum_balance_repair', label:'Cum. Repairable (latest)',  tone:'t-purple', icon:'fa-warehouse' },
+    { slug:'cum_deliverable',    label:'Cum. Deliverable (latest)', tone:'t-teal',   icon:'fa-boxes-stacked' },
+  ];
+
+  const cardsHtml = cards.map(c => {
+    const v = _zrsTotalsAllZRS(c.slug, kva);
+    const kind = (ZRS_DATA.metrics.find(m => m.slug === c.slug) || {}).kind;
+    const kindHint = kind === 'flow' ? 'Sum across months' : 'Latest reported month';
+    return `
+      <div class="metric-tile ${c.tone}">
+        <i class="fas ${c.icon} mt-icon"></i>
+        <div class="mt-label">${c.label}</div>
+        <div class="mt-val">${v == null ? '—' : v.toLocaleString()}</div>
+        <div class="mt-trend ${kind==='flow' ? '' : 'dn'}">${kindHint} · ${kva} kVA</div>
+      </div>`;
+  }).join('');
+
+  // ZRS-comparison table (4 ZRS × selected metric set, by current kva bucket)
+  const compRows = ZRS_DATA.zrs_locations.map(zrs => {
+    const cell = (slug) => {
+      const ytd = _zrsYTDByZRS(slug, kva)[zrs];
+      return ytd == null ? '—' : ytd.toLocaleString();
+    };
+    return `<tr>
+      <td><a href="#" onclick="window.showSection('zrs-detail','${esc(zrs)}');return false;" style="font-weight:700;color:var(--blue)">${esc(zrs)}</a></td>
+      <td class="num">${cell('received')}</td>
+      <td class="num">${cell('repaired')}</td>
+      <td class="num">${cell('supplied')}</td>
+      <td class="num">${cell('unrepairable')}</td>
+      <td class="num"><span class="zrs-stock">${cell('cum_balance_repair')}</span></td>
+      <td class="num"><span class="zrs-stock">${cell('cum_deliverable')}</span></td>
+    </tr>`;
+  }).join('');
+
+  // Notes from the dataset (April missing, Dinajpur stops in Feb)
+  const notesHtml = `
+    <div class="zrs-note"><i class="fas fa-circle-info"></i>
+      <span><strong>${esc(ZRS_DATA.notes.april_note)}</strong> &nbsp;·&nbsp;
+      ${esc(ZRS_DATA.notes.dinajpur_note)}</span>
+    </div>
+    <div class="zrs-note" style="background:linear-gradient(90deg,rgba(196,181,253,.35),rgba(167,243,208,.35));border-color:rgba(139,92,246,.35);color:#312e81">
+      <i class="fas fa-circle-question"></i>
+      <span><span class="zrs-stock">Stock metrics</span> (balances) are NOT summed across months — the tile shows the latest reported value.
+            <span class="zrs-flow">Flow metrics</span> (Received, Repaired, Supplied, Unrepairable) ARE summed.</span>
+    </div>`;
+
+  // Controls
+  const buckets = ZRS_DATA.kva_buckets.map(b =>
+    `<option value="${esc(b)}" ${b===kva?'selected':''}>${esc(b)}${b==='Total'?'':' kVA'}</option>`).join('');
+  const metricOpts = ZRS_DATA.metrics.map(m =>
+    `<option value="${esc(m.slug)}" ${m.slug===ZRS_UI.metric?'selected':''}>${esc(m.label)}</option>`).join('');
+
+  document.getElementById('content').innerHTML = `
+    <div class="sec-head">
+      <div class="sec-head-left">
+        <h2>ZRS — Zonal Repair Shop</h2>
+        <p>NESCO workshops where damaged distribution transformers are repaired and delivered back to field offices. Year ${ZRS_DATA.year}.</p>
+      </div>
+    </div>
+
+    <div class="zrs-controls">
+      <label>kVA Bucket</label>
+      <select class="filter-sel" onchange="window.zrsSetKva(this.value)">${buckets}</select>
+      <label style="margin-left:14px">Trend Metric</label>
+      <select class="filter-sel" onchange="window.zrsSetMetric(this.value)">${metricOpts}</select>
+    </div>
+
+    ${notesHtml}
+
+    <div class="metric-row">${cardsHtml}</div>
+
+    <div class="panel">
+      <div class="panel-head"><h3><i class="fas fa-table-cells"></i> ZRS Comparison — YTD by Location (${esc(kva)} kVA)</h3></div>
+      <div class="panel-body no-pad"><div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr>
+            <th>ZRS</th>
+            <th class="num">Received <span style="font-weight:500;color:#065f46">flow</span></th>
+            <th class="num">Repaired <span style="font-weight:500;color:#065f46">flow</span></th>
+            <th class="num">Supplied <span style="font-weight:500;color:#065f46">flow</span></th>
+            <th class="num">Unrepairable <span style="font-weight:500;color:#065f46">flow</span></th>
+            <th class="num">Cum. Repairable <span style="font-weight:500;color:#5b21b6">stock</span></th>
+            <th class="num">Cum. Deliverable <span style="font-weight:500;color:#5b21b6">stock</span></th>
+          </tr></thead>
+          <tbody>${compRows}</tbody>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="panel" style="margin-top:18px">
+      <div class="panel-head"><h3><i class="fas fa-chart-line"></i> Monthly Trend — One Line per ZRS</h3>
+        <span style="font-size:.78rem;color:var(--text3)">Metric: ${esc((ZRS_DATA.metrics.find(m=>m.slug===ZRS_UI.metric)||{}).label || '')} · ${esc(kva)} kVA</span>
+      </div>
+      <div class="panel-body"><div class="chart-container"><canvas id="zrs-trend"></canvas></div></div>
+    </div>
+
+    <div class="panel" style="margin-top:18px">
+      <div class="panel-head"><h3><i class="fas fa-truck-fast"></i> Deliveries Detail</h3>
+        <span style="font-size:.78rem;color:var(--text3)">${ZRS_DATA.deliveries.length} rows</span>
+      </div>
+      <div class="panel-body no-pad">
+        <div style="padding:12px 14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--glass-border-2)">
+          <input class="search-input" id="zrs-deliv-q" placeholder="Search office / kVA / month…" oninput="window.zrsFilterDeliv()" style="max-width:280px">
+          <select class="filter-sel" id="zrs-deliv-zrs" onchange="window.zrsFilterDeliv()">
+            <option value="">All ZRS</option>
+            ${ZRS_DATA.zrs_locations.map(z => `<option>${esc(z)}</option>`).join('')}
+          </select>
+          <select class="filter-sel" id="zrs-deliv-month" onchange="window.zrsFilterDeliv()">
+            <option value="">All Months</option>
+            ${ZRS_DATA.months_present.map(m => `<option>${esc(m)}</option>`).join('')}
+          </select>
+          <span id="zrs-deliv-count" style="font-size:.8rem;color:var(--text3);margin-left:auto"></span>
+        </div>
+        <div class="tbl-wrap scrollable" style="max-height:480px">
+          <table class="tbl">
+            <thead><tr>
+              <th>Month</th><th>ZRS</th><th>Receiving Office</th><th>kVA</th><th class="num">Quantity</th>
+            </tr></thead>
+            <tbody id="zrs-deliv-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  `;
+
+  window.zrsFilterDeliv();
+  _drawZRSTrend();
+}
+
+function _drawZRSTrend() {
+  const ctx = document.getElementById('zrs-trend');
+  if (!ctx) return;
+  const labels = ZRS_DATA.months_present;
+  const slug = ZRS_UI.metric;
+  const kva = ZRS_UI.kva;
+  const colors = {
+    Bogura:   '#1976d2',
+    Dinajpur: '#7c3aed',
+    Rajshahi: '#059669',
+    Rangpur:  '#d97706',
+  };
+  const datasets = ZRS_DATA.zrs_locations.map(zrs => {
+    const data = labels.map(m => {
+      const row = ZRS_DATA.long_rows.find(r =>
+        r.zrs === zrs && r.month === m && r.metric === slug && r.kva === kva);
+      return row ? row.value : null;
+    });
+    return {
+      label: zrs,
+      data,
+      borderColor: colors[zrs] || '#64748b',
+      backgroundColor: (colors[zrs] || '#64748b') + '33',
+      tension: 0.3, spanGaps: true, pointRadius: 3, pointHoverRadius: 5,
+    };
+  });
+  charts.zrsTrend = new Chart(ctx, {
+    type: 'line',
+    data: { labels, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom' },
+        tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y ?? 'no data'}` } },
+      },
+      scales: {
+        x: { grid: { display: false } },
+        y: { beginAtZero: true, ticks: { precision: 0 } },
+      },
+    },
+  });
+}
+
+window.zrsSetKva    = (v) => { ZRS_UI.kva = v; renderZRS(); };
+window.zrsSetMetric = (v) => { ZRS_UI.metric = v; renderZRS(); };
+
+window.zrsFilterDeliv = () => {
+  if (!ZRS_DATA) return;
+  const q     = (document.getElementById('zrs-deliv-q')?.value || '').toLowerCase();
+  const fzrs  = document.getElementById('zrs-deliv-zrs')?.value || '';
+  const fmon  = document.getElementById('zrs-deliv-month')?.value || '';
+  const rows  = ZRS_DATA.deliveries.filter(d => {
+    if (fzrs && d.zrs !== fzrs) return false;
+    if (fmon && d.month !== fmon) return false;
+    if (q) {
+      const blob = (d.office + ' ' + d.kva + ' ' + d.month + ' ' + d.zrs).toLowerCase();
+      if (!blob.includes(q)) return false;
+    }
+    return true;
+  });
+  document.getElementById('zrs-deliv-count').textContent = `${rows.length} of ${ZRS_DATA.deliveries.length} rows`;
+  const tbody = document.getElementById('zrs-deliv-tbody');
+  tbody.innerHTML = rows.length
+    ? rows.map(r => `<tr>
+        <td>${esc(r.month)}</td>
+        <td>${esc(r.zrs)}</td>
+        <td>${esc(r.office)}</td>
+        <td>${esc(r.kva || '—')}</td>
+        <td class="num">${esc(r.qty)}</td>
+      </tr>`).join('')
+    : `<tr><td colspan="5" class="tbl-empty">No deliveries match these filters.</td></tr>`;
+};
+
+/* ── ZRS — per-ZRS detail page (clicking a ZRS name) ── */
+function renderZRSDetail(zrsName) {
+  if (!ZRS_DATA || !zrsName) {
+    document.getElementById('content').innerHTML = `<div class="page-loader">Loading…</div>`;
+    return;
+  }
+  const months = ZRS_DATA.months_present;
+  const kva = ZRS_UI.kva;
+  const metricList = ZRS_DATA.metrics;
+
+  // Build monthly table: rows = months, columns = the 8 metrics (current kva)
+  const rows = months.map(m => {
+    const cells = metricList.map(meta => {
+      const row = ZRS_DATA.long_rows.find(r =>
+        r.zrs === zrsName && r.month === m && r.metric === meta.slug && r.kva === kva);
+      const cls = meta.kind === 'stock' ? 'zrs-stock' : 'zrs-flow';
+      const v = row ? row.value : null;
+      return `<td class="num"><span class="${cls}">${v == null ? '—' : v}</span></td>`;
+    }).join('');
+    return `<tr><td><strong>${esc(m)}</strong></td>${cells}</tr>`;
+  }).join('');
+
+  // YTD totals for the pipeline diagram
+  const ytd = (slug) => {
+    const all = _zrsYTDByZRS(slug, kva);
+    return all[zrsName];
+  };
+
+  const dinajpurNote = (zrsName === 'Dinajpur') ? `
+    <div class="zrs-note"><i class="fas fa-triangle-exclamation"></i>
+      <span><strong>Dinajpur stopped reporting after February 2025.</strong>
+      Subsequent months show "—".</span>
+    </div>` : '';
+
+  document.getElementById('content').innerHTML = `
+    <div class="sec-head">
+      <div class="sec-head-left">
+        <h2>ZRS — ${esc(zrsName)}</h2>
+        <p>Per-location monthly repair pipeline · ${esc(kva)} kVA bucket</p>
+      </div>
+      <div class="sec-head-right">
+        <select class="filter-sel" onchange="window.zrsSetKva(this.value); window.showSection('zrs-detail','${esc(zrsName)}')">
+          ${ZRS_DATA.kva_buckets.map(b => `<option value="${esc(b)}" ${b===kva?'selected':''}>${esc(b)}${b==='Total'?'':' kVA'}</option>`).join('')}
+        </select>
+        <button class="btn btn-sm btn-secondary" onclick="window.showSection('zrs')"><i class="fas fa-arrow-left"></i> Back to ZRS</button>
+      </div>
+    </div>
+
+    ${dinajpurNote}
+
+    <div class="zrs-pipeline">
+      <div class="zrs-pipe-node received">
+        <div class="lbl">Received YTD</div>
+        <div class="val">${ytd('received') == null ? '—' : ytd('received').toLocaleString()}</div>
+      </div>
+      <div class="zrs-pipe-arrow"><i class="fas fa-arrow-right"></i></div>
+      <div class="zrs-pipe-node repaired">
+        <div class="lbl">Repaired YTD</div>
+        <div class="val">${ytd('repaired') == null ? '—' : ytd('repaired').toLocaleString()}</div>
+      </div>
+      <div class="zrs-pipe-arrow"><i class="fas fa-arrow-right"></i></div>
+      <div class="zrs-pipe-node supplied">
+        <div class="lbl">Supplied YTD</div>
+        <div class="val">${ytd('supplied') == null ? '—' : ytd('supplied').toLocaleString()}</div>
+      </div>
+      <div class="zrs-pipe-arrow"><i class="fas fa-arrow-down"></i></div>
+      <div class="zrs-pipe-node unrepair">
+        <div class="lbl">Unrepairable YTD</div>
+        <div class="val">${ytd('unrepairable') == null ? '—' : ytd('unrepairable').toLocaleString()}</div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:18px">
+      <div class="panel-head"><h3><i class="fas fa-table"></i> Monthly Detail (${esc(kva)} kVA)</h3></div>
+      <div class="panel-body no-pad"><div class="tbl-wrap scrollable">
+        <table class="tbl">
+          <thead><tr>
+            <th>Month</th>
+            ${metricList.map(m => `<th class="num"><span style="display:block;font-size:.62rem;font-weight:600;color:${m.kind==='stock'?'#5b21b6':'#065f46'};text-transform:uppercase">${m.kind}</span>${esc(m.label)}</th>`).join('')}
+          </tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div></div>
+    </div>
+  `;
+}
 
 /* ══════════════════════════════════════════════════
    SECTION 19 — MODAL FRAMEWORK
@@ -4120,8 +4952,15 @@ document.addEventListener('DOMContentLoaded', async () => {
   await loadSubstationData();
   // Load distribution-transformer dataset (32 SDD/ESU files)
   await loadDTData();
-  // Load homepage trends + projects data
-  await Promise.all([loadHomepageData(), loadProjectsData()]);
+  // Load every section's dataset in parallel
+  await Promise.all([
+    loadHomepageData(),
+    loadProjectsData(),
+    loadZrsData(),
+    loadStoreData(),
+    loadSwitchingData(),
+    loadRenewableData(),
+  ]);
 
   // Mobile nav toggle
   document.querySelectorAll('.dd-toggle').forEach(btn => {

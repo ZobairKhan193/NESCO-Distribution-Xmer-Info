@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════════
-   NESCO Distribution MIS — app.js  v3.0
+   NESCO DNMS (Distribution Network Management System) — app.js  v4.0
    Menu: Home | 33/11 kV Substations | Switching SS |
          Distribution Transformer | Ongoing Projects |
          Upcoming Projects | Load History
@@ -592,7 +592,7 @@ function renderHomeFromData() {
   <div class="hero-card">
     <div class="hero-icon"><i class="fas fa-bolt"></i></div>
     <div class="hero-text">
-      <h1>NESCO Distribution Management Information System</h1>
+      <h1>NESCO Distribution Network Management System</h1>
       <p>Northern Electricity Supply Company Limited · Bangladesh</p>
       <p class="hero-sub">Technical Highlights for the last seven fiscal years (FY ${yrs[0]} – FY ${yrs[yrs.length-1]})</p>
     </div>
@@ -1193,7 +1193,7 @@ function renderHomeLegacy() {
   <div class="sec-head">
     <div class="sec-head-left">
       <h2>Home</h2>
-      <p>NESCO Distribution Management Information System — ${ALL_SUBSTATIONS.length} substations loaded</p>
+      <p>NESCO Distribution Network Management System — ${ALL_SUBSTATIONS.length} substations loaded</p>
     </div>
     <div class="sec-head-right">
       <span class="badge badge-online"><i class="fas fa-circle"></i> Network Online</span>

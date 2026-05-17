@@ -130,8 +130,13 @@ function _buildDTAdapters() {
   if (!DT_DATA || !Array.isArray(DT_DATA.sdds)) return;
 
   // ── 1. OVERALL_SUMMARY: one flat row per SDD/ESU (used by Overall + SDD-wise views)
+  // build_dt.py (v2 shape) emits the totals at the top level of `summary`,
+  // not nested under `summary.total`. Accept both shapes for safety.
   OVERALL_SUMMARY = DT_DATA.sdds.map((s, idx) => {
-    const t = (s.summary && s.summary.total) || {};
+    const sum = s.summary || {};
+    // If sum.total is a plain object (legacy nested shape), use it; otherwise
+    // the totals are flat directly on `sum`.
+    const t = (sum.total && typeof sum.total === 'object') ? sum.total : sum;
     const k = t.kva       || {};
     const la= t.la        || {};
     const df= t.dofc      || {};
@@ -2445,10 +2450,59 @@ function renderDTSDDSummary() {
       <tbody id="sdd-tbody">
         ${renderSDDRows(OVERALL_SUMMARY)}
       </tbody>
+      <tfoot id="sdd-tfoot">
+        ${_renderSDDTotalsRow(OVERALL_SUMMARY)}
+      </tfoot>
     </table>
     </div></div>
   </div>
   `;
+}
+
+/* Footer SUM row for the SDD-wise summary table. */
+function _renderSDDTotalsRow(list) {
+  if (!list || !list.length) return '';
+  const sum = (key) => list.reduce((a, s) => a + (s[key] || 0), 0);
+  const total      = sum('total');
+  const kva100     = sum('kva100');
+  const kva200     = sum('kva200');
+  const kva250     = sum('kva250');
+  const laYes      = sum('la_yes');
+  const laNo       = sum('la_no');
+  const dofcYes    = sum('dofc_yes');
+  const dofcNo     = sum('dofc_no');
+  const mccbYes    = sum('mccb_yes');
+  const mccbNo     = sum('mccb_no');
+  const gndYes     = sum('gnd_yes');
+  const laReq      = list.reduce((a, s) => a + ((s.la_no + s.la_bad) * 3), 0);
+  const dofcReq    = list.reduce((a, s) => a + ((s.dofc_no + s.dofc_bad) * 3), 0);
+  const mccbReq    = list.reduce((a, s) => a + ((s.mccb_no + s.mccb_bad) * 2), 0);
+  const gndReq     = sum('gnd_no');
+  const laCov      = total ? (laYes/total*100).toFixed(1)+'%'   : '—';
+  const dofcCov    = total ? (dofcYes/total*100).toFixed(1)+'%' : '—';
+  const mccbCov    = total ? (mccbYes/total*100).toFixed(1)+'%' : '—';
+  return `<tr class="tbl-sum-row">
+    <td colspan="2"><strong>TOTAL (${list.length} SDDs)</strong></td>
+    <td class="num"><strong>${total.toLocaleString()}</strong></td>
+    <td class="num"><strong>${kva100.toLocaleString()}</strong></td>
+    <td class="num"><strong>${kva200.toLocaleString()}</strong></td>
+    <td class="num"><strong>${kva250.toLocaleString()}</strong></td>
+    <td class="num"><strong>${laYes.toLocaleString()}</strong></td>
+    <td class="num"><strong>${laNo.toLocaleString()}</strong></td>
+    <td class="num"><strong>${dofcYes.toLocaleString()}</strong></td>
+    <td class="num"><strong>${dofcNo.toLocaleString()}</strong></td>
+    <td class="num"><strong>${mccbYes.toLocaleString()}</strong></td>
+    <td class="num"><strong>${mccbNo.toLocaleString()}</strong></td>
+    <td class="num"><strong>${gndYes.toLocaleString()}</strong></td>
+    <td><strong>${laCov}</strong></td>
+    <td><strong>${dofcCov}</strong></td>
+    <td><strong>${mccbCov}</strong></td>
+    <td class="num"><strong>${laReq.toLocaleString()}</strong></td>
+    <td class="num"><strong>${dofcReq.toLocaleString()}</strong></td>
+    <td class="num"><strong>${mccbReq.toLocaleString()}</strong></td>
+    <td class="num"><strong>${gndReq.toLocaleString()}</strong></td>
+    <td></td>
+  </tr>`;
 }
 
 function renderSDDRows(list) {
@@ -2494,6 +2548,8 @@ window.filterSDDTable = () => {
   const q = (document.getElementById('sdd-search')?.value||'').toLowerCase();
   const f = OVERALL_SUMMARY.filter(s => !q || s.name.toLowerCase().includes(q));
   document.getElementById('sdd-tbody').innerHTML = renderSDDRows(f);
+  const tf = document.getElementById('sdd-tfoot');
+  if (tf) tf.innerHTML = _renderSDDTotalsRow(f);
 };
 
 /* ── DT Details (per SDD — reads Firebase; demo with Rajshahi-1 data) ───── */
@@ -4198,6 +4254,24 @@ function _renderProjectDetail(projectId, heroClass) {
   };
 
   let extras = '';
+
+  // §NIDMP — full ADB substation list, 5 categories, sourced from the
+  // accompanying PDF (List of SSs Under ADB Project).
+  if (p.all_substations) {
+    const cats = Object.values(p.all_substations);
+    const totalSS = cats.reduce((n, c) => n + c.rows.length, 0);
+    extras += `
+      <div class="panel" style="margin-top:18px">
+        <div class="panel-head">
+          <h3><i class="fas fa-list-ul"></i> All Substations Under ADB / NIDMP</h3>
+          <span style="font-size:.78rem;color:var(--text3)">${totalSS} substations · ${cats.length} categories</span>
+        </div>
+        <div class="panel-body" style="padding:0">
+          ${cats.map(c => _renderNidmpCategory(c)).join('')}
+        </div>
+      </div>`;
+  }
+
   if (bays && bays.rows && bays.rows.length) {
     extras += `
       <div class="panel" style="margin-top:18px">
@@ -4240,6 +4314,27 @@ function _renderProjectDetail(projectId, heroClass) {
 }
 
 function renderNIDMP() { _renderProjectDetail('nidmp', 'proj-hero-go'); }
+
+/* Render one NIDMP category block (table-row layout with sticky title). */
+function _renderNidmpCategory(cat) {
+  const heads = (cat.headers || []).map(h => `<th>${esc(h)}</th>`).join('');
+  const rows = (cat.rows || []).map(r =>
+    `<tr>${r.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('');
+  return `
+    <div style="padding:14px 20px 0">
+      <h4 style="font-family:var(--fh);font-weight:800;color:#0b1d3f;font-size:.98rem">
+        <i class="fas fa-folder-open" style="color:#6366f1;margin-right:6px"></i>
+        ${esc(cat.label)}
+        <span style="font-weight:500;color:var(--text3);font-size:.82rem">— ${esc(cat.count_label || (cat.rows.length + ' Nos.'))}</span>
+      </h4>
+    </div>
+    <div class="tbl-wrap" style="margin-bottom:14px">
+      <table class="tbl">
+        <thead><tr>${heads}</tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
+}
 function renderPDSSP() { _renderProjectDetail('pdssp', 'proj-hero-up'); }
 
 /* §5 — PDSSP Line Requirement rollups.
@@ -4647,7 +4742,7 @@ function renderZRS() {
         <div class="tbl-wrap scrollable" style="max-height:480px">
           <table class="tbl">
             <thead><tr>
-              <th>Month</th><th>ZRS</th><th>Office Type</th><th>Receiving Office</th><th>kVA</th><th class="num">Quantity</th>
+              <th>Month</th><th>ZRS</th><th>Receiving Office</th><th>kVA</th><th class="num">Quantity</th>
             </tr></thead>
             <tbody id="zrs-deliv-tbody"></tbody>
           </table>
@@ -4796,19 +4891,14 @@ window.zrsFilterDeliv = () => {
   document.getElementById('zrs-deliv-count').textContent = `${rows.length} of ${ZRS_DATA.deliveries.length} rows`;
   const tbody = document.getElementById('zrs-deliv-tbody');
   tbody.innerHTML = rows.length
-    ? rows.map(r => {
-        const t = _zrsOfficeType(r.office);
-        const tagCls = t === 'S&DD' ? 'badge-blue' : t === 'ESU' ? 'badge-good' : 'badge-gray';
-        return `<tr>
-          <td>${esc(r.month)}</td>
-          <td>${esc(r.zrs)}</td>
-          <td><span class="badge ${tagCls}">${esc(t)}</span></td>
-          <td>${esc(r.office)}</td>
-          <td>${esc(r.kva || '—')}</td>
-          <td class="num">${esc(r.qty)}</td>
-        </tr>`;
-      }).join('')
-    : `<tr><td colspan="6" class="tbl-empty">No deliveries match these filters.</td></tr>`;
+    ? rows.map(r => `<tr>
+        <td>${esc(r.month)}</td>
+        <td>${esc(r.zrs)}</td>
+        <td>${esc(r.office)}</td>
+        <td>${esc(r.kva || '—')}</td>
+        <td class="num">${esc(r.qty)}</td>
+      </tr>`).join('')
+    : `<tr><td colspan="5" class="tbl-empty">No deliveries match these filters.</td></tr>`;
 };
 
 /* ── ZRS — per-ZRS detail page (clicking a ZRS name) ── */

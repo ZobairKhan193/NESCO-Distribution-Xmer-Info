@@ -857,8 +857,28 @@ table.tbl thead th{
   vertical-align:middle;
   border-right:1px solid rgba(15,23,42,.06);
   background:transparent;
-  white-space:normal;     /* allow wrap so long titles don't overflow */
-  word-break:break-word;
+  /* Wrap at word boundaries but never split a single short token like
+     "50 kVA" into one character per line. */
+  white-space:normal;
+  word-break:normal;
+  overflow-wrap:normal;
+  hyphens:none;
+  /* Floor each leaf-header column at ~70px so 30-column tables (DT
+     Overall, SDD-wise) scroll horizontally instead of squeezing every
+     header into a 1-character-per-line stack. */
+  min-width:70px;
+}
+/* Group-header row (first thead row when there are multiple) can have
+   any width — its colspan'd children inherit min-width from the leaf
+   header row below it. */
+table.tbl thead tr:first-child th[colspan]{
+  min-width:0;
+}
+/* Allow tables to grow wider than the panel; .tbl-wrap already
+   provides the horizontal scroll. */
+table.tbl{
+  width:max-content;
+  min-width:100%;
 }
 table.tbl thead tr:nth-child(2) th{
   font-size:.72rem;
@@ -1105,6 +1125,24 @@ table.tbl .num{font-variant-numeric:tabular-nums}
 .pt-filter-bar .range-line{display:flex;align-items:center;gap:8px}
 .pt-filter-bar input[type=range]{flex:1;accent-color:#6366f1}
 .pt-filter-bar .range-val{font-family:var(--fh);font-weight:800;color:#1e1b4b;min-width:42px;text-align:right;font-size:.85rem}
+
+/* SUM / totals row at the bottom of a table. Stays sticky at the bottom
+   when the table scrolls, and uses a slightly stronger tint so the
+   aggregate stands out from the data rows above. */
+table.tbl tfoot tr.tbl-sum-row,
+table.tbl tr.tbl-sum-row {
+  background: linear-gradient(90deg, #dbeafe 0%, #e0e7ff 100%) !important;
+  border-top: 2px solid #6366f1;
+  position: sticky;
+  bottom: 0;
+  z-index: 4;
+}
+table.tbl tr.tbl-sum-row td {
+  color: #0b1d3f !important;
+  font-weight: 800;
+  border-bottom: none;
+  padding: 12px 14px;
+}
 
 /* ════════════ MOBILE TUNING ════════════ */
 @media (max-width: 768px){

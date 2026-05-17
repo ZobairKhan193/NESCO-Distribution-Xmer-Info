@@ -58,6 +58,69 @@ def parse_nidmp_summary():
     return {"headers": headers, "rows": rows}
 
 
+# --- Static lists transcribed from NIDMP/List of SSs Under ADB Project.pdf ---
+# The PDF is not machine-friendly so we mirror its 5 categorised tables here
+# verbatim. If the PDF is revised, update these lists in one place.
+NIDMP_ALL_SUBSTATIONS = {
+    "new_33_11_gis": {
+        "label": "New 33/11 kV GIS Substations",
+        "count_label": "03 Nos.",
+        "headers": ["Sr.", "Name of the SS", "SDD", "Capacity", "Location"],
+        "rows": [
+            ["1", "Chandipur",                 "SDD-2, Rajshahi", "2x20/26.66", "Rajshahi City"],
+            ["2", "Bogura SDD-1 Campus SS",    "SDD-1, Bogura",   "2x20/26.66", "Bogura City"],
+            ["3", "Rangpur SDD-1 Campus SS",   "SDD-1, Rangpur",  "2x20/26.66", "Rangpur City"],
+        ],
+    },
+    "new_33_11_ais": {
+        "label": "New 33/11 kV AIS Substations",
+        "count_label": "03 Nos.",
+        "headers": ["Sr.", "Name of the SS", "SDD", "Capacity", "Location"],
+        "rows": [
+            ["1", "Kodomtola",                 "SDD-1, Pabna",    "2x10/13.33", "Pabna City"],
+            ["2", "Baharkasna SS",             "SDD-3, Rangpur",  "2x10/13.33", "Rangpur City"],
+            ["3", "Dinajpur SDD-1 Campus SS",  "SDD-1, Dinajpur", "2x10/13.33", "Dinajpur City"],
+        ],
+    },
+    "upgrade_33_11_ais": {
+        "label": "33/11 kV AIS Substations — Upgradation",
+        "count_label": "10 Nos.",
+        "headers": ["Sr.", "Name of the SS", "SDD", "Upgradation Capacity", "Location"],
+        "rows": [
+            ["1",  "Katkipara",           "SDD-2, Rangpur",   "1x20/26.66", "Rangpur City"],
+            ["2",  "Mahiganj",            "SDD-3, Rangpur",   "1x20/26.66", "Rangpur City"],
+            ["3",  "Dhangora",            "SDD-2, Gaibandha", "1x20/26.66", "Gaibandha"],
+            ["4",  "Niamotpur (Saidpur)", "Saidpur",          "1x20/26.66", "Saidpur"],
+            ["5",  "Golahat",             "Saidpur",          "1x20/26.66", "Saidpur"],
+            ["6",  "Fakirpara",           "SDD-1, Dinajpur",  "1x20/26.66", "Dinajpur City"],
+            ["7",  "Balubari",            "SDD-2, Dinajpur",  "1x20/26.66", "Dinajpur City"],
+            ["8",  "Upashahar",           "SDD-2, Dinajpur",  "1x20/26.66", "Dinajpur City"],
+            ["9",  "Setabganj",           "Setabganj",        "1x20/26.66", "Dinajpur"],
+            ["10", "Panchagarh",          "Panchagarh",       "1x20/26.66", "Panchagarh"],
+        ],
+    },
+    "new_33_gis_switching": {
+        "label": "New 33 kV GIS Switching Substations",
+        "count_label": "03 Nos.",
+        "headers": ["Sr.", "Grid SS Name", "Name of the SS", "Location"],
+        "rows": [
+            ["11", "Katakhali 132/33 kV SS",     "Katakhali",     "Rajshahi City"],
+            ["12", "Rangpur 132/33 kV SS",       "Lalbag",        "Rangpur City"],
+            ["13", "Purbosadipur 132/33 kV SS",  "Purbosadipur",  "Dinajpur"],
+        ],
+    },
+    "new_33_ais_switching": {
+        "label": "New 33 kV AIS Switching Substations",
+        "count_label": "02 Nos.",
+        "headers": ["Sr.", "Grid SS Name", "Name of the SS", "Location"],
+        "rows": [
+            ["14", "Domar 230/132/33 kV SS",  "Domar",      "Domar, Nilphamari"],
+            ["15", "Hatibandha 132/33 kV SS", "Hatibandha", "Hatibandha, Lalmonirhat"],
+        ],
+    },
+}
+
+
 def parse_nidmp_bays():
     wb = open_wb(NIDMP_BAYS)
     ws = wb["Grid Bay-Breakers"]
@@ -147,11 +210,15 @@ def main():
                                  "Modernization of Power Distribution System "
                                  "in NESCO Area"),
                         "summary": ("ADB-funded modernization project. Adds "
-                                    "and upgrades 33/11 kV substations, "
-                                    "control rooms, switchgear and bay-breakers "
-                                    "across NESCO grid sites."),
+                                    "new 33/11 kV substations + switching SSs "
+                                    "and upgrades existing ones across the "
+                                    "NESCO grid (21 substations in total, "
+                                    "across 5 categories)."),
                         "substation_summary": parse_nidmp_summary(),
                         "grid_bay_breakers":  parse_nidmp_bays(),
+                        # All 21 substations under ADB, transcribed from the
+                        # PDF "List of SSs Under ADB Project". 5 categories.
+                        "all_substations": NIDMP_ALL_SUBSTATIONS,
                     },
                 ],
             },

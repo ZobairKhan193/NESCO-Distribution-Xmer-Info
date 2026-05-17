@@ -1,0 +1,339 @@
+{
+  "title": "NESCO Renewable Energy Overview",
+  "source": "NESCO_Renewable_Energy_Overview_EN.docx",
+  "blocks": [
+    {
+      "kind": "paragraph",
+      "text": "NESCO Renewable Energy Overview"
+    },
+    {
+      "kind": "paragraph",
+      "text": "Northern Electricity Supply PLC — Contributing to Bangladesh's Clean Energy Transition"
+    },
+    {
+      "kind": "paragraph",
+      "text": "NESCO is steadily expanding its renewable energy footprint across northern Bangladesh through rooftop solar, floating solar, ground-mounted plants, and partnerships with independent power producers. This overview presents NESCO's current renewable energy portfolio and upcoming plans to scale clean generation across its service area."
+    },
+    {
+      "kind": "heading",
+      "level": 1,
+      "text": "Snapshot at a Glance"
+    },
+    {
+      "kind": "table",
+      "rows": [
+        [
+          "Total Rooftop Solar Systems",
+          "297 systems / 11.726 MWp"
+        ],
+        [
+          "Net Metering Customers",
+          "144 systems / 10.6 MWp"
+        ],
+        [
+          "Floating Solar System",
+          "1 system / 750 kWp"
+        ],
+        [
+          "NESCO Own Rooftop Installations",
+          "40 systems / 400 kW"
+        ],
+        [
+          "OPEX-Model Rooftop Solar",
+          "5 systems / 60 kW"
+        ],
+        [
+          "Solar Battery Charging Station",
+          "1 unit / 25 kW (Rajshahi)"
+        ],
+        [
+          "Direct Solar Evacuation to Substations",
+          "45.5 MW (3 plants)"
+        ]
+      ]
+    },
+    {
+      "kind": "heading",
+      "level": 1,
+      "text": "1. Rooftop Solar with Net Metering"
+    },
+    {
+      "kind": "paragraph",
+      "text": "NESCO has facilitated the installation of rooftop solar systems for customers across its territory, with eligible systems connected under the national net metering framework."
+    },
+    {
+      "kind": "paragraph",
+      "text": "Total rooftop solar systems: 297 — capacity 11.726 MWp"
+    },
+    {
+      "kind": "paragraph",
+      "text": "Of which under net metering: 144 systems — capacity 10.6 MWp"
+    },
+    {
+      "kind": "heading",
+      "level": 1,
+      "text": "2. Floating Solar System"
+    },
+    {
+      "kind": "paragraph",
+      "text": "1 floating solar installation — capacity 750 kWp"
+    },
+    {
+      "kind": "paragraph",
+      "text": "Customer: Nawab Auto Rice Mill, Chapai-Nawabganj"
+    },
+    {
+      "kind": "heading",
+      "level": 1,
+      "text": "3. NESCO's Own Rooftop Solar (Office & Substation Buildings)"
+    },
+    {
+      "kind": "paragraph",
+      "text": "NESCO has installed rooftop solar systems on its own office buildings and substation control rooms to power its operations with clean energy."
+    },
+    {
+      "kind": "paragraph",
+      "text": "Total installations: 40 systems — combined capacity 400 kW"
+    },
+    {
+      "kind": "paragraph",
+      "text": "Operational status: 32 systems active; 8 systems currently offline"
+    },
+    {
+      "kind": "heading",
+      "level": 1,
+      "text": "4. Self-Financed OPEX-Model Rooftop Solar"
+    },
+    {
+      "kind": "paragraph",
+      "text": "Under NESCO's own OPEX model, rooftop solar has been deployed at five commercial and industrial customer sites:"
+    },
+    {
+      "kind": "paragraph",
+      "text": "Total: 5 systems — combined capacity 60 kW"
+    },
+    {
+      "kind": "table",
+      "rows": [
+        [
+          "#",
+          "Office",
+          "Customer & Address",
+          "Customer No.",
+          "Tariff",
+          "Approved Load (kW)",
+          "Installed Solar (kWp)"
+        ],
+        [
+          "1",
+          "S&DD-Ishwardi",
+          "Mallik Paper Mills, Civil Haat, Paksey, Ishwardi",
+          "72026088",
+          "HT-3",
+          "10,150",
+          "10"
+        ],
+        [
+          "2",
+          "S&DD-Joypurhat",
+          "Polli Poultry Hatchery, BSCIC, Joypurhat",
+          "78017625",
+          "MT-3",
+          "320",
+          "10"
+        ],
+        [
+          "3",
+          "S&DD-Karatoa",
+          "BCL Cold Storage, Thengamara, Karatoa, Bogura",
+          "82046471",
+          "MT-3",
+          "320",
+          "20"
+        ],
+        [
+          "4",
+          "S&DD-Nilphamari",
+          "Uttara Seed Cold Storage, Notkhana, Nilphamari",
+          "24030531",
+          "MT-3",
+          "500",
+          "10"
+        ],
+        [
+          "5",
+          "S&DD-Nilphamari",
+          "Nuha Auto Rice Mills, Kukhapara, Nilphamari",
+          "24015676",
+          "MT-3",
+          "800",
+          "10"
+        ]
+      ]
+    },
+    {
+      "kind": "heading",
+      "level": 1,
+      "text": "5. Solar Battery Charging Station"
+    },
+    {
+      "kind": "paragraph",
+      "text": "1 station — capacity 25 kW"
+    },
+    {
+      "kind": "paragraph",
+      "text": "Location: Rajshahi"
+    },
+    {
+      "kind": "paragraph",
+      "text": "Funded by: GIZ"
+    },
+    {
+      "kind": "heading",
+      "level": 1,
+      "text": "6. Direct Power Evacuation from Solar IPPs"
+    },
+    {
+      "kind": "paragraph",
+      "text": "In addition to NESCO's own systems, the following independent solar power plants directly evacuate power into NESCO's 33/11 kV substations:"
+    },
+    {
+      "kind": "paragraph",
+      "text": "Intraco Solar Plant — 30 MW — Kaliganj, Lalmonirhat"
+    },
+    {
+      "kind": "paragraph",
+      "text": "Sympa Solar Plant — 8 MW — Tetulia"
+    },
+    {
+      "kind": "paragraph",
+      "text": "Northwest Power Generation Company Solar Plant — 7.5 MW — Sirajganj"
+    },
+    {
+      "kind": "heading",
+      "level": 1,
+      "text": "Future Plans for Renewable Expansion"
+    },
+    {
+      "kind": "heading",
+      "level": 2,
+      "text": "Ground-Mounted Solar Opportunities"
+    },
+    {
+      "kind": "paragraph",
+      "text": "Nurpur, Pabna: NESCO owns approximately 5 acres suitable for a ground-mounted solar system of around 2 MWp capacity."
+    },
+    {
+      "kind": "paragraph",
+      "text": "Additional NESCO-owned land available for ground-mounted solar at Kaunia (Rangpur), Sirajganj, and Pachbibi (Joypurhat)."
+    },
+    {
+      "kind": "heading",
+      "level": 2,
+      "text": "National Rooftop Solar Programme — Initiative-B, Model-3 (Third-Party OPEX)"
+    },
+    {
+      "kind": "paragraph",
+      "text": "NESCO floated a tender under the national rooftop solar programme covering 1,903 educational and health institutions, for a combined rooftop solar capacity of 72.4 MW across 4 packages and 10 lots."
+    },
+    {
+      "kind": "paragraph",
+      "text": "Tender opening date: 26 February 2026"
+    },
+    {
+      "kind": "table",
+      "rows": [
+        [
+          "Package",
+          "Lot",
+          "Scope",
+          "Coverage Area",
+          "Capacity (MW)"
+        ],
+        [
+          "G-25",
+          "Lot-1",
+          "Design, Supply, Installation, Testing & Commissioning of Rooftop Solar System",
+          "Rajshahi City, Poba & Tanore Upazila",
+          "4.72"
+        ],
+        [
+          "G-26",
+          "Lot-1",
+          "Design, Supply, Installation, Testing & Commissioning of Rooftop Solar System",
+          "Bogura Sadar, Sherpur, Kahaloo, Dupchanchia, Adamdighi, Natore Sadar Upazila",
+          "7.83"
+        ],
+        [
+          "",
+          "Lot-2",
+          "Design, Supply, Installation, Testing & Commissioning of Rooftop Solar System",
+          "Chapai-Nawabganj Sadar, Gomastapur, Nachole, Shibganj, Godagari Upazila",
+          "5.38"
+        ],
+        [
+          "",
+          "Lot-3",
+          "Design, Supply, Installation, Testing & Commissioning of Rooftop Solar System",
+          "Sirajganj Sadar, Pabna Sadar & Ishwardi Upazila",
+          "5.44"
+        ],
+        [
+          "",
+          "Lot-4",
+          "Design, Supply, Installation, Testing & Commissioning of Rooftop Solar System",
+          "Naogaon Sadar, Joypurhat Sadar",
+          "3.29"
+        ],
+        [
+          "G-27",
+          "Lot-1",
+          "Design, Supply, Installation, Testing & Commissioning of Rooftop Solar System",
+          "Rangpur City & Kurigram Sadar",
+          "4.16"
+        ],
+        [
+          "",
+          "Lot-2",
+          "Design, Supply, Installation, Testing & Commissioning of Rooftop Solar System",
+          "Gaibandha Sadar, Palashbari, Gobindaganj",
+          "1.18"
+        ],
+        [
+          "",
+          "Lot-3",
+          "Design, Supply, Installation, Testing & Commissioning of Rooftop Solar System",
+          "Patgram, Kaliganj, Hatibandha, Lalmonirhat Sadar",
+          "7.45"
+        ],
+        [
+          "",
+          "Lot-4",
+          "Design, Supply, Installation, Testing & Commissioning of Rooftop Solar System",
+          "Dinajpur, Panchagarh, Thakurgaon, Nilphamari",
+          "14.91"
+        ],
+        [
+          "G-28",
+          "Lot-1",
+          "Design, Supply, Installation, Testing & Commissioning of Rooftop Solar System",
+          "Universities & Medical Colleges",
+          "18.00"
+        ]
+      ]
+    },
+    {
+      "kind": "paragraph",
+      "text": "Status update: The tenders were issued in accordance with the Power Division's prescribed tender documents, with submission deadlines extended from time to time per Power Division instructions. As no bids were received, the tenders were closed on 26 February 2026. NESCO is reviewing next steps for re-tendering this programme."
+    },
+    {
+      "kind": "heading",
+      "level": 1,
+      "text": "Looking Ahead"
+    },
+    {
+      "kind": "paragraph",
+      "text": "NESCO remains committed to scaling renewable energy across northern Bangladesh through a combination of utility-owned solar assets, customer-side rooftop programmes, and partnerships with private solar developers. With available land for ground-mounted projects and a pipeline of rooftop tenders under preparation, NESCO is positioned to make a meaningful contribution to the national clean energy targets."
+    }
+  ]
+}

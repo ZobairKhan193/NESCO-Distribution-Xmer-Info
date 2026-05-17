@@ -1,0 +1,1232 @@
+{
+  "substation_equipment": {
+    "headers": [
+      "Equipment Name",
+      "Voltage Class",
+      "Current / Capacity Rating",
+      "Unit",
+      "Quantity"
+    ],
+    "items": [
+      {
+        "category": "Power Transformer",
+        "name": "Power Transformer with Vacuum OLTC + RTCC + AVR",
+        "voltage_class": "33 / 11 kV",
+        "rating": "20 / 26.66 MVA",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Power Transformer",
+        "name": "Power Transformer with Vacuum OLTC + RTCC + AVR",
+        "voltage_class": "33 / 11 kV",
+        "rating": "10 / 13.33 MVA",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Power Transformer",
+        "name": "RTCC Panel (for Power Transformer OLTC)",
+        "voltage_class": "110 V AC/DC",
+        "rating": "AVR + Motor drive control",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "33 kV Circuit Breaker",
+        "name": "Outdoor Vacuum Circuit Breaker (VCB)",
+        "voltage_class": "33 kV",
+        "rating": "1600 A, 31.5 kA / 3 sec",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Instrument Transformer",
+        "name": "Current Transformer – Outdoor, Single Phase (Line Feeder)",
+        "voltage_class": "33 kV",
+        "rating": "600-1200 / 5-5 A, Class 0.2S + 5P30",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Instrument Transformer",
+        "name": "Current Transformer – Outdoor, Single Phase (Transformer Feeder)",
+        "voltage_class": "33 kV",
+        "rating": "600-1200 / 5-5-5 A, Class 0.2S + 5P30",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Instrument Transformer",
+        "name": "Current Transformer – Indoor, Bushing/Ring Type (Transformer Incoming)",
+        "voltage_class": "11 kV",
+        "rating": "900-1800 / 5-5-5 A, Class 0.2S + 5P30",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Instrument Transformer",
+        "name": "Current Transformer – Indoor, Bushing/Ring Type (Bus Coupler)",
+        "voltage_class": "11 kV",
+        "rating": "900-1800 / 5-5 A, Class 0.2S + 5P30",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Instrument Transformer",
+        "name": "Current Transformer – Indoor, Bushing/Ring Type (Outgoing Feeder)",
+        "voltage_class": "11 kV",
+        "rating": "300-600 / 5-5 A, Class 0.2S + 5P30",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Instrument Transformer",
+        "name": "Potential Transformer – Outdoor, Single Phase",
+        "voltage_class": "33 kV",
+        "rating": "33/√3 : 0.11/√3 : 0.11/√3 kV, Class 0.2S + 3P",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Instrument Transformer",
+        "name": "Potential Transformer – Indoor, Single Phase",
+        "voltage_class": "11 kV",
+        "rating": "11000/√3 : 110/√3 : 110/√3 V, Class 0.2 + 3P",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Isolator",
+        "name": "Line Isolator with Earth Blade – Gang Operated, Vertical Break",
+        "voltage_class": "33 kV",
+        "rating": "1600 A, 31.5 kA / 3 sec",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Isolator",
+        "name": "Line Isolator without Earth Blade – Gang Operated, Vertical Break",
+        "voltage_class": "33 kV",
+        "rating": "1600 A, 31.5 kA / 3 sec",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Isolator",
+        "name": "Bus Section Isolator – Gang Operated, Horizontal Break",
+        "voltage_class": "33 kV",
+        "rating": "1600 A, 31.5 kA / 3 sec",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Isolator",
+        "name": "Off-Load Fused Isolator (for Bus PT & Aux Transformer)",
+        "voltage_class": "33 kV",
+        "rating": "400 A, with HRC fuse",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Isolator",
+        "name": "Pole-Mounted Line Isolator with Earth Blade",
+        "voltage_class": "11 kV",
+        "rating": "800 A, 31.5 kA / 3 sec",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Lightning Arrester",
+        "name": "Surge / Lightning Arrester – Outdoor (with Surge Counter)",
+        "voltage_class": "33 kV",
+        "rating": "Rated 36 kV, COV 22–27.5 kV, 10 kA discharge",
+        "unit": "Set (3 Nos)",
+        "quantity": null
+      },
+      {
+        "category": "Lightning Arrester",
+        "name": "Lightning Arrester – Tower / Pole Mounted (Transformer Incomer & Outgoing Feeder)",
+        "voltage_class": "11 kV",
+        "rating": "Rated 9 kV, COV 8–10 kV, 10 kA discharge",
+        "unit": "Set (3 Nos)",
+        "quantity": null
+      },
+      {
+        "category": "Lightning Arrester",
+        "name": "Lightning Arrester – Installed inside 11 kV Switchgear Panel",
+        "voltage_class": "11 kV",
+        "rating": "Rated 9 kV, 10 kA discharge",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "33 kV PCM Panel",
+        "name": "33 kV PCM Panel – Line Feeder",
+        "voltage_class": "33 kV",
+        "rating": "Directional O/C + Directional E/F numerical relay",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "33 kV PCM Panel",
+        "name": "33 kV PCM Panel – Power Transformer Feeder",
+        "voltage_class": "33 kV",
+        "rating": "Differential + O/C + E/F + REF numerical relays, IEC 61850",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Switchgear",
+        "name": "11 kV Transformer Incoming Panel (VCB + CT + PT + Relays)",
+        "voltage_class": "11 kV",
+        "rating": "2000 A breaker, 2500 A busbar, 31.5 kA / 3 sec",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Switchgear",
+        "name": "11 kV Bus-Coupler Panel (with Bus Riser)",
+        "voltage_class": "11 kV",
+        "rating": "2000 A breaker, 2500 A busbar, 31.5 kA / 3 sec",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Switchgear",
+        "name": "11 kV Outgoing Line Feeder Panel (with Surge Arrester)",
+        "voltage_class": "11 kV",
+        "rating": "800 A breaker, 2500 A busbar, 31.5 kA / 3 sec",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Relay / Protection",
+        "name": "Numerical Differential Relay (with built-in REF)",
+        "voltage_class": "—",
+        "rating": "Min. 8 BI + 8 BO, IEC 61850 Ed. 2",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Relay / Protection",
+        "name": "Numerical IDMT O/C & E/F Relay (Directional & Non-Directional)",
+        "voltage_class": "—",
+        "rating": "Min. 24 BI + 12 BO, IEC 61850 Ed. 2",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Relay / Protection",
+        "name": "Auxiliary Flag Relay (Transformer Self-Protection)",
+        "voltage_class": "—",
+        "rating": "Hand + Electrical reset",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Relay / Protection",
+        "name": "Trip Circuit Supervision (TCS) Relay",
+        "voltage_class": "—",
+        "rating": "Modular, separate per trip coil",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Relay / Protection",
+        "name": "Master Trip Relay",
+        "voltage_class": "—",
+        "rating": "< 10 ms operating time",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Relay / Protection",
+        "name": "Annunciator",
+        "voltage_class": "—",
+        "rating": "30 windows or more, IEC 61850 / Modbus",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Relay / Protection",
+        "name": "Trip Coil (33 kV breaker spare)",
+        "voltage_class": "33 kV",
+        "rating": "110 V DC",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Relay / Protection",
+        "name": "Trip Coil (11 kV breaker spare)",
+        "voltage_class": "11 kV",
+        "rating": "110 V DC",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Relay / Protection",
+        "name": "Closing Coil (breaker spare)",
+        "voltage_class": "—",
+        "rating": "110 V DC",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Relay / Protection",
+        "name": "Spring Charging Motor (breaker spare)",
+        "voltage_class": "—",
+        "rating": "240 V AC ± 10%",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Metering",
+        "name": "Multi-Tariff Programmable Energy Meter (Solid State)",
+        "voltage_class": "110 V",
+        "rating": "3 × 5 (6) A, 3-Phase 4-Wire 3-Element",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Metering",
+        "name": "Indication Ammeter (Digital, 96 × 96 mm)",
+        "voltage_class": "—",
+        "rating": "Panel mount",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Metering",
+        "name": "Indication Voltmeter (Digital, 96 × 96 mm)",
+        "voltage_class": "—",
+        "rating": "Panel mount",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Power Cable",
+        "name": "XLPE Insulated Copper Cable – Single Core, 1C × 500 mm²",
+        "voltage_class": "33 kV",
+        "rating": "—",
+        "unit": "Meter",
+        "quantity": null
+      },
+      {
+        "category": "Power Cable",
+        "name": "XLPE Insulated Copper Cable – Single Core, 1C × 500 mm²",
+        "voltage_class": "11 kV",
+        "rating": "—",
+        "unit": "Meter",
+        "quantity": null
+      },
+      {
+        "category": "Power Cable",
+        "name": "XLPE Insulated Copper Cable – Three Core, 3C × 185 mm²",
+        "voltage_class": "11 kV",
+        "rating": "—",
+        "unit": "Meter",
+        "quantity": null
+      },
+      {
+        "category": "Power Cable",
+        "name": "PVC Insulated & Sheathed Copper Cable, 1C × 150 mm²",
+        "voltage_class": "LV (1.1 kV)",
+        "rating": "For transformer neutral / grounding",
+        "unit": "Meter",
+        "quantity": null
+      },
+      {
+        "category": "Power Cable",
+        "name": "PVC Insulated & Sheathed Copper Cable, 1C × 120 mm²",
+        "voltage_class": "LV (1.1 kV)",
+        "rating": "—",
+        "unit": "Meter",
+        "quantity": null
+      },
+      {
+        "category": "Power Cable",
+        "name": "PVC Insulated & Sheathed Copper Cable, 1C × 95 mm²",
+        "voltage_class": "LV (1.1 kV)",
+        "rating": "—",
+        "unit": "Meter",
+        "quantity": null
+      },
+      {
+        "category": "Power Cable",
+        "name": "PVC Insulated & Sheathed Copper Cable, 1C × 70 mm²",
+        "voltage_class": "LV (1.1 kV)",
+        "rating": "—",
+        "unit": "Meter",
+        "quantity": null
+      },
+      {
+        "category": "Control Cable",
+        "name": "PVC Insulated Multi-Core Copper Control Cable, 2C × 2.5 mm²",
+        "voltage_class": "LV",
+        "rating": "—",
+        "unit": "Meter",
+        "quantity": null
+      },
+      {
+        "category": "Control Cable",
+        "name": "PVC Insulated Multi-Core Copper Control Cable, 4C × 2.5 mm²",
+        "voltage_class": "LV",
+        "rating": "—",
+        "unit": "Meter",
+        "quantity": null
+      },
+      {
+        "category": "Control Cable",
+        "name": "PVC Insulated Multi-Core Copper Control Cable, 8C × 2.5 mm²",
+        "voltage_class": "LV",
+        "rating": "—",
+        "unit": "Meter",
+        "quantity": null
+      },
+      {
+        "category": "Control Cable",
+        "name": "PVC Insulated Multi-Core Copper Control Cable, 12C × 2.5 mm²",
+        "voltage_class": "LV",
+        "rating": "—",
+        "unit": "Meter",
+        "quantity": null
+      },
+      {
+        "category": "Control Cable",
+        "name": "PVC Insulated Multi-Core Copper Control Cable, 14C × 2.5 mm²",
+        "voltage_class": "LV",
+        "rating": "—",
+        "unit": "Meter",
+        "quantity": null
+      },
+      {
+        "category": "Control Cable",
+        "name": "PVC Insulated Multi-Core Copper Control Cable, 16C × 2.5 mm²",
+        "voltage_class": "LV",
+        "rating": "—",
+        "unit": "Meter",
+        "quantity": null
+      },
+      {
+        "category": "Control Cable",
+        "name": "PVC Insulated Multi-Core Copper Control Cable, 19C × 2.5 mm²",
+        "voltage_class": "LV",
+        "rating": "—",
+        "unit": "Meter",
+        "quantity": null
+      },
+      {
+        "category": "Control Cable",
+        "name": "PVC Insulated Multi-Core Copper Control Cable, 24C × 2.5 mm²",
+        "voltage_class": "LV",
+        "rating": "—",
+        "unit": "Meter",
+        "quantity": null
+      },
+      {
+        "category": "Control Cable",
+        "name": "PVC Insulated Multi-Core Copper Control Cable, 2C × 4 mm²",
+        "voltage_class": "LV",
+        "rating": "—",
+        "unit": "Meter",
+        "quantity": null
+      },
+      {
+        "category": "Control Cable",
+        "name": "PVC Insulated Multi-Core Copper Control Cable, 4C × 4 mm²",
+        "voltage_class": "LV",
+        "rating": "—",
+        "unit": "Meter",
+        "quantity": null
+      },
+      {
+        "category": "Control Cable",
+        "name": "PVC Insulated Multi-Core Copper Control Cable, 4C × 6 mm²",
+        "voltage_class": "LV",
+        "rating": "—",
+        "unit": "Meter",
+        "quantity": null
+      },
+      {
+        "category": "Control Cable",
+        "name": "PVC Insulated Copper Cable, 2C × 10 mm²",
+        "voltage_class": "LV",
+        "rating": "—",
+        "unit": "Meter",
+        "quantity": null
+      },
+      {
+        "category": "Cable Accessory",
+        "name": "Indoor GIS Plug-in Type Cable Termination Kit (1C × 500 mm² XLPE Cu)",
+        "voltage_class": "33 kV",
+        "rating": "—",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Cable Accessory",
+        "name": "Outdoor Cable Termination Kit (1C × 500 mm² XLPE Cu)",
+        "voltage_class": "33 kV",
+        "rating": "—",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Cable Accessory",
+        "name": "Indoor Cable Termination Kit (1C × 500 mm² XLPE Cu)",
+        "voltage_class": "11 kV",
+        "rating": "—",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Cable Accessory",
+        "name": "Outdoor Cable Termination Kit (1C × 500 mm² XLPE Cu)",
+        "voltage_class": "11 kV",
+        "rating": "—",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Cable Accessory",
+        "name": "Indoor Cable Termination Kit (3C × 185 mm² XLPE Cu)",
+        "voltage_class": "11 kV",
+        "rating": "—",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Cable Accessory",
+        "name": "Outdoor Cable Termination Kit (3C × 185 mm² XLPE Cu)",
+        "voltage_class": "11 kV",
+        "rating": "—",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Cable Accessory",
+        "name": "Cable Lugs (Cu / Bi-metallic) – Various Sizes",
+        "voltage_class": "33 / 11 / 0.415 kV",
+        "rating": "—",
+        "unit": "Lot",
+        "quantity": null
+      },
+      {
+        "category": "Connector / Clamp",
+        "name": "H-Type Connector – Bolted, Aluminium",
+        "voltage_class": "—",
+        "rating": "Min. 628 A, for ACSR GROSBEAK",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Connector / Clamp",
+        "name": "PG Clamp – Bolted, Aluminium",
+        "voltage_class": "—",
+        "rating": "For ACSR GROSBEAK to ACSR GROSBEAK",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Connector / Clamp",
+        "name": "Flat I-Type Connector (25 mm)",
+        "voltage_class": "33 kV",
+        "rating": "Bolted, Aluminium Alloy",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Connector / Clamp",
+        "name": "T-Type Connector (25 / 25 mm)",
+        "voltage_class": "33 kV",
+        "rating": "Bolted, Aluminium Alloy",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Connector / Clamp",
+        "name": "T-Type Connector – Alternative Size",
+        "voltage_class": "33 kV",
+        "rating": "Bolted, Aluminium Alloy",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Connector / Clamp",
+        "name": "L-Type Connector",
+        "voltage_class": "33 kV",
+        "rating": "Bolted, Aluminium Alloy",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Connector / Clamp",
+        "name": "Double I-Type Connector (36 / 25 mm)",
+        "voltage_class": "33 kV",
+        "rating": "Bolted, Aluminium Alloy",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Connector / Clamp",
+        "name": "Terminal Tension Clamp (for Shield Wire)",
+        "voltage_class": "—",
+        "rating": "9.525 mm shield wire",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Connector / Clamp",
+        "name": "Support Clamp (for Shield Wire)",
+        "voltage_class": "—",
+        "rating": "9.525 mm shield wire",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Connector / Clamp",
+        "name": "Bi-Metallic Connector (Cu-Al) – Various Sizes",
+        "voltage_class": "33 / 11 kV",
+        "rating": "—",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Connector / Clamp",
+        "name": "Earthing Mesh Connector – Various Sizes",
+        "voltage_class": "—",
+        "rating": "—",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Earthing",
+        "name": "Earthing Electrode / Grounding Rod (Copper)",
+        "voltage_class": "—",
+        "rating": "16 mm dia × 6 m length",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Earthing",
+        "name": "Earthing Grid / Mesh – Bare Copper",
+        "voltage_class": "—",
+        "rating": "Min. 150 mm², buried at min. 0.6 m depth",
+        "unit": "Lot",
+        "quantity": null
+      },
+      {
+        "category": "DC System",
+        "name": "Ni-Cd Battery Bank",
+        "voltage_class": "110 V DC",
+        "rating": "200 Ah, 92 cells + 5 spare cells",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "DC System",
+        "name": "Battery Charger (Float / Boost)",
+        "voltage_class": "110 V DC",
+        "rating": "80 A",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "DC System",
+        "name": "DC Distribution Panel (DCDB)",
+        "voltage_class": "110 V DC",
+        "rating": "With MCB feeders",
+        "unit": "Set",
+        "quantity": null
+      }
+    ]
+  },
+  "line_equipment": {
+    "headers": [
+      "Equipment Name",
+      "Voltage Class",
+      "Description",
+      "Unit",
+      "Quantity"
+    ],
+    "items": [
+      {
+        "category": "SPC Pole",
+        "name": "15 Meter SPC Pole (650 DaN)",
+        "voltage_class": "—",
+        "description": "15 m length, 650 DaN",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "SPC Pole",
+        "name": "12 Meter SPC Pole (350 DaN)",
+        "voltage_class": "—",
+        "description": "12 m length, 350 DaN",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "SPC Pole",
+        "name": "12 Meter SPC Pole (450 DaN)",
+        "voltage_class": "—",
+        "description": "12 m length, 450 DaN",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "SPC Pole",
+        "name": "9 Meter SPC Pole (250 DaN)",
+        "voltage_class": "—",
+        "description": "9 m length, 250 DaN",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "SPC Pole",
+        "name": "9 Meter SPC Pole (200 DaN)",
+        "voltage_class": "—",
+        "description": "9 m length, 200 DaN",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Conductor",
+        "name": "ACSR Grosbeak Conductor",
+        "voltage_class": "33 kV",
+        "description": "Aluminium Conductor Steel Reinforced",
+        "unit": "KM",
+        "quantity": null
+      },
+      {
+        "category": "Conductor",
+        "name": "ACSR Merlin Conductor",
+        "voltage_class": "33 kV",
+        "description": "Aluminium Conductor Steel Reinforced",
+        "unit": "KM",
+        "quantity": null
+      },
+      {
+        "category": "Conductor",
+        "name": "ACSR DOG Conductor",
+        "voltage_class": "11 kV",
+        "description": "Aluminium Conductor Steel Reinforced",
+        "unit": "KM",
+        "quantity": null
+      },
+      {
+        "category": "Conductor",
+        "name": "AAC Wasp Conductor",
+        "voltage_class": "11 kV / LV",
+        "description": "All Aluminium Conductor",
+        "unit": "KM",
+        "quantity": null
+      },
+      {
+        "category": "Conductor",
+        "name": "AAC Ant Conductor",
+        "voltage_class": "LV (0.4 kV)",
+        "description": "All Aluminium Conductor",
+        "unit": "KM",
+        "quantity": null
+      },
+      {
+        "category": "Conductor",
+        "name": "Guy Wire (Galvanized Steel Stranded)",
+        "voltage_class": "—",
+        "description": "7/3.15 mm strands, 54.53 mm² CSA",
+        "unit": "KM",
+        "quantity": null
+      },
+      {
+        "category": "Conductor",
+        "name": "Aluminium Binding Wire",
+        "voltage_class": "—",
+        "description": "Soft AL, for tying conductors at insulators",
+        "unit": "KM",
+        "quantity": null
+      },
+      {
+        "category": "33 kV Cross Arm",
+        "name": "33 kV Cross Arm – Straight Type",
+        "voltage_class": "33 kV",
+        "description": "Galvanized steel",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "33 kV Cross Arm",
+        "name": "33 kV Cross Arm – Tension Type (3°–45°)",
+        "voltage_class": "33 kV",
+        "description": "Galvanized steel, for 3°–45° angle",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "33 kV Cross Arm",
+        "name": "33 kV Cross Arm – Tension Type (46°–90°)",
+        "voltage_class": "33 kV",
+        "description": "Galvanized steel, for 46°–90° angle / dead end",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "33 kV Insulator",
+        "name": "33 kV Post Insulator",
+        "voltage_class": "33 kV",
+        "description": "Porcelain, pedestal mount",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "33 kV Insulator",
+        "name": "33 kV Pin Insulator",
+        "voltage_class": "33 kV",
+        "description": "Porcelain, pin type",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "33 kV Insulator",
+        "name": "33 kV Disc Insulator",
+        "voltage_class": "33 kV",
+        "description": "Porcelain, ball & socket, UTS 120 kN",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "33 kV Insulator",
+        "name": "33 kV Guy Insulator",
+        "voltage_class": "33 kV",
+        "description": "Porcelain, guy strain type",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Insulator",
+        "name": "11 kV Pin Insulator",
+        "voltage_class": "11 kV",
+        "description": "Porcelain, pin type",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Insulator",
+        "name": "11 kV Disc Insulator",
+        "voltage_class": "11 kV",
+        "description": "Porcelain, ball & socket",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Insulator",
+        "name": "11 kV Guy Insulator",
+        "voltage_class": "11 kV",
+        "description": "Porcelain, guy strain type",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Insulator",
+        "name": "0.4 kV Guy Insulator",
+        "voltage_class": "LV (0.4 kV)",
+        "description": "Porcelain, guy strain type",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Insulator",
+        "name": "Shackle Insulator",
+        "voltage_class": "LV (0.4 kV)",
+        "description": "Porcelain, for LV line fitting",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "33 kV Line Fittings",
+        "name": "33 kV Guy Set",
+        "voltage_class": "33 kV",
+        "description": "Complete set with thimble, eye bolt, clamp",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "33 kV Line Fittings",
+        "name": "33 kV Guy Clamp",
+        "voltage_class": "33 kV",
+        "description": "Galvanized steel",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "33 kV Line Fittings",
+        "name": "Preformed Termination (Guy Wire)",
+        "voltage_class": "—",
+        "description": "Preformed armour grip dead-end",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "33 kV Line Fittings",
+        "name": "Mid Span Joint – ACSR Grosbeak",
+        "voltage_class": "33 kV",
+        "description": "Compression joint sleeve",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "33 kV Line Fittings",
+        "name": "PG Clamp – ACSR Grosbeak",
+        "voltage_class": "33 kV",
+        "description": "Parallel groove clamp, bolted",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "33 kV Line Fittings",
+        "name": "Armor Rod – ACSR Grosbeak",
+        "voltage_class": "33 kV",
+        "description": "Preformed AL armour rod",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "33 kV Line Fittings",
+        "name": "Mid Span Joint – ACSR Merlin",
+        "voltage_class": "33 kV",
+        "description": "Compression joint sleeve",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "33 kV Line Fittings",
+        "name": "PG Clamp – ACSR Merlin",
+        "voltage_class": "33 kV",
+        "description": "Parallel groove clamp, bolted",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "33 kV Line Fittings",
+        "name": "Armor Rod – ACSR Merlin",
+        "voltage_class": "33 kV",
+        "description": "Preformed AL armour rod",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "33 kV Line Fittings",
+        "name": "33 kV Pole Earthing",
+        "voltage_class": "33 kV",
+        "description": "Complete set with rod, conductor & clamp",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "33 kV Line Fittings",
+        "name": "33 kV Straight Type Earth Mast",
+        "voltage_class": "33 kV",
+        "description": "Galvanized steel, straight pole top",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "33 kV Line Fittings",
+        "name": "33 kV Tension Type Earth Mast",
+        "voltage_class": "33 kV",
+        "description": "Galvanized steel, tension pole top",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Cross Arm & Mounts",
+        "name": "11 kV Cross Arm – Straight Type",
+        "voltage_class": "11 kV",
+        "description": "Galvanized steel",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Cross Arm & Mounts",
+        "name": "11 kV Cross Arm – Tension Type (5°–45°)",
+        "voltage_class": "11 kV",
+        "description": "Galvanized steel, for 5°–45° angle",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Cross Arm & Mounts",
+        "name": "Top Mount Bracket",
+        "voltage_class": "11 kV",
+        "description": "Galvanized steel, pole top mount",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Cross Arm & Mounts",
+        "name": "Side Mount Bracket",
+        "voltage_class": "11 kV",
+        "description": "Galvanized steel, pole side mount",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Cross Arm & Mounts",
+        "name": "5-Spool Wire Rack – Angle Type",
+        "voltage_class": "LV (0.4 kV)",
+        "description": "Galvanized steel, 5-position, angle iron",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Cross Arm & Mounts",
+        "name": "5-Spool Wire Rack – Channel Type",
+        "voltage_class": "LV (0.4 kV)",
+        "description": "Galvanized steel, 5-position, channel iron",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Line Fittings",
+        "name": "Stud Clamp",
+        "voltage_class": "11 kV",
+        "description": "For pole top stud connection",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Line Fittings",
+        "name": "2-Way Pole Band",
+        "voltage_class": "11 kV",
+        "description": "Galvanized steel banding clamp",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Line Fittings",
+        "name": "Multipurpose Band",
+        "voltage_class": "11 kV",
+        "description": "Galvanized steel banding clamp",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Line Fittings",
+        "name": "2-Way Stud Clamp",
+        "voltage_class": "11 kV",
+        "description": "Galvanized steel",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Line Fittings",
+        "name": "2-Way Tension Set",
+        "voltage_class": "11 kV",
+        "description": "Complete tension hardware set",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Line Fittings",
+        "name": "4-Way Tension Set",
+        "voltage_class": "11 kV",
+        "description": "Complete tension hardware set",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Line Fittings",
+        "name": "Guy Assembly",
+        "voltage_class": "11 kV",
+        "description": "Complete guy hardware assembly",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Line Fittings",
+        "name": "Extension Link",
+        "voltage_class": "11 kV",
+        "description": "Galvanized steel link",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Line Fittings",
+        "name": "Mid Span Joint – ACSR DOG",
+        "voltage_class": "11 kV",
+        "description": "Compression joint sleeve",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Line Fittings",
+        "name": "Mid Span Joint – AAC WASP",
+        "voltage_class": "11 kV / LV",
+        "description": "Compression joint sleeve",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Line Fittings",
+        "name": "Mid Span Joint – AAC ANT",
+        "voltage_class": "LV (0.4 kV)",
+        "description": "Compression joint sleeve",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Line Fittings",
+        "name": "11 kV Pole Earthing",
+        "voltage_class": "11 kV",
+        "description": "Complete set with rod, conductor & clamp",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Line Fittings",
+        "name": "Armour Rod – ACSR DOG",
+        "voltage_class": "11 kV",
+        "description": "Preformed AL armour rod",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Line Fittings",
+        "name": "Preformed Termination – Guy Wire",
+        "voltage_class": "—",
+        "description": "Preformed armour grip dead-end for guy",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Line Fittings",
+        "name": "Preformed Termination – AAC WASP",
+        "voltage_class": "11 kV / LV",
+        "description": "Preformed armour grip dead-end",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Line Fittings",
+        "name": "Preformed Termination – AAC ANT",
+        "voltage_class": "LV (0.4 kV)",
+        "description": "Preformed armour grip dead-end",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Line Fittings",
+        "name": "H-Type Connector (100/100 mm²)",
+        "voltage_class": "11 kV",
+        "description": "Bolted aluminium connector, 100/100",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Line Fittings",
+        "name": "H-Type Connector (100/50 mm²)",
+        "voltage_class": "11 kV",
+        "description": "Bolted aluminium connector, 100/50",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "11 kV Line Fittings",
+        "name": "H-Type Connector (50/50 mm²)",
+        "voltage_class": "11 kV",
+        "description": "Bolted aluminium connector, 50/50",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Distribution Transformer",
+        "name": "Distribution Transformer (3-Phase)",
+        "voltage_class": "11 / 0.4 kV",
+        "description": "250 kVA",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Distribution Transformer",
+        "name": "Distribution Transformer (3-Phase)",
+        "voltage_class": "11 / 0.4 kV",
+        "description": "200 kVA",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Distribution Transformer",
+        "name": "Distribution Transformer (3-Phase)",
+        "voltage_class": "11 / 0.4 kV",
+        "description": "100 kVA",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Pole-Mounted Protection",
+        "name": "Lightning Arrester (LA)",
+        "voltage_class": "11 kV",
+        "description": "Polymer housed, station class",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Pole-Mounted Protection",
+        "name": "Drop-Out Fuse Cutout (DOFC)",
+        "voltage_class": "11 kV",
+        "description": "With fuse link, polymer housed",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "Pole-Mounted Protection",
+        "name": "Moulded Case Circuit Breaker (MCCB)",
+        "voltage_class": "LV (0.4 kV)",
+        "description": "For LV side of distribution transformer",
+        "unit": "No.",
+        "quantity": null
+      },
+      {
+        "category": "LV / Service Cable",
+        "name": "Copper Cable – Single Core, 95 mm²",
+        "voltage_class": "LV (1.1 kV)",
+        "description": "PVC insulated, 1C × 95 mm² Cu",
+        "unit": "Meter",
+        "quantity": null
+      },
+      {
+        "category": "LV / Service Cable",
+        "name": "Copper Cable – Single Core, 70 mm²",
+        "voltage_class": "LV (1.1 kV)",
+        "description": "PVC insulated, 1C × 70 mm² Cu",
+        "unit": "Meter",
+        "quantity": null
+      },
+      {
+        "category": "Platform & Accessories",
+        "name": "Transformer Platform (Pole Mount)",
+        "voltage_class": "11 / 0.4 kV",
+        "description": "Galvanized steel, for 100–250 kVA Tx",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Platform & Accessories",
+        "name": "Transformer Earthing Set",
+        "voltage_class": "11 / 0.4 kV",
+        "description": "Complete with rod, conductor & clamp",
+        "unit": "Set",
+        "quantity": null
+      },
+      {
+        "category": "Platform & Accessories",
+        "name": "95 sqmm Terminal Lug (Cu)",
+        "voltage_class": "LV",
+        "description": "For 95 mm² cable termination",
+        "unit": "No.",
+        "quantity": null
+      }
+    ]
+  }
+}

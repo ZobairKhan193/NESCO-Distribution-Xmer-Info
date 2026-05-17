@@ -1,313 +1,866 @@
 {
-  "nidmp": {
-    "id": "nidmp",
-    "name": "Network Infrastructure Development & Modernization of Power Distribution System in NESCO Area (NIDMP)",
-    "short": "NIDMP",
-    "stage": "Upcoming",
-    "funding": "ADB-funded",
-    "scope": [
-      "Upgrade 9 substations (Fakirpara, Balubari, Uposohor, Setabgonj, Panchagarh, Katkipara, Mahiganj, Dhangora, Niamotpur & Golahat).",
-      "Upgrade 4 GIS substations (S&D-1 Capai Nawabganj, S&D-1 Rangpur, S&D-1 Bogura, Chandipur Rajshahi).",
-      "Construct 4 new GIS Switching Substations including Miapur 21-bay & Katakhali 11-bay.",
-      "Construct 4 new AIS Switching Substations.",
-      "Lay underground 11 kV cable in core city zones.",
-      "Replace ~14 ageing 33 kV breakers and panels.",
-      "Add 2,000 LA / 2,000 DOFC / 2,000 MCCB sets and 2,570 distribution transformers.",
-      "Install 800,000 Smart Meters (SMP) — single & three-phase.",
-      "Energy storage systems × 4 lots, IED + fault locator package, cybersecurity scope, training & workshops."
-    ],
-    "totals": {
-      "ss_upgrade_9_bdt_with_vat": 1266785442.48,
-      "ss_upgrade_9_usd_with_vat": 10470278.87,
-      "ss_upgrade_gis_4_bdt_with_vat": 1726014423.64,
-      "ss_upgrade_gis_4_usd_with_vat": 14147659.21,
-      "ss_ais_dinajpur_bdt_with_vat": 365186113.76,
-      "ss_ais_dinajpur_usd_with_vat": 2993328.8,
-      "additional_scope_bdt": 9232015393.0
+  "categories": [
+    {
+      "id": "ongoing",
+      "label": "Ongoing Projects",
+      "projects": [
+        {
+          "id": "nidmp",
+          "code": "NIDMP",
+          "name": "Network Infrastructure Development & Modernization of Power Distribution System in NESCO Area",
+          "summary": "ADB-funded modernization project. Adds and upgrades 33/11 kV substations, control rooms, switchgear and bay-breakers across NESCO grid sites.",
+          "substation_summary": {
+            "headers": [
+              "S/N",
+              "Substation",
+              "Power Transformer",
+              "33 kV VCB",
+              "33 kV PCM Panel",
+              "11 kV Switchgear",
+              "New Control Room"
+            ],
+            "rows": [
+              {
+                "S/N": "1",
+                "Substation": "Fakirpara",
+                "Power Transformer": "1× 20/26.66 MVA, 33/11 kV (with OLTC)+RTCC",
+                "33 kV VCB": "6 sets (2+4), 36 kV, 1600 A, 31.5 kA",
+                "33 kV PCM Panel": "02 nos. Power Transformer Panel, 02 nos. Line Panel",
+                "11 kV Switchgear": "2 Inc + 10 Line Feeder + 1 Bus Coupler + 1 Adaptation",
+                "New Control Room": "No — renovation of existing control building only"
+              },
+              {
+                "S/N": "2",
+                "Substation": "Balubari",
+                "Power Transformer": "1× 20/26.66 MVA, 33/11 kV (with OLTC)+RTCC",
+                "33 kV VCB": "6 sets (2+4), 36 kV, 1600 A, 31.5 kA",
+                "33 kV PCM Panel": "03 nos. Power Transformer Panel, 03 nos. Line Panel",
+                "11 kV Switchgear": "1 Inc + 5 Line Feeder + 1 Bus Coupler + 1 Adaptation",
+                "New Control Room": "No — renovation of existing control building only"
+              },
+              {
+                "S/N": "3",
+                "Substation": "Upasahar",
+                "Power Transformer": "1× 20/26.66 MVA, 33/11 kV (with OLTC)+RTCC",
+                "33 kV VCB": "2 sets, 36 kV, 1600 A, 31.5 kA",
+                "33 kV PCM Panel": "01 no. Power Transformer Panel, 01 no. Line Panel",
+                "11 kV Switchgear": "1 Inc + 5 Line Feeder + 1 Bus Coupler + 1 Adaptation (SCHNEIDER 12 kV SG preferable)",
+                "New Control Room": "No — renovation only; new battery room at ground floor by brick partitioning (old battery room dismantled to install new 11 kV SG panels)"
+              },
+              {
+                "S/N": "4",
+                "Substation": "Setabgonj",
+                "Power Transformer": "1× 20/26.66 MVA, 33/11 kV (with OLTC)+RTCC + 1× Station Xmer 33/0.415 kV, 200 kVA",
+                "33 kV VCB": "4 sets, 36 kV, 1600 A, 31.5 kA",
+                "33 kV PCM Panel": "01 no. Power Transformer Panel, 03 nos. Line Panel",
+                "11 kV Switchgear": "1 Inc + 5 Line Feeder + 1 Bus Coupler + 1 Adaptation",
+                "New Control Room": "No — renovation only; existing AIS structure dismantled"
+              },
+              {
+                "S/N": "5",
+                "Substation": "Panchagarh",
+                "Power Transformer": "1× 20/26.66 MVA, 33/11 kV (with OLTC)+RTCC + 1× Station Xmer 33/0.415 kV, 200 kVA",
+                "33 kV VCB": "2 sets, 36 kV, 1600 A, 31.5 kA",
+                "33 kV PCM Panel": "01 no. Power Transformer Panel, 01 no. Line Panel",
+                "11 kV Switchgear": "1 Inc + 5 Line Feeder + 1 Bus Coupler + 1 Adaptation",
+                "New Control Room": "No — renovation of existing control building only"
+              },
+              {
+                "S/N": "6",
+                "Substation": "Katkipara",
+                "Power Transformer": "1× 20/26.66 MVA, 33/11 kV (with OLTC)+RTCC",
+                "33 kV VCB": "7 sets (3+4), 36 kV, 1600 A, 31.5 kA",
+                "33 kV PCM Panel": "03 nos. Power Transformer Panel, 04 nos. Line Panel",
+                "11 kV Switchgear": "3 Inc + 15 Line Feeder + 2 Bus Coupler + 1 Adaptation",
+                "New Control Room": "No — renovation only; old store room in control building dismantled to locate new 11 kV SG panel"
+              },
+              {
+                "S/N": "7",
+                "Substation": "Mahigonj",
+                "Power Transformer": "1× 20/26.66 MVA, 33/11 kV (with OLTC)+RTCC",
+                "33 kV VCB": "2 sets, 36 kV, 1600 A, 31.5 kA",
+                "33 kV PCM Panel": "01 no. Power Transformer Panel, 01 no. Line Panel",
+                "11 kV Switchgear": "1 Inc + 5 Line Feeder + 1 Bus Coupler + 1 Adaptation (SCHNEIDER 12 kV SG preferable)",
+                "New Control Room": "No — renovation only; new battery room at ground floor by brick partitioning"
+              },
+              {
+                "S/N": "8",
+                "Substation": "Dhanghora",
+                "Power Transformer": "0",
+                "33 kV VCB": "2 sets, 36 kV, 1600 A, 31.5 kA",
+                "33 kV PCM Panel": "01 no. Power Transformer Panel, 01 no. Line Panel",
+                "11 kV Switchgear": "1 Inc + 5 Line Feeder + 1 Bus Coupler + 1 Adaptation (SCHNEIDER 12 kV SG preferable)",
+                "New Control Room": "No — renovation only; new battery room at ground floor with relocation of existing 110 V battery set"
+              },
+              {
+                "S/N": "9",
+                "Substation": "Golahat",
+                "Power Transformer": "0",
+                "33 kV VCB": "2 sets (1+1), 36 kV, 1600 A, 31.5 kA",
+                "33 kV PCM Panel": "02 nos. Power Transformer Panel, 02 nos. Line Panel",
+                "11 kV Switchgear": "1 Inc + 5 Line Feeder + 1 Bus Coupler + 1 Adaptation",
+                "New Control Room": "No — renovation of existing control building only"
+              },
+              {
+                "S/N": "10",
+                "Substation": "Niamotpur",
+                "Power Transformer": "1× 20/26.66 MVA, 33/11 kV (with OLTC)+RTCC",
+                "33 kV VCB": "5 sets (2+3), 36 kV, 1600 A, 31.5 kA",
+                "33 kV PCM Panel": "03 nos. Power Transformer Panel, 02 nos. Line Panel",
+                "11 kV Switchgear": "2 Inc + 10 Line Feeder + 2 Bus Coupler + 1 Adaptation (coupling with relocated TEMKO via 2×1Cx500 rm UG cable)",
+                "New Control Room": "No — renovation of existing control building only"
+              }
+            ]
+          },
+          "grid_bay_breakers": {
+            "headers": [
+              "প্যাকেজ ও লট নং",
+              "ক্রমিক নং",
+              "ডিপিপি অনুযায়ী গ্রীডের নাম",
+              "ডিপিপি অনুযায়ী বে-ব্রেকার সংখ্যা",
+              "মতামত (যদি থাকে)",
+              "Updated Quantity",
+              "Reasoning"
+            ],
+            "rows": [
+              {
+                "প্যাকেজ ও লট নং": "GD-9 (Lot 1)",
+                "ক্রমিক নং": "1",
+                "ডিপিপি অনুযায়ী গ্রীডের নাম": "Jaldhaka Grid",
+                "ডিপিপি অনুযায়ী বে-ব্রেকার সংখ্যা": "2",
+                "মতামত (যদি থাকে)": "OK",
+                "Updated Quantity": "2",
+                "Reasoning": "To return PBS Bay-Breaker"
+              },
+              {
+                "প্যাকেজ ও লট নং": "",
+                "ক্রমিক নং": "2",
+                "ডিপিপি অনুযায়ী গ্রীডের নাম": "Sabgram Grid, Bogura",
+                "ডিপিপি অনুযায়ী বে-ব্রেকার সংখ্যা": "4",
+                "মতামত (যদি থাকে)": "",
+                "Updated Quantity": "4",
+                "Reasoning": "2 Bay-Breaker From PGB & \n4 in NIDMP -\n1. Matidali\n2. Banani\n3. Bogura-1 Campus/Shibbabati\n4. Spare\n5. Spare-2\n6. Spare-3"
+              },
+              {
+                "প্যাকেজ ও লট নং": "",
+                "ক্রমিক নং": "3",
+                "ডিপিপি অনুযায়ী গ্রীডের নাম": "Mohasthan Grid, Bogura",
+                "ডিপিপি অনুযায়ী বে-ব্রেকার সংখ্যা": "2",
+                "মতামত (যদি থাকে)": "OK",
+                "Updated Quantity": "2",
+                "Reasoning": "1. Shibganj Fire Service New Substation\n2. Alternativer source for Shibganj 33/11 kV SS"
+              },
+              {
+                "প্যাকেজ ও লট নং": "",
+                "ক্রমিক নং": "4",
+                "ডিপিপি অনুযায়ী গ্রীডের নাম": "Puran Bogura Grid, Bogura",
+                "ডিপিপি অনুযায়ী বে-ব্রেকার সংখ্যা": "1",
+                "মতামত (যদি থাকে)": "2",
+                "Updated Quantity": "2",
+                "Reasoning": "1. SDD-1 New GIS SS\n2. Godarpara Alternative (Further Discussion required)\n3. If Dupchanchia grid is not implemented then one for Dupchanchia & one for Ajad Group may be considered"
+              },
+              {
+                "প্যাকেজ ও লট নং": "",
+                "ক্রমিক নং": "5",
+                "ডিপিপি অনুযায়ী গ্রীডের নাম": "Lalmonirhat Grid, Lalmonirhat",
+                "ডিপিপি অনুযায়ী বে-ব্রেকার সংখ্যা": "1",
+                "মতামত (যদি থাকে)": "1",
+                "Updated Quantity": "1",
+                "Reasoning": "Chaparhat Planned SS (Need further discussion)"
+              },
+              {
+                "প্যাকেজ ও লট নং": "",
+                "ক্রমিক নং": "6",
+                "ডিপিপি অনুযায়ী গ্রীডের নাম": "Golahat Grid, Sayedpur, Nilphamari",
+                "ডিপিপি অনুযায়ী বে-ব্রেকার সংখ্যা": "3",
+                "মতামত (যদি থাকে)": "3",
+                "Updated Quantity": "3",
+                "Reasoning": "1. Parbatipur (including Line)\n2. Rabiyar Mor (To be Discussed)\n3. EPZ (To be Discussed)"
+              },
+              {
+                "প্যাকেজ ও লট নং": "",
+                "ক্রমিক নং": "7",
+                "ডিপিপি অনুযায়ী গ্রীডের নাম": "Taraganj Grid SS",
+                "ডিপিপি অনুযায়ী বে-ব্রেকার সংখ্যা": "2",
+                "মতামত (যদি থাকে)": "2",
+                "Updated Quantity": "2",
+                "Reasoning": "Two Alternative Source For Rangpur (To be Discussed)"
+              },
+              {
+                "প্যাকেজ ও লট নং": "",
+                "ক্রমিক নং": "8",
+                "ডিপিপি অনুযায়ী গ্রীডের নাম": "Kurigram Grid",
+                "ডিপিপি অনুযায়ী বে-ব্রেকার সংখ্যা": "2",
+                "মতামত (যদি থাকে)": "2",
+                "Updated Quantity": "2",
+                "Reasoning": "1. Alternative Source for Kurigram 33/11 kV SS\n2. For Dhorola EPZ"
+              },
+              {
+                "প্যাকেজ ও লট নং": "GD-9 (Lot 2)",
+                "ক্রমিক নং": "9",
+                "ডিপিপি অনুযায়ী গ্রীডের নাম": "Nurpur Grid, Pabna",
+                "ডিপিপি অনুযায়ী বে-ব্রেকার সংখ্যা": "5",
+                "মতামত (যদি থাকে)": "3",
+                "Updated Quantity": "3",
+                "Reasoning": "1. For Kodomtola New AIS SS\n2. Poilanpur Second Circuit ( Line to be  included in NDB)\n3. Loskorpur Second Circuit (Line to be  included in NDB)"
+              },
+              {
+                "প্যাকেজ ও লট নং": "",
+                "ক্রমিক নং": "10",
+                "ডিপিপি অনুযায়ী গ্রীডের নাম": "Jaynagar Grid, Ishwardi, Pabna",
+                "ডিপিপি অনুযায়ী বে-ব্রেকার সংখ্যা": "3",
+                "মতামত (যদি থাকে)": "0",
+                "Updated Quantity": "0",
+                "Reasoning": "NESCO will receive 03 nos. Bay-Breaker from PBS"
+              },
+              {
+                "প্যাকেজ ও লট নং": "",
+                "ক্রমিক নং": "11",
+                "ডিপিপি অনুযায়ী গ্রীডের নাম": "Natore Grid, Natore",
+                "ডিপিপি অনুযায়ী বে-ব্রেকার সংখ্যা": "1",
+                "মতামত (যদি থাকে)": "OK",
+                "Updated Quantity": "1",
+                "Reasoning": ""
+              },
+              {
+                "প্যাকেজ ও লট নং": "",
+                "ক্রমিক নং": "12",
+                "ডিপিপি অনুযায়ী গ্রীডের নাম": "Amnura Grid, Chapainawabganj",
+                "ডিপিপি অনুযায়ী বে-ব্রেকার সংখ্যা": "2",
+                "মতামত (যদি থাকে)": "1",
+                "Updated Quantity": "1",
+                "Reasoning": "1. For Godagari\n2. Rohonpur (TO be discussed)"
+              },
+              {
+                "প্যাকেজ ও লট নং": "",
+                "ক্রমিক নং": "13",
+                "ডিপিপি অনুযায়ী গ্রীডের নাম": "Dupchachiya Grid, Bogura",
+                "ডিপিপি অনুযায়ী বে-ব্রেকার সংখ্যা": "5",
+                "মতামত (যদি থাকে)": "6x0",
+                "Updated Quantity": "0",
+                "Reasoning": "Thers is not any Grid Substation at Dupchanchia. Needs further discussion with Grid"
+              },
+              {
+                "প্যাকেজ ও লট নং": "",
+                "ক্রমিক নং": "14",
+                "ডিপিপি অনুযায়ী গ্রীডের নাম": "Naogaon Grid",
+                "ডিপিপি অনুযায়ী বে-ব্রেকার সংখ্যা": "3",
+                "মতামত (যদি থাকে)": "0",
+                "Updated Quantity": "0",
+                "Reasoning": ""
+              },
+              {
+                "প্যাকেজ ও লট নং": "Total =",
+                "ক্রমিক নং": "",
+                "ডিপিপি অনুযায়ী গ্রীডের নাম": "",
+                "ডিপিপি অনুযায়ী বে-ব্রেকার সংখ্যা": "36",
+                "মতামত (যদি থাকে)": "",
+                "Updated Quantity": "23",
+                "Reasoning": ""
+              }
+            ]
+          }
+        }
+      ]
     },
-    "ss_upgrade_list": [
-      {
-        "sl": 1,
-        "name": "Fakirpara",
-        "zone": "Dinajpur",
-        "bdt": 135207681.92
-      },
-      {
-        "sl": 2,
-        "name": "Balubari",
-        "zone": "Dinajpur",
-        "bdt": 145281815.18
-      },
-      {
-        "sl": 3,
-        "name": "Uposohor",
-        "zone": "Dinajpur",
-        "bdt": 107967352.18
-      },
-      {
-        "sl": 4,
-        "name": "Setabgonj",
-        "zone": "Dinajpur",
-        "bdt": 126360901.94
-      },
-      {
-        "sl": 5,
-        "name": "Panchagarh",
-        "zone": "Panchagarh",
-        "bdt": 116652945.14
-      },
-      {
-        "sl": 6,
-        "name": "Katkipara",
-        "zone": "Rangpur",
-        "bdt": 164506806.73
-      },
-      {
-        "sl": 7,
-        "name": "Mahiganj",
-        "zone": "Rangpur",
-        "bdt": 108479800.41
-      },
-      {
-        "sl": 8,
-        "name": "Dhangora",
-        "zone": "Rangpur",
-        "bdt": 107665400.41
-      },
-      {
-        "sl": 9,
-        "name": "Niamotpur & Golahat",
-        "zone": "Nilphamari",
-        "bdt": 254662738.58
-      }
-    ],
-    "ss_gis_list": [
-      {
-        "sl": 1,
-        "name": "S&D-1 Capai Nawabganj",
-        "zone": "Rajshahi",
-        "bdt": 116910477.67
-      },
-      {
-        "sl": 2,
-        "name": "S&D-1 Rangpur",
-        "zone": "Rangpur",
-        "bdt": 522588017.68
-      },
-      {
-        "sl": 3,
-        "name": "S&D-1 Bogura",
-        "zone": "Bogura",
-        "bdt": 532393667.96
-      },
-      {
-        "sl": 4,
-        "name": "Chandipur, Rajshahi",
-        "zone": "Rajshahi",
-        "bdt": 554122260.33
-      }
-    ],
-    "additional_scopes": [
-      {
-        "item": "Smart Meters (SMP)",
-        "qty": "800,000 nos",
-        "cost_lac": 49705.16
-      },
-      {
-        "item": "LA + DOFC + MCCB",
-        "qty": "2000+2000+2000",
-        "cost_lac": 2139.54
-      },
-      {
-        "item": "Distribution Transformer",
-        "qty": "2,570 nos",
-        "cost_lac": 18181.93
-      },
-      {
-        "item": "Energy Storage System",
-        "qty": "4 lots",
-        "cost_lac": 10084.6
-      },
-      {
-        "item": "Underground Cable",
-        "qty": "14 km",
-        "cost_lac": 8208.93
-      },
-      {
-        "item": "Cyber-security",
-        "qty": "lumpsum",
-        "cost_lac": 4000.0
-      }
-    ]
-  },
-  "pdssp": {
-    "id": "pdssp",
-    "name": "Power Distribution System Strengthening Project (PDSSP)",
-    "short": "PDSSP",
-    "stage": "Ongoing",
-    "funding": "NDB-funded",
-    "scope": [
-      "Strengthen and renovate 8 existing 33/11 kV substations.",
-      "Replace ageing power transformers with new 10/13.33 MVA & 20/26.66 MVA units fitted with OLTC.",
-      "Install 33 kV VCBs (36 kV, 1600 A, 31.5 kA) and PCM panels.",
-      "Replace 11 kV switchgear (incomers, line feeders, bus couplers).",
-      "Construct G+1 control rooms where existing buildings are inadequate."
-    ],
-    "substations": [
-      {
-        "sl": 1,
-        "zone": "Rajshahi Zone",
-        "name": "Godagari",
-        "district": "Rajshahi",
-        "power_xfr": "1× 10/13.33 MVA, 33/11 kV (with OLTC)+RTCC",
-        "vcb": "1 set, 36 kV, 1600 A, 31.5 kA",
-        "pcm_panel": "01 no. Power Tranformer Panel)",
-        "switchgear": "1 Inc + 5 Line Feeder + 1 Bus Coupler + 1 Adaptation",
-        "control_room": "No — existing control room retained (washroom & battery room relocated from 1st floor to ground floor)"
-      },
-      {
-        "sl": 2,
-        "zone": "Rajshahi Zone",
-        "name": "Katakhali",
-        "district": "Rajshahi",
-        "power_xfr": "1× 10/13.33 MVA, 33/11 kV (with OLTC)+RTCC",
-        "vcb": null,
-        "pcm_panel": null,
-        "switchgear": "1 Inc + 5 Line Feeder + 1 Bus Coupler + 1 Adaptation",
-        "control_room": "Yes — G+1 side extension to existing building, 12 m × 8 m × 2 floors = 192 sqm"
-      },
-      {
-        "sl": 3,
-        "zone": "Rajshahi Zone",
-        "name": "Matidali",
-        "district": "Bogra",
-        "power_xfr": "1× 20/26.66 MVA, 33/11 kV (with OLTC)+RTCC",
-        "vcb": "33 kV GIS — 4 bays (2 Line Inc/Out + 1 Bus Coupler with Riser + 1 Xmer Feeder); no outdoor VCB",
-        "pcm_panel": null,
-        "switchgear": "1 Inc + 6 Line Feeder + 1 Bus Coupler + 1 Adaptation",
-        "control_room": "No"
-      },
-      {
-        "sl": 4,
-        "zone": "Rajshahi Zone",
-        "name": "Sherpur",
-        "district": "Bogra",
-        "power_xfr": "Not in scope (existing transformers operational)",
-        "vcb": null,
-        "pcm_panel": "02 nos. Power Transformer Panel, 01 no. Line Panel",
-        "switchgear": " 2 Inc + 10 Line Feeder + 2 Bus Coupler + 1 Adaptation",
-        "control_room": "Partial — finishing of new portion already built by BPDB (water-tightening, 38 mm patent stone flooring, drainage)"
-      },
-      {
-        "sl": 5,
-        "zone": "Rajshahi Zone",
-        "name": "Puran Bogra",
-        "district": "Bogra",
-        "power_xfr": "1× 20/26.66 MVA, 33/11 kV (with OLTC)",
-        "vcb": "2 sets, 36 kV, 1600 A, 31.5 kA",
-        "pcm_panel": "03 nos. Power Transformer Panel, 01 no. Line Panel",
-        "switchgear": "3 Inc + 16 Line Feeder + 3 Bus Coupler + 1 Adaptation",
-        "control_room": "Yes — G+1 control building (3-storied foundation), 300 sqm / floor ≈ 500 sqm total"
-      },
-      {
-        "sl": 6,
-        "zone": "Rajshahi Zone",
-        "name": "Khonjonpur",
-        "district": "Joypurhat",
-        "power_xfr": "Relocation of 1× 10/13.33 MVA Xmer from Matidali (no new supply); RTCC supplied",
-        "vcb": "2 sets, 36 kV, 1600 A, 31.5 kA",
-        "pcm_panel": null,
-        "switchgear": "Not in scope — existing 11 kV panels (2 Inc + Bus Coupler/Riser + 2 PT + outgoing) relocated to new control building",
-        "control_room": "Yes — G+1 control building (3-storied foundation), 225 sqm / floor = 450 sqm total"
-      },
-      {
-        "sl": 7,
-        "zone": "Rajshahi Zone",
-        "name": "Baludanga",
-        "district": "Naogaon",
-        "power_xfr": "Not in scope",
-        "vcb": "2 sets, 36 kV, 1600 A, 31.5 kA",
-        "pcm_panel": null,
-        "switchgear": "2 sets new 11 kV SG panels (per site note; no detailed BOQ line items)",
-        "control_room": "No"
-      },
-      {
-        "sl": 8,
-        "zone": "Rajshahi Zone",
-        "name": "Arji Naogaon",
-        "district": "Naogaon",
-        "power_xfr": "Not in scope",
-        "vcb": null,
-        "pcm_panel": null,
-        "switchgear": "1 Inc + 5 Line Feeder + 1 Bus Coupler + 1 Adaptation",
-        "control_room": "No"
-      },
-      {
-        "sl": 9,
-        "zone": "Rajshahi Zone",
-        "name": "Kathaltoli",
-        "district": "Naogaon",
-        "power_xfr": "1× 20/26.66 MVA, 33/11 kV (with OLTC)",
-        "vcb": null,
-        "pcm_panel": null,
-        "switchgear": "Not in scope",
-        "control_room": "No"
-      },
-      {
-        "sl": 10,
-        "zone": "Rangpur Zone",
-        "name": "Masterpara",
-        "district": "Gaibandha",
-        "power_xfr": "Not in scope (only 1× Station Transformer 33/0.4 kV, 100 kVA)",
-        "vcb": "4 sets, 36 kV, 1600 A, 31.5 kA",
-        "pcm_panel": "02 nos. Power Transformer Panel",
-        "switchgear": "2 Inc + 10 Line Feeder + 1 Bus Coupler + 1 Adaptation",
-        "control_room": "No"
-      },
-      {
-        "sl": 11,
-        "zone": "Rangpur Zone",
-        "name": "Hatibandha-1",
-        "district": "Lalmonirhat",
-        "power_xfr": "1× 10/13.33 MVA, 33/11 kV (with OLTC) + 1× Station Xmer 33/0.4 kV, 100 kVA",
-        "vcb": "3 sets, 36 kV, 1600 A, 31.5 kA",
-        "pcm_panel": "01 no. Power Transformer Panel, 02 nos. Line Panel",
-        "switchgear": "1 Inc + 5 Line Feeder",
-        "control_room": "Yes — G+1 control building (3-storied foundation), 200 sqm / floor = 400 sqm total"
-      },
-      {
-        "sl": 12,
-        "zone": "Rangpur Zone",
-        "name": "Kukhapara",
-        "district": "Nilphamari",
-        "power_xfr": "1× 16/20 MVA, 33/11 kV (with OLTC)",
-        "vcb": "5 sets, 36 kV, 1600 A, 31.5 kA",
-        "pcm_panel": "02 nos. Power Transformer Panel, 03 nos. Line Panel",
-        "switchgear": "2 Inc + 10 Line Feeder + 1 Bus Coupler",
-        "control_room": "No — 38 mm pattern stone on roof of existing CR + cable-trench extension/renovation"
-      },
-      {
-        "sl": 13,
-        "zone": "Rangpur Zone",
-        "name": "Goyalpara",
-        "district": "Thakurgaon",
-        "power_xfr": "1× 10/13.33 MVA, 33/11 kV (with OLTC)",
-        "vcb": "2 sets, 36 kV, 1600 A, 31.5 kA",
-        "pcm_panel": "01 no. Power Transformer Panel",
-        "switchgear": "1 Inc + 5 Line Feeder + 1 Bus Coupler + 2 Adaptation",
-        "control_room": "No"
-      },
-      {
-        "sl": 14,
-        "zone": "Rangpur Zone",
-        "name": "DPS",
-        "district": "Thakurgaon",
-        "power_xfr": "1× 10/13.33 MVA, 33/11 kV (with OLTC)+RTCC",
-        "vcb": "2 sets, 36 kV, 1600 A, 31.5 kA",
-        "pcm_panel": null,
-        "switchgear": "Not in scope",
-        "control_room": "No"
-      }
-    ]
-  }
+    {
+      "id": "upcoming",
+      "label": "Upcoming Projects",
+      "projects": [
+        {
+          "id": "pdssp",
+          "code": "PDSSP",
+          "name": "Power Distribution System Strengthening Project",
+          "summary": "Upcoming distribution-network strengthening programme — upgrade of 33 kV, 11 kV and 11/0.4 kV lines plus new substation work across all NESCO circles.",
+          "substation_summary": {
+            "headers": [
+              "Zone",
+              "S/N",
+              "Substation",
+              "District",
+              "Power Transformer",
+              "33 kV VCB",
+              "33 kV PCM Panel",
+              "11 kV Switchgear",
+              "New Control Room"
+            ],
+            "rows": [
+              {
+                "Zone": "Rajshahi Zone",
+                "S/N": "1",
+                "Substation": "Godagari",
+                "District": "Rajshahi",
+                "Power Transformer": "1× 10/13.33 MVA, 33/11 kV (with OLTC)+RTCC",
+                "33 kV VCB": "1 set, 36 kV, 1600 A, 31.5 kA",
+                "33 kV PCM Panel": "01 no. Power Tranformer Panel)",
+                "11 kV Switchgear": "1 Inc + 5 Line Feeder + 1 Bus Coupler + 1 Adaptation",
+                "New Control Room": "No — existing control room retained (washroom & battery room relocated from 1st floor to ground floor)"
+              },
+              {
+                "Zone": "",
+                "S/N": "2",
+                "Substation": "Katakhali",
+                "District": "Rajshahi",
+                "Power Transformer": "1× 10/13.33 MVA, 33/11 kV (with OLTC)+RTCC",
+                "33 kV VCB": "",
+                "33 kV PCM Panel": "",
+                "11 kV Switchgear": "1 Inc + 5 Line Feeder + 1 Bus Coupler + 1 Adaptation",
+                "New Control Room": "Yes — G+1 side extension to existing building, 12 m × 8 m × 2 floors = 192 sqm"
+              },
+              {
+                "Zone": "",
+                "S/N": "3",
+                "Substation": "Matidali",
+                "District": "Bogra",
+                "Power Transformer": "1× 20/26.66 MVA, 33/11 kV (with OLTC)+RTCC",
+                "33 kV VCB": "33 kV GIS — 4 bays (2 Line Inc/Out + 1 Bus Coupler with Riser + 1 Xmer Feeder); no outdoor VCB",
+                "33 kV PCM Panel": "",
+                "11 kV Switchgear": "1 Inc + 6 Line Feeder + 1 Bus Coupler + 1 Adaptation",
+                "New Control Room": "No"
+              },
+              {
+                "Zone": "",
+                "S/N": "4",
+                "Substation": "Sherpur",
+                "District": "Bogra",
+                "Power Transformer": "Not in scope (existing transformers operational)",
+                "33 kV VCB": "",
+                "33 kV PCM Panel": "02 nos. Power Transformer Panel, 01 no. Line Panel",
+                "11 kV Switchgear": "2 Inc + 10 Line Feeder + 2 Bus Coupler + 1 Adaptation",
+                "New Control Room": "Partial — finishing of new portion already built by BPDB (water-tightening, 38 mm patent stone flooring, drainage)"
+              },
+              {
+                "Zone": "",
+                "S/N": "5",
+                "Substation": "Puran Bogra",
+                "District": "Bogra",
+                "Power Transformer": "1× 20/26.66 MVA, 33/11 kV (with OLTC)",
+                "33 kV VCB": "2 sets, 36 kV, 1600 A, 31.5 kA",
+                "33 kV PCM Panel": "03 nos. Power Transformer Panel, 01 no. Line Panel",
+                "11 kV Switchgear": "3 Inc + 16 Line Feeder + 3 Bus Coupler + 1 Adaptation",
+                "New Control Room": "Yes — G+1 control building (3-storied foundation), 300 sqm / floor ≈ 500 sqm total"
+              },
+              {
+                "Zone": "",
+                "S/N": "6",
+                "Substation": "Khonjonpur",
+                "District": "Joypurhat",
+                "Power Transformer": "Relocation of 1× 10/13.33 MVA Xmer from Matidali (no new supply); RTCC supplied",
+                "33 kV VCB": "2 sets, 36 kV, 1600 A, 31.5 kA",
+                "33 kV PCM Panel": "",
+                "11 kV Switchgear": "Not in scope — existing 11 kV panels (2 Inc + Bus Coupler/Riser + 2 PT + outgoing) relocated to new control building",
+                "New Control Room": "Yes — G+1 control building (3-storied foundation), 225 sqm / floor = 450 sqm total"
+              },
+              {
+                "Zone": "",
+                "S/N": "7",
+                "Substation": "Baludanga",
+                "District": "Naogaon",
+                "Power Transformer": "Not in scope",
+                "33 kV VCB": "2 sets, 36 kV, 1600 A, 31.5 kA",
+                "33 kV PCM Panel": "",
+                "11 kV Switchgear": "2 sets new 11 kV SG panels (per site note; no detailed BOQ line items)",
+                "New Control Room": "No"
+              },
+              {
+                "Zone": "",
+                "S/N": "8",
+                "Substation": "Arji Naogaon",
+                "District": "Naogaon",
+                "Power Transformer": "Not in scope",
+                "33 kV VCB": "",
+                "33 kV PCM Panel": "",
+                "11 kV Switchgear": "1 Inc + 5 Line Feeder + 1 Bus Coupler + 1 Adaptation",
+                "New Control Room": "No"
+              },
+              {
+                "Zone": "",
+                "S/N": "9",
+                "Substation": "Kathaltoli",
+                "District": "Naogaon",
+                "Power Transformer": "1× 20/26.66 MVA, 33/11 kV (with OLTC)",
+                "33 kV VCB": "",
+                "33 kV PCM Panel": "",
+                "11 kV Switchgear": "Not in scope",
+                "New Control Room": "No"
+              },
+              {
+                "Zone": "Rangpur Zone",
+                "S/N": "1",
+                "Substation": "Masterpara",
+                "District": "Gaibandha",
+                "Power Transformer": "Not in scope (only 1× Station Transformer 33/0.4 kV, 100 kVA)",
+                "33 kV VCB": "4 sets, 36 kV, 1600 A, 31.5 kA",
+                "33 kV PCM Panel": "02 nos. Power Transformer Panel",
+                "11 kV Switchgear": "2 Inc + 10 Line Feeder + 1 Bus Coupler + 1 Adaptation",
+                "New Control Room": "No"
+              },
+              {
+                "Zone": "",
+                "S/N": "2",
+                "Substation": "Hatibandha-1",
+                "District": "Lalmonirhat",
+                "Power Transformer": "1× 10/13.33 MVA, 33/11 kV (with OLTC) + 1× Station Xmer 33/0.4 kV, 100 kVA",
+                "33 kV VCB": "3 sets, 36 kV, 1600 A, 31.5 kA",
+                "33 kV PCM Panel": "01 no. Power Transformer Panel, 02 nos. Line Panel",
+                "11 kV Switchgear": "1 Inc + 5 Line Feeder",
+                "New Control Room": "Yes — G+1 control building (3-storied foundation), 200 sqm / floor = 400 sqm total"
+              },
+              {
+                "Zone": "",
+                "S/N": "3",
+                "Substation": "Kukhapara",
+                "District": "Nilphamari",
+                "Power Transformer": "1× 16/20 MVA, 33/11 kV (with OLTC)",
+                "33 kV VCB": "5 sets, 36 kV, 1600 A, 31.5 kA",
+                "33 kV PCM Panel": "02 nos. Power Transformer Panel, 03 nos. Line Panel",
+                "11 kV Switchgear": "2 Inc + 10 Line Feeder + 1 Bus Coupler",
+                "New Control Room": "No — 38 mm pattern stone on roof of existing CR + cable-trench extension/renovation"
+              },
+              {
+                "Zone": "",
+                "S/N": "4",
+                "Substation": "Goyalpara",
+                "District": "Thakurgaon",
+                "Power Transformer": "1× 10/13.33 MVA, 33/11 kV (with OLTC)",
+                "33 kV VCB": "2 sets, 36 kV, 1600 A, 31.5 kA",
+                "33 kV PCM Panel": "01 no. Power Transformer Panel",
+                "11 kV Switchgear": "1 Inc + 5 Line Feeder + 1 Bus Coupler + 2 Adaptation",
+                "New Control Room": "No"
+              },
+              {
+                "Zone": "",
+                "S/N": "5",
+                "Substation": "DPS",
+                "District": "Thakurgaon",
+                "Power Transformer": "1× 10/13.33 MVA, 33/11 kV (with OLTC)+RTCC",
+                "33 kV VCB": "2 sets, 36 kV, 1600 A, 31.5 kA",
+                "33 kV PCM Panel": "",
+                "11 kV Switchgear": "Not in scope",
+                "New Control Room": "No"
+              }
+            ]
+          },
+          "line_requirements": [
+            {
+              "sheet": "Rangpur Circle-2",
+              "headers": [
+                "Sr. No.",
+                "Name of the SDD",
+                "Name of the Substation",
+                "33 kv Upgradation",
+                "11 kV Upgradation",
+                "11 kV Upgradation (with Merlin)",
+                "11 kV (Dog Covered)",
+                "11/0.4 kV Upgradation",
+                "0.4 kV Line Upgradation",
+                "33 kV New line",
+                "11 kV New",
+                "11/0.4 kV New",
+                "11 kV (Dog Covered)",
+                "0.4 kV New",
+                "Total",
+                "System Loss",
+                "Purpose of 33 kV Line"
+              ],
+              "rows": [
+                {
+                  "Sr. No.": 1.0,
+                  "Name of the SDD": "Sales and Distribution Division, Kaliganj",
+                  "Name of the Substation": "Kaliganj",
+                  "33 kv Upgradation": 72.0,
+                  "11 kV Upgradation": 15.0,
+                  "11 kV Upgradation (with Merlin)": "",
+                  "11 kV (Dog Covered)": "",
+                  "11/0.4 kV Upgradation": 10.0,
+                  "0.4 kV Line Upgradation": 12.0,
+                  "33 kV New line": 0.0,
+                  "11 kV New": 10.0,
+                  "11/0.4 kV New": 15.0,
+                  "0.4 kV New": 15.0,
+                  "Total": 159.0,
+                  "System Loss": "",
+                  "Purpose of 33 kV Line": ""
+                },
+                {
+                  "Sr. No.": 2.0,
+                  "Name of the SDD": "Sales and Distribution Division, Sonarhat,",
+                  "Name of the Substation": "Kaliganj",
+                  "33 kv Upgradation": "",
+                  "11 kV Upgradation": 0.0,
+                  "11 kV Upgradation (with Merlin)": "",
+                  "11 kV (Dog Covered)": "",
+                  "11/0.4 kV Upgradation": 0.0,
+                  "0.4 kV Line Upgradation": 0.0,
+                  "33 kV New line": "",
+                  "11 kV New": 30.0,
+                  "11/0.4 kV New": 40.0,
+                  "0.4 kV New": 50.0,
+                  "Total": 120.0,
+                  "System Loss": "",
+                  "Purpose of 33 kV Line": ""
+                },
+                {
+                  "Sr. No.": 3.0,
+                  "Name of the SDD": "Sales and Distribution Division, Patgram",
+                  "Name of the Substation": "Patgram",
+                  "33 kv Upgradation": "",
+                  "11 kV Upgradation": 30.0,
+                  "11 kV Upgradation (with Merlin)": "",
+                  "11 kV (Dog Covered)": "",
+                  "11/0.4 kV Upgradation": "",
+                  "0.4 kV Line Upgradation": "",
+                  "33 kV New line": 24.0,
+                  "11 kV New": 4.0,
+                  "11/0.4 kV New": 30.0,
+                  "0.4 kV New": 140.0,
+                  "Total": 228.0,
+                  "System Loss": 17.43,
+                  "Purpose of 33 kV Line": "Source line from Barakhata Grid for Patgram SS"
+                },
+                {
+                  "Sr. No.": 4.0,
+                  "Name of the SDD": "Sales and Distribution Division, Burimari",
+                  "Name of the Substation": "Burimari",
+                  "33 kv Upgradation": "",
+                  "11 kV Upgradation": "",
+                  "11 kV Upgradation (with Merlin)": "",
+                  "11 kV (Dog Covered)": 11.0,
+                  "11/0.4 kV Upgradation": "",
+                  "0.4 kV Line Upgradation": 9.0,
+                  "33 kV New line": 30.0,
+                  "11 kV New": "",
+                  "11/0.4 kV New": 40.0,
+                  "0.4 kV New": 100.0,
+                  "Total": 190.0,
+                  "System Loss": 16.73,
+                  "Purpose of 33 kV Line": "Source line from Barakhata Grid for Burimari SS"
+                },
+                {
+                  "Sr. No.": 5.0,
+                  "Name of the SDD": "Sales and Distribution Division, Domar",
+                  "Name of the Substation": "Domar & Bamunia",
+                  "33 kv Upgradation": "",
+                  "11 kV Upgradation": "",
+                  "11 kV Upgradation (with Merlin)": "",
+                  "11 kV (Dog Covered)": 30.0,
+                  "11/0.4 kV Upgradation": 4.0,
+                  "0.4 kV Line Upgradation": 17.0,
+                  "33 kV New line": 24.0,
+                  "11 kV New": "",
+                  "11/0.4 kV New": 55.0,
+                  "0.4 kV New": 110.0,
+                  "Total": 257.0,
+                  "System Loss": 13.48,
+                  "Purpose of 33 kV Line": "Source line from Domar Grid to Domar SS & Source line from Domar Grid to Bamunia SS"
+                },
+                {
+                  "Sr. No.": 6.0,
+                  "Name of the SDD": "Kishorganj Electricity Supply Unit, Kishorganj",
+                  "Name of the Substation": "Kishorganj",
+                  "33 kv Upgradation": "",
+                  "11 kV Upgradation": 2.0,
+                  "11 kV Upgradation (with Merlin)": "",
+                  "11 kV (Dog Covered)": "",
+                  "11/0.4 kV Upgradation": "",
+                  "0.4 kV Line Upgradation": "",
+                  "33 kV New line": "",
+                  "11 kV New": 3.0,
+                  "11/0.4 kV New": "",
+                  "0.4 kV New": 9.0,
+                  "Total": 14.0,
+                  "System Loss": 1.48,
+                  "Purpose of 33 kV Line": ""
+                },
+                {
+                  "Sr. No.": 7.0,
+                  "Name of the SDD": "Jaldhaka Electricity Supply Unit, Jaldhaka",
+                  "Name of the Substation": "Jaldhaka",
+                  "33 kv Upgradation": "",
+                  "11 kV Upgradation": 15.0,
+                  "11 kV Upgradation (with Merlin)": "",
+                  "11 kV (Dog Covered)": "",
+                  "11/0.4 kV Upgradation": 4.0,
+                  "0.4 kV Line Upgradation": 10.0,
+                  "33 kV New line": "",
+                  "11 kV New": 2.0,
+                  "11/0.4 kV New": 9.0,
+                  "0.4 kV New": 15.0,
+                  "Total": 55.0,
+                  "System Loss": 8.73,
+                  "Purpose of 33 kV Line": ""
+                },
+                {
+                  "Sr. No.": 8.0,
+                  "Name of the SDD": "Sales and Distribution Division, Hatibandha",
+                  "Name of the Substation": "Hatibandha",
+                  "33 kv Upgradation": "",
+                  "11 kV Upgradation": 0.0,
+                  "11 kV Upgradation (with Merlin)": 1.0,
+                  "11 kV (Dog Covered)": "",
+                  "11/0.4 kV Upgradation": 4.0,
+                  "0.4 kV Line Upgradation": "",
+                  "33 kV New line": 12.0,
+                  "11 kV New": 18.0,
+                  "11/0.4 kV New": 50.0,
+                  "0.4 kV New": 150.0,
+                  "Total": 235.0,
+                  "System Loss": 16.74,
+                  "Purpose of 33 kV Line": "Source line from Barakhata Grid for Hatibandha SS"
+                },
+                {
+                  "Sr. No.": 9.0,
+                  "Name of the SDD": "Sales and Distribution Division, Barakhata",
+                  "Name of the Substation": "Barakhata",
+                  "33 kv Upgradation": "",
+                  "11 kV Upgradation": 3.0,
+                  "11 kV Upgradation (with Merlin)": "",
+                  "11 kV (Dog Covered)": "",
+                  "11/0.4 kV Upgradation": "",
+                  "0.4 kV Line Upgradation": 30.0,
+                  "33 kV New line": 3.0,
+                  "11 kV New": 20.0,
+                  "11/0.4 kV New": 30.0,
+                  "0.4 kV New": 100.0,
+                  "Total": 186.0,
+                  "System Loss": 18.72,
+                  "Purpose of 33 kV Line": "Source line from Barakhata Grid for Barakhata SS"
+                },
+                {
+                  "Sr. No.": 10.0,
+                  "Name of the SDD": "Sales and Distribution Division, Saidpur",
+                  "Name of the Substation": "",
+                  "33 kv Upgradation": "",
+                  "11 kV Upgradation": "",
+                  "11 kV Upgradation (with Merlin)": "",
+                  "11 kV (Dog Covered)": "",
+                  "11/0.4 kV Upgradation": 5.0,
+                  "0.4 kV Line Upgradation": 5.0,
+                  "33 kV New line": "",
+                  "11 kV New": 5.0,
+                  "11/0.4 kV New": 5.0,
+                  "0.4 kV New": 5.0,
+                  "Total": 25.0,
+                  "System Loss": "",
+                  "Purpose of 33 kV Line": ""
+                },
+                {
+                  "Sr. No.": 11.0,
+                  "Name of the SDD": "Sales and Distribution Division, Nilphamari",
+                  "Name of the Substation": "",
+                  "33 kv Upgradation": "",
+                  "11 kV Upgradation": 3.0,
+                  "11 kV Upgradation (with Merlin)": "",
+                  "11 kV (Dog Covered)": "",
+                  "11/0.4 kV Upgradation": 5.0,
+                  "0.4 kV Line Upgradation": 5.0,
+                  "33 kV New line": 25.0,
+                  "11 kV New": 5.0,
+                  "11/0.4 kV New": 5.0,
+                  "0.4 kV New": 10.0,
+                  "Total": 58.0,
+                  "System Loss": "",
+                  "Purpose of 33 kV Line": "Source line from Domar Grid to Kukhpara SS"
+                }
+              ]
+            },
+            {
+              "sheet": "Dinajpur Circle",
+              "headers": [
+                "Sr. No.",
+                "Name of the SDD",
+                "Name of the Substation",
+                "33 kv Upgradation",
+                "11 kV Upgradation",
+                "11 kV Upgradation (with Merlin)",
+                "11 kV (Dog Covered)",
+                "11/0.4 kV Upgradation",
+                "0.4 kV Line Upgradation",
+                "33 kV New line",
+                "11 kV New",
+                "11/0.4 kV New",
+                "11 kV New (Dog Covered)",
+                "0.4 kV New",
+                "Total",
+                "Purpose of 33 kV Line",
+                "250 kVA",
+                "200 kVA",
+                "100 kVA"
+              ],
+              "rows": [
+                {
+                  "Sr. No.": 1.0,
+                  "Name of the SDD": "Sales and Distribution Division - 1, Dinajpur",
+                  "Name of the Substation": "Fakirpara",
+                  "33 kv Upgradation": "",
+                  "11 kV Upgradation": 2.0,
+                  "11 kV Upgradation (with Merlin)": 5.0,
+                  "11 kV (Dog Covered)": 2.0,
+                  "11/0.4 kV Upgradation": "",
+                  "0.4 kV Line Upgradation": 7.0,
+                  "33 kV New line": "",
+                  "11 kV New": 0.0,
+                  "11/0.4 kV New": 5.0,
+                  "11 kV New (Dog Covered)": 5.0,
+                  "0.4 kV New": 7.0,
+                  "Total": 33.0,
+                  "Purpose of 33 kV Line": "",
+                  "250 kVA": 81.0,
+                  "200 kVA": "",
+                  "100 kVA": ""
+                },
+                {
+                  "Sr. No.": 2.0,
+                  "Name of the SDD": "Sales and Distribution Division - 2, Dinajpur",
+                  "Name of the Substation": "Balubari & Uposhahar",
+                  "33 kv Upgradation": "",
+                  "11 kV Upgradation": 5.0,
+                  "11 kV Upgradation (with Merlin)": 5.0,
+                  "11 kV (Dog Covered)": 2.0,
+                  "11/0.4 kV Upgradation": "",
+                  "0.4 kV Line Upgradation": 7.0,
+                  "33 kV New line": "",
+                  "11 kV New": 2.0,
+                  "11/0.4 kV New": 1.0,
+                  "11 kV New (Dog Covered)": "",
+                  "0.4 kV New": 3.0,
+                  "Total": 25.0,
+                  "Purpose of 33 kV Line": "",
+                  "250 kVA": 40.0,
+                  "200 kVA": "",
+                  "100 kVA": ""
+                },
+                {
+                  "Sr. No.": 3.0,
+                  "Name of the SDD": "Setabganj Electricity Supply Unit, Setabganj",
+                  "Name of the Substation": "Setabganj",
+                  "33 kv Upgradation": "",
+                  "11 kV Upgradation": 5.0,
+                  "11 kV Upgradation (with Merlin)": 3.0,
+                  "11 kV (Dog Covered)": "",
+                  "11/0.4 kV Upgradation": 1.0,
+                  "0.4 kV Line Upgradation": 5.0,
+                  "33 kV New line": "",
+                  "11 kV New": 10.0,
+                  "11/0.4 kV New": 5.0,
+                  "11 kV New (Dog Covered)": "",
+                  "0.4 kV New": 10.0,
+                  "Total": 39.0,
+                  "Purpose of 33 kV Line": "",
+                  "250 kVA": 65.0,
+                  "200 kVA": "",
+                  "100 kVA": ""
+                },
+                {
+                  "Sr. No.": 4.0,
+                  "Name of the SDD": "Parbatipur Electricity Supply Unit, Parbatipur",
+                  "Name of the Substation": "Parbatipur",
+                  "33 kv Upgradation": "",
+                  "11 kV Upgradation": 10.0,
+                  "11 kV Upgradation (with Merlin)": "",
+                  "11 kV (Dog Covered)": 5.0,
+                  "11/0.4 kV Upgradation": 5.0,
+                  "0.4 kV Line Upgradation": 15.0,
+                  "33 kV New line": 18.0,
+                  "11 kV New": 10.0,
+                  "11/0.4 kV New": 10.0,
+                  "11 kV New (Dog Covered)": "",
+                  "0.4 kV New": 10.0,
+                  "Total": 83.0,
+                  "Purpose of 33 kV Line": "",
+                  "250 kVA": 45.0,
+                  "200 kVA": "",
+                  "100 kVA": ""
+                },
+                {
+                  "Sr. No.": 5.0,
+                  "Name of the SDD": "Sales and Distribution Division, Thakurgaon",
+                  "Name of the Substation": "Goyalpara & DPS",
+                  "33 kv Upgradation": "",
+                  "11 kV Upgradation": "",
+                  "11 kV Upgradation (with Merlin)": 0.0,
+                  "11 kV (Dog Covered)": 7.0,
+                  "11/0.4 kV Upgradation": 5.0,
+                  "0.4 kV Line Upgradation": 15.0,
+                  "33 kV New line": 17.0,
+                  "11 kV New": 2.0,
+                  "11/0.4 kV New": 3.0,
+                  "11 kV New (Dog Covered)": "",
+                  "0.4 kV New": 10.0,
+                  "Total": 59.0,
+                  "Purpose of 33 kV Line": "Ring line between Goyalpara & DPS SS",
+                  "250 kVA": 72.0,
+                  "200 kVA": "",
+                  "100 kVA": ""
+                },
+                {
+                  "Sr. No.": 6.0,
+                  "Name of the SDD": "Fulbari Electricity Supply Unit, Fulbari",
+                  "Name of the Substation": "Fulbari",
+                  "33 kv Upgradation": 10.0,
+                  "11 kV Upgradation": 5.0,
+                  "11 kV Upgradation (with Merlin)": 5.0,
+                  "11 kV (Dog Covered)": 6.0,
+                  "11/0.4 kV Upgradation": 5.0,
+                  "0.4 kV Line Upgradation": 5.0,
+                  "33 kV New line": "",
+                  "11 kV New": 8.0,
+                  "11/0.4 kV New": 10.0,
+                  "11 kV New (Dog Covered)": "",
+                  "0.4 kV New": 10.0,
+                  "Total": 64.0,
+                  "Purpose of 33 kV Line": "33 kV Source line renovation \n(Further discussion is required)",
+                  "250 kVA": 61.0,
+                  "200 kVA": "",
+                  "100 kVA": ""
+                },
+                {
+                  "Sr. No.": 7.0,
+                  "Name of the SDD": "Sales and Distribution Division, Panchagarh",
+                  "Name of the Substation": "Panchagarh & Bhajanpur",
+                  "33 kv Upgradation": "",
+                  "11 kV Upgradation": 8.0,
+                  "11 kV Upgradation (with Merlin)": "",
+                  "11 kV (Dog Covered)": "",
+                  "11/0.4 kV Upgradation": 10.0,
+                  "0.4 kV Line Upgradation": 30.0,
+                  "33 kV New line": "",
+                  "11 kV New": 15.0,
+                  "11/0.4 kV New": 15.0,
+                  "11 kV New (Dog Covered)": "",
+                  "0.4 kV New": 30.0,
+                  "Total": 108.0,
+                  "Purpose of 33 kV Line": "",
+                  "250 kVA": 107.0,
+                  "200 kVA": "",
+                  "100 kVA": ""
+                },
+                {
+                  "Sr. No.": 8.0,
+                  "Name of the SDD": "Tetulia Electricity Supply Unit, Tetulia",
+                  "Name of the Substation": "Tetulia",
+                  "33 kv Upgradation": "",
+                  "11 kV Upgradation": "",
+                  "11 kV Upgradation (with Merlin)": "",
+                  "11 kV (Dog Covered)": "",
+                  "11/0.4 kV Upgradation": 17.0,
+                  "0.4 kV Line Upgradation": 10.0,
+                  "33 kV New line": "",
+                  "11 kV New": 25.0,
+                  "11/0.4 kV New": 25.0,
+                  "11 kV New (Dog Covered)": "",
+                  "0.4 kV New": 40.0,
+                  "Total": 117.0,
+                  "Purpose of 33 kV Line": "",
+                  "250 kVA": 60.0,
+                  "200 kVA": "",
+                  "100 kVA": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

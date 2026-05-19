@@ -1818,91 +1818,6 @@
     "last_updated_from_master": true
   },
   {
-    "id": "gomostapur",
-    "sheet_name": "Gomostapur",
-    "name": "Gomostapur",
-    "gps_lat": null,
-    "gps_lng": null,
-    "gps_raw": null,
-    "mobile": null,
-    "capacity_mva": "2*10/13.33",
-    "max_demand_mw": null,
-    "sdd_esu": null,
-    "status": "Online",
-    "lines_33kv": [
-      {
-        "name": "Amnura-Gomostapur",
-        "length_km": 32.0,
-        "conductor": "Merlin",
-        "remarks": "Source line"
-      },
-      {
-        "name": "Huzrapur-Gomostapur",
-        "length_km": 37.0,
-        "conductor": "Grossbick",
-        "remarks": "Ring line"
-      }
-    ],
-    "power_transformers": [
-      {
-        "name": "T1",
-        "capacity": "10/13.33",
-        "brand": "Zhejiang",
-        "year": "2018",
-        "max_load": "7.5",
-        "impedance": "11.15",
-        "max_load_mw": 7.5
-      },
-      {
-        "name": "T2",
-        "capacity": "10/13.33",
-        "brand": "Zhejiang",
-        "year": "2018",
-        "max_load": "6",
-        "impedance": "11.15",
-        "max_load_mw": 6.0
-      }
-    ],
-    "feeders_11kv": [
-      {
-        "transformer": "T1",
-        "name": "10/13.33",
-        "max_load_mw": 2.5,
-        "length_km": 17.0
-      },
-      {
-        "transformer": "T1",
-        "name": "Kazigram",
-        "max_load_mw": 1.0,
-        "length_km": 17.0
-      },
-      {
-        "transformer": "T1",
-        "name": "Nachol",
-        "max_load_mw": 4.5,
-        "length_km": 105.0
-      },
-      {
-        "transformer": "T2",
-        "name": "10/13.33",
-        "max_load_mw": 3.5,
-        "length_km": 75.0
-      },
-      {
-        "transformer": "T2",
-        "name": "Alinagar",
-        "max_load_mw": 3.0,
-        "length_km": 45.0
-      },
-      {
-        "transformer": "T2",
-        "name": "College",
-        "max_load_mw": 2.5,
-        "length_km": 13.0
-      }
-    ]
-  },
-  {
     "id": "nachol",
     "sheet_name": "Nachol",
     "name": "Nachol",
@@ -3628,52 +3543,6 @@
     "last_updated_from_master": true
   },
   {
-    "id": "kathaltoli_2",
-    "sheet_name": "Kathaltoli-2",
-    "name": "Kathaltoli-2",
-    "gps_lat": null,
-    "gps_lng": null,
-    "gps_raw": null,
-    "mobile": null,
-    "capacity_mva": "1x10/13.33",
-    "max_demand_mw": null,
-    "sdd_esu": null,
-    "status": "Online",
-    "lines_33kv": [
-      {
-        "name": "Kathaltoli-Kathaltoli",
-        "length_km": 0.1,
-        "conductor": null,
-        "remarks": "Source line"
-      }
-    ],
-    "power_transformers": [
-      {
-        "name": "T1",
-        "capacity": "10/13.33",
-        "brand": "Shandong",
-        "year": "2015",
-        "max_load": "6",
-        "impedance": "8.27",
-        "max_load_mw": 6.0
-      }
-    ],
-    "feeders_11kv": [
-      {
-        "transformer": "T5",
-        "name": "10/13.33",
-        "max_load_mw": 2.0,
-        "length_km": 20.0
-      },
-      {
-        "transformer": "T5",
-        "name": "Town-1",
-        "max_load_mw": 4.0,
-        "length_km": 14.0
-      }
-    ]
-  },
-  {
     "id": "khanjanpur",
     "sheet_name": "Khanjanpur",
     "name": "Khanjanpur",
@@ -4089,7 +3958,7 @@
     "gps_lng": null,
     "gps_raw": null,
     "mobile": null,
-    "capacity_mva": "2x5/6.67",
+    "capacity_mva": "2x10/13.33",
     "max_demand_mw": null,
     "sdd_esu": null,
     "status": "Online",
@@ -4134,7 +4003,30 @@
         "max_load_mw": 2.7,
         "length_km": 28.0
       }
-    ]
+    ],
+    "circle": "",
+    "ais_gis": "AIS",
+    "power_transformer_count": 2.0,
+    "demand_2030_mw": null,
+    "demand_2035_mw": null,
+    "switchgear_33kv_type": "",
+    "switchgear_33kv_model": "",
+    "switchgear_11kv_type": "",
+    "switchgear_11kv_model": "",
+    "requirement_new_substation": "",
+    "requirement_augmentation": "",
+    "power_transformer_replacement": "",
+    "merit_order_new_ss": "",
+    "merit_order_upgradation": "",
+    "requirement_33kv_line": "Dupchachia grid -Talora",
+    "requirement_aerial_cable": "",
+    "replacement_33kv_cb": "",
+    "requirement_11kv_line": "",
+    "requirement_dt_315kva": "",
+    "requirement_dt_250kva": "",
+    "requirement_dt_200kva": "",
+    "requirement_rmu": "",
+    "last_updated_from_master": true
   },
   {
     "id": "santahar",
@@ -5044,9 +4936,9 @@
     "gps_lng": null,
     "gps_raw": null,
     "mobile": null,
-    "capacity_mva": "2*10/13.33",
-    "max_demand_mw": null,
-    "sdd_esu": null,
+    "capacity_mva": "2x10/13.33, 1x20/26.66",
+    "max_demand_mw": 12.0,
+    "sdd_esu": "Sales and Distribution Division - 2, Sirajganj",
     "status": "Online",
     "lines_33kv": [
       {
@@ -5125,7 +5017,30 @@
         "max_load_mw": 2.5,
         "length_km": 21.8
       }
-    ]
+    ],
+    "circle": "",
+    "ais_gis": "AIS",
+    "power_transformer_count": 3.0,
+    "demand_2030_mw": 22.0,
+    "demand_2035_mw": 30.0,
+    "switchgear_33kv_type": "",
+    "switchgear_33kv_model": "",
+    "switchgear_11kv_type": "",
+    "switchgear_11kv_model": "",
+    "requirement_new_substation": "New Control Room Building (Two Storied)",
+    "requirement_augmentation": "",
+    "power_transformer_replacement": "Yes (1988) - 2",
+    "merit_order_new_ss": "",
+    "merit_order_upgradation": "To be Discussed",
+    "requirement_33kv_line": "",
+    "requirement_aerial_cable": "",
+    "replacement_33kv_cb": "01 (Inoue OCB, HICO Panel)",
+    "requirement_11kv_line": "",
+    "requirement_dt_315kva": "",
+    "requirement_dt_250kva": "38",
+    "requirement_dt_200kva": "41",
+    "requirement_rmu": "",
+    "last_updated_from_master": true
   },
   {
     "id": "puthiabari",
@@ -7028,8 +6943,8 @@
     "gps_lng": null,
     "gps_raw": null,
     "mobile": null,
-    "capacity_mva": "3*10/13.33",
-    "max_demand_mw": null,
+    "capacity_mva": "3x10/13.33",
+    "max_demand_mw": 19.0,
     "sdd_esu": null,
     "status": "Online",
     "lines_33kv": [
@@ -7121,7 +7036,30 @@
         "max_load_mw": 2.5,
         "length_km": 1.0
       }
-    ]
+    ],
+    "circle": "",
+    "ais_gis": "AIS",
+    "power_transformer_count": 3.0,
+    "demand_2030_mw": 30.5,
+    "demand_2035_mw": 40.0,
+    "switchgear_33kv_type": "",
+    "switchgear_33kv_model": "",
+    "switchgear_11kv_type": "",
+    "switchgear_11kv_model": "",
+    "requirement_new_substation": "",
+    "requirement_augmentation": "",
+    "power_transformer_replacement": "Yes (1988) - 2",
+    "merit_order_new_ss": "",
+    "merit_order_upgradation": "",
+    "requirement_33kv_line": "",
+    "requirement_aerial_cable": "",
+    "replacement_33kv_cb": "01 (Inoue OCB, HICO Panel)",
+    "requirement_11kv_line": "",
+    "requirement_dt_315kva": "",
+    "requirement_dt_250kva": "",
+    "requirement_dt_200kva": "",
+    "requirement_rmu": "",
+    "last_updated_from_master": true
   },
   {
     "id": "domar",
@@ -7527,9 +7465,9 @@
     "gps_lng": null,
     "gps_raw": null,
     "mobile": null,
-    "capacity_mva": "2x20/26.66",
+    "capacity_mva": "2x16/20",
     "max_demand_mw": 16.0,
-    "sdd_esu": "Sales and Distribution Division, Kaliganj",
+    "sdd_esu": "Sales and Distribution Division, Sonarhat, Kaliganj",
     "status": "Online",
     "lines_33kv": [
       {
@@ -7633,7 +7571,7 @@
         "length_km": null
       }
     ],
-    "circle": "",
+    "circle": "Circle-II, Rangpur",
     "ais_gis": "AIS",
     "power_transformer_count": 2.0,
     "demand_2030_mw": 27.5,
@@ -7642,10 +7580,10 @@
     "switchgear_33kv_model": "",
     "switchgear_11kv_type": "",
     "switchgear_11kv_model": "",
-    "requirement_new_substation": "Chaparhar New SS",
+    "requirement_new_substation": "",
     "requirement_augmentation": "",
     "power_transformer_replacement": "",
-    "merit_order_new_ss": "1",
+    "merit_order_new_ss": "",
     "merit_order_upgradation": "",
     "requirement_33kv_line": "",
     "requirement_aerial_cable": "",
@@ -9212,78 +9150,6 @@
     "last_updated_from_master": true
   },
   {
-    "id": "raypur",
-    "sheet_name": "Raypur",
-    "name": "Raypur 33/11 KV",
-    "circle": "",
-    "sdd_esu": "Sales and Distribution Division - 2, Sirajganj",
-    "ais_gis": "AIS",
-    "capacity_mva": "2x10/13.33, 1x20/26.66",
-    "power_transformer_count": 3.0,
-    "max_demand_mw": 12.0,
-    "demand_2030_mw": 22.0,
-    "demand_2035_mw": 30.0,
-    "switchgear_33kv_type": "",
-    "switchgear_33kv_model": "",
-    "switchgear_11kv_type": "",
-    "switchgear_11kv_model": "",
-    "requirement_new_substation": "New Control Room Building (Two Storied)",
-    "requirement_augmentation": "",
-    "power_transformer_replacement": "Yes (1988) - 2",
-    "merit_order_new_ss": "",
-    "merit_order_upgradation": "To be Discussed",
-    "requirement_33kv_line": "",
-    "requirement_aerial_cable": "",
-    "replacement_33kv_cb": "01 (Inoue OCB, HICO Panel)",
-    "requirement_11kv_line": "",
-    "requirement_dt_315kva": "",
-    "requirement_dt_250kva": "38",
-    "requirement_dt_200kva": "41",
-    "requirement_rmu": "",
-    "status": "Online",
-    "lines_33kv": [],
-    "power_transformers": [],
-    "feeders_11kv": [],
-    "is_stub": true,
-    "last_updated_from_master": true
-  },
-  {
-    "id": "talora",
-    "sheet_name": "Talora",
-    "name": "Talora 33/11 KV",
-    "circle": "",
-    "sdd_esu": "",
-    "ais_gis": "AIS",
-    "capacity_mva": "2x10/13.33",
-    "power_transformer_count": 2.0,
-    "max_demand_mw": null,
-    "demand_2030_mw": null,
-    "demand_2035_mw": null,
-    "switchgear_33kv_type": "",
-    "switchgear_33kv_model": "",
-    "switchgear_11kv_type": "",
-    "switchgear_11kv_model": "",
-    "requirement_new_substation": "",
-    "requirement_augmentation": "",
-    "power_transformer_replacement": "",
-    "merit_order_new_ss": "",
-    "merit_order_upgradation": "",
-    "requirement_33kv_line": "Dupchachia grid -Talora",
-    "requirement_aerial_cable": "",
-    "replacement_33kv_cb": "",
-    "requirement_11kv_line": "",
-    "requirement_dt_315kva": "",
-    "requirement_dt_250kva": "",
-    "requirement_dt_200kva": "",
-    "requirement_rmu": "",
-    "status": "Online",
-    "lines_33kv": [],
-    "power_transformers": [],
-    "feeders_11kv": [],
-    "is_stub": true,
-    "last_updated_from_master": true
-  },
-  {
     "id": "tilokpur",
     "sheet_name": "Tilokpur",
     "name": "Tilokpur 33/11 KV",
@@ -9307,42 +9173,6 @@
     "requirement_33kv_line": "",
     "requirement_aerial_cable": "",
     "replacement_33kv_cb": "",
-    "requirement_11kv_line": "",
-    "requirement_dt_315kva": "",
-    "requirement_dt_250kva": "",
-    "requirement_dt_200kva": "",
-    "requirement_rmu": "",
-    "status": "Online",
-    "lines_33kv": [],
-    "power_transformers": [],
-    "feeders_11kv": [],
-    "is_stub": true,
-    "last_updated_from_master": true
-  },
-  {
-    "id": "niyamatpur-saidpur",
-    "sheet_name": "Niyamatpur, Saidpur",
-    "name": "Niyamatpur, Saidpur 33/11 KV",
-    "circle": "",
-    "sdd_esu": "",
-    "ais_gis": "AIS",
-    "capacity_mva": "3x10/13.33",
-    "power_transformer_count": 3.0,
-    "max_demand_mw": 19.0,
-    "demand_2030_mw": 30.5,
-    "demand_2035_mw": 40.0,
-    "switchgear_33kv_type": "",
-    "switchgear_33kv_model": "",
-    "switchgear_11kv_type": "",
-    "switchgear_11kv_model": "",
-    "requirement_new_substation": "",
-    "requirement_augmentation": "",
-    "power_transformer_replacement": "Yes (1988) - 2",
-    "merit_order_new_ss": "",
-    "merit_order_upgradation": "",
-    "requirement_33kv_line": "",
-    "requirement_aerial_cable": "",
-    "replacement_33kv_cb": "01 (Inoue OCB, HICO Panel)",
     "requirement_11kv_line": "",
     "requirement_dt_315kva": "",
     "requirement_dt_250kva": "",

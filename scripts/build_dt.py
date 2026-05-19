@@ -227,14 +227,22 @@ def _map_columns(ws, header_row):
 
 
 def _read_feeder_rows(ws, feeder_name):
-    """Read every transformer row from a feeder sheet. Returns list of dicts."""
+    """Read every transformer row from a feeder sheet. Returns list of dicts.
+
+    For the GIS Location column, we prefer the cell's hyperlink target
+    (typically a maps.google.com URL) over its display text — that's
+    what makes the value clickable on the website. If the cell has no
+    hyperlink we fall back to the text value (which may be raw lat/lng
+    coordinates or "Open in Google Maps" / similar).
+    """
     header_row = _find_header_row(ws)
     if not header_row:
         return []
     cols = _map_columns(ws, header_row)
     out = []
     for r in range(header_row + 1, ws.max_row + 1):
-        row = [ws.cell(row=r, column=c+1).value for c in range(ws.max_column)]
+        cells = [ws.cell(row=r, column=c+1) for c in range(ws.max_column)]
+        row = [c.value for c in cells]
         # Skip rows that have no Serial No AND no transformer rating
         sl_v = num(row[cols["sl"]]) if "sl" in cols and cols["sl"] < len(row) else None
         kva_v = num(row[cols["kva"]]) if "kva" in cols and cols["kva"] < len(row) else None
@@ -246,6 +254,15 @@ def _read_feeder_rows(ws, feeder_name):
             v = row[ci]
             if field in ("sl", "kva", "phase_a", "phase_b", "phase_c", "oil_temp", "lt_loop_count"):
                 rec[field] = num(v)
+            elif field == "gis_location":
+                # Prefer hyperlink target URL; fall back to text.
+                cell = cells[ci]
+                target = (cell.hyperlink.target if cell.hyperlink else None) or None
+                if target:
+                    rec["gis_location"] = target
+                    rec["gis_location_label"] = s(v) or "Open in Google Maps"
+                else:
+                    rec["gis_location"] = s(v) or None
             else:
                 rec[field] = s(v) or None
         out.append(rec)

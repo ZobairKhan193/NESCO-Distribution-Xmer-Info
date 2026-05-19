@@ -104,6 +104,17 @@ def _match_existing(master_norm, by_norm):
     return by_norm[candidates[0]] if candidates else None
 
 
+# Manual aliases: when the master file uses a name that fuzzy matching
+# can't reconcile with the curated JSON's name, map them here.
+# Key   = name as it appears in the master file (raw, before _norm()).
+# Value = name as it appears in the curated JSON (raw, before _norm()).
+MASTER_NAME_ALIASES = {
+    "Raypur":              "Raipur",
+    "Niyamatpur, Saidpur": "Niyamotpur",
+    "Talora":              "Talora Rural",
+}
+
+
 def _gather_master():
     """Read the Master File sheet → list of dicts."""
     wb = open_wb(MASTER)
@@ -175,8 +186,21 @@ def main():
     # Update existing + collect new
     updated = 0
     added = []
+    # Master file has an accidental duplicate Kaliganj row — skip the
+    # second occurrence so we don't double-update the same entry.
+    seen_master_names = set()
     for m in master:
-        key = _norm(m["name_master"])
+        nm = m["name_master"]
+        if nm in seen_master_names:
+            continue
+        seen_master_names.add(nm)
+
+        # Check manual alias first (cases fuzzy matching can't reconcile)
+        alias_target = MASTER_NAME_ALIASES.get(nm)
+        if alias_target:
+            key = _norm(alias_target)
+        else:
+            key = _norm(nm)
         ss = _match_existing(key, by_norm)
         if ss is not None:
             # Augment with master fields (overwrite stale values)
@@ -247,6 +271,19 @@ def main():
             }
             existing.append(stub)
             added.append(stub["name"])
+
+    # Drop curated entries that exist in the JSON but are not present in
+    # the master file's operational summary at all. These are either old
+    # decommissioned substations or split-row artifacts (e.g. Kathaltoli-2
+    # which is actually the second power transformer of Kathaltoli, not a
+    # separate substation). Per owner feedback the active count should be
+    # 85/86, matching the master file's unique operational entries.
+    DROP_ORPHAN_NAMES = {"Gomostapur", "Kathaltoli-2"}
+    before = len(existing)
+    existing = [s for s in existing if s.get("name") not in DROP_ORPHAN_NAMES]
+    dropped = before - len(existing)
+    if dropped:
+        print(f"  dropped {dropped} curated-only orphan(s): {sorted(DROP_ORPHAN_NAMES)}")
 
     OUT.write_text(json.dumps(existing, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"  updated {updated} existing entries · added {len(added)} new stubs")

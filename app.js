@@ -235,6 +235,39 @@ function _buildDTAdapters() {
   DT_OP_SEEDED = false;
 }
 
+/* Render the GIS-location cell for any DT row as a clickable Google
+   Maps link. Handles three shapes of `gis_location`:
+     1. Full URL  → use directly
+     2. Coordinate string "lat,lng" or "lat, lng" → build maps URL
+     3. Plain text ("Open in Google Maps" / coords-only) → if a
+        `gis_location_label` is also present we use it as the link
+        text, otherwise render as plain "—" / text. */
+function _dtMapCell(r) {
+  const v = r && r.gis_location;
+  if (!v) return '<span style="color:var(--text3)">—</span>';
+  const sv = String(v).trim();
+  let url = null;
+  if (/^https?:\/\//i.test(sv)) {
+    url = sv;
+  } else {
+    // Try to parse "lat,lng" or "lat, lng"
+    const m = sv.match(/^\s*(-?\d+(?:\.\d+)?)\s*[,;\s]\s*(-?\d+(?:\.\d+)?)\s*$/);
+    if (m) {
+      url = `https://maps.google.com/?q=${m[1]},${m[2]}`;
+    }
+  }
+  if (url) {
+    return `<a href="${url}" target="_blank" rel="noopener"
+              style="color:#1d4ed8;font-weight:600;text-decoration:none"
+              title="Open in Google Maps">
+              <i class="fas fa-map-marker-alt" style="color:#dc2626"></i>
+              ${esc(r.gis_location_label || 'Map')}
+            </a>`;
+  }
+  // No URL we can build — show text but mark plainly so user knows.
+  return `<span style="color:var(--text3);font-style:italic" title="${esc(sv)}">${esc(sv)}</span>`;
+}
+
 /* Helper: locate an SDD entry by either its id (slug) or display name. */
 function findSDD(idOrName) {
   if (!OVERALL_SUMMARY.length) return null;
@@ -2649,11 +2682,7 @@ function renderDTDetailRows(rows) {
     <td style="font-family:'Courier New',monospace;font-size:.78rem">${D(r.gis_id)}</td>
     <td class="num"><strong>${D(r.capacity_kva)}</strong></td>
     <td style="font-size:.78rem">${D(r.ref_no)}</td>
-    <td style="font-size:.76rem">
-      ${r.gis_location && r.gis_location !== 'Open in Google Maps' ?
-        `<a href="${r.gis_location}" target="_blank"><i class="fas fa-map-marker-alt" style="color:var(--red2)"></i> Map</a>` :
-        '<span style="color:var(--text3)">—</span>'}
-    </td>
+    <td style="font-size:.76rem">${_dtMapCell(r)}</td>
     <td style="font-size:.8rem" title="${r.local_name||''}">${(r.local_name||'—').substring(0,18)}${(r.local_name||'').length>18?'…':''}</td>
     <td>${yn(r.la_yn)}</td>
     <td>${cond(r.la_cond)}</td>
@@ -3005,9 +3034,7 @@ function renderOpRows(rows) {
       <td>${i+1}</td>
       <td style="font-family:'Courier New',monospace;font-size:.78rem">${D(r.gis_id)}</td>
       <td class="num">${D(r.capacity_kva)}</td>
-      <td style="font-size:.76rem">${r.gis_location && r.gis_location.startsWith('http') ?
-          `<a href="${r.gis_location}" target="_blank"><i class="fas fa-map-marker-alt" style="color:#dc2626"></i> Map</a>` :
-          D(r.gis_location)}</td>
+      <td style="font-size:.76rem">${_dtMapCell(r)}</td>
       <td style="font-size:.8rem" title="${r.local_name||''}">${(r.local_name||'—').substring(0,18)}${(r.local_name||'').length>18?'…':''}</td>
       <td class="num" style="color:#1d4ed8;font-weight:700">${rated||'—'}</td>
       ${phCell(phA,'#dc2626')}
@@ -4223,6 +4250,45 @@ function _findProject(projectId) {
   return null;
 }
 
+/* Build a clean tableHTML used by every project view. */
+function _projTableHTML(data) {
+  if (!data || !data.headers || !data.headers.length) return '';
+  const head = data.headers.map(h => `<th>${esc(h)}</th>`).join('');
+  const body = (data.rows || []).map(r => {
+    const cells = data.headers.map(h => {
+      const v = r[h];
+      return `<td class="${typeof v === 'number' ? 'num' : ''}">${esc(v ?? '')}</td>`;
+    }).join('');
+    return `<tr>${cells}</tr>`;
+  }).join('');
+  return `
+    <div class="panel-body no-pad"><div class="tbl-wrap scrollable">
+      <table class="tbl"><thead><tr>${head}</tr></thead><tbody>${body || `<tr><td colspan="${data.headers.length}" class="tbl-empty">No rows.</td></tr>`}</tbody></table>
+    </div></div>`;
+}
+
+/* Project Scope panel — brief summary + structured key facts + bullet
+   list of objectives. Appears under the hero on every project page. */
+function _renderProjectScope(p) {
+  const scope = p.scope || {};
+  const objectives = (scope.objectives || []).map(o =>
+    `<li><i class="fas fa-circle-check"></i> ${esc(o)}</li>`).join('');
+  const meta = [];
+  if (scope.funding) meta.push(`<span class="pscope-pill"><i class="fas fa-coins"></i> ${esc(scope.funding)}</span>`);
+  if (scope.status)  meta.push(`<span class="pscope-pill"><i class="fas fa-flag"></i> ${esc(scope.status)}</span>`);
+  return `
+    <div class="panel" style="margin-bottom:18px">
+      <div class="panel-head">
+        <h3><i class="fas fa-bullseye"></i> Project Scope &amp; Summary</h3>
+        <div style="display:flex;gap:6px">${meta.join('')}</div>
+      </div>
+      <div class="panel-body">
+        <p class="pscope-overview">${esc(scope.overview || p.summary || '')}</p>
+        ${objectives ? `<ul class="pscope-list">${objectives}</ul>` : ''}
+      </div>
+    </div>`;
+}
+
 function _renderProjectDetail(projectId, heroClass) {
   const hit = _findProject(projectId);
   if (!hit) {
@@ -4240,23 +4306,66 @@ function _renderProjectDetail(projectId, heroClass) {
   const bays = p.grid_bay_breakers;
   const lineReqs = p.line_requirements;
 
-  const tableHTML = (data) => {
-    if (!data || !data.headers || !data.headers.length) return '';
-    const head = data.headers.map(h => `<th>${esc(h)}</th>`).join('');
-    const body = (data.rows || []).map(r => {
-      const cells = data.headers.map(h => `<td>${esc(r[h] ?? '')}</td>`).join('');
-      return `<tr>${cells}</tr>`;
-    }).join('');
-    return `
-      <div class="panel-body no-pad"><div class="tbl-wrap scrollable">
-        <table class="tbl"><thead><tr>${head}</tr></thead><tbody>${body || `<tr><td colspan="${data.headers.length}" class="tbl-empty">No rows.</td></tr>`}</tbody></table>
-      </div></div>`;
-  };
+  // ── PDSSP: tabbed UI with Substation + Line views ──
+  if (projectId === 'pdssp') {
+    document.getElementById('content').innerHTML = `
+      <div class="proj-hero ${heroClass}">
+        <span class="proj-tag">${esc(p.code)}</span>
+        <h1>${esc(p.name)}</h1>
+        <p>${esc(p.summary || '')}</p>
+      </div>
 
+      <div class="sec-head">
+        <div class="sec-head-left">
+          <h2>${esc(p.code)} — Project Detail</h2>
+          <p>Switch between Substation BOQ and Line Requirement views below.</p>
+        </div>
+        <div class="sec-head-right">
+          <button class="btn btn-sm btn-secondary" onclick="window.showSection('${backSection}')">
+            <i class="fas fa-arrow-left"></i> Back
+          </button>
+        </div>
+      </div>
+
+      ${_renderProjectScope(p)}
+
+      <div class="proj-tabs">
+        <button id="ptab-sub"  class="proj-tab active" onclick="window.pdsspSwitchTab('sub')">
+          <i class="fas fa-bolt"></i> Substation
+        </button>
+        <button id="ptab-line" class="proj-tab" onclick="window.pdsspSwitchTab('line')">
+          <i class="fas fa-route"></i> Line
+        </button>
+      </div>
+
+      <div id="ptab-sub-body" class="proj-tab-body">
+        <div class="panel">
+          <div class="panel-head">
+            <h3><i class="fas fa-table"></i> Substation-wise BOQ Summary</h3>
+            <span style="font-size:.78rem;color:var(--text3)">${(summary.rows||[]).length} substations</span>
+          </div>
+          ${_projTableHTML(summary)}
+        </div>
+      </div>
+
+      <div id="ptab-line-body" class="proj-tab-body" style="display:none">
+        ${Array.isArray(lineReqs) && lineReqs.length
+          ? _renderPdsspLineReqViews(lineReqs)
+          : '<div class="placeholder-card"><p>No line requirement data loaded.</p></div>'}
+      </div>
+    `;
+
+    // Populate the line view's default Grand-Total table so it's ready
+    // when the user switches tabs.
+    if (Array.isArray(lineReqs) && lineReqs.length) {
+      setTimeout(() => window.pdsspRenderLineView(), 0);
+    }
+    return;
+  }
+
+  // ── NIDMP (and other projects): single-page layout with Scope on top ──
   let extras = '';
 
-  // §NIDMP — full ADB substation list, 5 categories, sourced from the
-  // accompanying PDF (List of SSs Under ADB Project).
   if (p.all_substations) {
     const cats = Object.values(p.all_substations);
     const totalSS = cats.reduce((n, c) => n + c.rows.length, 0);
@@ -4278,11 +4387,8 @@ function _renderProjectDetail(projectId, heroClass) {
         <div class="panel-head"><h3><i class="fas fa-microchip"></i> Grid Bay-Breakers</h3>
           <span style="font-size:.78rem;color:var(--text3)">${bays.rows.length} rows</span>
         </div>
-        ${tableHTML(bays)}
+        ${_projTableHTML(bays)}
       </div>`;
-  }
-  if (Array.isArray(lineReqs) && lineReqs.length) {
-    extras += _renderPdsspLineReqViews(lineReqs);
   }
 
   document.getElementById('content').innerHTML = `
@@ -4293,8 +4399,8 @@ function _renderProjectDetail(projectId, heroClass) {
     </div>
     <div class="sec-head">
       <div class="sec-head-left">
-        <h2>${esc(p.code)} — Substation-wise BOQ Summary</h2>
-        <p>${(summary.rows || []).length} substations · ${(summary.headers || []).length} columns</p>
+        <h2>${esc(p.code)} — Project Detail</h2>
+        <p>Brief summary + detailed substation-wise BOQ.</p>
       </div>
       <div class="sec-head-right">
         <button class="btn btn-sm btn-secondary" onclick="window.showSection('${backSection}')">
@@ -4302,16 +4408,32 @@ function _renderProjectDetail(projectId, heroClass) {
         </button>
       </div>
     </div>
-    <div class="panel">${tableHTML(summary)}</div>
+    ${_renderProjectScope(p)}
+    <div class="panel">
+      <div class="panel-head">
+        <h3><i class="fas fa-table"></i> Substation-wise BOQ Summary</h3>
+        <span style="font-size:.78rem;color:var(--text3)">${(summary.rows||[]).length} substations</span>
+      </div>
+      ${_projTableHTML(summary)}
+    </div>
     ${extras}
   `;
-
-  // If the line-requirements rollup panel was rendered, populate the
-  // initial Grand-Total view so users see data before touching the menu.
-  if (extras.includes('pdssp-lr-view')) {
-    setTimeout(() => window.pdsspRenderLineView(), 0);
-  }
 }
+
+window.pdsspSwitchTab = (which) => {
+  for (const k of ['sub', 'line']) {
+    const btn = document.getElementById('ptab-' + k);
+    const body = document.getElementById('ptab-' + k + '-body');
+    if (!btn || !body) continue;
+    if (k === which) {
+      btn.classList.add('active');
+      body.style.display = 'block';
+    } else {
+      btn.classList.remove('active');
+      body.style.display = 'none';
+    }
+  }
+};
 
 function renderNIDMP() { _renderProjectDetail('nidmp', 'proj-hero-go'); }
 

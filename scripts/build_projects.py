@@ -218,6 +218,28 @@ def main():
                                     "and upgrades existing ones across the "
                                     "NESCO grid (21 substations in total, "
                                     "across 5 categories)."),
+                        "scope": {
+                            "funding":  "Asian Development Bank (ADB)",
+                            "status":   "Ongoing",
+                            "overview": (
+                                "NIDMP is a comprehensive grid-modernization "
+                                "programme that strengthens NESCO's 33/11 kV "
+                                "distribution backbone. Under this project "
+                                "ADB funds new substation construction, "
+                                "upgradation of existing AIS substations, "
+                                "addition of GIS / AIS switching substations, "
+                                "and supply of modern switchgear and bay-"
+                                "breakers."
+                            ),
+                            "objectives": [
+                                "Build 3 new 33/11 kV GIS substations to serve city loads",
+                                "Build 3 new 33/11 kV AIS substations in distribution-deficit zones",
+                                "Upgrade 10 existing AIS substations with additional power transformers and modern switchgear",
+                                "Add 3 new 33 kV GIS switching substations off major grid SSs",
+                                "Add 2 new 33 kV AIS switching substations to relieve loaded grid SSs",
+                                "Supply replacement 33 kV bay-breakers for selected grid SSs",
+                            ],
+                        },
                         "substation_summary": parse_nidmp_summary(),
                         "grid_bay_breakers":  parse_nidmp_bays(),
                         # All 21 substations under ADB, transcribed from the
@@ -238,6 +260,30 @@ def main():
                                     "programme — upgrade of 33 kV, 11 kV and "
                                     "11/0.4 kV lines plus new substation work "
                                     "across all NESCO circles."),
+                        "scope": {
+                            "funding":  "New Development Bank (NDB)",
+                            "status":   "Upcoming",
+                            "overview": (
+                                "PDSSP is an upcoming, NDB-funded programme "
+                                "to strengthen the entire NESCO distribution "
+                                "network. The project covers every NESCO "
+                                "Circle (Rajshahi-1, Rajshahi-2, Pabna, "
+                                "Bogura, Naogaon, Rangpur-1, Rangpur-2 and "
+                                "Dinajpur) with substation upgrades, "
+                                "comprehensive 33 / 11 / 0.4 kV line "
+                                "upgradation, and large-scale new line "
+                                "construction targeted at reducing system "
+                                "loss and improving reliability."
+                            ),
+                            "objectives": [
+                                "Upgrade selected 33/11 kV substations with new power transformers, 33 kV VCBs and 11 kV switchgear",
+                                "Upgrade existing 33 kV, 11 kV, 11 kV (Dog Covered), 11/0.4 kV and 0.4 kV distribution lines",
+                                "Construct new 33 kV, 11 kV, 11/0.4 kV and 0.4 kV lines to extend coverage",
+                                "Replace ageing 33 kV circuit breakers on the source-line side",
+                                "Add distribution transformers (315 kVA / 250 kVA / 200 kVA) at deficit locations",
+                                "Add RMUs (Ring Main Units) for ring-fed feeders",
+                            ],
+                        },
                         "substation_summary": parse_pdssp_summary(),
                         "line_requirements":  parse_pdssp_lines(),
                     },

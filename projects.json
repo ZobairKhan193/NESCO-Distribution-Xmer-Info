@@ -1557,23 +1557,6 @@
                   "Total Lineworks\n(km)": 297.5,
                   "System Loss": "",
                   "Purpose of 33 kV Line": ""
-                },
-                {
-                  "Name Of S&DD/ ESU": "",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": "'Rangpur Zone'!A1",
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": "",
-                  "0.4 kV Line Upgradation": "",
-                  "33 kV New Line": "",
-                  "11 kV New": "",
-                  "11/0.4 kV New": "",
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": "",
-                  "Total Lineworks\n(km)": "",
-                  "System Loss": "",
-                  "Purpose of 33 kV Line": ""
                 }
               ]
             },
@@ -1813,24 +1796,6 @@
                   "11/0.4 kV New": 279.0,
                   "0.4 kV New": 704.0,
                   "Total": 1527.0,
-                  "System Loss": "",
-                  "Purpose of 33 kV Line": ""
-                },
-                {
-                  "Sr. No.": "",
-                  "Name of the SDD": "",
-                  "Name of the Substation": "",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": "",
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": "",
-                  "0.4 kV Line Upgradation": "",
-                  "33 kV New line": "",
-                  "11 kV New": "",
-                  "11/0.4 kV New": "",
-                  "0.4 kV New": "'Rangpur Zone'!A1",
-                  "Total": "",
                   "System Loss": "",
                   "Purpose of 33 kV Line": ""
                 }
@@ -2091,27 +2056,6 @@
                   "250 kVA": "",
                   "200 kVA": "",
                   "100 kVA": ""
-                },
-                {
-                  "Sr. No.": "",
-                  "Name of the SDD": "",
-                  "Name of the Substation": "",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": "",
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": "",
-                  "0.4 kV Line Upgradation": "",
-                  "33 kV New line": "",
-                  "11 kV New": "",
-                  "11/0.4 kV New": "",
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": "'Rangpur Zone'!A1",
-                  "Total": "",
-                  "Purpose of 33 kV Line": "",
-                  "250 kVA": "",
-                  "200 kVA": "",
-                  "100 kVA": ""
                 }
               ]
             },
@@ -2242,8 +2186,7 @@
                 "11/0.4 kV New",
                 "11 kV (Dog Covered)",
                 "0.4 kV New",
-                "Total Lineworks\n(km)",
-                "'Rangpur Circle-2'!A1"
+                "Total Lineworks\n(km)"
               ],
               "rows": [
                 {
@@ -2258,8 +2201,7 @@
                   "11 kV New": 27.0,
                   "11/0.4 kV New": 52.0,
                   "0.4 kV New": 60.0,
-                  "Total Lineworks\n(km)": 297.5,
-                  "'Rangpur Circle-2'!A1": ""
+                  "Total Lineworks\n(km)": 297.5
                 },
                 {
                   "Circle Name": "Rangpur-2",
@@ -2273,8 +2215,7 @@
                   "11 kV New": 97.0,
                   "11/0.4 kV New": 279.0,
                   "0.4 kV New": 704.0,
-                  "Total Lineworks\n(km)": 1527.0,
-                  "'Rangpur Circle-2'!A1": ""
+                  "Total Lineworks\n(km)": 1527.0
                 },
                 {
                   "Circle Name": "Dinajpur",
@@ -2288,8 +2229,7 @@
                   "11 kV New": 72.0,
                   "11/0.4 kV New": 74.0,
                   "0.4 kV New": 120.0,
-                  "Total Lineworks\n(km)": 528.0,
-                  "'Rangpur Circle-2'!A1": ""
+                  "Total Lineworks\n(km)": 528.0
                 },
                 {
                   "Circle Name": "Total=",
@@ -2303,23 +2243,7 @@
                   "11 kV New": 196.0,
                   "11/0.4 kV New": 405.0,
                   "0.4 kV New": 884.0,
-                  "Total Lineworks\n(km)": 2352.5,
-                  "'Rangpur Circle-2'!A1": ""
-                },
-                {
-                  "Circle Name": "",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": "",
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": "",
-                  "0.4 kV Line Upgradation": "",
-                  "33 kV New line": "",
-                  "11 kV New": "",
-                  "11/0.4 kV New": "",
-                  "0.4 kV New": "",
-                  "Total Lineworks\n(km)": "",
-                  "'Rangpur Circle-2'!A1": "'Grand Summary'!A1"
+                  "Total Lineworks\n(km)": 2352.5
                 }
               ]
             },
@@ -2339,8 +2263,7 @@
                 "11/0.4 kV New",
                 "11 kV New (Dog Covered)",
                 "0.4 kV New",
-                "Total Lineworks\n(km)",
-                "'Rajshai Zone'!A1"
+                "Total Lineworks\n(km)"
               ],
               "rows": [
                 {
@@ -2356,8 +2279,7 @@
                   "11/0.4 kV New": 216.5,
                   "11 kV New (Dog Covered)": 0.0,
                   "0.4 kV New": 240.0,
-                  "Total Lineworks\n(km)": 1485.0,
-                  "'Rajshai Zone'!A1": ""
+                  "Total Lineworks\n(km)": 1485.0
                 },
                 {
                   "Zone": "Rangpur Zone",
@@ -2372,8 +2294,7 @@
                   "11/0.4 kV New": 405.0,
                   "11 kV New (Dog Covered)": 46.0,
                   "0.4 kV New": 884.0,
-                  "Total Lineworks\n(km)": 2352.5,
-                  "'Rajshai Zone'!A1": "'Rangpur Zone'!A1"
+                  "Total Lineworks\n(km)": 2352.5
                 },
                 {
                   "Zone": "Total=",
@@ -2388,8 +2309,7 @@
                   "11/0.4 kV New": 621.5,
                   "11 kV New (Dog Covered)": "",
                   "0.4 kV New": 1124.0,
-                  "Total Lineworks\n(km)": 3837.5,
-                  "'Rajshai Zone'!A1": ""
+                  "Total Lineworks\n(km)": 3837.5
                 },
                 {
                   "Zone": "",
@@ -2404,8 +2324,7 @@
                   "11/0.4 kV New": "",
                   "11 kV New (Dog Covered)": "",
                   "0.4 kV New": "",
-                  "Total Lineworks\n(km)": "",
-                  "'Rajshai Zone'!A1": ""
+                  "Total Lineworks\n(km)": ""
                 }
               ]
             }

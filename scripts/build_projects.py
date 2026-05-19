@@ -22,7 +22,11 @@ from common import ROOT, open_wb, num, s, write_json
 NIDMP_SUMMARY = ROOT / "NIDMP" / "ADB_AIS_Substation_Upgradation_Summary (Claud).xlsx"
 NIDMP_BAYS    = ROOT / "NIDMP" / "Grid_Bay_Breakers.xlsx"
 PDSSP_SUMMARY = ROOT / "PDSSP" / "NDB SS_Upgradation_Substation_Summary.xlsx"
-PDSSP_LINES   = ROOT / "PDSSP" / "Line Requirement for All SDDS (Updated).xlsx"
+PDSSP_LINES_CANDIDATES = [
+    ROOT / "PDSSP" / "Line_Requirement_for_All_SDDS__Updated_.xlsx",  # current
+    ROOT / "PDSSP" / "Line Requirement for All SDDS (Updated).xlsx",  # legacy name
+]
+PDSSP_LINES = next((p for p in PDSSP_LINES_CANDIDATES if p.exists()), PDSSP_LINES_CANDIDATES[0])
 
 
 def _read_table(ws, header_row, max_cols=None):

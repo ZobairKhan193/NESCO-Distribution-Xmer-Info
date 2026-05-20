@@ -927,13 +927,18 @@ function _uniqueValues(list, fn) {
 }
 
 function ssFilterBar(idPrefix, list, onChange, opts={}) {
-  // Returns HTML for: search + zone + capacity-range dropdowns
+  // Returns HTML for: search + zone + capacity-range + SS Type dropdowns
   const zones = _uniqueValues(list, _ssZone);
+  const types = _uniqueValues(list, s => s.ss_type);
   return `
     <input class="search-input" id="${idPrefix}-q" placeholder="🔍 Search substation…" oninput="${onChange}()" style="max-width:200px">
     <select class="filter-sel" id="${idPrefix}-zone" onchange="${onChange}()">
       <option value="">All Zones / SDD</option>
       ${zones.map(z => `<option value="${z}">${z}</option>`).join('')}
+    </select>
+    <select class="filter-sel" id="${idPrefix}-type" onchange="${onChange}()">
+      <option value="">SS Type: All</option>
+      ${types.map(t => `<option value="${t}">${t}</option>`).join('')}
     </select>
     <select class="filter-sel" id="${idPrefix}-cap" onchange="${onChange}()">
       <option value="">Capacity: All</option>
@@ -941,20 +946,14 @@ function ssFilterBar(idPrefix, list, onChange, opts={}) {
       <option value="20-40">20 – 40 MVA</option>
       <option value="40-80">40 – 80 MVA</option>
       <option value="80-9999">&gt; 80 MVA</option>
-    </select>
-    <select class="filter-sel" id="${idPrefix}-status" onchange="${onChange}()">
-      <option value="">Status: All</option>
-      <option value="Online">Online</option>
-      <option value="Maintenance">Maintenance</option>
-      <option value="Offline">Offline</option>
     </select>`;
 }
 
 function applySSFilters(idPrefix, list) {
   const q       = (document.getElementById(idPrefix+'-q')?.value     || '').toLowerCase();
   const zone    =  document.getElementById(idPrefix+'-zone')?.value   || '';
+  const ssType  =  document.getElementById(idPrefix+'-type')?.value   || '';
   const capRng  =  document.getElementById(idPrefix+'-cap')?.value    || '';
-  const status  =  document.getElementById(idPrefix+'-status')?.value || '';
 
   const [capLo, capHi] = capRng ? capRng.split('-').map(Number) : [null,null];
 
@@ -962,7 +961,7 @@ function applySSFilters(idPrefix, list) {
     if (q && !((ss.name||'').toLowerCase().includes(q) ||
                (ss.sdd_esu||'').toLowerCase().includes(q))) return false;
     if (zone && _ssZone(ss) !== zone) return false;
-    if (status && (ss.status || 'Online') !== status) return false;
+    if (ssType && (ss.ss_type || '') !== ssType) return false;
     if (capLo != null) {
       const c = _ssCapacityMVA(ss);
       if (c == null || c < capLo || c > capHi) return false;
@@ -1236,20 +1235,23 @@ function renderSSSummary() {
 
   <div class="kpi-row" style="grid-template-columns:repeat(5,1fr)">
     <div class="kpi-card navy"><div class="kpi-val">${ALL_SUBSTATIONS.length}</div><div class="kpi-sub">Total Substations</div></div>
-    <div class="kpi-card green"><div class="kpi-val">${ALL_SUBSTATIONS.filter(s=>s.status==='Online').length}</div><div class="kpi-sub">Online</div></div>
+    <div class="kpi-card teal"><div class="kpi-val">${ALL_SUBSTATIONS.filter(s=>s.ss_type==='AIS').length}</div><div class="kpi-sub">AIS Type</div></div>
+    <div class="kpi-card indigo"><div class="kpi-val">${ALL_SUBSTATIONS.filter(s=>s.ss_type==='GIS').length}</div><div class="kpi-sub">GIS Type</div></div>
     <div class="kpi-card"><div class="kpi-val">${ALL_SUBSTATIONS.reduce((s,ss)=>s+(ss.power_transformers||[]).length,0)}</div><div class="kpi-sub">Power Transformers</div></div>
-    <div class="kpi-card"><div class="kpi-val">${ALL_SUBSTATIONS.reduce((s,ss)=>s+(ss.feeders_11kv||[]).length,0)}</div><div class="kpi-sub">Total 11 kV Feeders</div></div>
-    <div class="kpi-card amber"><div class="kpi-val">1065 MW</div><div class="kpi-sub">Network Max Demand</div></div>
+    <div class="kpi-card amber"><div class="kpi-val">${ALL_SUBSTATIONS.reduce((s,ss)=>s+(ss.feeders_11kv||[]).length,0)}</div><div class="kpi-sub">Total 11 kV Feeders</div></div>
   </div>
 
   <div class="panel">
-    <div class="panel-head"><h3>All 33/11 kV Substations</h3></div>
+    <div class="panel-head"><h3>All 33/11 kV Substations</h3>
+      <span id="ss-count" style="font-size:.82rem;color:var(--text3)">${ALL_SUBSTATIONS.length} Substations</span>
+    </div>
     <div class="panel-body no-pad"><div class="tbl-wrap">
     <table class="tbl" id="ss-table">
       <thead>
         <tr>
           <th>Sl.</th>
           <th>Substation Name</th>
+          <th>SS Type</th>
           <th>SDD / ESU</th>
           <th>Capacity (MVA)</th>
           <th>Max Demand (MW)</th>
@@ -1258,7 +1260,6 @@ function renderSSSummary() {
           <th>33 kV Lines</th>
           <th>Control Room No.</th>
           <th>GPS</th>
-          <th>Status</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -1267,6 +1268,16 @@ function renderSSSummary() {
     </div></div>
   </div>
   `;
+}
+
+/* Style helper for the SS Type cell.
+   AIS → blue badge, GIS → purple badge, Rural Type → amber badge. */
+function _ssTypeBadge(t) {
+  if (!t) return '<span class="badge badge-gray">—</span>';
+  const cls = t === 'GIS' ? 'badge-blue'
+            : t === 'AIS' ? 'badge-good'
+            : 'badge-partial';
+  return `<span class="badge ${cls}">${t}</span>`;
 }
 
 function renderSSRows(list) {
@@ -1279,6 +1290,7 @@ function renderSSRows(list) {
         ${ss.name||ss.sheet_name}
       </a>
     </td>
+    <td>${_ssTypeBadge(ss.ss_type)}</td>
     <td>${D(ss.sdd_esu)}</td>
     <td class="num">${D(ss.capacity_mva)}</td>
     <td class="num">${ss.max_demand_mw!=null ? ss.max_demand_mw+' MW' : '—'}</td>
@@ -1287,7 +1299,6 @@ function renderSSRows(list) {
     <td class="num">${(ss.lines_33kv||[]).length}</td>
     <td style="font-size:.8rem">${D(ss.mobile)}</td>
     <td>${ss.gps_lat ? `<a href="https://maps.google.com/?q=${ss.gps_lat},${ss.gps_lng}" target="_blank" title="${ss.gps_lat},${ss.gps_lng}"><i class="fas fa-map-marker-alt" style="color:var(--red2)"></i></a>` : '—'}</td>
-    <td><span class="badge badge-online">${ss.status||'Online'}</span></td>
     <td>
       <button class="btn btn-xs btn-secondary" onclick="window.showSection('ss-detail','${ss.id}')"><i class="fas fa-eye"></i></button>
       ${currentRole==='admin' ? `<button class="btn btn-xs btn-primary" onclick="window.openEditSSModal('${ss.id}')" style="margin-left:3px"><i class="fas fa-edit"></i></button>` : ''}

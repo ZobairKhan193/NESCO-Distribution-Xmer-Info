@@ -27,6 +27,7 @@ import re
 from common import ROOT, SITE, open_wb, num, s
 
 MASTER = ROOT / "33-11 kV SS Info" / "All 33-11 kV Substation Info Master File.xlsx"
+SS_TYPES = ROOT / "33-11 kV SS Info" / "NESCO Existing 33-11 kV SSs List Summary.xlsx"
 OUT    = SITE / "substations.json"
 
 # Column index (1-based, from the inspection of `Master File` sheet)
@@ -115,6 +116,33 @@ MASTER_NAME_ALIASES = {
 }
 
 
+def _gather_ss_types():
+    """Read NESCO Existing 33-11 kV SSs List Summary.xlsx → {norm_name: ss_type}.
+
+    Header sits on row 14 in this workbook; substation name is column 4
+    and SS Type is column 5. Values are AIS / GIS / Rural Type.
+    """
+    if not SS_TYPES.exists():
+        return {}
+    wb = open_wb(SS_TYPES)
+    ws = wb["Summary"]
+    out = {}
+    for r in range(15, ws.max_row + 1):
+        name = ws.cell(row=r, column=4).value
+        ss_type = ws.cell(row=r, column=5).value
+        if not name or not ss_type:
+            continue
+        nm = s(name)
+        st = s(ss_type)
+        if not nm or len(nm) < 3:
+            continue
+        # Skip the bottom summary rows (AIS SS / GIS SS / Rural Type / Total)
+        if nm.lower() in ("ais ss", "gis ss", "rural type", "total ais"):
+            continue
+        out[_norm(nm)] = st
+    return out
+
+
 def _gather_master():
     """Read the Master File sheet → list of dicts."""
     wb = open_wb(MASTER)
@@ -168,6 +196,10 @@ def main():
     print(f"build_substations.py — reading {MASTER.name}")
     master = _gather_master()
     print(f"  master file has {len(master)} substations")
+
+    ss_types = _gather_ss_types()
+    if ss_types:
+        print(f"  ss types file has {len(ss_types)} typed substations")
 
     existing = []
     if OUT.exists():
@@ -284,6 +316,36 @@ def main():
     dropped = before - len(existing)
     if dropped:
         print(f"  dropped {dropped} curated-only orphan(s): {sorted(DROP_ORPHAN_NAMES)}")
+
+    # Stamp ss_type from the "NESCO Existing 33-11 kV SSs List Summary"
+    # workbook onto every entry that matches. Tries exact-norm match,
+    # then the alias table (Raipur↔Raypur etc.), then difflib.
+    typed = 0
+    # Reverse alias map: curated name → master name
+    reverse_aliases = {v: k for k, v in MASTER_NAME_ALIASES.items()}
+    if ss_types:
+        for ss in existing:
+            ss_name = ss.get("name") or ss.get("sheet_name") or ""
+            key = _norm(ss_name)
+            if key in ss_types:
+                ss["ss_type"] = ss_types[key]
+                typed += 1
+                continue
+            # If the curated name has a reverse alias to the master name,
+            # look up the master name in ss_types.
+            # Strip the " 33/11 KV" suffix first to match the alias keys.
+            stripped = re.sub(r"\s*33[\s/]*11\s*k?v.*$", "", ss_name, flags=re.I).strip()
+            alias = reverse_aliases.get(stripped)
+            if alias and _norm(alias) in ss_types:
+                ss["ss_type"] = ss_types[_norm(alias)]
+                typed += 1
+                continue
+            # difflib fallback for spelling drift
+            cand = difflib.get_close_matches(key, ss_types.keys(), n=1, cutoff=0.80)
+            if cand:
+                ss["ss_type"] = ss_types[cand[0]]
+                typed += 1
+        print(f"  stamped ss_type on {typed} of {len(existing)} entries")
 
     OUT.write_text(json.dumps(existing, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"  updated {updated} existing entries · added {len(added)} new stubs")

@@ -1245,6 +1245,45 @@ table.tbl tr.tbl-sum-row td {
   padding: 12px 14px;
 }
 
+/* Top scrollbar that mirrors the table-wrap's horizontal scroll, so wide
+   tables can be navigated without scrolling to the bottom of the page
+   to reach the native scrollbar. JS attaches one per .tbl-wrap (with a
+   wider-than-viewport table) automatically. */
+.tbl-scroll-mirror{
+  overflow-x:auto;
+  overflow-y:hidden;
+  height:14px;
+  margin-bottom:4px;
+  border-radius:8px;
+  background:linear-gradient(90deg,
+    rgba(99,102,241,.06),
+    rgba(14,165,233,.04),
+    rgba(99,102,241,.06));
+  border:1px solid var(--glass-border);
+}
+.tbl-scroll-mirror::-webkit-scrollbar{height:10px}
+.tbl-scroll-mirror::-webkit-scrollbar-track{background:transparent}
+.tbl-scroll-mirror::-webkit-scrollbar-thumb{
+  background:linear-gradient(90deg,#6366f1,#3b82f6);
+  border-radius:6px;
+}
+.tbl-scroll-mirror::-webkit-scrollbar-thumb:hover{
+  background:linear-gradient(90deg,#4f46e5,#2563eb);
+}
+.tbl-scroll-mirror > div{height:1px}
+
+/* Make the table's own bottom scrollbar a touch chunkier and use the
+   same colour so it reads as part of the same control. */
+.tbl-wrap::-webkit-scrollbar{height:10px}
+.tbl-wrap::-webkit-scrollbar-track{background:transparent}
+.tbl-wrap::-webkit-scrollbar-thumb{
+  background:linear-gradient(90deg,#6366f1,#3b82f6);
+  border-radius:6px;
+}
+.tbl-wrap::-webkit-scrollbar-thumb:hover{
+  background:linear-gradient(90deg,#4f46e5,#2563eb);
+}
+
 /* ════════════ MOBILE TUNING ════════════ */
 @media (max-width: 768px){
   .zrs-pipe-arrow{display:none}

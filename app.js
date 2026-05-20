@@ -621,10 +621,87 @@ function showSection(sec, param = null) {
     'load-history':      renderLoadHistory,
   };
   (R[sec] || (() => { document.getElementById('content').innerHTML = `<div class="page-loader">Coming soon.</div>`; }))();
+
+  // Wide tables: attach a top mirror-scrollbar so users don't have to
+  // scroll to the bottom of the page just to reach the native one.
+  requestAnimationFrame(() => _attachTableScrollMirrors());
 }
 
 window.toggleNav = () => document.getElementById('nav-menu').classList.toggle('open');
 const D = v => (v != null && String(v).trim() !== '' && String(v) !== 'null') ? v : '—';
+
+/* ── Top scrollbar mirror for every wide table ──
+   Inserts a 14px-tall div above each .tbl-wrap that has horizontal
+   overflow, and keeps its scrollLeft synced with the wrap's
+   scrollLeft. Content is untouched. */
+function _attachTableScrollMirrors() {
+  const wraps = document.querySelectorAll('#content .tbl-wrap');
+  wraps.forEach(wrap => {
+    // Clean up any previous mirror so re-renders don't accumulate them
+    const prev = wrap.previousElementSibling;
+    if (prev && prev.classList && prev.classList.contains('tbl-scroll-mirror')) {
+      prev.remove();
+    }
+
+    const tbl = wrap.querySelector('table');
+    if (!tbl) return;
+    // Only attach if the table actually overflows horizontally
+    if (tbl.scrollWidth <= wrap.clientWidth + 2) return;
+
+    const mirror = document.createElement('div');
+    mirror.className = 'tbl-scroll-mirror';
+    const inner = document.createElement('div');
+    inner.style.width = tbl.scrollWidth + 'px';
+    mirror.appendChild(inner);
+    wrap.parentNode.insertBefore(mirror, wrap);
+
+    let syncing = false;
+    mirror.addEventListener('scroll', () => {
+      if (syncing) return;
+      syncing = true;
+      wrap.scrollLeft = mirror.scrollLeft;
+      syncing = false;
+    });
+    wrap.addEventListener('scroll', () => {
+      if (syncing) return;
+      syncing = true;
+      mirror.scrollLeft = wrap.scrollLeft;
+      syncing = false;
+    });
+  });
+}
+
+// Keep mirror widths in sync when the viewport resizes
+window.addEventListener('resize', () => {
+  document.querySelectorAll('#content .tbl-wrap').forEach(wrap => {
+    const mirror = wrap.previousElementSibling;
+    const tbl = wrap.querySelector('table');
+    if (!mirror || !tbl || !mirror.classList.contains('tbl-scroll-mirror')) return;
+    const inner = mirror.firstElementChild;
+    if (inner) inner.style.width = tbl.scrollWidth + 'px';
+  });
+});
+
+// Catch tables that arrive after the initial showSection call (e.g. when
+// the PDSSP "Line" tab is switched, or the ZRS detail loads its monthly
+// table). A single observer running for the lifetime of the page; cheap
+// because we early-exit if no tables show up.
+(function _watchForLateTables() {
+  if (typeof MutationObserver === 'undefined') return;
+  let pending = false;
+  const obs = new MutationObserver(() => {
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(() => {
+      pending = false;
+      _attachTableScrollMirrors();
+    });
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    const root = document.getElementById('content');
+    if (root) obs.observe(root, { childList: true, subtree: true });
+  });
+})();
 
 /* ══════════════════════════════════════════════════
    SECTION 9 — HOME  (renamed from Dashboard)

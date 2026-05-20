@@ -1145,17 +1145,36 @@ table.tbl.pdssp-lr-tbl tbody tr:hover .pdssp-sum-col{
 
 /* Allow header cells (S&DD names) to wrap softly — they're long
    ("S&DD-1, NESCO, Rajshahi.") and would otherwise blow up column
-   widths beyond what's useful. */
+   widths beyond what's useful. Tighten widths so no horizontal
+   slack and every column reads compact. */
 table.tbl.pdssp-lr-tbl thead th{
   white-space:normal;
-  min-width:120px;
-  max-width:200px;
+  min-width:78px;
+  max-width:130px;
   text-align:center;
   vertical-align:bottom;
+  padding:8px 6px;
+  font-size:.74rem;
+  line-height:1.25;
 }
-table.tbl.pdssp-lr-tbl thead th.pdssp-label-col{
-  min-width:200px;
+table.tbl.pdssp-lr-tbl tbody td{
+  padding:7px 8px;
+  font-size:.82rem;
+  text-align:center;
+}
+table.tbl.pdssp-lr-tbl thead th.pdssp-label-col,
+table.tbl.pdssp-lr-tbl tbody .pdssp-label-col{
+  min-width:170px;
+  max-width:240px;
   text-align:left;
+  font-size:.82rem;
+}
+
+/* Show every data row in full — don't clip to .scrollable's 560px.
+   The PDSSP transposed tables top out at ~20 rows so they fit
+   comfortably without a vertical cap. */
+.tbl-wrap.scrollable:has(table.tbl.pdssp-lr-tbl){
+  max-height:none;
 }
 
 /* ════════════ RENEWABLE ENERGY CARDS ════════════ */
@@ -1321,6 +1340,11 @@ table.tbl tr.tbl-sum-row td {
   border:1px solid var(--glass-border);
 }
 .tbl-scroll-mirror > div{display:block}
+/* Bottom mirror — same look, sits below the table instead of above. */
+.tbl-scroll-mirror.tbl-scroll-mirror-bottom{
+  margin-top:4px;
+  margin-bottom:0;
+}
 .tbl-scroll-mirror::-webkit-scrollbar{height:10px}
 .tbl-scroll-mirror::-webkit-scrollbar-track{background:transparent}
 .tbl-scroll-mirror::-webkit-scrollbar-thumb{

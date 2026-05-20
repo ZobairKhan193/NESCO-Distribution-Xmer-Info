@@ -650,75 +650,93 @@ function _attachOneMirror(wrap) {
   const tbl = wrap.querySelector('table');
   if (!tbl) return;
 
-  // If a mirror is already attached to this wrap, just re-measure.
-  // Avoids the MutationObserver / measure loop accumulating mirrors.
-  const prev = wrap.previousElementSibling;
-  const existingMirror = (prev && prev.classList && prev.classList.contains('tbl-scroll-mirror')) ? prev : null;
-  const mirror = existingMirror || document.createElement('div');
-  if (!existingMirror) {
-    mirror.className = 'tbl-scroll-mirror';
-    const inner = document.createElement('div');
-    inner.style.height = '1px';
-    inner.style.width = '1px';   // placeholder; updated below
-    mirror.appendChild(inner);
-    wrap.parentNode.insertBefore(mirror, wrap);
-  }
-  const inner = mirror.firstElementChild;
+  // Mirrors above AND below the table — both stay in sync with the
+  // wrap's horizontal scroll. Idempotent: reuses existing mirrors so
+  // the MutationObserver / measure loop doesn't accumulate them.
+  const topMirror    = _getOrCreateMirror(wrap, 'top');
+  const bottomMirror = _getOrCreateMirror(wrap, 'bottom');
+  const topInner    = topMirror.firstElementChild;
+  const bottomInner = bottomMirror.firstElementChild;
 
-  if (!mirror.dataset.scrollSynced) {
-    let syncing = false;
-    mirror.addEventListener('scroll', () => {
-      if (syncing) return;
-      syncing = true;
-      wrap.scrollLeft = mirror.scrollLeft;
-      syncing = false;
-    });
-    wrap.addEventListener('scroll', () => {
-      if (syncing) return;
-      syncing = true;
-      mirror.scrollLeft = wrap.scrollLeft;
-      syncing = false;
-    });
-    mirror.dataset.scrollSynced = '1';
-  }
+  _syncMirror(topMirror, wrap);
+  _syncMirror(bottomMirror, wrap);
 
   const measure = () => {
-    // Force a layout flush, then read the true scrollable width from the
-    // wrap itself (more reliable than tbl.scrollWidth because the wrap
-    // is the element whose scroll state we mirror).
     const w = Math.max(wrap.scrollWidth, tbl.scrollWidth, tbl.getBoundingClientRect().width);
     if (!w) return;
-    inner.style.width = Math.round(w) + 'px';
-    // If the table fits its container (no overflow), hide the mirror so
-    // we don't show an empty bar.
-    if (w <= wrap.clientWidth + 2) {
-      mirror.style.display = 'none';
-    } else {
-      mirror.style.display = '';
-    }
+    topInner.style.width = bottomInner.style.width = Math.round(w) + 'px';
+    const overflows = w > wrap.clientWidth + 2;
+    topMirror.style.display    = overflows ? '' : 'none';
+    bottomMirror.style.display = overflows ? '' : 'none';
   };
 
-  // First measurement now, then after one frame, then again 80ms later
-  // (catches late layout from fonts / images / async data).
   measure();
-  requestAnimationFrame(() => {
-    requestAnimationFrame(measure);
-  });
+  requestAnimationFrame(() => requestAnimationFrame(measure));
   setTimeout(measure, 80);
   setTimeout(measure, 400);
+}
+
+function _getOrCreateMirror(wrap, position /* 'top' | 'bottom' */) {
+  const sibling = position === 'top' ? wrap.previousElementSibling : wrap.nextElementSibling;
+  const isOurs = (el) =>
+    el && el.classList && el.classList.contains('tbl-scroll-mirror') &&
+    el.dataset.mirrorPos === position;
+  if (isOurs(sibling)) return sibling;
+
+  const mirror = document.createElement('div');
+  mirror.className = 'tbl-scroll-mirror';
+  mirror.dataset.mirrorPos = position;
+  if (position === 'bottom') mirror.classList.add('tbl-scroll-mirror-bottom');
+  const inner = document.createElement('div');
+  inner.style.height = '1px';
+  inner.style.width = '1px';
+  mirror.appendChild(inner);
+  if (position === 'top') {
+    wrap.parentNode.insertBefore(mirror, wrap);
+  } else {
+    wrap.parentNode.insertBefore(mirror, wrap.nextSibling);
+  }
+  return mirror;
+}
+
+function _syncMirror(mirror, wrap) {
+  if (mirror.dataset.scrollSynced) return;
+  let syncing = false;
+  mirror.addEventListener('scroll', () => {
+    if (syncing) return;
+    syncing = true;
+    wrap.scrollLeft = mirror.scrollLeft;
+    syncing = false;
+  });
+  wrap.addEventListener('scroll', () => {
+    if (syncing) return;
+    syncing = true;
+    // Update every mirror sibling we may have attached.
+    const top = wrap.previousElementSibling;
+    const bot = wrap.nextElementSibling;
+    [top, bot].forEach(el => {
+      if (el && el.classList && el.classList.contains('tbl-scroll-mirror')) {
+        el.scrollLeft = wrap.scrollLeft;
+      }
+    });
+    syncing = false;
+  });
+  mirror.dataset.scrollSynced = '1';
 }
 
 // Keep mirror widths in sync when the viewport resizes
 window.addEventListener('resize', () => {
   document.querySelectorAll('#content .tbl-wrap').forEach(wrap => {
-    const mirror = wrap.previousElementSibling;
     const tbl = wrap.querySelector('table');
-    if (!mirror || !tbl || !mirror.classList.contains('tbl-scroll-mirror')) return;
-    const inner = mirror.firstElementChild;
-    if (!inner) return;
+    if (!tbl) return;
     const w = Math.max(wrap.scrollWidth, tbl.scrollWidth);
-    inner.style.width = Math.round(w) + 'px';
-    mirror.style.display = (w <= wrap.clientWidth + 2) ? 'none' : '';
+    const overflows = w > wrap.clientWidth + 2;
+    [wrap.previousElementSibling, wrap.nextElementSibling].forEach(mirror => {
+      if (!mirror || !mirror.classList || !mirror.classList.contains('tbl-scroll-mirror')) return;
+      const inner = mirror.firstElementChild;
+      if (inner) inner.style.width = Math.round(w) + 'px';
+      mirror.style.display = overflows ? '' : 'none';
+    });
   });
 });
 

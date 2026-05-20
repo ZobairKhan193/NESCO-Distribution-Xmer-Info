@@ -633,28 +633,39 @@ const D = v => (v != null && String(v).trim() !== '' && String(v) !== 'null') ? 
 /* ── Top scrollbar mirror for every wide table ──
    Inserts a 14px-tall div above each .tbl-wrap that has horizontal
    overflow, and keeps its scrollLeft synced with the wrap's
-   scrollLeft. Content is untouched. */
+   scrollLeft. Content is untouched.
+
+   Timing notes — scrollWidth has to be measured AFTER layout has
+   settled. requestAnimationFrame alone can fire before the table has
+   reached its final width (Chrome/Edge sometimes batch a re-layout
+   into the next frame), so we re-measure on the second RAF and again
+   100ms later in case fonts or images are still settling.
+*/
 function _attachTableScrollMirrors() {
   const wraps = document.querySelectorAll('#content .tbl-wrap');
-  wraps.forEach(wrap => {
-    // Clean up any previous mirror so re-renders don't accumulate them
-    const prev = wrap.previousElementSibling;
-    if (prev && prev.classList && prev.classList.contains('tbl-scroll-mirror')) {
-      prev.remove();
-    }
+  wraps.forEach(_attachOneMirror);
+}
 
-    const tbl = wrap.querySelector('table');
-    if (!tbl) return;
-    // Only attach if the table actually overflows horizontally
-    if (tbl.scrollWidth <= wrap.clientWidth + 2) return;
+function _attachOneMirror(wrap) {
+  const tbl = wrap.querySelector('table');
+  if (!tbl) return;
 
-    const mirror = document.createElement('div');
+  // If a mirror is already attached to this wrap, just re-measure.
+  // Avoids the MutationObserver / measure loop accumulating mirrors.
+  const prev = wrap.previousElementSibling;
+  const existingMirror = (prev && prev.classList && prev.classList.contains('tbl-scroll-mirror')) ? prev : null;
+  const mirror = existingMirror || document.createElement('div');
+  if (!existingMirror) {
     mirror.className = 'tbl-scroll-mirror';
     const inner = document.createElement('div');
-    inner.style.width = tbl.scrollWidth + 'px';
+    inner.style.height = '1px';
+    inner.style.width = '1px';   // placeholder; updated below
     mirror.appendChild(inner);
     wrap.parentNode.insertBefore(mirror, wrap);
+  }
+  const inner = mirror.firstElementChild;
 
+  if (!mirror.dataset.scrollSynced) {
     let syncing = false;
     mirror.addEventListener('scroll', () => {
       if (syncing) return;
@@ -668,7 +679,33 @@ function _attachTableScrollMirrors() {
       mirror.scrollLeft = wrap.scrollLeft;
       syncing = false;
     });
+    mirror.dataset.scrollSynced = '1';
+  }
+
+  const measure = () => {
+    // Force a layout flush, then read the true scrollable width from the
+    // wrap itself (more reliable than tbl.scrollWidth because the wrap
+    // is the element whose scroll state we mirror).
+    const w = Math.max(wrap.scrollWidth, tbl.scrollWidth, tbl.getBoundingClientRect().width);
+    if (!w) return;
+    inner.style.width = Math.round(w) + 'px';
+    // If the table fits its container (no overflow), hide the mirror so
+    // we don't show an empty bar.
+    if (w <= wrap.clientWidth + 2) {
+      mirror.style.display = 'none';
+    } else {
+      mirror.style.display = '';
+    }
+  };
+
+  // First measurement now, then after one frame, then again 80ms later
+  // (catches late layout from fonts / images / async data).
+  measure();
+  requestAnimationFrame(() => {
+    requestAnimationFrame(measure);
   });
+  setTimeout(measure, 80);
+  setTimeout(measure, 400);
 }
 
 // Keep mirror widths in sync when the viewport resizes
@@ -678,7 +715,10 @@ window.addEventListener('resize', () => {
     const tbl = wrap.querySelector('table');
     if (!mirror || !tbl || !mirror.classList.contains('tbl-scroll-mirror')) return;
     const inner = mirror.firstElementChild;
-    if (inner) inner.style.width = tbl.scrollWidth + 'px';
+    if (!inner) return;
+    const w = Math.max(wrap.scrollWidth, tbl.scrollWidth);
+    inner.style.width = Math.round(w) + 'px';
+    mirror.style.display = (w <= wrap.clientWidth + 2) ? 'none' : '';
   });
 });
 

@@ -1250,7 +1250,10 @@ table.tbl tr.tbl-sum-row td {
    to reach the native scrollbar. JS attaches one per .tbl-wrap (with a
    wider-than-viewport table) automatically. */
 .tbl-scroll-mirror{
-  overflow-x:auto;
+  /* `scroll` (not `auto`) so the thumb always renders when the inner
+     div is wider than the bar; some browsers refuse to materialise an
+     `auto` scrollbar for very-near-equal widths. */
+  overflow-x:scroll;
   overflow-y:hidden;
   height:14px;
   margin-bottom:4px;
@@ -1261,6 +1264,7 @@ table.tbl tr.tbl-sum-row td {
     rgba(99,102,241,.06));
   border:1px solid var(--glass-border);
 }
+.tbl-scroll-mirror > div{display:block}
 .tbl-scroll-mirror::-webkit-scrollbar{height:10px}
 .tbl-scroll-mirror::-webkit-scrollbar-track{background:transparent}
 .tbl-scroll-mirror::-webkit-scrollbar-thumb{

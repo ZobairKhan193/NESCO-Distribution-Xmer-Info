@@ -1102,6 +1102,62 @@ table.tbl .num{font-variant-numeric:tabular-nums}
 }
 .proj-tab-body{margin-top:4px}
 
+/* ════════════ PDSSP LINE-REQUIREMENT TABLES (transposed) ════════════
+   Rows = line-work metrics, columns = entities (S&DD / Substation /
+   Circle / Zone). The first column (metric label) is sticky on the
+   left so it stays visible as the user scrolls horizontally. The
+   last column is a Sum / Total and gets a stronger tint. */
+table.tbl.pdssp-lr-tbl thead .pdssp-label-col,
+table.tbl.pdssp-lr-tbl tbody .pdssp-label-col{
+  position:sticky;
+  left:0;
+  z-index:3;
+  background:#eef3fb;
+  text-align:left;
+  white-space:nowrap;
+  min-width:200px;
+  border-right:2px solid var(--glass-border-2);
+}
+table.tbl.pdssp-lr-tbl tbody tr:nth-child(even) .pdssp-label-col{
+  background:#e7eef9;
+}
+table.tbl.pdssp-lr-tbl tbody tr:hover .pdssp-label-col{
+  background:#dbeafe;
+}
+table.tbl.pdssp-lr-tbl thead tr:first-child .pdssp-label-col{
+  z-index:5;            /* above the sticky data column header */
+}
+
+/* Sum / Total column — stronger tint so it pops */
+table.tbl.pdssp-lr-tbl thead .pdssp-sum-col{
+  background:linear-gradient(90deg,#dbeafe,#c7d2fe) !important;
+  color:#1e1b4b !important;
+  font-weight:800;
+}
+table.tbl.pdssp-lr-tbl tbody .pdssp-sum-col{
+  background:rgba(99,102,241,.10) !important;
+  color:#1e1b4b !important;
+  font-weight:800;
+}
+table.tbl.pdssp-lr-tbl tbody tr:hover .pdssp-sum-col{
+  background:rgba(99,102,241,.18) !important;
+}
+
+/* Allow header cells (S&DD names) to wrap softly — they're long
+   ("S&DD-1, NESCO, Rajshahi.") and would otherwise blow up column
+   widths beyond what's useful. */
+table.tbl.pdssp-lr-tbl thead th{
+  white-space:normal;
+  min-width:120px;
+  max-width:200px;
+  text-align:center;
+  vertical-align:bottom;
+}
+table.tbl.pdssp-lr-tbl thead th.pdssp-label-col{
+  min-width:200px;
+  text-align:left;
+}
+
 /* ════════════ RENEWABLE ENERGY CARDS ════════════ */
 .renew-grid{
   display:grid;

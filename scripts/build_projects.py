@@ -23,8 +23,9 @@ NIDMP_SUMMARY = ROOT / "NIDMP" / "ADB_AIS_Substation_Upgradation_Summary (Claud)
 NIDMP_BAYS    = ROOT / "NIDMP" / "Grid_Bay_Breakers.xlsx"
 PDSSP_SUMMARY = ROOT / "PDSSP" / "NDB SS_Upgradation_Substation_Summary.xlsx"
 PDSSP_LINES_CANDIDATES = [
-    ROOT / "PDSSP" / "Line_Requirement_for_All_SDDS__Updated_.xlsx",  # current
-    ROOT / "PDSSP" / "Line Requirement for All SDDS (Updated).xlsx",  # legacy name
+    ROOT / "PDSSP" / "Line_Requirement_for_All_SDDS__Transposed_.xlsx",  # newest (transposed)
+    ROOT / "PDSSP" / "Line_Requirement_for_All_SDDS__Updated_.xlsx",     # previous
+    ROOT / "PDSSP" / "Line Requirement for All SDDS (Updated).xlsx",     # legacy
 ]
 PDSSP_LINES = next((p for p in PDSSP_LINES_CANDIDATES if p.exists()), PDSSP_LINES_CANDIDATES[0])
 
@@ -140,63 +141,98 @@ def parse_pdssp_summary():
 
 
 def parse_pdssp_lines():
-    """Each sheet is one of:
-      - a CIRCLE sheet (rows = S&DDs/ESUs in that Circle)
-      - a ZONE sheet (rows = Circles in that Zone)
-      - the GRAND SUMMARY sheet (rows = Zones + a Total= row)
-      - a per-SS detail sheet (Rangpur Circle-2, Dinajpur Circle — rows
-        = substations under an S&DD)
-    We classify by inspecting the header row and emit one entry per
-    sheet so the UI can pick the right rendering.
+    """Parse the transposed-format Line Requirement workbook.
+
+    Transposed layout per sheet:
+      * 1-3 header rows at the top (each row labels one column of a
+        column-header stack). For SDD sheets there is 1 header row
+        ("Name Of S&DD/ ESU" + S&DD names); for Substation sheets
+        there are 3 (Sr.No / SDD / Substation); for Zone there is 1
+        ("Circle Name" + circle names); for Grand there is 1
+        ("Zone" + zone names).
+      * Remaining rows are line-work metrics (33 kV Upgradation,
+        11 kV Upgradation, …, Total Lineworks, System Loss, Purpose).
+        First cell of each is the metric label; subsequent cells are
+        the per-entity values.
     """
     wb = open_wb(PDSSP_LINES)
     out = []
     for sn in wb.sheetnames:
         ws = wb[sn]
-        header_row = None
-        kind = None
-        # Find the first row that has a recognisable name column.
-        for r in range(1, min(10, ws.max_row) + 1):
-            cells_low = [s(c.value).lower() for c in ws[r] if c.value]
-            joined = " | ".join(cells_low)
-            if not cells_low:
-                continue
-            if "name of the sdd" in joined and "substation" in joined:
-                header_row, kind = r, "substation"
-                break
-            if "name of s&dd" in joined or "name of  s&dd" in joined or "name of the s&dd" in joined:
-                header_row, kind = r, "sdd"
-                break
-            if joined.startswith("circle name") or "circle name" in cells_low:
-                header_row, kind = r, "zone"
-                break
-            if cells_low[0] == "zone":
-                header_row, kind = r, "grand"
-                break
-        if not header_row:
-            continue
-
-        headers = [s(c.value) for c in ws[header_row]]
-        rows = []
-        for r in ws.iter_rows(min_row=header_row + 1, values_only=True):
-            if not r:
-                continue
-            rec = {}
-            for i, h in enumerate(headers):
-                if not h:
-                    continue
-                v = r[i] if i < len(r) else None
-                rec[h] = num(v) if isinstance(v, (int, float)) else s(v)
-            if any(v not in ("", None) for v in rec.values()):
-                rows.append(rec)
-        if rows:
-            out.append({
-                "sheet": sn,
-                "kind": kind,
-                "headers": [h for h in headers if h],
-                "rows": rows,
-            })
+        sheet = _parse_transposed_sheet(ws, sn)
+        if sheet and sheet["data_rows"]:
+            out.append(sheet)
     return out
+
+
+def _parse_transposed_sheet(ws, sheet_name):
+    # Find the first column that has a meaningful label on row 1
+    # (some sheets have an empty leading column).
+    start_col = None
+    first_label = None
+    for col in range(1, min(ws.max_column, 6) + 1):
+        v = s(ws.cell(row=1, column=col).value).lower()
+        if v:
+            start_col = col
+            first_label = v
+            break
+    if not start_col:
+        return None
+
+    if first_label.startswith("sr"):
+        kind, header_row_count = "substation", 3
+    elif "name of" in first_label and "s&dd" in first_label:
+        kind, header_row_count = "sdd", 1
+    elif "circle name" in first_label:
+        kind, header_row_count = "zone", 1
+    elif first_label.startswith("zone"):
+        kind, header_row_count = "grand", 1
+    else:
+        return None
+
+    # ── collect header rows (starting from start_col) ──
+    header_rows = []
+    for r in range(1, header_row_count + 1):
+        row_vals = [s(ws.cell(row=r, column=c).value) for c in range(start_col, ws.max_column + 1)]
+        # trim trailing empty cells
+        while row_vals and not row_vals[-1]:
+            row_vals.pop()
+        header_rows.append(row_vals)
+
+    # Total number of data columns = (longest header row) - 1
+    n_cols = max(len(hr) for hr in header_rows) - 1 if header_rows else 0
+    # pad header rows so all are the same length
+    for hr in header_rows:
+        while len(hr) < n_cols + 1:
+            hr.append("")
+
+    # ── data rows ──
+    data_rows = []
+    for r in range(header_row_count + 1, ws.max_row + 1):
+        cells = [ws.cell(row=r, column=start_col + c).value for c in range(n_cols + 1)]
+        if not any(cells):
+            continue
+        label = s(cells[0])
+        if not label and not any(s(v) for v in cells[1:]):
+            continue
+        values = []
+        for v in cells[1:]:
+            if v is None or v == "":
+                values.append(None)
+            elif isinstance(v, (int, float)):
+                values.append(float(v))
+            else:
+                sv = s(v)
+                n = num(sv)
+                values.append(n if n is not None else sv)
+        data_rows.append({"label": label, "values": values})
+
+    return {
+        "sheet": sheet_name.strip(),
+        "kind": kind,
+        "header_rows": header_rows,
+        "data_rows": data_rows,
+    }
 
 
 def main():

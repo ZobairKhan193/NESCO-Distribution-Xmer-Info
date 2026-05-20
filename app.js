@@ -4626,40 +4626,77 @@ function _renderPdsspLineReqViews(lineReqs) {
   `;
 }
 
+/* Render one PDSSP line-requirement sheet as a transposed table.
+   - sheet.header_rows: list of header rows (1 for sdd/zone/grand, 3 for substation)
+   - sheet.data_rows:  list of {label, values[]}
+   The first column carries the metric labels; remaining columns are
+   per-entity values. The last column is typically a Sum / Total. */
+function _pdsspSheetHTML(sheet) {
+  if (!sheet || !sheet.header_rows || !sheet.data_rows) {
+    return '<div class="placeholder-card"><p>No data.</p></div>';
+  }
+  const nCols = sheet.header_rows[0].length;     // includes the leading label column
+  const lastIdx = nCols - 1;
+
+  // ── thead ──
+  const theadHtml = sheet.header_rows.map((row, ri) => {
+    const ths = row.map((cell, ci) => {
+      const isLast = ci === lastIdx;
+      const isLabelCol = ci === 0;
+      let cls = '';
+      if (isLast) cls = 'pdssp-sum-col';
+      if (isLabelCol) cls = (cls ? cls + ' ' : '') + 'pdssp-label-col';
+      const tag = (ri === sheet.header_rows.length - 1 || isLabelCol) ? 'th' : 'th';
+      return `<${tag} class="${cls}">${esc(cell)}</${tag}>`;
+    }).join('');
+    return `<tr>${ths}</tr>`;
+  }).join('');
+
+  // ── tbody ──
+  const fmt = (v) => {
+    if (v == null || v === '') return '';
+    if (typeof v === 'number') {
+      // strip trailing .0 for integer-valued floats
+      return Number.isInteger(v) ? v.toLocaleString() : v;
+    }
+    return esc(v);
+  };
+  const tbodyHtml = sheet.data_rows.map(row => {
+    const labelCell = `<th class="pdssp-label-col">${esc(row.label)}</th>`;
+    const valueCells = (row.values || []).map((v, i) => {
+      const isLast = i === lastIdx - 1;
+      const cls = (isLast ? 'pdssp-sum-col ' : '') + (typeof v === 'number' ? 'num' : '');
+      return `<td class="${cls.trim()}">${fmt(v)}</td>`;
+    }).join('');
+    return `<tr>${labelCell}${valueCells}</tr>`;
+  }).join('');
+
+  return `<div class="tbl-wrap scrollable">
+    <table class="tbl pdssp-lr-tbl">
+      <thead>${theadHtml}</thead>
+      <tbody>${tbodyHtml}</tbody>
+    </table>
+  </div>`;
+}
+
 window.pdsspRenderLineView = () => {
   if (!_pdsspLineReqsCache) return;
   const lr = _pdsspLineReqsCache;
   const view = (document.getElementById('pdssp-lr-view')?.value) || 'grand';
 
-  const tableHTML = (data) => {
-    if (!data || !data.headers || !data.headers.length) return '<div class="placeholder-card"><p>No data.</p></div>';
-    const head = data.headers.map(h => `<th>${esc(h)}</th>`).join('');
-    const body = (data.rows || []).map(r => {
-      const cells = data.headers.map(h => {
-        const v = r[h];
-        const isNum = typeof v === 'number';
-        return `<td class="${isNum?'num':''}">${esc(v ?? '')}</td>`;
-      }).join('');
-      return `<tr>${cells}</tr>`;
-    }).join('');
-    return `<div class="tbl-wrap scrollable">
-      <table class="tbl"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>
-    </div>`;
-  };
-
-  let html = '';
   // Reset any auxiliary controls
   const extra = document.getElementById('pdssp-lr-extra');
   if (extra) extra.innerHTML = '';
 
+  let html = '';
   if (view === 'grand') {
     const g = lr.find(s => s.kind === 'grand');
-    html = g ? tableHTML(g) : '<div class="placeholder-card"><p>No Grand Summary sheet found.</p></div>';
+    html = g ? _pdsspSheetHTML(g) : '<div class="placeholder-card"><p>No Grand Summary sheet found.</p></div>';
   } else if (view === 'zone') {
     const zones = lr.filter(s => s.kind === 'zone');
     html = zones.map(z => `
       <div style="padding:14px 20px 6px"><h4 style="font-family:var(--fh);font-weight:800;color:#0b1d3f">${esc(z.sheet)}</h4></div>
-      ${tableHTML(z)}
+      ${_pdsspSheetHTML(z)}
     `).join('');
   } else if (view === 'circle') {
     const circles = lr.filter(s => s.kind === 'sdd' || s.kind === 'substation');
@@ -4668,13 +4705,13 @@ window.pdsspRenderLineView = () => {
       extra.innerHTML = `
         <label style="margin-left:14px">Circle</label>
         <select class="filter-sel" id="pdssp-lr-circle" onchange="window.pdsspRenderLineView()">
-          ${circles.map((c,i) => `<option value="${i}">${esc(c.sheet)} (${c.rows.length} rows)</option>`).join('')}
+          ${circles.map((c,i) => `<option value="${i}">${esc(c.sheet)} — ${(c.header_rows[0].length-1)} entities</option>`).join('')}
         </select>
       `;
     }
     const idx = parseInt(document.getElementById('pdssp-lr-circle')?.value || '0', 10) || 0;
     const pick = circles[idx];
-    html = pick ? tableHTML(pick) : '<div class="placeholder-card"><p>No Circle sheets found.</p></div>';
+    html = pick ? _pdsspSheetHTML(pick) : '<div class="placeholder-card"><p>No Circle sheets found.</p></div>';
   }
 
   const body = document.getElementById('pdssp-lr-body');

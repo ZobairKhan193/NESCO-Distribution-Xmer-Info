@@ -678,1679 +678,2219 @@
             {
               "sheet": "Rajshai Circle-1",
               "kind": "sdd",
-              "headers": [
-                "Name Of S&DD/ ESU",
-                "33 kv Upgradation",
-                "11 kV Upgradation",
-                "11 kV Upgradation (with Merlin)",
-                "11 kV (Dog Covered)",
-                "11/0.4 kV Upgradation",
-                "0.4 kV Line Upgradation",
-                "33 kV New line",
-                "11 kV New",
-                "11/0.4 kV New",
-                "11 kV (Dog Covered)",
-                "0.4 kV New",
-                "Total Lineworks\n(km)",
-                "System Loss",
-                "Purpose of 33 kV Line"
+              "header_rows": [
+                [
+                  "Name Of S&DD/ ESU",
+                  "S&DD-1, NESCO, Rajshahi.",
+                  "S&DD-2, NESCO, Rajshahi.",
+                  "S&DD-3, NESCO, Rajshahi.",
+                  "S&DD-4, NESCO, Rajshahi.",
+                  "S&DD-5, NESCO, Rajshahi.",
+                  "S&DD-Bimanbandar, NESCO, Rajshahi.",
+                  "S&DD-Kashiyadanga, NESCO, Rajshahi.",
+                  "Tanore Electric Supply Unit, NESCO, Tanore.",
+                  "Sum (Rajshahi -1)"
+                ]
               ],
-              "rows": [
+              "data_rows": [
                 {
-                  "Name Of S&DD/ ESU": "S&DD-1, NESCO, Rajshahi.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 5.0,
-                  "11 kV Upgradation (with Merlin)": 4.0,
-                  "11 kV (Dog Covered)": 2.0,
-                  "11/0.4 kV Upgradation": 2.0,
-                  "0.4 kV Line Upgradation": 4.0,
-                  "33 kV New line": 0.0,
-                  "11 kV New": 0.0,
-                  "11/0.4 kV New": 3.0,
-                  "0.4 kV New": 1.0,
-                  "Total Lineworks\n(km)": 21.0,
-                  "System Loss": 7.82,
-                  "Purpose of 33 kV Line": ""
+                  "label": "33 kv Upgradation",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    0.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD-2, NESCO, Rajshahi.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 4.0,
-                  "11 kV Upgradation (with Merlin)": 4.0,
-                  "11 kV (Dog Covered)": 2.0,
-                  "11/0.4 kV Upgradation": 0.0,
-                  "0.4 kV Line Upgradation": 3.0,
-                  "33 kV New line": 0.0,
-                  "11 kV New": 3.0,
-                  "11/0.4 kV New": 3.0,
-                  "0.4 kV New": 3.0,
-                  "Total Lineworks\n(km)": 22.0,
-                  "System Loss": 7.93,
-                  "Purpose of 33 kV Line": ""
+                  "label": "11 kV Upgradation",
+                  "values": [
+                    5.0,
+                    4.0,
+                    3.0,
+                    2.0,
+                    2.0,
+                    2.0,
+                    10.0,
+                    0.0,
+                    28.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD-3, NESCO, Rajshahi.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 3.0,
-                  "11 kV Upgradation (with Merlin)": 9.0,
-                  "11 kV (Dog Covered)": 2.0,
-                  "11/0.4 kV Upgradation": 0.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New line": 0.0,
-                  "11 kV New": 2.0,
-                  "11/0.4 kV New": 2.0,
-                  "0.4 kV New": 5.0,
-                  "Total Lineworks\n(km)": 28.0,
-                  "System Loss": 7.3,
-                  "Purpose of 33 kV Line": ""
+                  "label": "11 kV Upgradation (with Merlin)",
+                  "values": [
+                    4.0,
+                    4.0,
+                    9.0,
+                    2.0,
+                    2.0,
+                    null,
+                    0.0,
+                    null,
+                    21.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD-4, NESCO, Rajshahi.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 2.0,
-                  "11 kV Upgradation (with Merlin)": 2.0,
-                  "11 kV (Dog Covered)": 2.0,
-                  "11/0.4 kV Upgradation": 0.0,
-                  "0.4 kV Line Upgradation": 0.0,
-                  "33 kV New line": 0.0,
-                  "11 kV New": 0.0,
-                  "11/0.4 kV New": 2.0,
-                  "0.4 kV New": 2.0,
-                  "Total Lineworks\n(km)": 10.0,
-                  "System Loss": 7.17,
-                  "Purpose of 33 kV Line": ""
+                  "label": "11 kV (Dog Covered)",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    0.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD-5, NESCO, Rajshahi.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 2.0,
-                  "11 kV Upgradation (with Merlin)": 2.0,
-                  "11 kV (Dog Covered)": 2.0,
-                  "11/0.4 kV Upgradation": 0.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New line": 0.0,
-                  "11 kV New": 2.0,
-                  "11/0.4 kV New": 2.0,
-                  "0.4 kV New": 4.0,
-                  "Total Lineworks\n(km)": 19.0,
-                  "System Loss": 7.97,
-                  "Purpose of 33 kV Line": ""
+                  "label": "11/0.4 kV Upgradation",
+                  "values": [
+                    2.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    2.0,
+                    10.0,
+                    0.0,
+                    14.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD-Bimanbandar, NESCO, Rajshahi.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 2.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": 2.0,
-                  "11/0.4 kV Upgradation": 2.0,
-                  "0.4 kV Line Upgradation": 20.0,
-                  "33 kV New line": "",
-                  "11 kV New": 2.0,
-                  "11/0.4 kV New": 2.0,
-                  "0.4 kV New": 4.0,
-                  "Total Lineworks\n(km)": 34.0,
-                  "System Loss": 7.55,
-                  "Purpose of 33 kV Line": ""
+                  "label": "0.4 kV Line Upgradation",
+                  "values": [
+                    4.0,
+                    3.0,
+                    5.0,
+                    0.0,
+                    5.0,
+                    20.0,
+                    15.0,
+                    5.0,
+                    57.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD-Kashiyadanga, NESCO, Rajshahi.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 10.0,
-                  "11 kV Upgradation (with Merlin)": 0.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 10.0,
-                  "0.4 kV Line Upgradation": 15.0,
-                  "33 kV New line": 7.0,
-                  "11 kV New": 20.0,
-                  "11/0.4 kV New": 25.0,
-                  "0.4 kV New": 20.0,
-                  "Total Lineworks\n(km)": 107.0,
-                  "System Loss": 11.05,
-                  "Purpose of 33 kV Line": "Two 33 kV lines (one Grosbeak line and one Merlin line) are on the same pole. A separate line needs to be constructed from Lily Hall More to Kashiadanga SS, approximately 7 km in length."
+                  "label": "33 kV New line",
+                  "values": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    null,
+                    7.0,
+                    null,
+                    7.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "Tanore Electric Supply Unit, NESCO, Tanore.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 0.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 0.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New line": "",
-                  "11 kV New": 1.0,
-                  "11/0.4 kV New": 5.0,
-                  "0.4 kV New": 5.0,
-                  "Total Lineworks\n(km)": 16.0,
-                  "System Loss": 9.72,
-                  "Purpose of 33 kV Line": ""
+                  "label": "11 kV New",
+                  "values": [
+                    0.0,
+                    3.0,
+                    2.0,
+                    0.0,
+                    2.0,
+                    2.0,
+                    20.0,
+                    1.0,
+                    30.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "Sum (Rajshahi -1)",
-                  "33 kv Upgradation": 0.0,
-                  "11 kV Upgradation": 28.0,
-                  "11 kV Upgradation (with Merlin)": 21.0,
-                  "11 kV (Dog Covered)": 12.0,
-                  "11/0.4 kV Upgradation": 14.0,
-                  "0.4 kV Line Upgradation": 57.0,
-                  "33 kV New line": 7.0,
-                  "11 kV New": 30.0,
-                  "11/0.4 kV New": 44.0,
-                  "0.4 kV New": 44.0,
-                  "Total Lineworks\n(km)": 257.0,
-                  "System Loss": "",
-                  "Purpose of 33 kV Line": ""
+                  "label": "11/0.4 kV New",
+                  "values": [
+                    3.0,
+                    3.0,
+                    2.0,
+                    2.0,
+                    2.0,
+                    2.0,
+                    25.0,
+                    5.0,
+                    44.0
+                  ]
+                },
+                {
+                  "label": "11 kV (Dog Covered)",
+                  "values": [
+                    2.0,
+                    2.0,
+                    2.0,
+                    2.0,
+                    2.0,
+                    2.0,
+                    null,
+                    null,
+                    12.0
+                  ]
+                },
+                {
+                  "label": "0.4 kV New",
+                  "values": [
+                    1.0,
+                    3.0,
+                    5.0,
+                    2.0,
+                    4.0,
+                    4.0,
+                    20.0,
+                    5.0,
+                    44.0
+                  ]
+                },
+                {
+                  "label": "Total Lineworks\n(km)",
+                  "values": [
+                    21.0,
+                    22.0,
+                    28.0,
+                    10.0,
+                    19.0,
+                    34.0,
+                    107.0,
+                    16.0,
+                    257.0
+                  ]
+                },
+                {
+                  "label": "System Loss",
+                  "values": [
+                    7.82,
+                    7.93,
+                    7.3,
+                    7.17,
+                    7.97,
+                    7.55,
+                    11.05,
+                    9.72,
+                    null
+                  ]
+                },
+                {
+                  "label": "Purpose of 33 kV Line",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    "Two 33 kV lines (one Grosbeak line and one Merlin line) are on the same pole. A separate line needs to be constructed from Lily Hall More to Kashiadanga SS, approximately 7 km in length.",
+                    null,
+                    null
+                  ]
                 }
               ]
             },
             {
-              "sheet": "Rajshai Circle-2 ",
+              "sheet": "Rajshai Circle-2",
               "kind": "sdd",
-              "headers": [
-                "Name Of S&DD/ ESU",
-                "33 kv Upgradation",
-                "11 kV Upgradation",
-                "11 kV Upgradation (with Merlin)",
-                "11 kV (Dog Covered)",
-                "11/0.4 kV Upgradation",
-                "0.4/0.24 kV Line Upgradation",
-                "33 kV New Line",
-                "11 kV New",
-                "11/0.4 kV New",
-                "11 kV New (Dog Covered)",
-                "0.4 kV New",
-                "Total Lineworks\n(km)",
-                "System Loss",
-                "Purpose of 33 kV Line"
+              "header_rows": [
+                [
+                  "Name Of S&DD/ ESU",
+                  "S&DD-1, Chapai Nawabganj, NESCO Ltd.",
+                  "S&DD-2, Chapai Nawabganj, NESCO Ltd.",
+                  "S&DD-Godagari,, NESCO Ltd.",
+                  "S&DD- Gomostapur, NESCO Ltd, Chapai Nawabganj",
+                  "S&DD Natore, NESCO Ltd. Naore",
+                  "Shibganj ESU, NESCO Ltd. Shibganj, Chapai Nawabganj.",
+                  "Sum (Rajshahi -2)"
+                ]
               ],
-              "rows": [
+              "data_rows": [
                 {
-                  "Name Of S&DD/ ESU": "S&DD-1, Chapai Nawabganj, NESCO Ltd.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 5.0,
-                  "11 kV Upgradation (with Merlin)": 5.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 20.0,
-                  "0.4/0.24 kV Line Upgradation": 25.0,
-                  "33 kV New Line": "",
-                  "11 kV New": 5.0,
-                  "11/0.4 kV New": 15.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 15.0,
-                  "Total Lineworks\n(km)": 90.0,
-                  "System Loss": 4.16,
-                  "Purpose of 33 kV Line": ""
+                  "label": "33 kv Upgradation",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    32.0,
+                    null,
+                    null,
+                    32.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD-2, Chapai Nawabganj, NESCO Ltd.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 10.0,
-                  "11 kV Upgradation (with Merlin)": 5.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 30.0,
-                  "0.4/0.24 kV Line Upgradation": 25.0,
-                  "33 kV New Line": "",
-                  "11 kV New": 5.0,
-                  "11/0.4 kV New": 20.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 20.0,
-                  "Total Lineworks\n(km)": 115.0,
-                  "System Loss": 6.36,
-                  "Purpose of 33 kV Line": ""
+                  "label": "11 kV Upgradation",
+                  "values": [
+                    5.0,
+                    10.0,
+                    10.0,
+                    13.0,
+                    3.0,
+                    2.0,
+                    43.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD-Godagari,, NESCO Ltd.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 10.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 15.0,
-                  "0.4/0.24 kV Line Upgradation": 15.0,
-                  "33 kV New Line": 27.0,
-                  "11 kV New": 1.0,
-                  "11/0.4 kV New": 4.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 5.0,
-                  "Total Lineworks\n(km)": 77.0,
-                  "System Loss": 11.41,
-                  "Purpose of 33 kV Line": "From Amnura Grid to Godagari SS \n(Further discussion is required)"
+                  "label": "11 kV Upgradation (with Merlin)",
+                  "values": [
+                    5.0,
+                    5.0,
+                    null,
+                    null,
+                    null,
+                    null,
+                    10.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD- Gomostapur, NESCO Ltd, Chapai Nawabganj",
-                  "33 kv Upgradation": 32.0,
-                  "11 kV Upgradation": 13.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 23.0,
-                  "0.4/0.24 kV Line Upgradation": 23.0,
-                  "33 kV New Line": "",
-                  "11 kV New": 8.0,
-                  "11/0.4 kV New": 14.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 17.0,
-                  "Total Lineworks\n(km)": 98.0,
-                  "System Loss": 13.41,
-                  "Purpose of 33 kV Line": "Amnura to Nachole-Gomostapur Marlin Line Upgradation"
+                  "label": "11 kV (Dog Covered)",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    0.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD Natore, NESCO Ltd. Naore",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 3.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 3.0,
-                  "0.4/0.24 kV Line Upgradation": 5.0,
-                  "33 kV New Line": "",
-                  "11 kV New": 1.5,
-                  "11/0.4 kV New": 3.5,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 3.0,
-                  "Total Lineworks\n(km)": 19.0,
-                  "System Loss": 6.4,
-                  "Purpose of 33 kV Line": ""
+                  "label": "11/0.4 kV Upgradation",
+                  "values": [
+                    20.0,
+                    30.0,
+                    15.0,
+                    23.0,
+                    3.0,
+                    3.0,
+                    94.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "Shibganj ESU, NESCO Ltd. Shibganj, Chapai Nawabganj.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 2.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 3.0,
-                  "0.4/0.24 kV Line Upgradation": 8.0,
-                  "33 kV New Line": 30.0,
-                  "11 kV New": 2.0,
-                  "11/0.4 kV New": 6.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 4.0,
-                  "Total Lineworks\n(km)": 55.0,
-                  "System Loss": 10.05,
-                  "Purpose of 33 kV Line": "From Chowdala Grid to Shibganj SS \n(Further discussion is required)"
+                  "label": "0.4/0.24 kV Line Upgradation",
+                  "values": [
+                    25.0,
+                    25.0,
+                    15.0,
+                    23.0,
+                    5.0,
+                    8.0,
+                    101.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "Sum (Rajshahi -2)",
-                  "33 kv Upgradation": 32.0,
-                  "11 kV Upgradation": 43.0,
-                  "11 kV Upgradation (with Merlin)": 10.0,
-                  "11 kV (Dog Covered)": 0.0,
-                  "11/0.4 kV Upgradation": 94.0,
-                  "0.4/0.24 kV Line Upgradation": 101.0,
-                  "33 kV New Line": 57.0,
-                  "11 kV New": 22.5,
-                  "11/0.4 kV New": 62.5,
-                  "11 kV New (Dog Covered)": 0.0,
-                  "0.4 kV New": 64.0,
-                  "Total Lineworks\n(km)": 454.0,
-                  "System Loss": "",
-                  "Purpose of 33 kV Line": ""
+                  "label": "33 kV New Line",
+                  "values": [
+                    null,
+                    null,
+                    27.0,
+                    null,
+                    null,
+                    30.0,
+                    57.0
+                  ]
+                },
+                {
+                  "label": "11 kV New",
+                  "values": [
+                    5.0,
+                    5.0,
+                    1.0,
+                    8.0,
+                    1.5,
+                    2.0,
+                    22.5
+                  ]
+                },
+                {
+                  "label": "11/0.4 kV New",
+                  "values": [
+                    15.0,
+                    20.0,
+                    4.0,
+                    14.0,
+                    3.5,
+                    6.0,
+                    62.5
+                  ]
+                },
+                {
+                  "label": "11 kV New (Dog Covered)",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    0.0
+                  ]
+                },
+                {
+                  "label": "0.4 kV New",
+                  "values": [
+                    15.0,
+                    20.0,
+                    5.0,
+                    17.0,
+                    3.0,
+                    4.0,
+                    64.0
+                  ]
+                },
+                {
+                  "label": "Total Lineworks\n(km)",
+                  "values": [
+                    90.0,
+                    115.0,
+                    77.0,
+                    98.0,
+                    19.0,
+                    55.0,
+                    454.0
+                  ]
+                },
+                {
+                  "label": "System Loss",
+                  "values": [
+                    4.16,
+                    6.36,
+                    11.41,
+                    13.41,
+                    6.4,
+                    10.05,
+                    null
+                  ]
+                },
+                {
+                  "label": "Purpose of 33 kV Line",
+                  "values": [
+                    null,
+                    null,
+                    "From Amnura Grid to Godagari SS \n(Further discussion is required)",
+                    "Amnura to Nachole-Gomostapur Marlin Line Upgradation",
+                    null,
+                    "From Chowdala Grid to Shibganj SS \n(Further discussion is required)",
+                    null
+                  ]
+                },
+                {
+                  "label": "",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    "Merlin Conductor will be recovered from here.",
+                    null,
+                    null,
+                    null
+                  ]
                 }
               ]
             },
             {
               "sheet": "Pabna Circle",
               "kind": "sdd",
-              "headers": [
-                "Name Of S&DD/ ESU",
-                "33 kv Upgradation",
-                "11 kV Upgradation",
-                "11 kV Upgradation (with Merlin)",
-                "11 kV (Dog Covered)",
-                "11/0.4 kV Upgradation",
-                "0.4 kV Line Upgradation",
-                "33 kV New Line",
-                "11 kV New",
-                "11/0.4 kV New",
-                "11 kV New (Dog Covered)",
-                "0.4 kV New",
-                "Total Lineworks\n(km)",
-                "System Loss",
-                "Purpose of 33 kV Line"
+              "header_rows": [
+                [
+                  "Name Of S&DD/ ESU",
+                  "S&DD-1, NESCO Ltd., Pabna.",
+                  "S&DD-2, NESCO Ltd., Pabna.",
+                  "S&DD-1, NESCO Ltd., Sirajganj",
+                  "S&DD-2, NESCO Ltd., Sirajganj",
+                  "S&DD Iswardi, NESCO Ltd., Iswardi, Pabna.",
+                  "Sum (Pabna)"
+                ]
               ],
-              "rows": [
+              "data_rows": [
                 {
-                  "Name Of S&DD/ ESU": "S&DD-1, NESCO Ltd., Pabna.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 2.0,
-                  "11 kV Upgradation (with Merlin)": 2.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 4.0,
-                  "0.4 kV Line Upgradation": 3.0,
-                  "33 kV New Line": 0.0,
-                  "11 kV New": 4.0,
-                  "11/0.4 kV New": 5.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 5.0,
-                  "Total Lineworks\n(km)": 25.0,
-                  "System Loss": 8.42,
-                  "Purpose of 33 kV Line": ""
+                  "label": "33 kv Upgradation",
+                  "values": [
+                    null,
+                    1.0,
+                    15.0,
+                    8.0,
+                    8.0,
+                    32.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD-2, NESCO Ltd., Pabna.",
-                  "33 kv Upgradation": 1.0,
-                  "11 kV Upgradation": 5.0,
-                  "11 kV Upgradation (with Merlin)": 3.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 5.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New Line": 0.0,
-                  "11 kV New": 4.0,
-                  "11/0.4 kV New": 5.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 5.0,
-                  "Total Lineworks\n(km)": 32.0,
-                  "System Loss": 7.16,
-                  "Purpose of 33 kV Line": ""
+                  "label": "11 kV Upgradation",
+                  "values": [
+                    2.0,
+                    5.0,
+                    3.0,
+                    5.0,
+                    5.0,
+                    20.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD-1, NESCO Ltd., Sirajganj",
-                  "33 kv Upgradation": 15.0,
-                  "11 kV Upgradation": 3.0,
-                  "11 kV Upgradation (with Merlin)": 1.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 4.0,
-                  "0.4 kV Line Upgradation": 10.0,
-                  "33 kV New Line": 5.0,
-                  "11 kV New": 7.0,
-                  "11/0.4 kV New": 3.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 4.0,
-                  "Total Lineworks\n(km)": 37.0,
-                  "System Loss": 6.46,
-                  "Purpose of 33 kV Line": "33 kV irrigation line"
+                  "label": "11 kV Upgradation (with Merlin)",
+                  "values": [
+                    2.0,
+                    3.0,
+                    1.0,
+                    null,
+                    3.0,
+                    9.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD-2, NESCO Ltd., Sirajganj",
-                  "33 kv Upgradation": 8.0,
-                  "11 kV Upgradation": 5.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 5.0,
-                  "0.4 kV Line Upgradation": 7.0,
-                  "33 kV New Line": 7.0,
-                  "11 kV New": 10.0,
-                  "11/0.4 kV New": 5.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 10.0,
-                  "Total Lineworks\n(km)": 49.0,
-                  "System Loss": 6.31,
-                  "Purpose of 33 kV Line": "Ring line between Raypur and Puthiabari. Source line replacement with standard line."
+                  "label": "11 kV (Dog Covered)",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    0.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD Iswardi, NESCO Ltd., Iswardi, Pabna.",
-                  "33 kv Upgradation": 8.0,
-                  "11 kV Upgradation": 5.0,
-                  "11 kV Upgradation (with Merlin)": 3.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 10.0,
-                  "0.4 kV Line Upgradation": 10.0,
-                  "33 kV New Line": 10.0,
-                  "11 kV New": 20.0,
-                  "11/0.4 kV New": 7.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 30.0,
-                  "Total Lineworks\n(km)": 95.0,
-                  "System Loss": 3.8,
-                  "Purpose of 33 kV Line": "Joynogor To Patilakhali 33 kV Line upgradation (Existing line contains both Merlin & Grosbeak conductor). Pole fittings of existing line is non-standard."
+                  "label": "11/0.4 kV Upgradation",
+                  "values": [
+                    4.0,
+                    5.0,
+                    4.0,
+                    5.0,
+                    10.0,
+                    28.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "Sum (Pabna)",
-                  "33 kv Upgradation": 32.0,
-                  "11 kV Upgradation": 20.0,
-                  "11 kV Upgradation (with Merlin)": 9.0,
-                  "11 kV (Dog Covered)": 0.0,
-                  "11/0.4 kV Upgradation": 28.0,
-                  "0.4 kV Line Upgradation": 35.0,
-                  "33 kV New Line": 22.0,
-                  "11 kV New": 45.0,
-                  "11/0.4 kV New": 25.0,
-                  "11 kV New (Dog Covered)": 0.0,
-                  "0.4 kV New": 54.0,
-                  "Total Lineworks\n(km)": 238.0,
-                  "System Loss": "",
-                  "Purpose of 33 kV Line": ""
+                  "label": "0.4 kV Line Upgradation",
+                  "values": [
+                    3.0,
+                    5.0,
+                    10.0,
+                    7.0,
+                    10.0,
+                    35.0
+                  ]
+                },
+                {
+                  "label": "33 kV New Line",
+                  "values": [
+                    0.0,
+                    0.0,
+                    5.0,
+                    7.0,
+                    10.0,
+                    22.0
+                  ]
+                },
+                {
+                  "label": "11 kV New",
+                  "values": [
+                    4.0,
+                    4.0,
+                    7.0,
+                    10.0,
+                    20.0,
+                    45.0
+                  ]
+                },
+                {
+                  "label": "11/0.4 kV New",
+                  "values": [
+                    5.0,
+                    5.0,
+                    3.0,
+                    5.0,
+                    7.0,
+                    25.0
+                  ]
+                },
+                {
+                  "label": "11 kV New (Dog Covered)",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    0.0
+                  ]
+                },
+                {
+                  "label": "0.4 kV New",
+                  "values": [
+                    5.0,
+                    5.0,
+                    4.0,
+                    10.0,
+                    30.0,
+                    54.0
+                  ]
+                },
+                {
+                  "label": "Total Lineworks\n(km)",
+                  "values": [
+                    25.0,
+                    32.0,
+                    37.0,
+                    49.0,
+                    95.0,
+                    238.0
+                  ]
+                },
+                {
+                  "label": "System Loss",
+                  "values": [
+                    8.42,
+                    7.16,
+                    6.46,
+                    6.31,
+                    3.8,
+                    null
+                  ]
+                },
+                {
+                  "label": "Purpose of 33 kV Line",
+                  "values": [
+                    null,
+                    null,
+                    "33 kV irrigation line",
+                    "Ring line between Raypur and Puthiabari. Source line replacement with standard line.",
+                    "Joynogor To Patilakhali 33 kV Line upgradation (Existing line contains both Merlin & Grosbeak conductor). Pole fittings of existing line is non-standard.",
+                    null
+                  ]
+                },
+                {
+                  "label": "",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    "Existing ring line - Raypur & Puthiabari, Bahirgola & Puthiabari",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "label": "",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    "Conductor will not be replaced for the line upgradation  between Shiyalkole to Raipur. Only pole & fittings will be replaced for this line.",
+                    null,
+                    null
+                  ]
                 }
               ]
             },
             {
-              "sheet": "Bogura Circle ",
+              "sheet": "Bogura Circle",
               "kind": "sdd",
-              "headers": [
-                "Name Of S&DD/ ESU",
-                "33 kv Upgradation",
-                "11 kV Upgradation",
-                "11 kV Upgradation (with Merlin)",
-                "11 kV (Dog Covered)",
-                "11/0.4 kV Upgradation",
-                "0.4 kV Line Upgradation",
-                "33 kV New Line",
-                "11 kV New",
-                "11/0.4 kV New",
-                "11 kV New (Dog Covered)",
-                "0.4 kV New",
-                "Total Lineworks\n(km)",
-                "System Loss",
-                "Purpose of 33 kV Line"
+              "header_rows": [
+                [
+                  "Name Of S&DD/ ESU",
+                  "S&DD-1, NESCO Ltd, Bogura.",
+                  "S&DD-2, NESCO Ltd, Bogura.",
+                  "S&DD-3, NESCO Ltd, Bogura.",
+                  "S&DD-4, NESCO Ltd, Bogura.",
+                  "S&DD-5, NESCO Ltd, Bogura.",
+                  "S&DD, Sherpur, NESCO Ltd., Bogura.",
+                  "Shibganj ESU, NESCO Ltd. Shibganj, Bogura.",
+                  "Sum (Bogura)"
+                ]
               ],
-              "rows": [
+              "data_rows": [
                 {
-                  "Name Of S&DD/ ESU": "S&DD-1, NESCO Ltd, Bogura.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 3.0,
-                  "11 kV Upgradation (with Merlin)": 3.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 4.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New Line": 10.0,
-                  "11 kV New": 5.0,
-                  "11/0.4 kV New": 5.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 5.0,
-                  "Total Lineworks\n(km)": 40.0,
-                  "System Loss": 5.37,
-                  "Purpose of 33 kV Line": "Source line from Sabgram Grid for Banani SS."
+                  "label": "33 kv Upgradation",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    1.0,
+                    null,
+                    null,
+                    null,
+                    1.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD-2, NESCO Ltd, Bogura.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 0.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 0.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New Line": 9.0,
-                  "11 kV New": 5.0,
-                  "11/0.4 kV New": 9.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 5.0,
-                  "Total Lineworks\n(km)": 33.0,
-                  "System Loss": 9.24,
-                  "Purpose of 33 kV Line": "Source line from Sabgram Grid for Shibbati SS"
+                  "label": "11 kV Upgradation",
+                  "values": [
+                    3.0,
+                    0.0,
+                    0.0,
+                    5.0,
+                    5.0,
+                    2.0,
+                    0.0,
+                    15.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD-3, NESCO Ltd, Bogura.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 0.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 0.0,
-                  "0.4 kV Line Upgradation": 8.0,
-                  "33 kV New Line": "",
-                  "11 kV New": 2.0,
-                  "11/0.4 kV New": 10.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 7.0,
-                  "Total Lineworks\n(km)": 27.0,
-                  "System Loss": 6.85,
-                  "Purpose of 33 kV Line": ""
+                  "label": "11 kV Upgradation (with Merlin)",
+                  "values": [
+                    3.0,
+                    null,
+                    null,
+                    5.0,
+                    null,
+                    1.0,
+                    null,
+                    9.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD-4, NESCO Ltd, Bogura.",
-                  "33 kv Upgradation": 1.0,
-                  "11 kV Upgradation": 5.0,
-                  "11 kV Upgradation (with Merlin)": 5.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 5.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New Line": 12.0,
-                  "11 kV New": 5.0,
-                  "11/0.4 kV New": 5.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 3.0,
-                  "Total Lineworks\n(km)": 45.0,
-                  "System Loss": 6.14,
-                  "Purpose of 33 kV Line": "Source line from Sabgram Grid for Matidali SS"
+                  "label": "11 kV (Dog Covered)",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    0.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD-5, NESCO Ltd, Bogura.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 5.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 5.0,
-                  "0.4 kV Line Upgradation": 10.0,
-                  "33 kV New Line": 10.0,
-                  "11 kV New": 5.0,
-                  "11/0.4 kV New": 5.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 10.0,
-                  "Total Lineworks\n(km)": 45.0,
-                  "System Loss": 5.72,
-                  "Purpose of 33 kV Line": "Ring line between Matidali & Godarpara"
+                  "label": "11/0.4 kV Upgradation",
+                  "values": [
+                    4.0,
+                    0.0,
+                    0.0,
+                    5.0,
+                    5.0,
+                    3.0,
+                    0.0,
+                    17.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD, Sherpur, NESCO Ltd., Bogura.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 2.0,
-                  "11 kV Upgradation (with Merlin)": 1.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 3.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New Line": "",
-                  "11 kV New": 5.0,
-                  "11/0.4 kV New": 5.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 5.0,
-                  "Total Lineworks\n(km)": 26.0,
-                  "System Loss": 4.6,
-                  "Purpose of 33 kV Line": ""
+                  "label": "0.4 kV Line Upgradation",
+                  "values": [
+                    5.0,
+                    5.0,
+                    8.0,
+                    5.0,
+                    10.0,
+                    5.0,
+                    5.0,
+                    43.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "Shibganj ESU, NESCO Ltd. Shibganj, Bogura.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 0.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 0.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New Line": "",
-                  "11 kV New": 3.0,
-                  "11/0.4 kV New": 5.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 5.0,
-                  "Total Lineworks\n(km)": 18.0,
-                  "System Loss": 8.52,
-                  "Purpose of 33 kV Line": ""
+                  "label": "33 kV New Line",
+                  "values": [
+                    10.0,
+                    9.0,
+                    null,
+                    12.0,
+                    10.0,
+                    null,
+                    null,
+                    41.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "Sum (Bogura)",
-                  "33 kv Upgradation": 1.0,
-                  "11 kV Upgradation": 15.0,
-                  "11 kV Upgradation (with Merlin)": 9.0,
-                  "11 kV (Dog Covered)": 0.0,
-                  "11/0.4 kV Upgradation": 17.0,
-                  "0.4 kV Line Upgradation": 43.0,
-                  "33 kV New Line": 41.0,
-                  "11 kV New": 30.0,
-                  "11/0.4 kV New": 44.0,
-                  "11 kV New (Dog Covered)": 0.0,
-                  "0.4 kV New": 40.0,
-                  "Total Lineworks\n(km)": 234.0,
-                  "System Loss": "",
-                  "Purpose of 33 kV Line": ""
+                  "label": "11 kV New",
+                  "values": [
+                    5.0,
+                    5.0,
+                    2.0,
+                    5.0,
+                    5.0,
+                    5.0,
+                    3.0,
+                    30.0
+                  ]
+                },
+                {
+                  "label": "11/0.4 kV New",
+                  "values": [
+                    5.0,
+                    9.0,
+                    10.0,
+                    5.0,
+                    5.0,
+                    5.0,
+                    5.0,
+                    44.0
+                  ]
+                },
+                {
+                  "label": "11 kV New (Dog Covered)",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    0.0
+                  ]
+                },
+                {
+                  "label": "0.4 kV New",
+                  "values": [
+                    5.0,
+                    5.0,
+                    7.0,
+                    3.0,
+                    10.0,
+                    5.0,
+                    5.0,
+                    40.0
+                  ]
+                },
+                {
+                  "label": "Total Lineworks\n(km)",
+                  "values": [
+                    40.0,
+                    33.0,
+                    27.0,
+                    45.0,
+                    45.0,
+                    26.0,
+                    18.0,
+                    234.0
+                  ]
+                },
+                {
+                  "label": "System Loss",
+                  "values": [
+                    5.37,
+                    9.24,
+                    6.85,
+                    6.14,
+                    5.72,
+                    4.6,
+                    8.52,
+                    null
+                  ]
+                },
+                {
+                  "label": "Purpose of 33 kV Line",
+                  "values": [
+                    "Source line from Sabgram Grid for Banani SS.",
+                    "Source line from Sabgram Grid for Shibbati SS",
+                    null,
+                    "Source line from Sabgram Grid for Matidali SS",
+                    "Ring line between Matidali & Godarpara",
+                    null,
+                    null,
+                    null
+                  ]
                 }
               ]
             },
             {
-              "sheet": "Naogaon Circle  ",
+              "sheet": "Naogaon Circle",
               "kind": "sdd",
-              "headers": [
-                "Name Of S&DD/ ESU",
-                "33 kv Upgradation",
-                "11 kV Upgradation",
-                "11 kV Upgradation (with Merlin)",
-                "11 kV (Dog Covered)",
-                "11/0.4 kV Upgradation",
-                "0.4 kV Line Upgradation",
-                "33 kV New Line",
-                "11 kV New",
-                "11/0.4 kV New",
-                "11 kV New (Dog Covered)",
-                "0.4 kV New",
-                "Total Lineworks\n(km)",
-                "System Loss",
-                "Purpose of 33 kV Line"
+              "header_rows": [
+                [
+                  "Name Of S&DD/ ESU",
+                  "S&DD Shantahar, NESCO Ltd. Bogura",
+                  "S&DD Naogaon-1, NESCO Ltd. Naogaon.",
+                  "S&DD Naogaon-2, NESCO Ltd. Naogaon.",
+                  "S&DD Dupchachiya, NESCO Ltd., Bogura.",
+                  "S&DD Jaypurhat, NESCO Ltd. Jaypurhat.",
+                  "Total"
+                ]
               ],
-              "rows": [
+              "data_rows": [
                 {
-                  "Name Of S&DD/ ESU": "S&DD Shantahar, NESCO Ltd. Bogura",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 3.0,
-                  "11 kV Upgradation (with Merlin)": 2.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 5.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New Line": 10.0,
-                  "11 kV New": 3.0,
-                  "11/0.4 kV New": 5.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 5.0,
-                  "Total Lineworks\n(km)": 38.0,
-                  "System Loss": 6.41,
-                  "Purpose of 33 kV Line": "Source line from Dupchanchia Grid for Muroil SS"
+                  "label": "33 kv Upgradation",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    0.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD Naogaon-1, NESCO Ltd. Naogaon.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 2.0,
-                  "11 kV Upgradation (with Merlin)": 2.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 4.0,
-                  "0.4 kV Line Upgradation": 15.0,
-                  "33 kV New Line": "",
-                  "11 kV New": 3.0,
-                  "11/0.4 kV New": 5.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 5.0,
-                  "Total Lineworks\n(km)": 36.0,
-                  "System Loss": 6.09,
-                  "Purpose of 33 kV Line": ""
+                  "label": "11 kV Upgradation",
+                  "values": [
+                    3.0,
+                    2.0,
+                    5.0,
+                    null,
+                    3.0,
+                    13.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD Naogaon-2, NESCO Ltd. Naogaon.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 5.0,
-                  "11 kV Upgradation (with Merlin)": 3.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 10.0,
-                  "0.4 kV Line Upgradation": 15.0,
-                  "33 kV New Line": 12.0,
-                  "11 kV New": 3.0,
-                  "11/0.4 kV New": 6.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 5.0,
-                  "Total Lineworks\n(km)": 59.0,
-                  "System Loss": 8.77,
-                  "Purpose of 33 kV Line": "Ring line between Arji Naogaon & Baludanga SS"
+                  "label": "11 kV Upgradation (with Merlin)",
+                  "values": [
+                    2.0,
+                    2.0,
+                    3.0,
+                    null,
+                    1.0,
+                    8.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD Dupchachiya, NESCO Ltd., Bogura.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": "",
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": "",
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New Line": 16.0,
-                  "11 kV New": 20.0,
-                  "11/0.4 kV New": 20.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 20.0,
-                  "Total Lineworks\n(km)": 81.0,
-                  "System Loss": 7.55,
-                  "Purpose of 33 kV Line": "Source line from Dupchanchia Grid for Dupchanchia SS & Talora SS"
+                  "label": "11 kV (Dog Covered)",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    0.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD Jaypurhat, NESCO Ltd. Jaypurhat.",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 3.0,
-                  "11 kV Upgradation (with Merlin)": 1.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 4.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New Line": 7.0,
-                  "11 kV New": 2.0,
-                  "11/0.4 kV New": 5.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 3.0,
-                  "Total Lineworks\n(km)": 30.0,
-                  "System Loss": 8.31,
-                  "Purpose of 33 kV Line": "Ring line between Natunhut & Khonjonpur SS"
+                  "label": "11/0.4 kV Upgradation",
+                  "values": [
+                    5.0,
+                    4.0,
+                    10.0,
+                    null,
+                    4.0,
+                    23.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "Total",
-                  "33 kv Upgradation": 0.0,
-                  "11 kV Upgradation": 13.0,
-                  "11 kV Upgradation (with Merlin)": 8.0,
-                  "11 kV (Dog Covered)": 0.0,
-                  "11/0.4 kV Upgradation": 23.0,
-                  "0.4 kV Line Upgradation": 45.0,
-                  "33 kV New Line": 45.0,
-                  "11 kV New": 31.0,
-                  "11/0.4 kV New": 41.0,
-                  "11 kV New (Dog Covered)": 0.0,
-                  "0.4 kV New": 38.0,
-                  "Total Lineworks\n(km)": 244.0,
-                  "System Loss": "",
-                  "Purpose of 33 kV Line": ""
+                  "label": "0.4 kV Line Upgradation",
+                  "values": [
+                    5.0,
+                    15.0,
+                    15.0,
+                    5.0,
+                    5.0,
+                    45.0
+                  ]
+                },
+                {
+                  "label": "33 kV New Line",
+                  "values": [
+                    10.0,
+                    null,
+                    12.0,
+                    16.0,
+                    7.0,
+                    45.0
+                  ]
+                },
+                {
+                  "label": "11 kV New",
+                  "values": [
+                    3.0,
+                    3.0,
+                    3.0,
+                    20.0,
+                    2.0,
+                    31.0
+                  ]
+                },
+                {
+                  "label": "11/0.4 kV New",
+                  "values": [
+                    5.0,
+                    5.0,
+                    6.0,
+                    20.0,
+                    5.0,
+                    41.0
+                  ]
+                },
+                {
+                  "label": "11 kV New (Dog Covered)",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    0.0
+                  ]
+                },
+                {
+                  "label": "0.4 kV New",
+                  "values": [
+                    5.0,
+                    5.0,
+                    5.0,
+                    20.0,
+                    3.0,
+                    38.0
+                  ]
+                },
+                {
+                  "label": "Total Lineworks\n(km)",
+                  "values": [
+                    38.0,
+                    36.0,
+                    59.0,
+                    81.0,
+                    30.0,
+                    244.0
+                  ]
+                },
+                {
+                  "label": "System Loss",
+                  "values": [
+                    6.41,
+                    6.09,
+                    8.77,
+                    7.55,
+                    8.31,
+                    null
+                  ]
+                },
+                {
+                  "label": "Purpose of 33 kV Line",
+                  "values": [
+                    "Source line from Dupchanchia Grid for Muroil SS",
+                    null,
+                    "Ring line between Arji Naogaon & Baludanga SS",
+                    "Source line from Dupchanchia Grid for Dupchanchia SS & Talora SS",
+                    "Ring line between Natunhut & Khonjonpur SS",
+                    null
+                  ]
+                },
+                {
+                  "label": "",
+                  "values": [
+                    "Distance of 33 kV Line from Naogaon Grid SS- \n12.9 kM",
+                    null,
+                    "Merlin Conductor recovered from the Amnura-Nachol line will be used for the line between Arji Naogaon & Baludanga",
+                    "Distance of 33 kV Line from Bogura Grid SS To Dupchanchia SS - \n28 kM\n\nDistance of 33 kV Line from Bogura Grid SS Talora SS- \n28+8 kM",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "label": "",
+                  "values": [
+                    "Distance of 33 kV Line from Proposed Dupchanchia Grid SS- \n10 kM",
+                    null,
+                    null,
+                    "Distance of 33 kV Line from Proposed Dupchanchia Grid SS To Dupchanchia - \n4 kM\nDistance of 33 kV Line from Proposed Dupchanchia Grid SS To Talora- \n12 kM",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "label": "",
+                  "values": [
+                    null,
+                    null,
+                    "Existing merlin nachole-amnura line is benefical for connectivity between Choudala & Amnura Grid. (If possible , should be kept)",
+                    "Quantity & length can be checked",
+                    null,
+                    null
+                  ]
                 }
               ]
             },
             {
               "sheet": "Rangpur Circle-1",
               "kind": "sdd",
-              "headers": [
-                "Name Of S&DD/ ESU",
-                "33 kv Upgradation",
-                "11 kV Upgradation",
-                "11 kV Upgradation (with Merlin)",
-                "11 kV (Dog Covered)",
-                "11/0.4 kV Upgradation",
-                "0.4 kV Line Upgradation",
-                "33 kV New Line",
-                "11 kV New",
-                "11/0.4 kV New",
-                "11 kV New (Dog Covered)",
-                "0.4 kV New",
-                "Total Lineworks\n(km)",
-                "System Loss",
-                "Purpose of 33 kV Line"
+              "header_rows": [
+                [
+                  "Name Of S&DD/ ESU",
+                  "S&DD-1, Rangpur",
+                  "S&DD-2, Rangpur",
+                  "S&DD-3, Rangpur",
+                  "S&DD-4, Rangpur",
+                  "SDD - 1, Gaibandha",
+                  "SDD - 2, Gaibandha",
+                  "SDD, Gobindaganj",
+                  "Palashbari Electricity Supply Unit, Palashbari",
+                  "S&DD-Kurigram",
+                  "Sum (Rangpur -1)"
+                ]
               ],
-              "rows": [
+              "data_rows": [
                 {
-                  "Name Of S&DD/ ESU": "S&DD-1, Rangpur",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 0.0,
-                  "11 kV Upgradation (with Merlin)": 7.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 0.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New Line": "",
-                  "11 kV New": 1.0,
-                  "11/0.4 kV New": 2.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 3.0,
-                  "Total Lineworks\n(km)": 18.0,
-                  "System Loss": 7.88,
-                  "Purpose of 33 kV Line": ""
+                  "label": "33 kv Upgradation",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    0.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD-2, Rangpur",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 0.0,
-                  "11 kV Upgradation (with Merlin)": 5.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 0.0,
-                  "0.4 kV Line Upgradation": 0.0,
-                  "33 kV New Line": "",
-                  "11 kV New": 2.0,
-                  "11/0.4 kV New": 3.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 3.0,
-                  "Total Lineworks\n(km)": 13.0,
-                  "System Loss": 6.6,
-                  "Purpose of 33 kV Line": ""
+                  "label": "11 kV Upgradation",
+                  "values": [
+                    0.0,
+                    0.0,
+                    4.0,
+                    4.0,
+                    2.0,
+                    3.0,
+                    4.0,
+                    1.0,
+                    5.0,
+                    23.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD-3, Rangpur",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 4.0,
-                  "11 kV Upgradation (with Merlin)": 5.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 5.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New Line": 6.0,
-                  "11 kV New": 4.0,
-                  "11/0.4 kV New": 3.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 3.0,
-                  "Total Lineworks\n(km)": 35.0,
-                  "System Loss": 7.63,
-                  "Purpose of 33 kV Line": "Ring line between Mahiganj & Poroposed Baharkasna SS"
+                  "label": "11 kV Upgradation (with Merlin)",
+                  "values": [
+                    7.0,
+                    5.0,
+                    5.0,
+                    5.0,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    22.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD-4, Rangpur",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 4.0,
-                  "11 kV Upgradation (with Merlin)": 5.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 5.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New Line": 17.0,
-                  "11 kV New": 4.0,
-                  "11/0.4 kV New": 3.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 5.0,
-                  "Total Lineworks\n(km)": 48.0,
-                  "System Loss": "",
-                  "Purpose of 33 kV Line": "Source line from Taraganj Grid"
+                  "label": "11 kV (Dog Covered)",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    0.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "SDD - 1, Gaibandha",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 2.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 5.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New Line": "",
-                  "11 kV New": 4.0,
-                  "11/0.4 kV New": 5.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 5.0,
-                  "Total Lineworks\n(km)": 26.0,
-                  "System Loss": "",
-                  "Purpose of 33 kV Line": ""
+                  "label": "11/0.4 kV Upgradation",
+                  "values": [
+                    0.0,
+                    0.0,
+                    5.0,
+                    5.0,
+                    5.0,
+                    4.0,
+                    11.0,
+                    4.0,
+                    5.0,
+                    39.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "SDD - 2, Gaibandha",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 3.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 4.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New Line": "",
-                  "11 kV New": 2.0,
-                  "11/0.4 kV New": 5.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": "",
-                  "Total Lineworks\n(km)": 19.0,
-                  "System Loss": "",
-                  "Purpose of 33 kV Line": ""
+                  "label": "0.4 kV Line Upgradation",
+                  "values": [
+                    5.0,
+                    0.0,
+                    5.0,
+                    5.0,
+                    5.0,
+                    5.0,
+                    14.0,
+                    5.0,
+                    5.0,
+                    49.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "SDD, Gobindaganj",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 4.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 11.0,
-                  "0.4 kV Line Upgradation": 14.0,
-                  "33 kV New Line": "",
-                  "11 kV New": 5.0,
-                  "11/0.4 kV New": 24.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 21.0,
-                  "Total Lineworks\n(km)": 79.0,
-                  "System Loss": "",
-                  "Purpose of 33 kV Line": ""
+                  "label": "33 kV New Line",
+                  "values": [
+                    null,
+                    null,
+                    6.0,
+                    17.0,
+                    null,
+                    null,
+                    null,
+                    null,
+                    2.5,
+                    25.5
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "Palashbari Electricity Supply Unit, Palashbari",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 1.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 4.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New Line": "",
-                  "11 kV New": 3.0,
-                  "11/0.4 kV New": 5.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 15.0,
-                  "Total Lineworks\n(km)": 33.0,
-                  "System Loss": "",
-                  "Purpose of 33 kV Line": ""
+                  "label": "11 kV New",
+                  "values": [
+                    1.0,
+                    2.0,
+                    4.0,
+                    4.0,
+                    4.0,
+                    2.0,
+                    5.0,
+                    3.0,
+                    2.0,
+                    27.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "S&DD-Kurigram",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 5.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 5.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New Line": 2.5,
-                  "11 kV New": 2.0,
-                  "11/0.4 kV New": 2.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 5.0,
-                  "Total Lineworks\n(km)": 26.5,
-                  "System Loss": 5.13,
-                  "Purpose of 33 kV Line": "Source line from Kurigram Grid"
+                  "label": "11/0.4 kV New",
+                  "values": [
+                    2.0,
+                    3.0,
+                    3.0,
+                    3.0,
+                    5.0,
+                    5.0,
+                    24.0,
+                    5.0,
+                    2.0,
+                    52.0
+                  ]
                 },
                 {
-                  "Name Of S&DD/ ESU": "Sum (Rangpur -1)",
-                  "33 kv Upgradation": 0.0,
-                  "11 kV Upgradation": 23.0,
-                  "11 kV Upgradation (with Merlin)": 22.0,
-                  "11 kV (Dog Covered)": 0.0,
-                  "11/0.4 kV Upgradation": 39.0,
-                  "0.4 kV Line Upgradation": 49.0,
-                  "33 kV New Line": 25.5,
-                  "11 kV New": 27.0,
-                  "11/0.4 kV New": 52.0,
-                  "11 kV New (Dog Covered)": 0.0,
-                  "0.4 kV New": 60.0,
-                  "Total Lineworks\n(km)": 297.5,
-                  "System Loss": "",
-                  "Purpose of 33 kV Line": ""
+                  "label": "11 kV New (Dog Covered)",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    0.0
+                  ]
+                },
+                {
+                  "label": "0.4 kV New",
+                  "values": [
+                    3.0,
+                    3.0,
+                    3.0,
+                    5.0,
+                    5.0,
+                    null,
+                    21.0,
+                    15.0,
+                    5.0,
+                    60.0
+                  ]
+                },
+                {
+                  "label": "Total Lineworks\n(km)",
+                  "values": [
+                    18.0,
+                    13.0,
+                    35.0,
+                    48.0,
+                    26.0,
+                    19.0,
+                    79.0,
+                    33.0,
+                    26.5,
+                    297.5
+                  ]
+                },
+                {
+                  "label": "System Loss",
+                  "values": [
+                    7.88,
+                    6.6,
+                    7.63,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    5.13,
+                    null
+                  ]
+                },
+                {
+                  "label": "Purpose of 33 kV Line",
+                  "values": [
+                    null,
+                    null,
+                    "Ring line between Mahiganj & Poroposed Baharkasna SS",
+                    "Source line from Taraganj Grid",
+                    null,
+                    null,
+                    null,
+                    null,
+                    "Source line from Kurigram Grid",
+                    null
+                  ]
                 }
               ]
             },
             {
               "sheet": "Rangpur Circle-2",
               "kind": "substation",
-              "headers": [
-                "Sr. No.",
-                "Name of the SDD",
-                "Name of the Substation",
-                "33 kv Upgradation",
-                "11 kV Upgradation",
-                "11 kV Upgradation (with Merlin)",
-                "11 kV (Dog Covered)",
-                "11/0.4 kV Upgradation",
-                "0.4 kV Line Upgradation",
-                "33 kV New line",
-                "11 kV New",
-                "11/0.4 kV New",
-                "11 kV (Dog Covered)",
-                "0.4 kV New",
-                "Total",
-                "System Loss",
-                "Purpose of 33 kV Line"
+              "header_rows": [
+                [
+                  "Sr. No.",
+                  "1",
+                  "2",
+                  "3",
+                  "4",
+                  "5",
+                  "6",
+                  "7",
+                  "8",
+                  "9",
+                  "10",
+                  "11"
+                ],
+                [
+                  "Name of the SDD",
+                  "Sales and Distribution Division, Kaliganj",
+                  "Sales and Distribution Division, Sonarhat,",
+                  "Sales and Distribution Division, Patgram",
+                  "Sales and Distribution Division, Burimari",
+                  "Sales and Distribution Division, Domar",
+                  "Kishorganj Electricity Supply Unit, Kishorganj",
+                  "Jaldhaka Electricity Supply Unit, Jaldhaka",
+                  "Sales and Distribution Division, Hatibandha",
+                  "Sales and Distribution Division, Barakhata",
+                  "Sales and Distribution Division, Saidpur",
+                  "Sales and Distribution Division, Nilphamari"
+                ],
+                [
+                  "Name of the Substation",
+                  "Kaliganj",
+                  "Kaliganj",
+                  "Patgram",
+                  "Burimari",
+                  "Domar & Bamunia",
+                  "Kishorganj",
+                  "Jaldhaka",
+                  "Hatibandha",
+                  "Barakhata",
+                  "",
+                  ""
+                ]
               ],
-              "rows": [
+              "data_rows": [
                 {
-                  "Sr. No.": 1.0,
-                  "Name of the SDD": "Sales and Distribution Division, Kaliganj",
-                  "Name of the Substation": "Kaliganj",
-                  "33 kv Upgradation": 72.0,
-                  "11 kV Upgradation": 15.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 10.0,
-                  "0.4 kV Line Upgradation": 12.0,
-                  "33 kV New line": 0.0,
-                  "11 kV New": 10.0,
-                  "11/0.4 kV New": 15.0,
-                  "0.4 kV New": 15.0,
-                  "Total": 159.0,
-                  "System Loss": "",
-                  "Purpose of 33 kV Line": ""
+                  "label": "33 kv Upgradation",
+                  "values": [
+                    72.0,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
                 },
                 {
-                  "Sr. No.": 2.0,
-                  "Name of the SDD": "Sales and Distribution Division, Sonarhat,",
-                  "Name of the Substation": "Kaliganj",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 0.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 0.0,
-                  "0.4 kV Line Upgradation": 0.0,
-                  "33 kV New line": "",
-                  "11 kV New": 30.0,
-                  "11/0.4 kV New": 40.0,
-                  "0.4 kV New": 50.0,
-                  "Total": 120.0,
-                  "System Loss": "",
-                  "Purpose of 33 kV Line": ""
+                  "label": "11 kV Upgradation",
+                  "values": [
+                    15.0,
+                    0.0,
+                    30.0,
+                    null,
+                    null,
+                    2.0,
+                    15.0,
+                    0.0,
+                    3.0,
+                    null,
+                    3.0
+                  ]
                 },
                 {
-                  "Sr. No.": 3.0,
-                  "Name of the SDD": "Sales and Distribution Division, Patgram",
-                  "Name of the Substation": "Patgram",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 30.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": "",
-                  "0.4 kV Line Upgradation": "",
-                  "33 kV New line": 24.0,
-                  "11 kV New": 4.0,
-                  "11/0.4 kV New": 30.0,
-                  "0.4 kV New": 140.0,
-                  "Total": 228.0,
-                  "System Loss": 17.43,
-                  "Purpose of 33 kV Line": "Source line from Barakhata Grid for Patgram SS"
+                  "label": "11 kV Upgradation (with Merlin)",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    1.0,
+                    null,
+                    null,
+                    null
+                  ]
                 },
                 {
-                  "Sr. No.": 4.0,
-                  "Name of the SDD": "Sales and Distribution Division, Burimari",
-                  "Name of the Substation": "Burimari",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": "",
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": 11.0,
-                  "11/0.4 kV Upgradation": "",
-                  "0.4 kV Line Upgradation": 9.0,
-                  "33 kV New line": 30.0,
-                  "11 kV New": "",
-                  "11/0.4 kV New": 40.0,
-                  "0.4 kV New": 100.0,
-                  "Total": 190.0,
-                  "System Loss": 16.73,
-                  "Purpose of 33 kV Line": "Source line from Barakhata Grid for Burimari SS"
+                  "label": "11 kV (Dog Covered)",
+                  "values": [
+                    10.0,
+                    null,
+                    null,
+                    null,
+                    17.0,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
                 },
                 {
-                  "Sr. No.": 5.0,
-                  "Name of the SDD": "Sales and Distribution Division, Domar",
-                  "Name of the Substation": "Domar & Bamunia",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": "",
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": 30.0,
-                  "11/0.4 kV Upgradation": 4.0,
-                  "0.4 kV Line Upgradation": 17.0,
-                  "33 kV New line": 24.0,
-                  "11 kV New": "",
-                  "11/0.4 kV New": 55.0,
-                  "0.4 kV New": 110.0,
-                  "Total": 257.0,
-                  "System Loss": 13.48,
-                  "Purpose of 33 kV Line": "Source line from Domar Grid to Domar SS & Source line from Domar Grid to Bamunia SS"
+                  "label": "11/0.4 kV Upgradation",
+                  "values": [
+                    10.0,
+                    0.0,
+                    null,
+                    null,
+                    4.0,
+                    null,
+                    4.0,
+                    4.0,
+                    null,
+                    5.0,
+                    5.0
+                  ]
                 },
                 {
-                  "Sr. No.": 6.0,
-                  "Name of the SDD": "Kishorganj Electricity Supply Unit, Kishorganj",
-                  "Name of the Substation": "Kishorganj",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 2.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": "",
-                  "0.4 kV Line Upgradation": "",
-                  "33 kV New line": "",
-                  "11 kV New": 3.0,
-                  "11/0.4 kV New": "",
-                  "0.4 kV New": 9.0,
-                  "Total": 14.0,
-                  "System Loss": 1.48,
-                  "Purpose of 33 kV Line": ""
+                  "label": "0.4 kV Line Upgradation",
+                  "values": [
+                    12.0,
+                    0.0,
+                    null,
+                    9.0,
+                    17.0,
+                    null,
+                    10.0,
+                    null,
+                    30.0,
+                    5.0,
+                    5.0
+                  ]
                 },
                 {
-                  "Sr. No.": 7.0,
-                  "Name of the SDD": "Jaldhaka Electricity Supply Unit, Jaldhaka",
-                  "Name of the Substation": "Jaldhaka",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 15.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 4.0,
-                  "0.4 kV Line Upgradation": 10.0,
-                  "33 kV New line": "",
-                  "11 kV New": 2.0,
-                  "11/0.4 kV New": 9.0,
-                  "0.4 kV New": 15.0,
-                  "Total": 55.0,
-                  "System Loss": 8.73,
-                  "Purpose of 33 kV Line": ""
+                  "label": "33 kV New line",
+                  "values": [
+                    0.0,
+                    null,
+                    24.0,
+                    30.0,
+                    24.0,
+                    null,
+                    null,
+                    12.0,
+                    3.0,
+                    null,
+                    25.0
+                  ]
                 },
                 {
-                  "Sr. No.": 8.0,
-                  "Name of the SDD": "Sales and Distribution Division, Hatibandha",
-                  "Name of the Substation": "Hatibandha",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 0.0,
-                  "11 kV Upgradation (with Merlin)": 1.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 4.0,
-                  "0.4 kV Line Upgradation": "",
-                  "33 kV New line": 12.0,
-                  "11 kV New": 18.0,
-                  "11/0.4 kV New": 50.0,
-                  "0.4 kV New": 150.0,
-                  "Total": 235.0,
-                  "System Loss": 16.74,
-                  "Purpose of 33 kV Line": "Source line from Barakhata Grid for Hatibandha SS"
+                  "label": "11 kV New",
+                  "values": [
+                    10.0,
+                    30.0,
+                    4.0,
+                    null,
+                    null,
+                    3.0,
+                    2.0,
+                    18.0,
+                    20.0,
+                    5.0,
+                    5.0
+                  ]
                 },
                 {
-                  "Sr. No.": 9.0,
-                  "Name of the SDD": "Sales and Distribution Division, Barakhata",
-                  "Name of the Substation": "Barakhata",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 3.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": "",
-                  "0.4 kV Line Upgradation": 30.0,
-                  "33 kV New line": 3.0,
-                  "11 kV New": 20.0,
-                  "11/0.4 kV New": 30.0,
-                  "0.4 kV New": 100.0,
-                  "Total": 186.0,
-                  "System Loss": 18.72,
-                  "Purpose of 33 kV Line": "Source line from Barakhata Grid for Barakhata SS"
+                  "label": "11/0.4 kV New",
+                  "values": [
+                    15.0,
+                    40.0,
+                    30.0,
+                    40.0,
+                    55.0,
+                    null,
+                    9.0,
+                    50.0,
+                    30.0,
+                    5.0,
+                    5.0
+                  ]
                 },
                 {
-                  "Sr. No.": 10.0,
-                  "Name of the SDD": "Sales and Distribution Division, Saidpur",
-                  "Name of the Substation": "",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": "",
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 5.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New line": "",
-                  "11 kV New": 5.0,
-                  "11/0.4 kV New": 5.0,
-                  "0.4 kV New": 5.0,
-                  "Total": 25.0,
-                  "System Loss": "",
-                  "Purpose of 33 kV Line": ""
+                  "label": "11 kV (Dog Covered)",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    11.0,
+                    30.0,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
                 },
                 {
-                  "Sr. No.": 11.0,
-                  "Name of the SDD": "Sales and Distribution Division, Nilphamari",
-                  "Name of the Substation": "",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 3.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 5.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New line": 25.0,
-                  "11 kV New": 5.0,
-                  "11/0.4 kV New": 5.0,
-                  "0.4 kV New": 10.0,
-                  "Total": 58.0,
-                  "System Loss": "",
-                  "Purpose of 33 kV Line": "Source line from Domar Grid to Kukhpara SS"
+                  "label": "0.4 kV New",
+                  "values": [
+                    15.0,
+                    50.0,
+                    140.0,
+                    100.0,
+                    110.0,
+                    9.0,
+                    15.0,
+                    150.0,
+                    100.0,
+                    5.0,
+                    10.0
+                  ]
                 },
                 {
-                  "Sr. No.": "",
-                  "Name of the SDD": "",
-                  "Name of the Substation": "",
-                  "33 kv Upgradation": 72.0,
-                  "11 kV Upgradation": 68.0,
-                  "11 kV Upgradation (with Merlin)": 1.0,
-                  "11 kV (Dog Covered)": 41.0,
-                  "11/0.4 kV Upgradation": 32.0,
-                  "0.4 kV Line Upgradation": 88.0,
-                  "33 kV New line": 118.0,
-                  "11 kV New": 97.0,
-                  "11/0.4 kV New": 279.0,
-                  "0.4 kV New": 704.0,
-                  "Total": 1527.0,
-                  "System Loss": "",
-                  "Purpose of 33 kV Line": ""
+                  "label": "Total",
+                  "values": [
+                    159.0,
+                    120.0,
+                    228.0,
+                    190.0,
+                    257.0,
+                    14.0,
+                    55.0,
+                    235.0,
+                    186.0,
+                    25.0,
+                    58.0
+                  ]
+                },
+                {
+                  "label": "System Loss",
+                  "values": [
+                    null,
+                    null,
+                    17.43,
+                    16.73,
+                    13.48,
+                    1.48,
+                    8.73,
+                    16.74,
+                    18.72,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "label": "Purpose of 33 kV Line",
+                  "values": [
+                    null,
+                    null,
+                    "Source line from Barakhata Grid for Patgram SS",
+                    "Source line from Barakhata Grid for Burimari SS",
+                    "Source line from Domar Grid to Domar SS & Source line from Domar Grid to Bamunia SS",
+                    null,
+                    null,
+                    "Source line from Barakhata Grid for Hatibandha SS",
+                    "Source line from Barakhata Grid for Barakhata SS",
+                    null,
+                    "Source line from Domar Grid to Kukhpara SS"
+                  ]
+                },
+                {
+                  "label": "",
+                  "values": [
+                    "Conductor will not be replaced for the line between Kaliganj & Hatibandha",
+                    null,
+                    "Distance of 33 kV Line from Jaldhaka Grid SS- \n50 kM",
+                    "Distance of 33 kV Line from Jaldhaka Grid SS- \n60 kM",
+                    "1. Distance of 33 kV Line from Jaldhaka Grid SS to Domar SS- \n20 kM\n2. Distance of 33 kV Line from Jaldhaka Grid SS to Bamunia SS- \n22 km",
+                    null,
+                    null,
+                    "Distance of 33 kV Line from Jaldhaka Grid SS- \n40 kM",
+                    "Distance of 33 kV Line from Jaldhaka Grid SS- \n28 kM",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "label": "",
+                  "values": [
+                    null,
+                    null,
+                    "Distance of 33 kV Line from Proposed Barakhata Grid SS- \n24 kM",
+                    "Distance of 33 kV Line from Proposed Barakhata Grid SS- \n30 kM",
+                    "1. Distance of 33 kV Line from Proposed Domar Grid SS to Domar SS- \n7 kM\n2. Distance of 33 kV Line from Proposed Domar Grid SS- \n15 kM",
+                    null,
+                    null,
+                    "Distance of 33 kV Line from Proposed Barakhata Grid SS- \n12 kM",
+                    "Distance of 33 kV Line from Proposed Barakhata Grid SS- \n03 kM",
+                    null,
+                    null
+                  ]
                 }
               ]
             },
             {
               "sheet": "Dinajpur Circle",
               "kind": "substation",
-              "headers": [
-                "Sr. No.",
-                "Name of the SDD",
-                "Name of the Substation",
-                "33 kv Upgradation",
-                "11 kV Upgradation",
-                "11 kV Upgradation (with Merlin)",
-                "11 kV (Dog Covered)",
-                "11/0.4 kV Upgradation",
-                "0.4 kV Line Upgradation",
-                "33 kV New line",
-                "11 kV New",
-                "11/0.4 kV New",
-                "11 kV New (Dog Covered)",
-                "0.4 kV New",
-                "Total",
-                "Purpose of 33 kV Line",
-                "250 kVA",
-                "200 kVA",
-                "100 kVA"
+              "header_rows": [
+                [
+                  "Sr. No.",
+                  "1",
+                  "2",
+                  "3",
+                  "4",
+                  "5",
+                  "6",
+                  "7",
+                  "8"
+                ],
+                [
+                  "Name of the SDD",
+                  "Sales and Distribution Division - 1, Dinajpur",
+                  "Sales and Distribution Division - 2, Dinajpur",
+                  "Setabganj Electricity Supply Unit, Setabganj",
+                  "Parbatipur Electricity Supply Unit, Parbatipur",
+                  "Sales and Distribution Division, Thakurgaon",
+                  "Fulbari Electricity Supply Unit, Fulbari",
+                  "Sales and Distribution Division, Panchagarh",
+                  "Tetulia Electricity Supply Unit, Tetulia"
+                ],
+                [
+                  "Name of the Substation",
+                  "Fakirpara",
+                  "Balubari & Uposhahar",
+                  "Setabganj",
+                  "Parbatipur",
+                  "Goyalpara & DPS",
+                  "Fulbari",
+                  "Panchagarh & Bhajanpur",
+                  "Tetulia"
+                ]
               ],
-              "rows": [
+              "data_rows": [
                 {
-                  "Sr. No.": 1.0,
-                  "Name of the SDD": "Sales and Distribution Division - 1, Dinajpur",
-                  "Name of the Substation": "Fakirpara",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 2.0,
-                  "11 kV Upgradation (with Merlin)": 5.0,
-                  "11 kV (Dog Covered)": 2.0,
-                  "11/0.4 kV Upgradation": "",
-                  "0.4 kV Line Upgradation": 7.0,
-                  "33 kV New line": "",
-                  "11 kV New": 0.0,
-                  "11/0.4 kV New": 5.0,
-                  "11 kV New (Dog Covered)": 5.0,
-                  "0.4 kV New": 7.0,
-                  "Total": 33.0,
-                  "Purpose of 33 kV Line": "",
-                  "250 kVA": 81.0,
-                  "200 kVA": "",
-                  "100 kVA": ""
+                  "label": "33 kv Upgradation",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    10.0,
+                    null,
+                    null
+                  ]
                 },
                 {
-                  "Sr. No.": 2.0,
-                  "Name of the SDD": "Sales and Distribution Division - 2, Dinajpur",
-                  "Name of the Substation": "Balubari & Uposhahar",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 5.0,
-                  "11 kV Upgradation (with Merlin)": 5.0,
-                  "11 kV (Dog Covered)": 2.0,
-                  "11/0.4 kV Upgradation": "",
-                  "0.4 kV Line Upgradation": 7.0,
-                  "33 kV New line": "",
-                  "11 kV New": 2.0,
-                  "11/0.4 kV New": 1.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 3.0,
-                  "Total": 25.0,
-                  "Purpose of 33 kV Line": "",
-                  "250 kVA": 40.0,
-                  "200 kVA": "",
-                  "100 kVA": ""
+                  "label": "11 kV Upgradation",
+                  "values": [
+                    2.0,
+                    5.0,
+                    5.0,
+                    10.0,
+                    null,
+                    5.0,
+                    8.0,
+                    null
+                  ]
                 },
                 {
-                  "Sr. No.": 3.0,
-                  "Name of the SDD": "Setabganj Electricity Supply Unit, Setabganj",
-                  "Name of the Substation": "Setabganj",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 5.0,
-                  "11 kV Upgradation (with Merlin)": 3.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 1.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New line": "",
-                  "11 kV New": 10.0,
-                  "11/0.4 kV New": 5.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 10.0,
-                  "Total": 39.0,
-                  "Purpose of 33 kV Line": "",
-                  "250 kVA": 65.0,
-                  "200 kVA": "",
-                  "100 kVA": ""
+                  "label": "11 kV Upgradation (with Merlin)",
+                  "values": [
+                    5.0,
+                    5.0,
+                    3.0,
+                    null,
+                    0.0,
+                    5.0,
+                    null,
+                    null
+                  ]
                 },
                 {
-                  "Sr. No.": 4.0,
-                  "Name of the SDD": "Parbatipur Electricity Supply Unit, Parbatipur",
-                  "Name of the Substation": "Parbatipur",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 10.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": 5.0,
-                  "11/0.4 kV Upgradation": 5.0,
-                  "0.4 kV Line Upgradation": 15.0,
-                  "33 kV New line": 18.0,
-                  "11 kV New": 10.0,
-                  "11/0.4 kV New": 10.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 10.0,
-                  "Total": 83.0,
-                  "Purpose of 33 kV Line": "",
-                  "250 kVA": 45.0,
-                  "200 kVA": "",
-                  "100 kVA": ""
+                  "label": "11 kV (Dog Covered)",
+                  "values": [
+                    2.0,
+                    2.0,
+                    null,
+                    5.0,
+                    7.0,
+                    6.0,
+                    null,
+                    null
+                  ]
                 },
                 {
-                  "Sr. No.": 5.0,
-                  "Name of the SDD": "Sales and Distribution Division, Thakurgaon",
-                  "Name of the Substation": "Goyalpara & DPS",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": "",
-                  "11 kV Upgradation (with Merlin)": 0.0,
-                  "11 kV (Dog Covered)": 7.0,
-                  "11/0.4 kV Upgradation": 5.0,
-                  "0.4 kV Line Upgradation": 15.0,
-                  "33 kV New line": 17.0,
-                  "11 kV New": 2.0,
-                  "11/0.4 kV New": 3.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 10.0,
-                  "Total": 59.0,
-                  "Purpose of 33 kV Line": "Ring line between Goyalpara & DPS SS",
-                  "250 kVA": 72.0,
-                  "200 kVA": "",
-                  "100 kVA": ""
+                  "label": "11/0.4 kV Upgradation",
+                  "values": [
+                    null,
+                    null,
+                    1.0,
+                    5.0,
+                    5.0,
+                    5.0,
+                    10.0,
+                    17.0
+                  ]
                 },
                 {
-                  "Sr. No.": 6.0,
-                  "Name of the SDD": "Fulbari Electricity Supply Unit, Fulbari",
-                  "Name of the Substation": "Fulbari",
-                  "33 kv Upgradation": 10.0,
-                  "11 kV Upgradation": 5.0,
-                  "11 kV Upgradation (with Merlin)": 5.0,
-                  "11 kV (Dog Covered)": 6.0,
-                  "11/0.4 kV Upgradation": 5.0,
-                  "0.4 kV Line Upgradation": 5.0,
-                  "33 kV New line": "",
-                  "11 kV New": 8.0,
-                  "11/0.4 kV New": 10.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 10.0,
-                  "Total": 64.0,
-                  "Purpose of 33 kV Line": "33 kV Source line renovation \n(Further discussion is required)",
-                  "250 kVA": 61.0,
-                  "200 kVA": "",
-                  "100 kVA": ""
+                  "label": "0.4 kV Line Upgradation",
+                  "values": [
+                    7.0,
+                    7.0,
+                    5.0,
+                    15.0,
+                    15.0,
+                    5.0,
+                    30.0,
+                    10.0
+                  ]
                 },
                 {
-                  "Sr. No.": 7.0,
-                  "Name of the SDD": "Sales and Distribution Division, Panchagarh",
-                  "Name of the Substation": "Panchagarh & Bhajanpur",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": 8.0,
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 10.0,
-                  "0.4 kV Line Upgradation": 30.0,
-                  "33 kV New line": "",
-                  "11 kV New": 15.0,
-                  "11/0.4 kV New": 15.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 30.0,
-                  "Total": 108.0,
-                  "Purpose of 33 kV Line": "",
-                  "250 kVA": 107.0,
-                  "200 kVA": "",
-                  "100 kVA": ""
+                  "label": "33 kV New line",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    18.0,
+                    17.0,
+                    null,
+                    null,
+                    null
+                  ]
                 },
                 {
-                  "Sr. No.": 8.0,
-                  "Name of the SDD": "Tetulia Electricity Supply Unit, Tetulia",
-                  "Name of the Substation": "Tetulia",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": "",
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 17.0,
-                  "0.4 kV Line Upgradation": 10.0,
-                  "33 kV New line": "",
-                  "11 kV New": 25.0,
-                  "11/0.4 kV New": 25.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 40.0,
-                  "Total": 117.0,
-                  "Purpose of 33 kV Line": "",
-                  "250 kVA": 60.0,
-                  "200 kVA": "",
-                  "100 kVA": ""
+                  "label": "11 kV New",
+                  "values": [
+                    0.0,
+                    2.0,
+                    10.0,
+                    10.0,
+                    2.0,
+                    8.0,
+                    15.0,
+                    25.0
+                  ]
                 },
                 {
-                  "Sr. No.": "",
-                  "Name of the SDD": "",
-                  "Name of the Substation": "",
-                  "33 kv Upgradation": 10.0,
-                  "11 kV Upgradation": 35.0,
-                  "11 kV Upgradation (with Merlin)": 18.0,
-                  "11 kV (Dog Covered)": 22.0,
-                  "11/0.4 kV Upgradation": 43.0,
-                  "0.4 kV Line Upgradation": 94.0,
-                  "33 kV New line": 35.0,
-                  "11 kV New": 72.0,
-                  "11/0.4 kV New": 74.0,
-                  "11 kV New (Dog Covered)": 5.0,
-                  "0.4 kV New": 120.0,
-                  "Total": 528.0,
-                  "Purpose of 33 kV Line": "",
-                  "250 kVA": 531.0,
-                  "200 kVA": 0.0,
-                  "100 kVA": 0.0
+                  "label": "11/0.4 kV New",
+                  "values": [
+                    5.0,
+                    1.0,
+                    5.0,
+                    10.0,
+                    3.0,
+                    10.0,
+                    15.0,
+                    25.0
+                  ]
                 },
                 {
-                  "Sr. No.": "",
-                  "Name of the SDD": "",
-                  "Name of the Substation": "",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": "",
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": "",
-                  "0.4 kV Line Upgradation": "",
-                  "33 kV New line": "",
-                  "11 kV New": "Line",
-                  "11/0.4 kV New": "Xmer",
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": "",
-                  "Total": "",
-                  "Purpose of 33 kV Line": "",
-                  "250 kVA": "",
-                  "200 kVA": "",
-                  "100 kVA": ""
+                  "label": "11 kV New (Dog Covered)",
+                  "values": [
+                    5.0,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
                 },
                 {
-                  "Sr. No.": "",
-                  "Name of the SDD": "",
-                  "Name of the Substation": "",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": "",
-                  "11 kV Upgradation (with Merlin)": "",
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": "",
-                  "0.4 kV Line Upgradation": "",
-                  "33 kV New line": "",
-                  "11 kV New": 528.0,
-                  "11/0.4 kV New": 531.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": "",
-                  "Total": "",
-                  "Purpose of 33 kV Line": "",
-                  "250 kVA": "",
-                  "200 kVA": "",
-                  "100 kVA": ""
+                  "label": "0.4 kV New",
+                  "values": [
+                    7.0,
+                    3.0,
+                    10.0,
+                    10.0,
+                    10.0,
+                    10.0,
+                    30.0,
+                    40.0
+                  ]
+                },
+                {
+                  "label": "Total",
+                  "values": [
+                    33.0,
+                    25.0,
+                    39.0,
+                    83.0,
+                    59.0,
+                    64.0,
+                    108.0,
+                    117.0
+                  ]
+                },
+                {
+                  "label": "Purpose of 33 kV Line",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    "Ring line between Goyalpara & DPS SS",
+                    "33 kV Source line renovation \n(Further discussion is required)",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "label": "",
+                  "values": [
+                    50.0,
+                    31.0,
+                    64.0,
+                    131.0,
+                    91.0,
+                    92.0,
+                    168.0,
+                    207.0
+                  ]
+                },
+                {
+                  "label": "250 kVA",
+                  "values": [
+                    81.0,
+                    40.0,
+                    65.0,
+                    45.0,
+                    72.0,
+                    61.0,
+                    107.0,
+                    60.0
+                  ]
+                },
+                {
+                  "label": "200 kVA",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "label": "100 kVA",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "label": "",
+                  "values": [
+                    6.88,
+                    7.63,
+                    5.62,
+                    7.82,
+                    8.07,
+                    2.77,
+                    9.79,
+                    10.13
+                  ]
+                },
+                {
+                  "label": "",
+                  "values": [
+                    null,
+                    null,
+                    50.0,
+                    null,
+                    50.0,
+                    45.0,
+                    120.0,
+                    150.0
+                  ]
                 }
               ]
             },
             {
               "sheet": "Rajshai Zone",
               "kind": "zone",
-              "headers": [
-                "Circle Name",
-                "33 kv Upgradation",
-                "11 kV Upgradation",
-                "11 kV Upgradation (with Merlin)",
-                "11 kV (Dog Covered)",
-                "11/0.4 kV Upgradation",
-                "0.4 kV Line Upgradation",
-                "33 kV New line",
-                "11 kV New",
-                "11/0.4 kV New",
-                "11 kV New (Dog Covered)",
-                "0.4 kV New",
-                "Total Lineworks\n(km)"
+              "header_rows": [
+                [
+                  "Circle Name",
+                  "Rajshahi-1",
+                  "Rajshahi-2",
+                  "Pabna",
+                  "Bogura",
+                  "Naogaon",
+                  "Total ="
+                ]
               ],
-              "rows": [
+              "data_rows": [
                 {
-                  "Circle Name": "Rajshahi-1",
-                  "33 kv Upgradation": 0.0,
-                  "11 kV Upgradation": 28.0,
-                  "11 kV Upgradation (with Merlin)": 21.0,
-                  "11 kV (Dog Covered)": 0.0,
-                  "11/0.4 kV Upgradation": 14.0,
-                  "0.4 kV Line Upgradation": 57.0,
-                  "33 kV New line": 7.0,
-                  "11 kV New": 30.0,
-                  "11/0.4 kV New": 44.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 44.0,
-                  "Total Lineworks\n(km)": 245.0
+                  "label": "33 kv Upgradation",
+                  "values": [
+                    0.0,
+                    32.0,
+                    32.0,
+                    1.0,
+                    0.0,
+                    65.0
+                  ]
                 },
                 {
-                  "Circle Name": "Rajshahi-2",
-                  "33 kv Upgradation": 32.0,
-                  "11 kV Upgradation": 43.0,
-                  "11 kV Upgradation (with Merlin)": 10.0,
-                  "11 kV (Dog Covered)": 0.0,
-                  "11/0.4 kV Upgradation": 94.0,
-                  "0.4 kV Line Upgradation": 101.0,
-                  "33 kV New line": 57.0,
-                  "11 kV New": 22.5,
-                  "11/0.4 kV New": 62.5,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 64.0,
-                  "Total Lineworks\n(km)": 486.0
+                  "label": "11 kV Upgradation",
+                  "values": [
+                    28.0,
+                    43.0,
+                    20.0,
+                    15.0,
+                    13.0,
+                    119.0
+                  ]
                 },
                 {
-                  "Circle Name": "Pabna",
-                  "33 kv Upgradation": 32.0,
-                  "11 kV Upgradation": 20.0,
-                  "11 kV Upgradation (with Merlin)": 9.0,
-                  "11 kV (Dog Covered)": 0.0,
-                  "11/0.4 kV Upgradation": 28.0,
-                  "0.4 kV Line Upgradation": 35.0,
-                  "33 kV New line": 22.0,
-                  "11 kV New": 45.0,
-                  "11/0.4 kV New": 25.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 54.0,
-                  "Total Lineworks\n(km)": 270.0
+                  "label": "11 kV Upgradation (with Merlin)",
+                  "values": [
+                    21.0,
+                    10.0,
+                    9.0,
+                    9.0,
+                    8.0,
+                    57.0
+                  ]
                 },
                 {
-                  "Circle Name": "Bogura",
-                  "33 kv Upgradation": 1.0,
-                  "11 kV Upgradation": 15.0,
-                  "11 kV Upgradation (with Merlin)": 9.0,
-                  "11 kV (Dog Covered)": 0.0,
-                  "11/0.4 kV Upgradation": 17.0,
-                  "0.4 kV Line Upgradation": 43.0,
-                  "33 kV New line": 41.0,
-                  "11 kV New": 30.0,
-                  "11/0.4 kV New": 44.0,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 40.0,
-                  "Total Lineworks\n(km)": 240.0
+                  "label": "11 kV (Dog Covered)",
+                  "values": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
                 },
                 {
-                  "Circle Name": "Naogaon",
-                  "33 kv Upgradation": 0.0,
-                  "11 kV Upgradation": 13.0,
-                  "11 kV Upgradation (with Merlin)": 8.0,
-                  "11 kV (Dog Covered)": 0.0,
-                  "11/0.4 kV Upgradation": 23.0,
-                  "0.4 kV Line Upgradation": 45.0,
-                  "33 kV New line": 45.0,
-                  "11 kV New": 31.0,
-                  "11/0.4 kV New": 41.0,
-                  "11 kV New (Dog Covered)": 0.0,
-                  "0.4 kV New": 38.0,
-                  "Total Lineworks\n(km)": 244.0
+                  "label": "11/0.4 kV Upgradation",
+                  "values": [
+                    14.0,
+                    94.0,
+                    28.0,
+                    17.0,
+                    23.0,
+                    176.0
+                  ]
                 },
                 {
-                  "Circle Name": "Total =",
-                  "33 kv Upgradation": 65.0,
-                  "11 kV Upgradation": 119.0,
-                  "11 kV Upgradation (with Merlin)": 57.0,
-                  "11 kV (Dog Covered)": 0.0,
-                  "11/0.4 kV Upgradation": 176.0,
-                  "0.4 kV Line Upgradation": 281.0,
-                  "33 kV New line": 172.0,
-                  "11 kV New": 158.5,
-                  "11/0.4 kV New": 216.5,
-                  "11 kV New (Dog Covered)": 0.0,
-                  "0.4 kV New": 240.0,
-                  "Total Lineworks\n(km)": 1485.0
+                  "label": "0.4 kV Line Upgradation",
+                  "values": [
+                    57.0,
+                    101.0,
+                    35.0,
+                    43.0,
+                    45.0,
+                    281.0
+                  ]
+                },
+                {
+                  "label": "33 kV New line",
+                  "values": [
+                    7.0,
+                    57.0,
+                    22.0,
+                    41.0,
+                    45.0,
+                    172.0
+                  ]
+                },
+                {
+                  "label": "11 kV New",
+                  "values": [
+                    30.0,
+                    22.5,
+                    45.0,
+                    30.0,
+                    31.0,
+                    158.5
+                  ]
+                },
+                {
+                  "label": "11/0.4 kV New",
+                  "values": [
+                    44.0,
+                    62.5,
+                    25.0,
+                    44.0,
+                    41.0,
+                    216.5
+                  ]
+                },
+                {
+                  "label": "11 kV New (Dog Covered)",
+                  "values": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    0.0,
+                    0.0
+                  ]
+                },
+                {
+                  "label": "0.4 kV New",
+                  "values": [
+                    44.0,
+                    64.0,
+                    54.0,
+                    40.0,
+                    38.0,
+                    240.0
+                  ]
+                },
+                {
+                  "label": "Total Lineworks\n(km)",
+                  "values": [
+                    245.0,
+                    486.0,
+                    270.0,
+                    240.0,
+                    244.0,
+                    1485.0
+                  ]
                 }
               ]
             },
             {
               "sheet": "Rangpur Zone",
               "kind": "zone",
-              "headers": [
-                "Circle Name",
-                "33 kv Upgradation",
-                "11 kV Upgradation",
-                "11 kV Upgradation (with Merlin)",
-                "11 kV (Dog Covered)",
-                "11/0.4 kV Upgradation",
-                "0.4 kV Line Upgradation",
-                "33 kV New line",
-                "11 kV New",
-                "11/0.4 kV New",
-                "11 kV (Dog Covered)",
-                "0.4 kV New",
-                "Total Lineworks\n(km)"
+              "header_rows": [
+                [
+                  "Circle Name",
+                  "Rangpur-1",
+                  "Rangpur-2",
+                  "Dinajpur",
+                  "Total="
+                ]
               ],
-              "rows": [
+              "data_rows": [
                 {
-                  "Circle Name": "Rangpur-1",
-                  "33 kv Upgradation": 0.0,
-                  "11 kV Upgradation": 23.0,
-                  "11 kV Upgradation (with Merlin)": 22.0,
-                  "11 kV (Dog Covered)": 0.0,
-                  "11/0.4 kV Upgradation": 39.0,
-                  "0.4 kV Line Upgradation": 49.0,
-                  "33 kV New line": 25.5,
-                  "11 kV New": 27.0,
-                  "11/0.4 kV New": 52.0,
-                  "0.4 kV New": 60.0,
-                  "Total Lineworks\n(km)": 297.5
+                  "label": "33 kv Upgradation",
+                  "values": [
+                    0.0,
+                    72.0,
+                    10.0,
+                    82.0
+                  ]
                 },
                 {
-                  "Circle Name": "Rangpur-2",
-                  "33 kv Upgradation": 72.0,
-                  "11 kV Upgradation": 68.0,
-                  "11 kV Upgradation (with Merlin)": 1.0,
-                  "11 kV (Dog Covered)": 41.0,
-                  "11/0.4 kV Upgradation": 32.0,
-                  "0.4 kV Line Upgradation": 88.0,
-                  "33 kV New line": 118.0,
-                  "11 kV New": 97.0,
-                  "11/0.4 kV New": 279.0,
-                  "0.4 kV New": 704.0,
-                  "Total Lineworks\n(km)": 1527.0
+                  "label": "11 kV Upgradation",
+                  "values": [
+                    23.0,
+                    68.0,
+                    35.0,
+                    126.0
+                  ]
                 },
                 {
-                  "Circle Name": "Dinajpur",
-                  "33 kv Upgradation": 10.0,
-                  "11 kV Upgradation": 35.0,
-                  "11 kV Upgradation (with Merlin)": 18.0,
-                  "11 kV (Dog Covered)": 5.0,
-                  "11/0.4 kV Upgradation": 43.0,
-                  "0.4 kV Line Upgradation": 94.0,
-                  "33 kV New line": 35.0,
-                  "11 kV New": 72.0,
-                  "11/0.4 kV New": 74.0,
-                  "0.4 kV New": 120.0,
-                  "Total Lineworks\n(km)": 528.0
+                  "label": "11 kV Upgradation (with Merlin)",
+                  "values": [
+                    22.0,
+                    1.0,
+                    18.0,
+                    41.0
+                  ]
                 },
                 {
-                  "Circle Name": "Total=",
-                  "33 kv Upgradation": 82.0,
-                  "11 kV Upgradation": 126.0,
-                  "11 kV Upgradation (with Merlin)": 41.0,
-                  "11 kV (Dog Covered)": 46.0,
-                  "11/0.4 kV Upgradation": 114.0,
-                  "0.4 kV Line Upgradation": 231.0,
-                  "33 kV New line": 178.5,
-                  "11 kV New": 196.0,
-                  "11/0.4 kV New": 405.0,
-                  "0.4 kV New": 884.0,
-                  "Total Lineworks\n(km)": 2352.5
+                  "label": "11 kV (Dog Covered)",
+                  "values": [
+                    0.0,
+                    27.0,
+                    22.0,
+                    49.0
+                  ]
+                },
+                {
+                  "label": "11/0.4 kV Upgradation",
+                  "values": [
+                    39.0,
+                    32.0,
+                    43.0,
+                    114.0
+                  ]
+                },
+                {
+                  "label": "0.4 kV Line Upgradation",
+                  "values": [
+                    49.0,
+                    88.0,
+                    94.0,
+                    231.0
+                  ]
+                },
+                {
+                  "label": "33 kV New line",
+                  "values": [
+                    25.5,
+                    118.0,
+                    35.0,
+                    178.5
+                  ]
+                },
+                {
+                  "label": "11 kV New",
+                  "values": [
+                    27.0,
+                    97.0,
+                    72.0,
+                    196.0
+                  ]
+                },
+                {
+                  "label": "11/0.4 kV New",
+                  "values": [
+                    52.0,
+                    279.0,
+                    74.0,
+                    405.0
+                  ]
+                },
+                {
+                  "label": "11 kV (Dog Covered)",
+                  "values": [
+                    0.0,
+                    41.0,
+                    5.0,
+                    46.0
+                  ]
+                },
+                {
+                  "label": "0.4 kV New",
+                  "values": [
+                    60.0,
+                    704.0,
+                    120.0,
+                    884.0
+                  ]
+                },
+                {
+                  "label": "Total Lineworks\n(km)",
+                  "values": [
+                    297.5,
+                    1527.0,
+                    528.0,
+                    2352.5
+                  ]
                 }
               ]
             },
             {
               "sheet": "Grand Summary",
               "kind": "grand",
-              "headers": [
-                "Zone",
-                "33 kv Upgradation",
-                "11 kV Upgradation",
-                "11 kV Upgradation (with Merlin)",
-                "11 kV (Dog Covered)",
-                "11/0.4 kV Upgradation",
-                "0.4 kV Line Upgradation",
-                "33 kV New line",
-                "11 kV New",
-                "11/0.4 kV New",
-                "11 kV New (Dog Covered)",
-                "0.4 kV New",
-                "Total Lineworks\n(km)"
+              "header_rows": [
+                [
+                  "Zone",
+                  "Rajshahi Zone",
+                  "Rangpur Zone",
+                  "Total="
+                ]
               ],
-              "rows": [
+              "data_rows": [
                 {
-                  "Zone": "Rajshahi Zone",
-                  "33 kv Upgradation": 65.0,
-                  "11 kV Upgradation": 119.0,
-                  "11 kV Upgradation (with Merlin)": 57.0,
-                  "11 kV (Dog Covered)": 0.0,
-                  "11/0.4 kV Upgradation": 176.0,
-                  "0.4 kV Line Upgradation": 281.0,
-                  "33 kV New line": 172.0,
-                  "11 kV New": 158.5,
-                  "11/0.4 kV New": 216.5,
-                  "11 kV New (Dog Covered)": 0.0,
-                  "0.4 kV New": 240.0,
-                  "Total Lineworks\n(km)": 1485.0
+                  "label": "33 kv Upgradation",
+                  "values": [
+                    65.0,
+                    82.0,
+                    147.0
+                  ]
                 },
                 {
-                  "Zone": "Rangpur Zone",
-                  "33 kv Upgradation": 82.0,
-                  "11 kV Upgradation": 126.0,
-                  "11 kV Upgradation (with Merlin)": 41.0,
-                  "11 kV (Dog Covered)": 49.0,
-                  "11/0.4 kV Upgradation": 114.0,
-                  "0.4 kV Line Upgradation": 231.0,
-                  "33 kV New line": 178.5,
-                  "11 kV New": 196.0,
-                  "11/0.4 kV New": 405.0,
-                  "11 kV New (Dog Covered)": 46.0,
-                  "0.4 kV New": 884.0,
-                  "Total Lineworks\n(km)": 2352.5
+                  "label": "11 kV Upgradation",
+                  "values": [
+                    119.0,
+                    126.0,
+                    245.0
+                  ]
                 },
                 {
-                  "Zone": "Total=",
-                  "33 kv Upgradation": 147.0,
-                  "11 kV Upgradation": 245.0,
-                  "11 kV Upgradation (with Merlin)": 98.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": 290.0,
-                  "0.4 kV Line Upgradation": 512.0,
-                  "33 kV New line": 350.5,
-                  "11 kV New": 354.5,
-                  "11/0.4 kV New": 621.5,
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": 1124.0,
-                  "Total Lineworks\n(km)": 3837.5
+                  "label": "11 kV Upgradation (with Merlin)",
+                  "values": [
+                    57.0,
+                    41.0,
+                    98.0
+                  ]
                 },
                 {
-                  "Zone": "",
-                  "33 kv Upgradation": "",
-                  "11 kV Upgradation": "",
-                  "11 kV Upgradation (with Merlin)": 343.0,
-                  "11 kV (Dog Covered)": "",
-                  "11/0.4 kV Upgradation": "",
-                  "0.4 kV Line Upgradation": "",
-                  "33 kV New line": "",
-                  "11 kV New": "",
-                  "11/0.4 kV New": "",
-                  "11 kV New (Dog Covered)": "",
-                  "0.4 kV New": "",
-                  "Total Lineworks\n(km)": ""
+                  "label": "11 kV (Dog Covered)",
+                  "values": [
+                    0.0,
+                    49.0,
+                    null
+                  ]
+                },
+                {
+                  "label": "11/0.4 kV Upgradation",
+                  "values": [
+                    176.0,
+                    114.0,
+                    290.0
+                  ]
+                },
+                {
+                  "label": "0.4 kV Line Upgradation",
+                  "values": [
+                    281.0,
+                    231.0,
+                    512.0
+                  ]
+                },
+                {
+                  "label": "33 kV New line",
+                  "values": [
+                    172.0,
+                    178.5,
+                    350.5
+                  ]
+                },
+                {
+                  "label": "11 kV New",
+                  "values": [
+                    158.5,
+                    196.0,
+                    354.5
+                  ]
+                },
+                {
+                  "label": "11/0.4 kV New",
+                  "values": [
+                    216.5,
+                    405.0,
+                    621.5
+                  ]
+                },
+                {
+                  "label": "11 kV New (Dog Covered)",
+                  "values": [
+                    0.0,
+                    46.0,
+                    null
+                  ]
+                },
+                {
+                  "label": "0.4 kV New",
+                  "values": [
+                    240.0,
+                    884.0,
+                    1124.0
+                  ]
+                },
+                {
+                  "label": "Total Lineworks\n(km)",
+                  "values": [
+                    1485.0,
+                    2352.5,
+                    3837.5
+                  ]
                 }
               ]
             }

@@ -288,6 +288,7 @@ let ZRS_DATA       = null;   // from zrs.json (new — Zonal Repair Shop)
 let STORE_DATA     = null;   // from store.json (new)
 let SWITCHING_DATA = null;   // from switching-ss.json (new)
 let RENEWABLE_DATA = null;   // from renewable-energy.json (new)
+let OP_ISSUES_DATA = null;   // from operational-issues.json (new)
 
 // Cache-busting query string — bump v= whenever a JSON file changes so
 // browsers don't serve stale data. The build script could update this in
@@ -336,6 +337,12 @@ async function loadRenewableData() {
     RENEWABLE_DATA = await _loadJson('renewable-energy.json');
     console.log(`✓ renewable: ${RENEWABLE_DATA.blocks.length} blocks`);
   } catch (err) { console.warn('renewable-energy.json:', err.message); }
+}
+async function loadOpIssuesData() {
+  try {
+    OP_ISSUES_DATA = await _loadJson('operational-issues.json');
+    console.log(`✓ operational-issues: ${OP_ISSUES_DATA.rows.length} issues`);
+  } catch (err) { console.warn('operational-issues.json:', err.message); }
 }
 
 /* ══════════════════════════════════════════════════
@@ -554,6 +561,7 @@ const SECTION_LABELS = {
   'all-pt-sw':         '33/11 kV Substation › Power Transformer Feeder Equipment',
   'all-pt-load':       '33/11 kV Substation › Power Transformer Loading & Operating Parameters',
   'all-11kv':          '33/11 kV Substation › 11 kV Feeder Info',
+  'op-issues':         '33/11 kV Substation › Substation Operational Issues',
   'dt-overall':        'Distribution Transformer › Overall Summary',
   'dt-sdd-summary':    'Distribution Transformer › SDD/ESU-wise Summary',
   'dt-details':        'Distribution Transformer › Transformer Details',
@@ -600,6 +608,7 @@ function showSection(sec, param = null) {
     'all-pt-sw':         renderAllPTSw,
     'all-pt-load':       renderAllPTLoad,
     'all-11kv':          renderAll11kv,
+    'op-issues':         renderOperationalIssues,
     'switching-ss':      renderSwitchingSS,
     'fault-level':       renderFaultLevel,
     'ongoing-projects':  renderOngoingProjects,
@@ -4917,6 +4926,159 @@ function renderStoreEquipment(kind) {
     </div></div></div>`;
 }
 
+/* ── Substation Operational Issues (33/11 kV submenu) ── */
+function renderOperationalIssues() {
+  if (!OP_ISSUES_DATA) {
+    document.getElementById('content').innerHTML = `<div class="page-loader">Loading operational issues…</div>`;
+    return;
+  }
+  const rows = OP_ISSUES_DATA.rows || [];
+  const uniq = (key) => [...new Set(rows.map(r => r[key]).filter(Boolean))].sort();
+  const circles  = uniq('circle');
+  const subs     = uniq('substation');
+  const equips   = uniq('equipment');
+  const inProj   = ['Yes', 'No'];
+
+  // KPI tile counts
+  const inProjN  = rows.filter(r => r.in_project === 'Yes').length;
+  const notInProjN = rows.filter(r => r.in_project === 'No').length;
+  const totalSets = rows.reduce((s, r) => s + (r.qty_num || 0), 0);
+
+  document.getElementById('content').innerHTML = `
+    <div class="sec-head">
+      <div class="sec-head-left">
+        <h2>Substation Operational Issues</h2>
+        <p>${esc(OP_ISSUES_DATA.title)} — ${esc(OP_ISSUES_DATA.subtitle)}</p>
+      </div>
+    </div>
+
+    <div class="metric-row">
+      <div class="metric-tile t-indigo">
+        <i class="fas fa-triangle-exclamation mt-icon"></i>
+        <div class="mt-label">Total Issues</div>
+        <div class="mt-val">${rows.length}</div>
+      </div>
+      <div class="metric-tile t-green">
+        <i class="fas fa-circle-check mt-icon"></i>
+        <div class="mt-label">In Project Scope</div>
+        <div class="mt-val">${inProjN}</div>
+      </div>
+      <div class="metric-tile t-red">
+        <i class="fas fa-circle-xmark mt-icon"></i>
+        <div class="mt-label">Not in Any Project</div>
+        <div class="mt-val">${notInProjN}</div>
+      </div>
+      <div class="metric-tile t-amber">
+        <i class="fas fa-cubes mt-icon"></i>
+        <div class="mt-label">Total Sets Required</div>
+        <div class="mt-val">${totalSets}</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <h3><i class="fas fa-filter"></i> Issue Log</h3>
+        <span id="oi-count" style="font-size:.82rem;color:var(--text3)">${rows.length} issues</span>
+      </div>
+      <div class="panel-body" style="padding:12px 14px 0">
+        <div class="zrs-controls" style="margin-bottom:0">
+          <input class="search-input" id="oi-q" placeholder="🔍 Search issue / equipment / office…"
+                 oninput="window.filterOpIssues()" style="max-width:260px">
+          <select class="filter-sel" id="oi-circle" onchange="window.filterOpIssues()">
+            <option value="">All Circles</option>
+            ${circles.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join('')}
+          </select>
+          <select class="filter-sel" id="oi-sub" onchange="window.filterOpIssues()">
+            <option value="">All Substations</option>
+            ${subs.map(s2 => `<option value="${esc(s2)}">${esc(s2)}</option>`).join('')}
+          </select>
+          <select class="filter-sel" id="oi-equip" onchange="window.filterOpIssues()">
+            <option value="">All Equipment</option>
+            ${equips.map(e => `<option value="${esc(e)}">${esc(e)}</option>`).join('')}
+          </select>
+          <select class="filter-sel" id="oi-proj" onchange="window.filterOpIssues()">
+            <option value="">In Project? All</option>
+            ${inProj.map(p => `<option value="${p}">${p}</option>`).join('')}
+          </select>
+          <button class="btn btn-sm btn-secondary" onclick="window.resetOpIssuesFilters()">
+            <i class="fas fa-rotate-left"></i> Reset
+          </button>
+        </div>
+      </div>
+      <div class="panel-body no-pad"><div class="tbl-wrap">
+        <table class="tbl" id="oi-table">
+          <thead><tr>
+            <th>ID</th>
+            <th>Circle</th>
+            <th>Grid / Substation</th>
+            <th>Office</th>
+            <th>Required Equipment</th>
+            <th>Qty</th>
+            <th>Issue</th>
+            <th>Year</th>
+            <th>Alignment with Project</th>
+            <th>In Project?</th>
+          </tr></thead>
+          <tbody id="oi-tbody">${_renderOpIssuesRows(rows)}</tbody>
+        </table>
+      </div></div>
+    </div>
+  `;
+}
+
+function _renderOpIssuesRows(list) {
+  if (!list.length) {
+    return `<tr><td colspan="10" class="tbl-empty">No issues match these filters.</td></tr>`;
+  }
+  return list.map(r => {
+    const projBadge = r.in_project === 'Yes' ? '<span class="badge badge-good">Yes</span>'
+                    : r.in_project === 'No'  ? '<span class="badge badge-bad">No</span>'
+                    : '<span class="badge badge-gray">—</span>';
+    return `<tr>
+      <td><strong>${esc(r.id)}</strong></td>
+      <td><span class="badge badge-blue">${esc(r.circle)}</span></td>
+      <td><strong>${esc(r.substation)}</strong></td>
+      <td>${esc(r.office) || '—'}</td>
+      <td>${esc(r.equipment)}</td>
+      <td class="num">${esc(r.qty) || '—'}</td>
+      <td style="font-size:.84rem;line-height:1.45;min-width:280px;max-width:380px">${esc(r.issue)}</td>
+      <td class="num">${esc(r.year) || '—'}</td>
+      <td style="font-size:.84rem;line-height:1.45;min-width:240px;max-width:340px">${esc(r.alignment) || '—'}</td>
+      <td>${projBadge}</td>
+    </tr>`;
+  }).join('');
+}
+
+window.filterOpIssues = () => {
+  if (!OP_ISSUES_DATA) return;
+  const q      = (document.getElementById('oi-q')?.value      || '').toLowerCase();
+  const circle =  document.getElementById('oi-circle')?.value || '';
+  const sub    =  document.getElementById('oi-sub')?.value    || '';
+  const equip  =  document.getElementById('oi-equip')?.value  || '';
+  const proj   =  document.getElementById('oi-proj')?.value   || '';
+  const rows = OP_ISSUES_DATA.rows.filter(r => {
+    if (circle && r.circle     !== circle) return false;
+    if (sub    && r.substation !== sub)    return false;
+    if (equip  && r.equipment  !== equip)  return false;
+    if (proj   && r.in_project !== proj)   return false;
+    if (q) {
+      const blob = `${r.id} ${r.circle} ${r.substation} ${r.office} ${r.equipment} ${r.issue} ${r.alignment}`.toLowerCase();
+      if (!blob.includes(q)) return false;
+    }
+    return true;
+  });
+  document.getElementById('oi-tbody').innerHTML = _renderOpIssuesRows(rows);
+  document.getElementById('oi-count').textContent = `${rows.length} of ${OP_ISSUES_DATA.rows.length} issues`;
+};
+
+window.resetOpIssuesFilters = () => {
+  ['oi-q','oi-circle','oi-sub','oi-equip','oi-proj'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  window.filterOpIssues();
+};
+
 /* ── Fault Level placeholder (data not yet supplied) ── */
 function renderFaultLevel() {
   document.getElementById('content').innerHTML = `
@@ -5440,6 +5602,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadStoreData(),
     loadSwitchingData(),
     loadRenewableData(),
+    loadOpIssuesData(),
   ]);
 
   // Mobile nav toggle

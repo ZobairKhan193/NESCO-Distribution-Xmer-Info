@@ -20,6 +20,7 @@ BUILDERS = [
     "build_renewable",
     "build_dt",
     "build_substations",
+    "build_operational_issues",
 ]
 
 

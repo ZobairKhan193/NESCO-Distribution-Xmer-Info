@@ -1102,6 +1102,186 @@ table.tbl .num{font-variant-numeric:tabular-nums}
 }
 .proj-tab-body{margin-top:4px}
 
+/* ════════════ NIDMP — "Project at a Glance" + "Project Progress" ════════════ */
+.glance-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:12px;
+}
+.glance-card{
+  display:flex;gap:14px;align-items:flex-start;
+  background:var(--glass-bg-strong);
+  backdrop-filter:blur(10px) saturate(140%);
+  -webkit-backdrop-filter:blur(10px) saturate(140%);
+  border:1px solid var(--glass-border);
+  border-radius:12px;padding:14px 16px;
+  transition:transform var(--tr),box-shadow var(--tr);
+}
+.glance-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-glow)}
+.glance-icon{
+  width:36px;height:36px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#6366f1,#3b82f6);
+  color:#fff;font-size:1rem;
+  box-shadow:0 4px 12px rgba(99,102,241,.35);
+}
+.glance-subj{
+  font-family:var(--fh);font-weight:800;
+  color:#1e1b4b;font-size:.78rem;letter-spacing:.4px;
+  text-transform:uppercase;margin-bottom:3px;
+}
+.glance-desc{
+  color:#0f172a;font-size:.92rem;line-height:1.5;
+}
+
+/* Project Progress — timeline + stage chart + kanban */
+.prog-timeline{
+  background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(14,165,233,.06));
+  border:1px solid var(--glass-border);
+  border-radius:12px;padding:18px 22px 14px;
+  margin-bottom:18px;
+}
+.prog-tl-head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:10px;gap:14px;flex-wrap:wrap;
+}
+.prog-tl-anchor{
+  font-family:var(--fh);font-weight:700;color:#1e1b4b;font-size:.9rem;
+  display:flex;flex-direction:column;gap:2px;
+}
+.prog-tl-anchor i{color:#6366f1;margin-right:4px}
+.prog-tl-date{font-weight:600;color:var(--text3);font-size:.78rem;font-family:var(--fb)}
+.prog-tl-pct{
+  font-family:var(--fh);font-size:.95rem;color:#1e1b4b;text-align:center;
+  background:#fff;border:1px solid var(--glass-border-2);
+  border-radius:18px;padding:5px 14px;
+}
+.prog-tl-pct strong{
+  font-size:1.15rem;
+  background:linear-gradient(135deg,#6366f1,#3b82f6);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  font-weight:900;
+}
+.prog-tl-bar{
+  position:relative;height:14px;border-radius:8px;
+  background:rgba(15,23,42,.08);
+  overflow:visible;
+}
+.prog-tl-fill{
+  position:absolute;left:0;top:0;bottom:0;
+  background:linear-gradient(90deg,#6366f1,#3b82f6,#14b8a6);
+  border-radius:8px;
+  transition:width .8s ease;
+}
+.prog-tl-today{
+  position:absolute;top:-4px;bottom:-4px;
+  width:3px;background:#dc2626;
+  box-shadow:0 0 0 3px rgba(220,38,38,.18);
+  border-radius:2px;
+  transform:translateX(-1.5px);
+}
+.prog-tl-today span{
+  position:absolute;top:-22px;left:50%;transform:translateX(-50%);
+  font-size:.72rem;font-weight:800;color:#fff;
+  background:#dc2626;
+  padding:2px 8px;border-radius:10px;
+  white-space:nowrap;
+  box-shadow:0 4px 10px rgba(220,38,38,.35);
+}
+.prog-tl-today span::after{
+  content:'';position:absolute;bottom:-4px;left:50%;
+  transform:translateX(-50%);
+  border-left:5px solid transparent;
+  border-right:5px solid transparent;
+  border-top:5px solid #dc2626;
+}
+
+.prog-h4{
+  font-family:var(--fh);font-weight:800;color:#0b1d3f;
+  font-size:1.02rem;margin:6px 0 12px;display:flex;gap:8px;align-items:center;
+}
+.prog-stack{
+  display:flex;height:36px;border-radius:8px;overflow:hidden;
+  border:1px solid var(--glass-border);
+  background:#f1f5fb;
+}
+.prog-stack-seg{
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-family:var(--fh);font-weight:800;font-size:.85rem;
+  text-shadow:0 1px 2px rgba(0,0,0,.25);
+  transition:filter var(--tr);
+}
+.prog-stack-seg:hover{filter:brightness(1.1)}
+.prog-legend{
+  display:flex;flex-wrap:wrap;gap:14px;
+  margin-top:10px;
+  font-size:.82rem;color:var(--text2);
+}
+.prog-legend-item{display:inline-flex;align-items:center;gap:6px}
+.prog-legend-dot{
+  width:12px;height:12px;border-radius:3px;flex-shrink:0;
+}
+
+/* Kanban-style package status board */
+.kanban-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:14px;
+}
+.kanban-col{
+  background:var(--glass-bg);
+  border:1px solid var(--glass-border);
+  border-radius:10px;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.kanban-col-head{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 14px;
+  background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,.3));
+  border-top:3px solid #6366f1;
+  border-bottom:1px solid var(--glass-border-2);
+}
+.kanban-col-title{
+  font-family:var(--fh);font-weight:800;color:#0b1d3f;font-size:.88rem;
+}
+.kanban-col-count{
+  background:#1e1b4b;color:#fff;
+  border-radius:12px;padding:2px 9px;
+  font-family:var(--fh);font-weight:800;font-size:.78rem;
+  min-width:24px;text-align:center;
+}
+.kanban-col-body{
+  padding:10px;flex:1;display:flex;flex-direction:column;gap:8px;
+}
+.kanban-card{
+  background:#fff;
+  border:1px solid var(--glass-border);
+  border-radius:8px;padding:10px 12px;
+  box-shadow:0 1px 3px rgba(15,23,42,.06);
+  transition:transform var(--tr),box-shadow var(--tr);
+}
+.kanban-card:hover{
+  transform:translateY(-1px);
+  box-shadow:0 6px 14px rgba(99,102,241,.18);
+}
+.kanban-card-head{margin-bottom:6px}
+.kanban-no{
+  display:inline-block;
+  font-family:var(--fh);font-weight:800;font-size:.78rem;
+  background:linear-gradient(135deg,#eef2ff,#dbeafe);
+  color:#1e3a8a;border:1px solid #c7d2fe;
+  padding:2px 8px;border-radius:6px;
+}
+.kanban-card-desc{
+  font-size:.82rem;color:#1f2937;line-height:1.4;
+}
+.kanban-card-comment{
+  margin-top:6px;padding-top:6px;
+  border-top:1px dashed var(--glass-border-2);
+  font-size:.76rem;color:var(--text3);line-height:1.4;font-style:italic;
+}
+.kanban-card-comment i{color:#a5b4fc;margin-right:4px;font-size:.7rem}
+
 /* ════════════ PDSSP LINE-REQUIREMENT TABLES (transposed) ════════════
    Rows = line-work metrics, columns = entities (S&DD / Substation /
    Circle / Zone). The first column (metric label) is sticky on the

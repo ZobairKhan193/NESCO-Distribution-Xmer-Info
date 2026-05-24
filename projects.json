@@ -479,6 +479,212 @@
                 ]
               ]
             }
+          },
+          "overview": {
+            "project_info": [
+              {
+                "subject": "Project Name",
+                "description": "Network Infrastructure Development and Modernization of the Electricity Distribution System in the NESCO Area."
+              },
+              {
+                "subject": "Project Approval",
+                "description": "Approved at the ECNEC meeting on: 17 September 2025 (Office Order: 07 October 2025)."
+              },
+              {
+                "subject": "Project Duration",
+                "description": "1 July 2025 – 30 June 2029."
+              },
+              {
+                "subject": "Estimated Total Cost",
+                "description": "BDT 1,184.43 crore (PA (ADB): BDT 964.83 crore; Own Fund: BDT 59.67 crore; GOB: BDT 159.92 crore)."
+              },
+              {
+                "subject": "Project Objective",
+                "description": "To ensure modern and sustainable electricity supply to consumers by modernizing NESCO's electricity distribution network, and to reduce operation & maintenance costs and system losses, along with SAIDI and SAIFI improvement (System Loss Reduction Target: 0.55%)."
+              },
+              {
+                "subject": "Total Packages",
+                "description": "14 (Goods: 12; Works: 01; Services: 01)."
+              },
+              {
+                "subject": "Main Activities of the Project",
+                "description": "See the package-wise breakdown in the table below."
+              }
+            ],
+            "duration": {
+              "raw": "1 July 2025 – 30 June 2029.",
+              "start_iso": "2025-07-01",
+              "end_iso": "2029-06-30"
+            },
+            "packages": [
+              {
+                "sl": 1,
+                "no": "Package-GD1",
+                "description": "Lot-1: Design, Supply, Installation, Testing & Commissioning of Data Center Extension.Lot-2: Design, Supply, Installation, Testing & Commissioning of Disaster Recovery Center.",
+                "comments": "Bidding Document and Estimate preparation under process.",
+                "stage": "Document Preparation",
+                "stage_key": "doc_prep",
+                "stage_order": 2,
+                "stage_tone": "indigo"
+              },
+              {
+                "sl": 2,
+                "no": "Package-GD2",
+                "description": "Supply, testing, commissioning, installation and training for operation & monitoring of IED with Fault Location in NESCO PLC & Integration with Smart Distribution System in NESCO (320 Nos. IEDs).",
+                "comments": "—",
+                "stage": "Not Started",
+                "stage_key": "not_started",
+                "stage_order": 1,
+                "stage_tone": "gray"
+              },
+              {
+                "sl": 3,
+                "no": "Package-GD3",
+                "description": "Lot-1: Design, Supply, Installation, Testing & Commissioning of 33 kV GIS Switching Substation at Rangpur.Lot-2: Design, Supply, Installation, Testing & Commissioning of 33 kV GIS Switching Substation at Purbo Sadipur (Dinajpur).Lot-3: Design, Supply, Installation, Testing & Commissioning of 33 kV GIS Switching Substation at Katakhali (Rajshahi).",
+                "comments": "IFB (Invitation for Bids) will be floated by June 2026.",
+                "stage": "Bidding",
+                "stage_key": "bidding",
+                "stage_order": 5,
+                "stage_tone": "orange"
+              },
+              {
+                "sl": 4,
+                "no": "Package-GD4",
+                "description": "Lot-1: Design, Supply, Installation, Testing and Commissioning of three (3) new 2×20/26.66 MVA 33/11 kV GIS Substations & upgradation of one (1) 33/11 kV GIS Substation.Lot-2: Design, Supply, Installation, Testing and Commissioning of one (1) new 2×10/13.33 MVA 33/11 kV AIS Substation.",
+                "comments": "LOA was issued to the contractor. Contract will be signed very soon.",
+                "stage": "Contract Awarded (LOA)",
+                "stage_key": "awarded",
+                "stage_order": 7,
+                "stage_tone": "teal"
+              },
+              {
+                "sl": 5,
+                "no": "Package-GD5",
+                "description": "Lot-1: Design, Supply, Installation, Testing and Commissioning of 1 No. 2×10/13.33 MVA 33/11 kV AIS Substation (new) at Baharkasna under S&D-3, Rangpur.Lot-2: Supply, Installation, Testing and Commissioning of 1 No. 2×10/13.33 MVA 33/11 kV AIS Substation (new) at S&D-1, Pabna.",
+                "comments": "A land selection committee was formed on 16/03/2026. Acquisition of the required land is under process.",
+                "stage": "Land Acquisition",
+                "stage_key": "land",
+                "stage_order": 6,
+                "stage_tone": "amber"
+              },
+              {
+                "sl": 6,
+                "no": "Package-GD6",
+                "description": "Design, Supply, Installation, Testing and Commissioning of nine (9) 33/11 kV AIS Substation upgradations in the Rangpur Zone.",
+                "comments": "Procurement Proposal under approval stage by CCGP.",
+                "stage": "Procurement Approval",
+                "stage_key": "procurement",
+                "stage_order": 4,
+                "stage_tone": "pink"
+              },
+              {
+                "sl": 7,
+                "no": "Package-GD7",
+                "description": "Lot-1: All necessary equipment for 2 Nos. Distribution Transformer repairing workshops with civil works and installation at Bogura and Rajshahi.Lot-2: All necessary equipment for 2 Nos. Distribution Transformer repairing workshops with civil works and installation at Rangpur and Dinajpur.",
+                "comments": "Bidding Document and Estimate preparation under process.",
+                "stage": "Document Preparation",
+                "stage_key": "doc_prep",
+                "stage_order": 2,
+                "stage_tone": "indigo"
+              },
+              {
+                "sl": 8,
+                "no": "Package-GD8",
+                "description": "Design, Supply, Installation, Testing & Commissioning of 33 kV Switching Substation installation & shifting (AIS).",
+                "comments": "—",
+                "stage": "Not Started",
+                "stage_key": "not_started",
+                "stage_order": 1,
+                "stage_tone": "gray"
+              },
+              {
+                "sl": 9,
+                "no": "Package-GD9",
+                "description": "Lot-1: Design, Supply, Installation, Testing & Commissioning of 33 kV Bay and Breakers for future SS expansions at Sabgram, Mohasthan & Puran Bogura grid and grids in the Rangpur Zone (17 Nos.).Lot-2: Design, Supply, Installation, Testing & Commissioning of 33 kV Bay and Breakers for future SS expansions at Dupchachiya and Naogaon grid substations, grid substations in Rajshahi Circle 1/2, and Pabna Circle (19 Nos.).",
+                "comments": "Bidding Document and Estimate preparation under process.",
+                "stage": "Document Preparation",
+                "stage_key": "doc_prep",
+                "stage_order": 2,
+                "stage_tone": "indigo"
+              },
+              {
+                "sl": 10,
+                "no": "Package-WD1",
+                "description": "Construction of Store at Bogura.",
+                "comments": "The contract was signed on 23/04/2026.",
+                "stage": "Contract Signed",
+                "stage_key": "signed",
+                "stage_order": 8,
+                "stage_tone": "green"
+              },
+              {
+                "sl": 11,
+                "no": "Package-SD1",
+                "description": "Consultancy services (1 Environment Expert, 1 Social & Safeguard Expert, 1 Health & Safety Expert; Total: 3 Experts).",
+                "comments": "Draft TOR was sent to ADB for review.",
+                "stage": "TOR / Draft Review",
+                "stage_key": "tor_review",
+                "stage_order": 3,
+                "stage_tone": "purple"
+              }
+            ],
+            "stage_definitions": [
+              {
+                "key": "not_started",
+                "label": "Not Started",
+                "order": 1,
+                "tone": "gray"
+              },
+              {
+                "key": "doc_prep",
+                "label": "Document Preparation",
+                "order": 2,
+                "tone": "indigo"
+              },
+              {
+                "key": "tor_review",
+                "label": "TOR / Draft Review",
+                "order": 3,
+                "tone": "purple"
+              },
+              {
+                "key": "procurement",
+                "label": "Procurement Approval",
+                "order": 4,
+                "tone": "pink"
+              },
+              {
+                "key": "bidding",
+                "label": "Bidding",
+                "order": 5,
+                "tone": "orange"
+              },
+              {
+                "key": "land",
+                "label": "Land Acquisition",
+                "order": 6,
+                "tone": "amber"
+              },
+              {
+                "key": "awarded",
+                "label": "Contract Awarded (LOA)",
+                "order": 7,
+                "tone": "teal"
+              },
+              {
+                "key": "signed",
+                "label": "Contract Signed",
+                "order": 8,
+                "tone": "green"
+              },
+              {
+                "key": "completed",
+                "label": "Completed",
+                "order": 9,
+                "tone": "green"
+              }
+            ],
+            "source_file": "Project_at_a_glance_with_package_description.docx"
           }
         }
       ]

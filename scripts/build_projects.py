@@ -18,6 +18,7 @@ and project-level metadata so additional projects can be added later just
 by parsing one more workbook.
 """
 from common import ROOT, open_wb, num, s, write_json
+from build_nidmp_overview import build_overview as build_nidmp_overview
 
 NIDMP_SUMMARY = ROOT / "NIDMP" / "ADB_AIS_Substation_Upgradation_Summary (Claud).xlsx"
 NIDMP_BAYS    = ROOT / "NIDMP" / "Grid_Bay_Breakers.xlsx"
@@ -281,6 +282,9 @@ def main():
                         # All 21 substations under ADB, transcribed from the
                         # PDF "List of SSs Under ADB Project". 5 categories.
                         "all_substations": NIDMP_ALL_SUBSTATIONS,
+                        # Project Information at a Glance + Package-wise
+                        # Breakdown parsed from the latest NIDMP docx.
+                        "overview": build_nidmp_overview(),
                     },
                 ],
             },

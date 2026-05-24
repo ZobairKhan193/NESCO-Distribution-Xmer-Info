@@ -4521,6 +4521,13 @@ function _renderProjectDetail(projectId, heroClass) {
   // ── NIDMP (and other projects): single-page layout with Scope on top ──
   let extras = '';
 
+  // §NIDMP — "Project at a Glance" + "Project Progress" panels,
+  // sourced from the latest docx (Project_at_a_glance_with_package_description.docx).
+  if (p.overview) {
+    extras += _renderProjectGlance(p.overview);
+    extras += _renderProjectProgress(p.overview);
+  }
+
   if (p.all_substations) {
     const cats = Object.values(p.all_substations);
     const totalSS = cats.reduce((n, c) => n + c.rows.length, 0);
@@ -4591,6 +4598,175 @@ window.pdsspSwitchTab = (which) => {
 };
 
 function renderNIDMP() { _renderProjectDetail('nidmp', 'proj-hero-go'); }
+
+/* ── NIDMP — "Project at a Glance" key-value panel ── */
+function _renderProjectGlance(overview) {
+  const rows = overview.project_info || [];
+  if (!rows.length) return '';
+  // Icon per subject — keyword-based, falls back to neutral
+  const iconFor = (subj) => {
+    const t = (subj || '').toLowerCase();
+    if (t.includes('name'))      return 'fa-diagram-project';
+    if (t.includes('approval'))  return 'fa-stamp';
+    if (t.includes('duration'))  return 'fa-calendar-days';
+    if (t.includes('cost'))      return 'fa-sack-dollar';
+    if (t.includes('objective')) return 'fa-bullseye';
+    if (t.includes('package'))   return 'fa-cubes';
+    return 'fa-circle-info';
+  };
+  const items = rows.map(r => `
+    <div class="glance-card">
+      <div class="glance-icon"><i class="fas ${iconFor(r.subject)}"></i></div>
+      <div>
+        <div class="glance-subj">${esc(r.subject)}</div>
+        <div class="glance-desc">${esc(r.description)}</div>
+      </div>
+    </div>
+  `).join('');
+  return `
+    <div class="panel" style="margin-top:18px">
+      <div class="panel-head">
+        <h3><i class="fas fa-clipboard-list"></i> Project at a Glance</h3>
+        <span style="font-size:.78rem;color:var(--text3)">Snapshot of the approved NIDMP project</span>
+      </div>
+      <div class="panel-body">
+        <div class="glance-grid">${items}</div>
+      </div>
+    </div>`;
+}
+
+/* ── NIDMP — "Project Progress" panel.
+   Three layers:
+     1. A horizontal project-duration timeline with today's marker
+        and % elapsed.
+     2. A stage-distribution row of metric tiles + a stacked bar so
+        the overall pipeline state is instantly readable.
+     3. A kanban-style board grouping each package under its current
+        lifecycle stage.
+*/
+function _renderProjectProgress(overview) {
+  const packages = overview.packages || [];
+  const stageDefs = overview.stage_definitions || [];
+  if (!packages.length) return '';
+
+  // ── 1. Duration timeline ──
+  const d = overview.duration || {};
+  let timelineHtml = '';
+  if (d.start_iso && d.end_iso) {
+    const start = new Date(d.start_iso).getTime();
+    const end   = new Date(d.end_iso).getTime();
+    const now   = Date.now();
+    let pct = 0;
+    if (end > start) {
+      pct = Math.max(0, Math.min(100, ((now - start) / (end - start)) * 100));
+    }
+    const fmt = (iso) => new Date(iso).toLocaleDateString('en-GB',
+      { day: 'numeric', month: 'short', year: 'numeric' });
+    const inside = now >= start && now <= end;
+    const todayLabel = inside ? 'Today' : (now < start ? 'Not yet started' : 'Past end date');
+    timelineHtml = `
+      <div class="prog-timeline">
+        <div class="prog-tl-head">
+          <div class="prog-tl-anchor">
+            <i class="fas fa-flag-checkered"></i> Start
+            <div class="prog-tl-date">${esc(fmt(d.start_iso))}</div>
+          </div>
+          <div class="prog-tl-pct">
+            <strong>${pct.toFixed(1)}%</strong> of duration elapsed
+          </div>
+          <div class="prog-tl-anchor" style="text-align:right">
+            End <i class="fas fa-flag"></i>
+            <div class="prog-tl-date">${esc(fmt(d.end_iso))}</div>
+          </div>
+        </div>
+        <div class="prog-tl-bar">
+          <div class="prog-tl-fill" style="width:${pct}%"></div>
+          ${inside ? `<div class="prog-tl-today" style="left:${pct}%" title="${todayLabel}"><span>${esc(todayLabel)}</span></div>` : ''}
+        </div>
+      </div>`;
+  }
+
+  // ── 2. Stage distribution: metric tiles + stacked bar ──
+  const counts = {};
+  for (const p of packages) counts[p.stage_key] = (counts[p.stage_key] || 0) + 1;
+  const total = packages.length;
+  const toneToClass = { gray:'t-indigo', indigo:'t-indigo', purple:'t-purple',
+    pink:'t-pink', orange:'t-orange', amber:'t-amber', teal:'t-teal', green:'t-green' };
+  // Render only stages that have at least one package, in lifecycle order
+  const activeStages = stageDefs.filter(s => (counts[s.key] || 0) > 0);
+  const tiles = activeStages.map(sd => {
+    const n = counts[sd.key] || 0;
+    return `
+      <div class="metric-tile ${toneToClass[sd.tone] || 't-indigo'}" title="${esc(sd.label)}">
+        <i class="fas fa-circle-dot mt-icon"></i>
+        <div class="mt-label">${esc(sd.label)}</div>
+        <div class="mt-val">${n}</div>
+        <div class="mt-trend">${(n/total*100).toFixed(0)}% of ${total} packages</div>
+      </div>`;
+  }).join('');
+
+  // Stacked horizontal bar — one segment per active stage
+  const toneColor = {
+    gray:'#94a3b8', indigo:'#6366f1', purple:'#a855f7', pink:'#ec4899',
+    orange:'#f97316', amber:'#f59e0b', teal:'#14b8a6', green:'#10b981',
+  };
+  const stackSegs = activeStages.map(sd => {
+    const n = counts[sd.key] || 0;
+    const pct = (n / total) * 100;
+    return `<div class="prog-stack-seg" style="width:${pct}%;background:${toneColor[sd.tone] || '#6366f1'}" title="${esc(sd.label)}: ${n} (${pct.toFixed(0)}%)">${pct >= 7 ? `${n}` : ''}</div>`;
+  }).join('');
+  const legend = activeStages.map(sd => `
+    <span class="prog-legend-item">
+      <span class="prog-legend-dot" style="background:${toneColor[sd.tone] || '#6366f1'}"></span>
+      ${esc(sd.label)} <small>(${counts[sd.key] || 0})</small>
+    </span>`).join('');
+
+  // ── 3. Kanban-style status board ──
+  // Group packages by stage_key, in lifecycle order
+  const cols = activeStages.map(sd => {
+    const items = packages.filter(p => p.stage_key === sd.key);
+    const cards = items.map(p => `
+      <div class="kanban-card">
+        <div class="kanban-card-head">
+          <span class="kanban-no">${esc(p.no)}</span>
+        </div>
+        <div class="kanban-card-desc" title="${esc(p.description)}">${esc(_truncate(p.description, 180))}</div>
+        ${p.comments && p.comments !== '—' ? `<div class="kanban-card-comment"><i class="fas fa-quote-right"></i> ${esc(_truncate(p.comments, 160))}</div>` : ''}
+      </div>`).join('');
+    return `
+      <div class="kanban-col" data-stage-key="${esc(sd.key)}">
+        <div class="kanban-col-head" style="border-top-color:${toneColor[sd.tone] || '#6366f1'}">
+          <div class="kanban-col-title">${esc(sd.label)}</div>
+          <div class="kanban-col-count">${items.length}</div>
+        </div>
+        <div class="kanban-col-body">${cards}</div>
+      </div>`;
+  }).join('');
+
+  return `
+    <div class="panel" style="margin-top:18px">
+      <div class="panel-head">
+        <h3><i class="fas fa-chart-bar"></i> Project Progress</h3>
+        <span style="font-size:.78rem;color:var(--text3)">${total} packages · ${activeStages.length} active stages</span>
+      </div>
+      <div class="panel-body">
+        ${timelineHtml}
+
+        <h4 class="prog-h4"><i class="fas fa-layer-group" style="color:#6366f1"></i> Stage Distribution</h4>
+        <div class="metric-row" style="margin-bottom:14px">${tiles}</div>
+        <div class="prog-stack">${stackSegs}</div>
+        <div class="prog-legend">${legend}</div>
+
+        <h4 class="prog-h4" style="margin-top:24px"><i class="fas fa-table-columns" style="color:#6366f1"></i> Package Status Board</h4>
+        <div class="kanban-grid">${cols}</div>
+      </div>
+    </div>`;
+}
+
+function _truncate(s, n) {
+  if (!s) return '';
+  return s.length <= n ? s : s.substring(0, n - 1) + '…';
+}
 
 /* Render one NIDMP category block (table-row layout with sticky title). */
 function _renderNidmpCategory(cat) {

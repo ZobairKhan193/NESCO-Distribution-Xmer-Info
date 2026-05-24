@@ -4518,23 +4518,101 @@ function _renderProjectDetail(projectId, heroClass) {
     return;
   }
 
-  // ── NIDMP (and other projects): single-page layout with Scope on top ──
-  let extras = '';
+  // ── NIDMP — tabbed layout in the order the owner requested:
+  //    Summary → Progress → BOQ & Details
+  if (projectId === 'nidmp') {
+    // Build per-tab body content
+    const summaryTab  = _renderProjectScope(p) +
+                        (p.overview ? _renderProjectGlance(p.overview) : '');
+    const progressTab = p.overview
+      ? _renderProjectProgress(p.overview)
+      : '<div class="placeholder-card"><p>Project progress data not loaded.</p></div>';
 
-  // §NIDMP — "Project at a Glance" + "Project Progress" panels,
-  // sourced from the latest docx (Project_at_a_glance_with_package_description.docx).
+    let boqTab = `
+      <div class="panel">
+        <div class="panel-head">
+          <h3><i class="fas fa-table"></i> Substation-wise BOQ Summary</h3>
+          <span style="font-size:.78rem;color:var(--text3)">${(summary.rows||[]).length} substations</span>
+        </div>
+        ${_projTableHTML(summary)}
+      </div>`;
+
+    if (bays && bays.rows && bays.rows.length) {
+      boqTab += `
+        <div class="panel" style="margin-top:18px">
+          <div class="panel-head"><h3><i class="fas fa-microchip"></i> Grid Bay-Breakers</h3>
+            <span style="font-size:.78rem;color:var(--text3)">${bays.rows.length} rows</span>
+          </div>
+          ${_projTableHTML(bays)}
+        </div>`;
+    }
+    if (p.all_substations) {
+      const cats = Object.values(p.all_substations);
+      const totalSS = cats.reduce((n, c) => n + c.rows.length, 0);
+      boqTab += `
+        <div class="panel" style="margin-top:18px">
+          <div class="panel-head">
+            <h3><i class="fas fa-list-ul"></i> All Substations Under ADB / NIDMP</h3>
+            <span style="font-size:.78rem;color:var(--text3)">${totalSS} substations · ${cats.length} categories</span>
+          </div>
+          <div class="panel-body" style="padding:0">
+            ${cats.map(c => _renderNidmpCategory(c)).join('')}
+          </div>
+        </div>`;
+    }
+
+    document.getElementById('content').innerHTML = `
+      <div class="proj-hero ${heroClass}">
+        <span class="proj-tag">${esc(p.code)}</span>
+        <h1>${esc(p.name)}</h1>
+        <p>${esc(p.summary || '')}</p>
+      </div>
+
+      <div class="sec-head">
+        <div class="sec-head-left">
+          <h2>${esc(p.code)} — Project Detail</h2>
+          <p>Use the tabs below to navigate between Summary, Progress and BOQ.</p>
+        </div>
+        <div class="sec-head-right">
+          <button class="btn btn-sm btn-secondary" onclick="window.showSection('${backSection}')">
+            <i class="fas fa-arrow-left"></i> Back
+          </button>
+        </div>
+      </div>
+
+      <div class="proj-tabs">
+        <button id="ntab-sum"  class="proj-tab active" onclick="window.nidmpSwitchTab('sum')">
+          <i class="fas fa-bullseye"></i> Summary
+        </button>
+        <button id="ntab-prog" class="proj-tab"        onclick="window.nidmpSwitchTab('prog')">
+          <i class="fas fa-chart-line"></i> Progress
+        </button>
+        <button id="ntab-boq"  class="proj-tab"        onclick="window.nidmpSwitchTab('boq')">
+          <i class="fas fa-table-list"></i> BOQ &amp; Details
+        </button>
+      </div>
+
+      <div id="ntab-sum-body"  class="proj-tab-body">${summaryTab}</div>
+      <div id="ntab-prog-body" class="proj-tab-body" style="display:none">${progressTab}</div>
+      <div id="ntab-boq-body"  class="proj-tab-body" style="display:none">${boqTab}</div>
+    `;
+    return;
+  }
+
+  // ── Fallback: legacy single-page layout (used by future projects
+  //    without their own tabbed shell) ──
+  let extras = '';
   if (p.overview) {
     extras += _renderProjectGlance(p.overview);
     extras += _renderProjectProgress(p.overview);
   }
-
   if (p.all_substations) {
     const cats = Object.values(p.all_substations);
     const totalSS = cats.reduce((n, c) => n + c.rows.length, 0);
     extras += `
       <div class="panel" style="margin-top:18px">
         <div class="panel-head">
-          <h3><i class="fas fa-list-ul"></i> All Substations Under ADB / NIDMP</h3>
+          <h3><i class="fas fa-list-ul"></i> All Substations</h3>
           <span style="font-size:.78rem;color:var(--text3)">${totalSS} substations · ${cats.length} categories</span>
         </div>
         <div class="panel-body" style="padding:0">
@@ -4542,7 +4620,6 @@ function _renderProjectDetail(projectId, heroClass) {
         </div>
       </div>`;
   }
-
   if (bays && bays.rows && bays.rows.length) {
     extras += `
       <div class="panel" style="margin-top:18px">
@@ -4581,6 +4658,21 @@ function _renderProjectDetail(projectId, heroClass) {
     ${extras}
   `;
 }
+
+window.nidmpSwitchTab = (which) => {
+  for (const k of ['sum', 'prog', 'boq']) {
+    const btn = document.getElementById('ntab-' + k);
+    const body = document.getElementById('ntab-' + k + '-body');
+    if (!btn || !body) continue;
+    if (k === which) {
+      btn.classList.add('active');
+      body.style.display = 'block';
+    } else {
+      btn.classList.remove('active');
+      body.style.display = 'none';
+    }
+  }
+};
 
 window.pdsspSwitchTab = (which) => {
   for (const k of ['sub', 'line']) {

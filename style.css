@@ -471,6 +471,10 @@ select.filter-sel:focus{border-color:var(--blue)}
   .nav-menu{display:none}
   .nav-menu.open{display:flex;flex-direction:column;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--navy2);height:calc(100vh - var(--nav-h));overflow-y:auto;z-index:199;padding:8px 0}
   .nav-menu.open > li{height:auto}
+  /* Stack an opened submenu UNDER its heading (li is a flex row on desktop,
+     which pushed mobile submenus off to the right / off-screen). */
+  .nav-menu.open > li.has-dd{flex-direction:column;align-items:stretch}
+  .has-dd.open .dropdown{border-top:none;min-width:0}
   .nav-link{height:auto;padding:12px 20px;width:100%}
   .hamburger{display:flex}
   .has-dd:hover .dropdown{display:none}
@@ -1556,3 +1560,115 @@ table.tbl tr.tbl-sum-row td {
   table.tbl tbody td{padding:8px 6px;font-size:.78rem}
   .pt-filter-bar{grid-template-columns:1fr}
 }
+
+/* ════════════ RENEWABLE ENERGY › NET METERING ════════════ */
+/* Dropdown group label (e.g. "Net Metering" under Renewable Energy) */
+.dropdown li.dd-label{
+  padding:10px 18px 4px;margin-top:4px;
+  border-top:1px solid var(--border);
+  font-size:.68rem;font-weight:800;letter-spacing:.9px;text-transform:uppercase;
+  color:#047857;cursor:default;
+}
+.dropdown li.dd-label + li a{padding-top:7px}
+
+.nm-hero{background:linear-gradient(135deg,#047857 0%,#059669 50%,#0d9488 100%)}
+.nm-tabs{
+  display:flex;gap:6px;flex-wrap:wrap;margin:-4px 0 18px;
+  padding:6px;border-radius:12px;
+  background:var(--glass-bg-strong);border:1px solid var(--glass-border);
+}
+.nm-tab{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 16px;border-radius:9px;
+  font-weight:700;font-size:.88rem;color:#334155;text-decoration:none;
+  transition:background var(--tr),color var(--tr);
+}
+.nm-tab i{color:#059669;font-size:.85rem}
+.nm-tab:hover{background:#ecfdf5;color:#065f46;text-decoration:none}
+.nm-tab.active{background:linear-gradient(135deg,#059669,#0d9488);color:#fff;box-shadow:0 4px 12px rgba(5,150,105,.28)}
+.nm-tab.active i{color:#fff}
+.metric-tile .mt-val small{font-size:.9rem;font-weight:700}
+
+.nm-chart-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.nm-panel-sub{font-size:.78rem;color:var(--text3)}
+
+.nm-filters{
+  display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+  padding:12px 14px;border-bottom:1px solid var(--glass-border-2);
+}
+.nm-filters .search-input{max-width:280px;flex:1 1 220px}
+.nm-check{display:inline-flex;align-items:center;gap:6px;font-size:.84rem;color:var(--text2);cursor:pointer}
+.nm-check input{accent-color:#059669;width:15px;height:15px}
+.nm-summary{
+  display:flex;gap:8px 18px;flex-wrap:wrap;align-items:center;
+  padding:10px 14px;font-size:.84rem;color:var(--text2);
+  border-bottom:1px solid var(--glass-border-2);
+}
+.nm-summary strong{color:#0b1d3f}
+.nm-chip{
+  display:inline-flex;align-items:center;padding:2px 10px;border-radius:14px;
+  background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;font-size:.76rem;font-weight:700;
+}
+
+table.nm-tbl th.nm-sortable{cursor:pointer;user-select:none}
+table.nm-tbl th.nm-sortable i{font-size:.66rem;opacity:.35;margin-left:3px}
+table.nm-tbl th.nm-sortable.sorted i{opacity:1;color:#059669}
+table.nm-tbl th.nm-sortable:hover,table.nm-tbl th.nm-sortable:focus-visible{background:rgba(5,150,105,.08)}
+table.nm-tbl tr.nm-click{cursor:pointer}
+table.nm-tbl tr.nm-click:focus-visible{outline:2px solid #059669;outline-offset:-2px}
+table.nm-tbl td.nm-go{color:#94a3b8;width:28px;text-align:center}
+table.nm-tbl tr.nm-click:hover td.nm-go{color:#059669}
+table.nm-tbl td.nm-wrap{white-space:normal;min-width:220px;max-width:340px;line-height:1.4}
+table.nm-tbl td.nm-name{white-space:normal;min-width:260px;max-width:420px;line-height:1.4}
+table.nm-tbl td.nm-flags{white-space:normal;min-width:150px}
+table.nm-tbl tr.nm-unassigned td{font-style:italic}
+.nm-muted{color:#64748b !important;font-weight:500}
+.nm-share{white-space:nowrap}
+.nm-bar{
+  display:inline-block;vertical-align:middle;width:64px;height:6px;margin-right:8px;
+  border-radius:3px;background:rgba(5,150,105,.14);overflow:hidden;
+}
+.nm-bar > span{display:block;height:100%;background:#059669;border-radius:3px}
+.nm-flag{
+  display:inline-block;margin:1px 2px 1px 0;padding:1px 8px;border-radius:10px;
+  font-size:.7rem;font-weight:700;font-style:normal;white-space:nowrap;cursor:help;border:1px solid;
+}
+.nm-flag.amber{background:#fffbeb;border-color:#fcd34d;color:#92400e}
+.nm-flag.slate{background:#f1f5f9;border-color:#cbd5e1;color:#334155}
+.nm-flag.red{background:#fef2f2;border-color:#fca5a5;color:#991b1b}
+.nm-status{
+  display:inline-block;padding:2px 9px;border-radius:10px;font-size:.74rem;font-weight:700;white-space:nowrap;
+  background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0;
+}
+.nm-note{
+  display:flex;gap:10px;align-items:flex-start;margin:18px 0 6px;
+  padding:11px 14px;border-radius:10px;font-size:.82rem;line-height:1.55;color:#134e4a;
+  background:linear-gradient(90deg,rgba(209,250,229,.55),rgba(204,251,241,.45));
+  border:1px solid rgba(13,148,136,.3);
+}
+.nm-note i.fa-circle-info{color:#0d9488;margin-top:3px}
+.nm-note a{color:#047857;font-weight:700;margin-left:4px}
+.nm-csv{background:#fff;border:1px solid #a7f3d0;color:#065f46}
+.nm-csv:hover{background:#ecfdf5}
+.nm-reset{background:#fff;border:1px solid var(--border2);color:var(--text2)}
+.nm-src-inline{font-size:.78rem;color:#64748b}
+.nm-card-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;padding-top:10px;border-top:1px dashed rgba(16,185,129,.35)}
+.nm-card-links a{
+  display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:16px;
+  background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;font-size:.8rem;font-weight:700;text-decoration:none;
+}
+.nm-card-links a:hover{background:#d1fae5;text-decoration:none}
+
+@media (max-width: 1024px){
+  .dropdown li.dd-label{color:#6ee7b7;border-top-color:rgba(255,255,255,.12)}
+}
+@media (max-width: 900px){
+  .nm-chart-grid{grid-template-columns:1fr}
+}
+@media (max-width: 768px){
+  .nm-tabs{flex-wrap:nowrap;overflow-x:auto}
+  .nm-tab{white-space:nowrap;padding:7px 12px}
+  .nm-filters .search-input{max-width:none;flex-basis:100%}
+  .nm-filters .filter-sel{flex:1 1 140px}
+}
+.metric-row.nm-kpis{grid-template-columns:repeat(auto-fit,minmax(165px,1fr))}

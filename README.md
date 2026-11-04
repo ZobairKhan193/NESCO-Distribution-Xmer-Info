@@ -25,6 +25,7 @@ assets.
 ├── switching-ss.json                33 kV switching substations
 ├── store.json                       Substation & line equipment lists
 ├── renewable-energy.json            Renewable energy overview
+├── net-metering.json                Net-metering rooftop solar (SREDA NDRE records)
 ├── zrs.json                         Zonal Repair Shop monthly + yearly data
 └── scripts/                         Python conversion scripts (Excel → JSON)
 ```
@@ -40,6 +41,13 @@ py -3 scripts/build_all.py
 ```
 
 Then commit the regenerated JSON files alongside any UI changes.
+
+**Net metering:** download NESCO's records from the SREDA NDRE listing
+(<https://ndre.sreda.gov.bd/index.php?id=01&i=3&s=&ag=8&di=&ps=&fs=&ob=1&submit=Search>)
+into `Renewable Energy/Net Metering/nesco_net_metering.xlsx` (Master + Metadata
+sheets), then run `py -3 scripts/build_net_metering.py`. The Yearly,
+SDD-wise, District-wise and All Systems pages, and the net-metering figures on
+the Renewable Energy overview, all read from `net-metering.json`.
 
 ## Local preview
 

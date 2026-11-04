@@ -18,6 +18,7 @@ BUILDERS = [
     "build_switching",
     "build_projects",
     "build_renewable",
+    "build_net_metering",
     "build_dt",
     "build_substations",
     "build_operational_issues",

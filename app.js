@@ -288,6 +288,7 @@ let ZRS_DATA       = null;   // from zrs.json (new — Zonal Repair Shop)
 let STORE_DATA     = null;   // from store.json (new)
 let SWITCHING_DATA = null;   // from switching-ss.json (new)
 let RENEWABLE_DATA = null;   // from renewable-energy.json (new)
+let NM_DATA        = null;   // from net-metering.json (SREDA NDRE net-metering records)
 let OP_ISSUES_DATA = null;   // from operational-issues.json (new)
 
 // Cache-busting query string — bump v= whenever a JSON file changes so
@@ -337,6 +338,12 @@ async function loadRenewableData() {
     RENEWABLE_DATA = await _loadJson('renewable-energy.json');
     console.log(`✓ renewable: ${RENEWABLE_DATA.blocks.length} blocks`);
   } catch (err) { console.warn('renewable-energy.json:', err.message); }
+}
+async function loadNetMeteringData() {
+  try {
+    NM_DATA = await _loadJson('net-metering.json');
+    console.log(`✓ net-metering: ${NM_DATA.records.length} systems, ${NM_DATA.overall.dc_kwp} kWp DC`);
+  } catch (err) { console.warn('net-metering.json:', err.message); }
 }
 async function loadOpIssuesData() {
   try {
@@ -575,8 +582,12 @@ const SECTION_LABELS = {
   'upcoming-projects': 'Projects › Upcoming Projects',
   'nidmp':             'Projects › Ongoing › NIDMP',
   'pdssp':             'Projects › Upcoming › PDSSP',
-  'renewable-energy':  'Renewable Energy',
-  'store-substation':  'Store › Substation Equipment Info',
+  'renewable-energy':  'Renewable Energy › Overview',
+  'nm-yearly':         'Renewable Energy › Net Metering › Yearly',
+  'nm-sdd':            'Renewable Energy › Net Metering › SDD-wise',
+  'nm-district':       'Renewable Energy › Net Metering › District-wise',
+  'nm-details':        'Renewable Energy › Net Metering › All Systems',
+  'store-substation': 'Store › Substation Equipment Info',
   'store-line':        'Store › Line Equipment Info',
   'zrs':               'ZRS — Zonal Repair Shop',
   'zrs-detail':        'ZRS — Zonal Repair Shop › Detail',
@@ -616,6 +627,10 @@ function showSection(sec, param = null) {
     'nidmp':             renderNIDMP,
     'pdssp':             renderPDSSP,
     'renewable-energy':  renderRenewable,
+    'nm-yearly':         renderNMYearly,
+    'nm-sdd':            renderNMSDD,
+    'nm-district':       renderNMDistrict,
+    'nm-details':        () => renderNMDetails(param),
     'store-substation':  () => renderStoreEquipment('substation'),
     'store-line':        () => renderStoreEquipment('line'),
     'zrs':               renderZRS,
@@ -5053,12 +5068,18 @@ function renderRenewable() {
       // Each row is [metric label, value]
       const tiles = table.rows.map((r, i) => {
         const palette = ['t-green','t-teal','t-indigo','t-amber','t-pink','t-purple','t-orange'];
+        // Net-metering figures come live from the SREDA dataset
+        // (net-metering.json); every other tile stays as in the .docx.
+        const isNM = NM_DATA && /net\s*metering/i.test(r[0] || '');
         const lbl = esc(r[0]);
-        const val = esc(r[1]);
-        return `<div class="metric-tile ${palette[i % palette.length]}">
+        const val = isNM ? esc(_nmHeadline()) : esc(r[1]);
+        const attrs = isNM ? ` data-section="nm-yearly" role="link" tabindex="0" title="Open Net Metering pages" style="cursor:pointer"` : '';
+        const extra = isNM ? `<div class="mt-trend">${esc(_nmAsOf())} · Explore <i class="fas fa-arrow-right"></i></div>` : '';
+        return `<div class="metric-tile ${palette[i % palette.length]}"${attrs}>
           <i class="fas fa-solar-panel mt-icon"></i>
           <div class="mt-label">${lbl}</div>
           <div class="mt-val">${val}</div>
+          ${extra}
         </div>`;
       }).join('');
       snapshotHtml = `
@@ -5096,8 +5117,11 @@ function renderRenewable() {
       }
       if (b.kind === 'paragraph') {
         const t = b.text;
-        // Render bullet-style paragraphs (start with "- " or a bullet
-        // mark or contain " — capacity ") as list items in a UL.
+        if (NM_DATA && /under net metering/i.test(t)) {
+          const o = NM_DATA.overall;
+          return `<p class="art-p">Of which under net metering: <strong>${o.systems} systems — capacity ${_nmMWp(o.dc_kwp)} MWp</strong>
+            <span class="nm-src-inline">(${esc(_nmAsOf())})</span></p>`;
+        }
         return `<p class="art-p">${esc(t)}</p>`;
       }
       if (b.kind === 'table' && b.rows && b.rows.length) {
@@ -5110,13 +5134,18 @@ function renderRenewable() {
       }
       return '';
     }).join('');
+    const nmLinks = (NM_DATA && /net\s*metering/i.test(sec.title)) ? `
+      <div class="nm-card-links">
+        ${NM_VIEWS.map(([s, label, ic]) =>
+          `<a href="#" data-section="${s}"><i class="fas ${ic}"></i> ${label}</a>`).join('')}
+      </div>` : '';
     return `
       <div class="renew-card">
         <div class="renew-card-head">
           <div class="renew-icon"><i class="fas ${icon}"></i></div>
           <h3 class="renew-title">${esc(sec.title)}</h3>
         </div>
-        <div class="renew-card-body">${inner}</div>
+        <div class="renew-card-body">${inner}${nmLinks}</div>
       </div>`;
   };
 
@@ -5133,6 +5162,651 @@ function renderRenewable() {
       ${sections.map(sectionCard).join('')}
     </div>
   `;
+}
+
+/* ══════════════════════════════════════════════════
+   RENEWABLE ENERGY › NET METERING  (SREDA NDRE records)
+   Data: net-metering.json ← scripts/build_net_metering.py
+   Views: nm-yearly · nm-sdd · nm-district · nm-details
+   Rules from the source: DC and AC are never added together; an AC
+   value of 0 is a *reported* zero; year comes only from COD; an
+   "Unassigned" SDD is never inferred from location.
+══════════════════════════════════════════════════ */
+const NM_VIEWS = [
+  ['nm-yearly',   'Yearly',        'fa-calendar-days'],
+  ['nm-sdd',      'SDD-wise',      'fa-layer-group'],
+  ['nm-district', 'District-wise', 'fa-map-location-dot'],
+  ['nm-details',  'All Systems',   'fa-table-list'],
+];
+const NM_GREEN = '#059669';
+const NM_FLAGS = {
+  ac_zero:               { label: 'AC 0 reported',   cls: 'amber', hint: 'SREDA reports AC capacity as 0 kW — source confirmation needed' },
+  sdd_unassigned:        { label: 'SDD unassigned',  cls: 'slate', hint: 'No S&D / supply office named in SREDA' },
+  cod_missing:           { label: 'COD missing',     cls: 'red',   hint: 'No valid commissioning date in SREDA' },
+  name_capacity_differs: { label: 'Name ≠ capacity', cls: 'slate', hint: 'Capacity written in the project name differs from the capacity fields' },
+  geo_conflict:          { label: 'Office/geo conflict', cls: 'red', hint: 'Office and location in SREDA point to different areas' },
+};
+const NM_UI = {
+  sdd:      { sort: 'dc_kwp', dir: -1, q: '', district: '', unassigned: true },
+  district: { sort: 'dc_kwp', dir: -1 },
+  details:  { sort: 'cod',    dir: -1, q: '', district: '', sdd: '', year: '', flag: '' },
+};
+
+const _nmNum  = (v, d = 2) => v == null ? '—' : Number(v).toLocaleString('en-US', { maximumFractionDigits: d });
+const _nmMWp  = kwp => (Number(kwp || 0) / 1000).toLocaleString('en-US', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+const _nmDate = iso => {
+  if (!iso) return '—';
+  const d = new Date(iso + 'T00:00:00');
+  return isNaN(d) ? iso : d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+};
+const _nmPct  = (part, whole) => whole ? (part / whole * 100) : 0;
+function _nmHeadline() {
+  const o = NM_DATA.overall;
+  return `${o.systems} systems / ${_nmMWp(o.dc_kwp)} MWp`;
+}
+function _nmAsOf() {
+  return `SREDA NDRE, as of ${_nmDate((NM_DATA.source || {}).retrieval_date)}`;
+}
+function _nmYearLabel(y) {
+  if (y == null) return 'Unknown year';
+  return (y === NM_DATA.overall.last_year) ? `${y}*` : String(y);
+}
+
+/* Page shell shared by every net-metering view: hero, view tabs, KPI row. */
+function _nmShell(active, subtitle) {
+  const o = NM_DATA.overall;
+  const latest = NM_DATA.yearly.find(y => y.year === o.last_year) || {};
+  const tabs = NM_VIEWS.map(([sec, label, icon]) =>
+    `<a href="#" class="nm-tab${sec === active ? ' active' : ''}" data-section="${sec}"${sec === active ? ' aria-current="page"' : ''}>
+       <i class="fas ${icon}"></i> ${label}</a>`).join('');
+  const tile = (tone, icon, label, val, sub, dn) => `
+    <div class="metric-tile ${tone}">
+      <i class="fas ${icon} mt-icon"></i>
+      <div class="mt-label">${label}</div>
+      <div class="mt-val">${val}</div>
+      <div class="mt-trend${dn ? ' dn' : ''}">${sub}</div>
+    </div>`;
+  return `
+    <div class="proj-hero nm-hero">
+      <span class="proj-tag"><i class="fas fa-solar-panel"></i> &nbsp;Renewable Energy › Net Metering</span>
+      <h1>Net Metering Rooftop Solar</h1>
+      <p>${subtitle}</p>
+    </div>
+    <nav class="nm-tabs" aria-label="Net metering views">${tabs}</nav>
+    <div class="metric-row nm-kpis">
+      ${tile('t-green',  'fa-solar-panel',      'Net-metering systems',  _nmNum(o.systems, 0), esc(Object.keys(NM_DATA.statuses || {}).join(', ')))}
+      ${tile('t-teal',   'fa-sun',              'DC capacity',           `${_nmMWp(o.dc_kwp)} <small>MWp</small>`, `${_nmNum(o.dc_kwp)} kWp`)}
+      ${tile('t-indigo', 'fa-plug',             'AC capacity (reported)', `${_nmMWp(o.ac_kw)} <small>MW</small>`, `${o.ac_zero_count} systems report 0 kW AC`, true)}
+      ${tile('t-amber',  'fa-map-location-dot', 'Districts covered',      _nmNum(o.districts, 0), `${o.named_sdds} named SDD/ESU offices`)}
+      ${tile('t-purple', 'fa-calendar-plus',    `Added in ${o.last_year}*`, _nmNum(latest.systems, 0), `${_nmNum(latest.dc_kwp)} kWp DC`)}
+    </div>`;
+}
+
+function _nmSourceNote(extra = '') {
+  const src = NM_DATA.source || {};
+  const o = NM_DATA.overall;
+  return `
+    <div class="nm-note">
+      <i class="fas fa-circle-info"></i>
+      <div>
+        <strong>Source:</strong> ${esc(src.source_name || 'SREDA National Database of Renewable Energy')} —
+        ${esc(src.category || 'Net Metering Rooftop Solar')}, ${esc(src.organization || 'NESCO')}.
+        Retrieved ${_nmDate(src.retrieval_date)}.
+        ${src.listing_url ? `<a href="${esc(src.listing_url)}" target="_blank" rel="noopener noreferrer">Open SREDA listing <i class="fas fa-arrow-up-right-from-square"></i></a>` : ''}
+        <br>* ${o.last_year} covers systems commissioned up to ${_nmDate(o.latest_cod)}.
+        AC capacity is shown as reported: ${o.ac_zero_count} of ${o.systems} systems carry 0 kW AC in SREDA, so AC totals understate the installed inverter capacity.
+        ${extra}
+      </div>
+    </div>`;
+}
+
+function _nmNotReady() {
+  document.getElementById('content').innerHTML =
+    `<div class="page-loader">Net metering data is not available — check that net-metering.json is published.</div>`;
+}
+
+/* Generic sort helper — nulls always sink to the bottom. */
+function _nmSortRows(rows, key, dir) {
+  return rows.slice().sort((a, b) => {
+    const x = a[key], y = b[key];
+    if (x == null && y == null) return 0;
+    if (x == null) return 1;
+    if (y == null) return -1;
+    if (typeof x === 'number' && typeof y === 'number') return (x - y) * dir;
+    return String(x).localeCompare(String(y), 'en', { numeric: true }) * dir;
+  });
+}
+function _nmTh(view, key, label, cls = '') {
+  const st = NM_UI[view];
+  const on = st.sort === key;
+  const icon = on ? (st.dir > 0 ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort';
+  return `<th class="${cls} nm-sortable${on ? ' sorted' : ''}" data-nm-view="${view}" data-nm-sort="${key}" tabindex="0"
+            aria-sort="${on ? (st.dir > 0 ? 'ascending' : 'descending') : 'none'}">${label} <i class="fas ${icon}"></i></th>`;
+}
+function _nmShareCell(kwp) {
+  const p = _nmPct(kwp, NM_DATA.overall.dc_kwp);
+  return `<td class="num nm-share"><span class="nm-bar"><span style="width:${Math.min(100, p).toFixed(1)}%"></span></span>${p.toFixed(1)}%</td>`;
+}
+function _nmYears(a, b) {
+  if (a == null) return '—';
+  return a === b ? String(a) : `${a}–${b}`;
+}
+/* data-param for a row that jumps to the filtered details table */
+function _nmGo(filter) {
+  return `data-section="nm-details" data-param="${esc(JSON.stringify(filter))}" title="Show these systems in the details table"`;
+}
+
+const _nmRefreshers = {};
+function _nmOnSort(th) {
+  const view = th.dataset.nmView, key = th.dataset.nmSort;
+  const st = NM_UI[view];
+  if (st.sort === key) st.dir = -st.dir;
+  else { st.sort = key; st.dir = (key === 'sdd' || key === 'district' || key === 'project_name' || key === 'sid') ? 1 : -1; }
+  if (_nmRefreshers[view]) _nmRefreshers[view]();
+}
+document.addEventListener('click', e => {
+  const th = e.target.closest('[data-nm-sort]');
+  if (th) _nmOnSort(th);
+});
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+  const th = e.target.closest && e.target.closest('[data-nm-sort]');
+  if (th) { e.preventDefault(); _nmOnSort(th); return; }
+  const go = e.target.closest && e.target.closest('tr[data-section], .metric-tile[data-section]');
+  if (go) { e.preventDefault(); go.click(); }
+});
+
+/* Chart.js helpers — single-series, thin bars, recessive grid. */
+function _nmBarChart(id, labels, values, { horizontal = false, unit = 'kWp', label = '' } = {}) {
+  const el = document.getElementById(id);
+  if (!el || typeof Chart === 'undefined') return;
+  if (charts[id]) charts[id].destroy();
+  const valAxis = {
+    beginAtZero: true,
+    grid: { color: 'rgba(15,23,42,.07)' },
+    border: { display: false },
+    ticks: { callback: v => Number(v).toLocaleString('en-US') },
+    title: { display: true, text: unit },
+  };
+  const catAxis = { grid: { display: false }, ticks: { autoSkip: false } };
+  charts[id] = new Chart(el, {
+    type: 'bar',
+    data: { labels, datasets: [{
+      label, data: values,
+      backgroundColor: NM_GREEN, hoverBackgroundColor: '#047857',
+      borderRadius: 4, borderSkipped: 'start', maxBarThickness: horizontal ? 18 : 34,
+    }] },
+    options: {
+      indexAxis: horizontal ? 'y' : 'x',
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: c => ` ${Number(horizontal ? c.parsed.x : c.parsed.y).toLocaleString('en-US', { maximumFractionDigits: 2 })} ${unit}` } },
+      },
+      scales: horizontal ? { x: valAxis, y: catAxis } : { x: catAxis, y: valAxis },
+    },
+  });
+}
+
+/* ── Yearly ── */
+function renderNMYearly() {
+  if (!NM_DATA) return _nmNotReady();
+  const Y = NM_DATA.yearly;
+  const known = Y.filter(y => y.year != null);
+  const unknown = Y.find(y => y.year == null);
+  const o = NM_DATA.overall;
+
+  const rows = Y.map(y => `
+    <tr class="nm-click" ${_nmGo({ year: y.year == null ? 'unknown' : String(y.year) })} tabindex="0">
+      <td><strong>${_nmYearLabel(y.year)}</strong></td>
+      <td class="num">${_nmNum(y.systems, 0)}</td>
+      <td class="num">${_nmNum(y.dc_kwp)}</td>
+      <td class="num">${_nmNum(y.ac_kw)}</td>
+      <td class="num">${y.ac_zero_count || '—'}</td>
+      <td class="num">${_nmNum(y.cum_systems, 0)}</td>
+      <td class="num">${_nmNum(y.cum_dc_kwp)}</td>
+      <td class="num">${_nmNum(y.cum_ac_kw)}</td>
+      <td class="nm-go"><i class="fas fa-chevron-right"></i></td>
+    </tr>`).join('');
+
+  document.getElementById('content').innerHTML = `
+    ${_nmShell('nm-yearly', 'Year-wise commissioning of net-metering rooftop solar systems in the NESCO area, grouped by commissioning date (COD).')}
+
+    <div class="nm-chart-grid">
+      <div class="panel">
+        <div class="panel-head"><h3><i class="fas fa-chart-column"></i> DC Capacity Added per Year</h3>
+          <span class="nm-panel-sub">kWp · by COD year</span></div>
+        <div class="panel-body"><div class="chart-container"><canvas id="nm-year-add"></canvas></div></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3><i class="fas fa-chart-line"></i> Cumulative DC Capacity</h3>
+          <span class="nm-panel-sub">MWp · systems listed today, by COD</span></div>
+        <div class="panel-body"><div class="chart-container"><canvas id="nm-year-cum"></canvas></div></div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:18px">
+      <div class="panel-head"><h3><i class="fas fa-calendar-days"></i> Year-wise Summary</h3>
+        <span class="nm-panel-sub">Click a year to list its systems</span></div>
+      <div class="panel-body no-pad"><div class="tbl-wrap">
+        <table class="tbl nm-tbl">
+          <thead><tr>
+            <th>Year (COD)</th>
+            <th class="num">Systems Commissioned</th>
+            <th class="num">DC Added (kWp)</th>
+            <th class="num">AC Added (kW, reported)</th>
+            <th class="num">Systems with AC 0</th>
+            <th class="num">Cumulative Systems</th>
+            <th class="num">Cumulative DC (kWp)</th>
+            <th class="num">Cumulative AC (kW)</th>
+            <th aria-label="Open"></th>
+          </tr></thead>
+          <tbody>${rows}</tbody>
+          <tfoot><tr class="tbl-sum-row">
+            <td>Total</td>
+            <td class="num">${_nmNum(o.systems, 0)}</td>
+            <td class="num">${_nmNum(o.dc_kwp)}</td>
+            <td class="num">${_nmNum(o.ac_kw)}</td>
+            <td class="num">${o.ac_zero_count}</td>
+            <td colspan="4"></td>
+          </tr></tfoot>
+        </table>
+      </div></div>
+    </div>
+
+    ${_nmSourceNote(unknown ? `${unknown.systems} system (${_nmNum(unknown.dc_kwp)} kWp) has no valid COD in SREDA; it is listed as “Unknown year”, counted in the totals but left out of the charts and cumulative columns.` : '')}
+  `;
+
+  setTimeout(() => {
+    _nmBarChart('nm-year-add', known.map(y => _nmYearLabel(y.year)), known.map(y => y.dc_kwp),
+      { unit: 'kWp', label: 'DC capacity added' });
+    const el = document.getElementById('nm-year-cum');
+    if (!el || typeof Chart === 'undefined') return;
+    if (charts['nm-year-cum']) charts['nm-year-cum'].destroy();
+    charts['nm-year-cum'] = new Chart(el, {
+      type: 'line',
+      data: {
+        labels: known.map(y => _nmYearLabel(y.year)),
+        datasets: [{
+          label: 'Cumulative DC capacity',
+          data: known.map(y => +(y.cum_dc_kwp / 1000).toFixed(3)),
+          borderColor: NM_GREEN, backgroundColor: 'rgba(5,150,105,.12)',
+          borderWidth: 2, fill: true, tension: 0.25,
+          pointRadius: 4, pointHoverRadius: 6, pointBackgroundColor: NM_GREEN,
+          pointBorderColor: '#fff', pointBorderWidth: 2,
+        }],
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: c => {
+            const y = known[c.dataIndex];
+            return [` ${c.parsed.y.toLocaleString('en-US', { minimumFractionDigits: 3 })} MWp`, ` ${y.cum_systems} systems`];
+          } } },
+        },
+        scales: {
+          x: { grid: { display: false } },
+          y: { beginAtZero: true, grid: { color: 'rgba(15,23,42,.07)' }, border: { display: false }, title: { display: true, text: 'MWp' } },
+        },
+      },
+    });
+  }, 60);
+}
+
+/* ── District-wise ── */
+function renderNMDistrict() {
+  if (!NM_DATA) return _nmNotReady();
+  const byDc = _nmSortRows(NM_DATA.district_wise, 'dc_kwp', -1);
+  document.getElementById('content').innerHTML = `
+    ${_nmShell('nm-district', 'District-wise distribution of net-metering rooftop solar systems across the 16 districts of the NESCO area.')}
+
+    <div class="panel">
+      <div class="panel-head"><h3><i class="fas fa-chart-bar"></i> DC Capacity by District</h3>
+        <span class="nm-panel-sub">kWp · largest first</span></div>
+      <div class="panel-body"><div class="chart-container" style="height:${Math.max(260, byDc.length * 26 + 40)}px">
+        <canvas id="nm-dist-chart"></canvas></div></div>
+    </div>
+
+    <div class="panel" style="margin-top:18px">
+      <div class="panel-head"><h3><i class="fas fa-map-location-dot"></i> District-wise Summary</h3>
+        <span class="nm-panel-sub">Click a column title to sort · click a district to list its systems</span></div>
+      <div class="panel-body no-pad"><div class="tbl-wrap">
+        <table class="tbl nm-tbl" id="nm-dist-tbl"></table>
+      </div></div>
+    </div>
+    ${_nmSourceNote()}
+  `;
+  _nmRefreshers.district = _nmRefreshDistrict;
+  _nmRefreshDistrict();
+  setTimeout(() => _nmBarChart('nm-dist-chart', byDc.map(d => d.district), byDc.map(d => d.dc_kwp),
+    { horizontal: true, unit: 'kWp', label: 'DC capacity' }), 60);
+}
+function _nmRefreshDistrict() {
+  const tbl = document.getElementById('nm-dist-tbl');
+  if (!tbl) return;
+  const st = NM_UI.district;
+  const rows = _nmSortRows(NM_DATA.district_wise.map(d => ({ ...d, named_count: d.named_sdds.length })), st.sort, st.dir);
+  const o = NM_DATA.overall;
+  tbl.innerHTML = `
+    <thead><tr>
+      ${_nmTh('district', 'district', 'District')}
+      ${_nmTh('district', 'systems', 'Systems', 'num')}
+      ${_nmTh('district', 'dc_kwp', 'DC Capacity (kWp)', 'num')}
+      <th class="num">Share of NESCO DC</th>
+      ${_nmTh('district', 'ac_kw', 'AC Capacity (kW, reported)', 'num')}
+      ${_nmTh('district', 'ac_zero_count', 'Systems with AC 0', 'num')}
+      ${_nmTh('district', 'named_count', 'Named SDD / ESU Offices')}
+      ${_nmTh('district', 'unassigned_count', 'Unassigned Systems', 'num')}
+      ${_nmTh('district', 'first_year', 'COD Years')}
+      <th aria-label="Open"></th>
+    </tr></thead>
+    <tbody>${rows.map(d => `
+      <tr class="nm-click" ${_nmGo({ district: d.district })} tabindex="0">
+        <td><strong>${esc(d.district)}</strong></td>
+        <td class="num">${_nmNum(d.systems, 0)}</td>
+        <td class="num">${_nmNum(d.dc_kwp)}</td>
+        ${_nmShareCell(d.dc_kwp)}
+        <td class="num">${_nmNum(d.ac_kw)}</td>
+        <td class="num">${d.ac_zero_count || '—'}</td>
+        <td class="nm-wrap">${d.named_sdds.length ? d.named_sdds.map(esc).join(', ') : '<span class="nm-muted">—</span>'}</td>
+        <td class="num">${d.unassigned_count || '—'}</td>
+        <td>${_nmYears(d.first_year, d.last_year)}</td>
+        <td class="nm-go"><i class="fas fa-chevron-right"></i></td>
+      </tr>`).join('')}
+    </tbody>
+    <tfoot><tr class="tbl-sum-row">
+      <td>Total (${rows.length} districts)</td>
+      <td class="num">${_nmNum(o.systems, 0)}</td>
+      <td class="num">${_nmNum(o.dc_kwp)}</td>
+      <td class="num">100%</td>
+      <td class="num">${_nmNum(o.ac_kw)}</td>
+      <td class="num">${o.ac_zero_count}</td>
+      <td>${o.named_sdds} offices</td>
+      <td class="num">${o.unassigned_sdd_count}</td>
+      <td>${_nmYears(o.first_year, o.last_year)}</td>
+      <td></td>
+    </tr></tfoot>`;
+}
+
+/* ── SDD-wise ── */
+function renderNMSDD() {
+  if (!NM_DATA) return _nmNotReady();
+  const st = NM_UI.sdd;
+  const named = NM_DATA.sdd_wise.filter(s => !s.unassigned);
+  const top = _nmSortRows(named, 'dc_kwp', -1).slice(0, 15);
+  const dists = [...new Set(NM_DATA.sdd_wise.map(s => s.district))].sort();
+  const un = NM_DATA.sdd_wise.filter(s => s.unassigned);
+  const unKwp = un.reduce((a, s) => a + s.dc_kwp, 0);
+
+  document.getElementById('content').innerHTML = `
+    ${_nmShell('nm-sdd', 'S&amp;D division / Electricity Supply Unit-wise distribution of net-metering rooftop solar systems.')}
+
+    <div class="panel">
+      <div class="panel-head"><h3><i class="fas fa-chart-bar"></i> Top ${top.length} SDD / ESU Offices by DC Capacity</h3>
+        <span class="nm-panel-sub">kWp · named offices only</span></div>
+      <div class="panel-body"><div class="chart-container" style="height:${top.length * 26 + 50}px">
+        <canvas id="nm-sdd-chart"></canvas></div></div>
+    </div>
+
+    <div class="panel" style="margin-top:18px">
+      <div class="panel-head"><h3><i class="fas fa-layer-group"></i> SDD / ESU-wise Summary</h3>
+        <span class="nm-panel-sub" id="nm-sdd-count"></span></div>
+      <div class="panel-body no-pad">
+        <div class="nm-filters">
+          <input class="search-input" id="nm-sdd-q" placeholder="Search SDD / ESU…" value="${esc(st.q)}" aria-label="Search SDD or ESU">
+          <select class="filter-sel" id="nm-sdd-dist" aria-label="District">
+            <option value="">All districts</option>
+            ${dists.map(d => `<option ${d === st.district ? 'selected' : ''}>${esc(d)}</option>`).join('')}
+          </select>
+          <label class="nm-check"><input type="checkbox" id="nm-sdd-un" ${st.unassigned ? 'checked' : ''}> Show “Unassigned” rows</label>
+        </div>
+        <div class="tbl-wrap"><table class="tbl nm-tbl" id="nm-sdd-tbl"></table></div>
+      </div>
+    </div>
+    ${_nmSourceNote(`${un.reduce((a, s) => a + s.systems, 0)} systems (${_nmNum(unKwp)} kWp) name no S&D or supply office in SREDA. They are shown as “Unassigned” under their district; an SDD is never guessed from the location.`)}
+  `;
+
+  const q = document.getElementById('nm-sdd-q');
+  q.addEventListener('input', () => { st.q = q.value; _nmRefreshSDD(); });
+  document.getElementById('nm-sdd-dist').addEventListener('change', e => { st.district = e.target.value; _nmRefreshSDD(); });
+  document.getElementById('nm-sdd-un').addEventListener('change', e => { st.unassigned = e.target.checked; _nmRefreshSDD(); });
+  _nmRefreshers.sdd = _nmRefreshSDD;
+  _nmRefreshSDD();
+
+  setTimeout(() => _nmBarChart('nm-sdd-chart', top.map(s => s.sdd), top.map(s => s.dc_kwp),
+    { horizontal: true, unit: 'kWp', label: 'DC capacity' }), 60);
+}
+function _nmRefreshSDD() {
+  const tbl = document.getElementById('nm-sdd-tbl');
+  if (!tbl) return;
+  const st = NM_UI.sdd;
+  const q = st.q.trim().toLowerCase();
+  let rows = NM_DATA.sdd_wise.filter(s =>
+    (!st.district || s.district === st.district) &&
+    (st.unassigned || !s.unassigned) &&
+    (!q || s.sdd.toLowerCase().includes(q) || s.district.toLowerCase().includes(q)));
+  // Named offices first (sorted), "Unassigned" groups always pinned below.
+  rows = [..._nmSortRows(rows.filter(s => !s.unassigned), st.sort, st.dir),
+          ..._nmSortRows(rows.filter(s => s.unassigned), st.sort, st.dir)];
+  const tot = rows.reduce((a, s) => ({ n: a.n + s.systems, dc: a.dc + s.dc_kwp, ac: a.ac + s.ac_kw, z: a.z + s.ac_zero_count }),
+                          { n: 0, dc: 0, ac: 0, z: 0 });
+  const offices = rows.filter(s => !s.unassigned).length;
+  document.getElementById('nm-sdd-count').textContent =
+    `${offices} office${offices === 1 ? '' : 's'}${rows.length > offices ? ` + ${rows.length - offices} unassigned group${rows.length - offices === 1 ? '' : 's'}` : ''} · click a row to list its systems`;
+
+  tbl.innerHTML = `
+    <thead><tr>
+      ${_nmTh('sdd', 'sdd', 'SDD / ESU')}
+      ${_nmTh('sdd', 'district', 'District')}
+      ${_nmTh('sdd', 'systems', 'Systems', 'num')}
+      ${_nmTh('sdd', 'dc_kwp', 'DC Capacity (kWp)', 'num')}
+      <th class="num">Share of NESCO DC</th>
+      ${_nmTh('sdd', 'ac_kw', 'AC Capacity (kW, reported)', 'num')}
+      ${_nmTh('sdd', 'ac_zero_count', 'Systems with AC 0', 'num')}
+      ${_nmTh('sdd', 'first_year', 'COD Years')}
+      <th aria-label="Open"></th>
+    </tr></thead>
+    <tbody>${rows.length ? rows.map(s => `
+      <tr class="nm-click${s.unassigned ? ' nm-unassigned' : ''}" ${_nmGo({ sdd: s.sdd, district: s.district })} tabindex="0">
+        <td>${s.unassigned ? '<span class="nm-flag slate">Unassigned</span>' : `<strong>${esc(s.sdd)}</strong>`}</td>
+        <td>${esc(s.district)}</td>
+        <td class="num">${_nmNum(s.systems, 0)}</td>
+        <td class="num">${_nmNum(s.dc_kwp)}</td>
+        ${_nmShareCell(s.dc_kwp)}
+        <td class="num">${_nmNum(s.ac_kw)}</td>
+        <td class="num">${s.ac_zero_count || '—'}</td>
+        <td>${_nmYears(s.first_year, s.last_year)}</td>
+        <td class="nm-go"><i class="fas fa-chevron-right"></i></td>
+      </tr>`).join('') : `<tr><td colspan="9" class="tbl-empty">No SDD / ESU matches these filters.</td></tr>`}
+    </tbody>
+    <tfoot><tr class="tbl-sum-row">
+      <td colspan="2">Total (shown rows)</td>
+      <td class="num">${_nmNum(tot.n, 0)}</td>
+      <td class="num">${_nmNum(tot.dc)}</td>
+      <td class="num">${_nmPct(tot.dc, NM_DATA.overall.dc_kwp).toFixed(1)}%</td>
+      <td class="num">${_nmNum(tot.ac)}</td>
+      <td class="num">${tot.z}</td>
+      <td colspan="2"></td>
+    </tr></tfoot>`;
+}
+
+/* ── All systems (details) ── */
+function renderNMDetails(param) {
+  if (!NM_DATA) return _nmNotReady();
+  const st = NM_UI.details;
+  // Every visit starts clean; a param (from a summary row) pre-sets filters.
+  Object.assign(st, { q: '', district: '', sdd: '', year: '', flag: '', sort: 'cod', dir: -1 });
+  if (param) {
+    try {
+      const p = typeof param === 'string' ? JSON.parse(param) : param;
+      ['district', 'sdd', 'year', 'flag', 'q'].forEach(k => { if (p[k] != null) st[k] = String(p[k]); });
+    } catch (e) { console.warn('nm-details param:', e.message); }
+  }
+  const R = NM_DATA.records;
+  const dists = [...new Set(R.map(r => r.district))].sort();
+  const years = NM_DATA.yearly.map(y => y.year == null ? 'unknown' : String(y.year))
+    .filter(y => R.some(r => (r.year == null ? 'unknown' : String(r.year)) === y)).reverse();
+
+  document.getElementById('content').innerHTML = `
+    ${_nmShell('nm-details', 'Every net-metering rooftop solar system NESCO has on SREDA’s national database, with location, office and capacity.')}
+
+    <div class="panel">
+      <div class="panel-head"><h3><i class="fas fa-table-list"></i> Net Metering Systems — Details</h3>
+        <button class="btn btn-sm nm-csv" id="nm-csv" type="button"><i class="fas fa-file-csv"></i> Download CSV</button></div>
+      <div class="panel-body no-pad">
+        <div class="nm-filters">
+          <input class="search-input" id="nm-d-q" placeholder="Search name, SID, upazila, location…" aria-label="Search systems">
+          <select class="filter-sel" id="nm-d-dist" aria-label="District">
+            <option value="">All districts</option>
+            ${dists.map(d => `<option>${esc(d)}</option>`).join('')}
+          </select>
+          <select class="filter-sel" id="nm-d-sdd" aria-label="SDD or ESU"></select>
+          <select class="filter-sel" id="nm-d-year" aria-label="COD year">
+            <option value="">All years</option>
+            ${years.map(y => `<option value="${y}">${y === 'unknown' ? 'Unknown year' : _nmYearLabel(+y)}</option>`).join('')}
+          </select>
+          <select class="filter-sel" id="nm-d-flag" aria-label="Data flag">
+            <option value="">Any data flag</option>
+            ${Object.entries(NM_FLAGS).map(([k, f]) => `<option value="${k}">${esc(f.label)}</option>`).join('')}
+          </select>
+          <button class="btn btn-sm nm-reset" id="nm-d-reset" type="button"><i class="fas fa-rotate-left"></i> Reset</button>
+        </div>
+        <div class="nm-summary" id="nm-d-summary" aria-live="polite"></div>
+        <div class="tbl-wrap scrollable"><table class="tbl nm-tbl" id="nm-d-tbl"></table></div>
+      </div>
+    </div>
+    ${_nmSourceNote('Data flags mark values exactly as SREDA lists them — hover a flag to see the note.')}
+  `;
+
+  const $ = id => document.getElementById(id);
+  const syncControls = () => {
+    $('nm-d-q').value = st.q;
+    $('nm-d-dist').value = st.district;
+    _nmFillSddOptions();
+    $('nm-d-year').value = st.year;
+    $('nm-d-flag').value = st.flag;
+  };
+  $('nm-d-q').addEventListener('input', e => { st.q = e.target.value; _nmRefreshDetails(); });
+  $('nm-d-dist').addEventListener('change', e => { st.district = e.target.value; st.sdd = ''; _nmFillSddOptions(); _nmRefreshDetails(); });
+  $('nm-d-sdd').addEventListener('change', e => { st.sdd = e.target.value; _nmRefreshDetails(); });
+  $('nm-d-year').addEventListener('change', e => { st.year = e.target.value; _nmRefreshDetails(); });
+  $('nm-d-flag').addEventListener('change', e => { st.flag = e.target.value; _nmRefreshDetails(); });
+  $('nm-d-reset').addEventListener('click', () => {
+    Object.assign(st, { q: '', district: '', sdd: '', year: '', flag: '' });
+    syncControls(); _nmRefreshDetails();
+  });
+  $('nm-csv').addEventListener('click', _nmDownloadCSV);
+  _nmRefreshers.details = _nmRefreshDetails;
+  syncControls();
+  _nmRefreshDetails();
+}
+function _nmFillSddOptions() {
+  const sel = document.getElementById('nm-d-sdd');
+  if (!sel) return;
+  const st = NM_UI.details;
+  const pool = NM_DATA.records.filter(r => !st.district || r.district === st.district);
+  const named = [...new Set(pool.filter(r => r.sdd !== 'Unassigned').map(r => r.sdd))].sort();
+  const hasUn = pool.some(r => r.sdd === 'Unassigned');
+  sel.innerHTML = `<option value="">All SDD / ESU</option>` +
+    named.map(s => `<option>${esc(s)}</option>`).join('') +
+    (hasUn ? `<option value="Unassigned">Unassigned</option>` : '');
+  sel.value = st.sdd;
+  if (sel.value !== st.sdd) st.sdd = '';
+}
+function _nmFilteredRecords() {
+  const st = NM_UI.details;
+  const q = st.q.trim().toLowerCase();
+  return NM_DATA.records.filter(r =>
+    (!st.district || r.district === st.district) &&
+    (!st.sdd || r.sdd === st.sdd) &&
+    (!st.year || (r.year == null ? 'unknown' : String(r.year)) === st.year) &&
+    (!st.flag || (r.flags || []).includes(st.flag)) &&
+    (!q || [r.sid, r.project_name, r.upazila, r.location, r.sdd, r.district]
+              .some(v => v && String(v).toLowerCase().includes(q))));
+}
+function _nmRefreshDetails() {
+  const tbl = document.getElementById('nm-d-tbl');
+  if (!tbl) return;
+  const st = NM_UI.details;
+  const rows = _nmSortRows(_nmFilteredRecords(), st.sort, st.dir);
+  const dc = rows.reduce((a, r) => a + (r.dc_kwp || 0), 0);
+  const ac = rows.reduce((a, r) => a + (r.ac_kw || 0), 0);
+  const total = NM_DATA.records.length;
+
+  const chips = [];
+  if (st.district) chips.push(`District: ${esc(st.district)}`);
+  if (st.sdd)      chips.push(`SDD/ESU: ${esc(st.sdd)}`);
+  if (st.year)     chips.push(`Year: ${st.year === 'unknown' ? 'Unknown' : esc(st.year)}`);
+  if (st.flag)     chips.push(`Flag: ${esc(NM_FLAGS[st.flag].label)}`);
+  if (st.q.trim()) chips.push(`Search: “${esc(st.q.trim())}”`);
+  document.getElementById('nm-d-summary').innerHTML = `
+    <span>Showing <strong>${rows.length}</strong> of ${total} systems</span>
+    <span><strong>${_nmNum(dc)}</strong> kWp DC</span>
+    <span><strong>${_nmNum(ac)}</strong> kW AC (reported)</span>
+    ${chips.map(c => `<span class="nm-chip">${c}</span>`).join('')}`;
+
+  const flagHtml = r => (r.flags || []).map(f => {
+    const m = NM_FLAGS[f];
+    return m ? `<span class="nm-flag ${m.cls}" title="${esc(m.hint)}">${esc(m.label)}</span>` : '';
+  }).join(' ');
+
+  tbl.innerHTML = `
+    <thead><tr>
+      <th class="num">#</th>
+      ${_nmTh('details', 'sid', 'SID')}
+      ${_nmTh('details', 'project_name', 'Project / System Name')}
+      ${_nmTh('details', 'district', 'District')}
+      ${_nmTh('details', 'upazila', 'Upazila')}
+      ${_nmTh('details', 'location', 'Location')}
+      ${_nmTh('details', 'sdd', 'SDD / S&amp;D')}
+      ${_nmTh('details', 'dc_kwp', 'DC Capacity (kWp)', 'num')}
+      ${_nmTh('details', 'ac_kw', 'AC Capacity (kW)', 'num')}
+      ${_nmTh('details', 'cod', 'COD')}
+      ${_nmTh('details', 'status', 'Status')}
+      <th>Data Flags</th>
+    </tr></thead>
+    <tbody>${rows.length ? rows.map((r, i) => `
+      <tr>
+        <td class="num nm-muted">${i + 1}</td>
+        <td>${esc(r.sid)}</td>
+        <td class="nm-name" title="${esc(r.notes || '')}">${esc(r.project_name)}</td>
+        <td>${esc(r.district)}</td>
+        <td>${esc(r.upazila || '—')}</td>
+        <td>${esc(r.location || '—')}</td>
+        <td>${r.sdd === 'Unassigned' ? '<span class="nm-muted">Unassigned</span>' : esc(r.sdd)}</td>
+        <td class="num">${_nmNum(r.dc_kwp)}</td>
+        <td class="num">${_nmNum(r.ac_kw)}</td>
+        <td style="white-space:nowrap">${_nmDate(r.cod)}</td>
+        <td><span class="nm-status">${esc(r.status || '—')}</span></td>
+        <td class="nm-flags">${flagHtml(r)}</td>
+      </tr>`).join('') : `<tr><td colspan="12" class="tbl-empty">No systems match these filters.</td></tr>`}
+    </tbody>
+    <tfoot><tr class="tbl-sum-row">
+      <td colspan="7">Total (${rows.length} system${rows.length === 1 ? '' : 's'})</td>
+      <td class="num">${_nmNum(dc)}</td>
+      <td class="num">${_nmNum(ac)}</td>
+      <td colspan="3"></td>
+    </tr></tfoot>`;
+}
+function _nmDownloadCSV() {
+  const st = NM_UI.details;
+  const rows = _nmSortRows(_nmFilteredRecords(), st.sort, st.dir);
+  const head = ['SID', 'Project / System Name', 'District', 'Upazila', 'Location', 'SDD / S&D',
+                'DC Capacity (kWp)', 'AC Capacity (kW)', 'COD', 'Year', 'Status', 'Data-quality notes'];
+  const cell = v => {
+    const t = v == null ? '' : String(v);
+    return /[",\n]/.test(t) ? `"${t.replace(/"/g, '""')}"` : t;
+  };
+  const lines = [head, ...rows.map(r => [r.sid, r.project_name, r.district, r.upazila, r.location, r.sdd,
+    r.dc_kwp, r.ac_kw, r.cod, r.year ?? 'Unknown', r.status, r.notes])].map(a => a.map(cell).join(','));
+  const blob = new Blob(['﻿' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `nesco-net-metering-${(NM_DATA.source || {}).retrieval_date || 'export'}.csv`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
 
 /* ── Store — Substation Equipment Info  /  Line Equipment Info ── */
@@ -5870,6 +6544,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadStoreData(),
     loadSwitchingData(),
     loadRenewableData(),
+    loadNetMeteringData(),
     loadOpIssuesData(),
   ]);
 

@@ -1,0 +1,3734 @@
+{
+  "title": "NESCO Net Metering Rooftop Solar",
+  "source_file": "nesco_net_metering.xlsx",
+  "source": {
+    "retrieval_date": "2026-11-04",
+    "source_name": "SREDA National Database of Renewable Energy",
+    "listing_url": "https://ndre.sreda.gov.bd/index.php?id=01&i=3&s=&ag=8&di=&ps=&fs=&ob=1&submit=Search",
+    "organization": "Northern Electric Supply Company Ltd. (NESCO)",
+    "category": "Net Metering Rooftop Solar",
+    "headline_dc_mwp": 13.848,
+    "headline_count": 166
+  },
+  "statuses": {
+    "Completed & Running": 166
+  },
+  "overall": {
+    "systems": 166,
+    "dc_kwp": 13848.12,
+    "ac_kw": 9458.0,
+    "ac_zero_count": 107,
+    "districts": 16,
+    "named_sdds": 41,
+    "unassigned_sdd_count": 37,
+    "first_year": 2018,
+    "last_year": 2026,
+    "latest_cod": "2026-09-30"
+  },
+  "yearly": [
+    {
+      "year": 2018,
+      "label": "2018",
+      "systems": 4,
+      "dc_kwp": 64.0,
+      "ac_kw": 0,
+      "ac_zero_count": 4,
+      "cum_systems": 4,
+      "cum_dc_kwp": 64.0,
+      "cum_ac_kw": 0
+    },
+    {
+      "year": 2019,
+      "label": "2019",
+      "systems": 17,
+      "dc_kwp": 214.0,
+      "ac_kw": 0,
+      "ac_zero_count": 17,
+      "cum_systems": 21,
+      "cum_dc_kwp": 278.0,
+      "cum_ac_kw": 0
+    },
+    {
+      "year": 2020,
+      "label": "2020",
+      "systems": 19,
+      "dc_kwp": 190.0,
+      "ac_kw": 0,
+      "ac_zero_count": 19,
+      "cum_systems": 40,
+      "cum_dc_kwp": 468.0,
+      "cum_ac_kw": 0
+    },
+    {
+      "year": 2021,
+      "label": "2021",
+      "systems": 23,
+      "dc_kwp": 836.88,
+      "ac_kw": 0,
+      "ac_zero_count": 23,
+      "cum_systems": 63,
+      "cum_dc_kwp": 1304.88,
+      "cum_ac_kw": 0
+    },
+    {
+      "year": 2022,
+      "label": "2022",
+      "systems": 21,
+      "dc_kwp": 1555.0,
+      "ac_kw": 1098.0,
+      "ac_zero_count": 15,
+      "cum_systems": 84,
+      "cum_dc_kwp": 2859.88,
+      "cum_ac_kw": 1098.0
+    },
+    {
+      "year": 2023,
+      "label": "2023",
+      "systems": 30,
+      "dc_kwp": 2105.9,
+      "ac_kw": 995.0,
+      "ac_zero_count": 27,
+      "cum_systems": 114,
+      "cum_dc_kwp": 4965.78,
+      "cum_ac_kw": 2093.0
+    },
+    {
+      "year": 2024,
+      "label": "2024",
+      "systems": 3,
+      "dc_kwp": 393.5,
+      "ac_kw": 39.0,
+      "ac_zero_count": 1,
+      "cum_systems": 117,
+      "cum_dc_kwp": 5359.28,
+      "cum_ac_kw": 2132.0
+    },
+    {
+      "year": 2025,
+      "label": "2025",
+      "systems": 14,
+      "dc_kwp": 2803.0,
+      "ac_kw": 2603.0,
+      "ac_zero_count": 0,
+      "cum_systems": 131,
+      "cum_dc_kwp": 8162.28,
+      "cum_ac_kw": 4735.0
+    },
+    {
+      "year": 2026,
+      "label": "2026",
+      "systems": 34,
+      "dc_kwp": 5325.84,
+      "ac_kw": 4723.0,
+      "ac_zero_count": 0,
+      "cum_systems": 165,
+      "cum_dc_kwp": 13488.12,
+      "cum_ac_kw": 9458.0
+    },
+    {
+      "year": null,
+      "label": "Unknown year",
+      "systems": 1,
+      "dc_kwp": 360.0,
+      "ac_kw": 0,
+      "ac_zero_count": 1,
+      "cum_systems": null,
+      "cum_dc_kwp": null,
+      "cum_ac_kw": null
+    }
+  ],
+  "district_wise": [
+    {
+      "district": "Bogura",
+      "systems": 21,
+      "dc_kwp": 3332.45,
+      "ac_kw": 2711.0,
+      "ac_zero_count": 13,
+      "named_sdds": [
+        "Bogura S&D 1",
+        "Bogura S&D 3",
+        "Bogura S&D 4",
+        "Sherpur S&D"
+      ],
+      "unassigned_count": 8,
+      "first_year": 2019,
+      "last_year": 2026
+    },
+    {
+      "district": "Chapainawabganj",
+      "systems": 9,
+      "dc_kwp": 2348.7,
+      "ac_kw": 1358.0,
+      "ac_zero_count": 4,
+      "named_sdds": [
+        "Chapainawabganj S&D 1",
+        "Gomostapur S&D"
+      ],
+      "unassigned_count": 0,
+      "first_year": 2022,
+      "last_year": 2026
+    },
+    {
+      "district": "Dinajpur",
+      "systems": 7,
+      "dc_kwp": 791.0,
+      "ac_kw": 610.0,
+      "ac_zero_count": 5,
+      "named_sdds": [
+        "Dinajpur S&D 1",
+        "Dinajpur S&D 2",
+        "Parbatipur Electricity Supply",
+        "Phulbari Electricity Supply",
+        "Setabganj Electricity Supply"
+      ],
+      "unassigned_count": 0,
+      "first_year": 2019,
+      "last_year": 2026
+    },
+    {
+      "district": "Gaibandha",
+      "systems": 3,
+      "dc_kwp": 40.32,
+      "ac_kw": 20.0,
+      "ac_zero_count": 2,
+      "named_sdds": [
+        "Gaibandha S&D 1",
+        "Gaibandha S&D 2"
+      ],
+      "unassigned_count": 0,
+      "first_year": 2021,
+      "last_year": 2026
+    },
+    {
+      "district": "Joypurhat",
+      "systems": 3,
+      "dc_kwp": 68.0,
+      "ac_kw": 0,
+      "ac_zero_count": 3,
+      "named_sdds": [
+        "Joypurhat S&D"
+      ],
+      "unassigned_count": 0,
+      "first_year": 2021,
+      "last_year": 2023
+    },
+    {
+      "district": "Kurigram",
+      "systems": 2,
+      "dc_kwp": 43.0,
+      "ac_kw": 28.0,
+      "ac_zero_count": 1,
+      "named_sdds": [
+        "Kurigram S&D"
+      ],
+      "unassigned_count": 1,
+      "first_year": 2020,
+      "last_year": 2025
+    },
+    {
+      "district": "Lalmonirhat",
+      "systems": 3,
+      "dc_kwp": 393.0,
+      "ac_kw": 30.0,
+      "ac_zero_count": 2,
+      "named_sdds": [
+        "Kaliganj S&D",
+        "Lalmonirhat S&D"
+      ],
+      "unassigned_count": 1,
+      "first_year": 2020,
+      "last_year": 2026
+    },
+    {
+      "district": "Naogaon",
+      "systems": 5,
+      "dc_kwp": 651.5,
+      "ac_kw": 493.0,
+      "ac_zero_count": 3,
+      "named_sdds": [
+        "Naogaon North S&D",
+        "Naogaon S&D",
+        "Naogaon South S&D"
+      ],
+      "unassigned_count": 2,
+      "first_year": 2021,
+      "last_year": 2026
+    },
+    {
+      "district": "Natore",
+      "systems": 6,
+      "dc_kwp": 49.0,
+      "ac_kw": 7.0,
+      "ac_zero_count": 4,
+      "named_sdds": [
+        "Natore S&D"
+      ],
+      "unassigned_count": 2,
+      "first_year": 2021,
+      "last_year": 2026
+    },
+    {
+      "district": "Nilphamari",
+      "systems": 6,
+      "dc_kwp": 153.0,
+      "ac_kw": 120.0,
+      "ac_zero_count": 2,
+      "named_sdds": [
+        "Nilphamari S&D",
+        "Saidpur S&D"
+      ],
+      "unassigned_count": 1,
+      "first_year": 2020,
+      "last_year": 2026
+    },
+    {
+      "district": "Pabna",
+      "systems": 17,
+      "dc_kwp": 1686.0,
+      "ac_kw": 1436.5,
+      "ac_zero_count": 13,
+      "named_sdds": [
+        "Ishwardi S&D",
+        "Pabna S&D 1",
+        "Pabna S&D 2"
+      ],
+      "unassigned_count": 7,
+      "first_year": 2019,
+      "last_year": 2026
+    },
+    {
+      "district": "Panchagarh",
+      "systems": 6,
+      "dc_kwp": 2327.13,
+      "ac_kw": 1388.0,
+      "ac_zero_count": 2,
+      "named_sdds": [
+        "Panchagarh S&D",
+        "Tetulia Electricity Supply"
+      ],
+      "unassigned_count": 1,
+      "first_year": 2021,
+      "last_year": 2026
+    },
+    {
+      "district": "Rajshahi",
+      "systems": 49,
+      "dc_kwp": 1163.82,
+      "ac_kw": 688.5,
+      "ac_zero_count": 37,
+      "named_sdds": [
+        "Bimanbandar S&D",
+        "Godagari S&D",
+        "Kashiadanga S&D",
+        "Rajshahi S&D 1",
+        "Rajshahi S&D 2",
+        "Rajshahi S&D 3",
+        "Rajshahi S&D 4",
+        "Rajshahi S&D 5"
+      ],
+      "unassigned_count": 8,
+      "first_year": 2018,
+      "last_year": 2026
+    },
+    {
+      "district": "Rangpur",
+      "systems": 16,
+      "dc_kwp": 298.0,
+      "ac_kw": 98.0,
+      "ac_zero_count": 11,
+      "named_sdds": [
+        "Rangpur S&D 1",
+        "Rangpur S&D 2",
+        "Rangpur S&D 3"
+      ],
+      "unassigned_count": 0,
+      "first_year": 2019,
+      "last_year": 2026
+    },
+    {
+      "district": "Sirajganj",
+      "systems": 10,
+      "dc_kwp": 228.2,
+      "ac_kw": 205.0,
+      "ac_zero_count": 4,
+      "named_sdds": [
+        "Sirajganj S&D 2"
+      ],
+      "unassigned_count": 6,
+      "first_year": 2021,
+      "last_year": 2026
+    },
+    {
+      "district": "Thakurgaon",
+      "systems": 3,
+      "dc_kwp": 275.0,
+      "ac_kw": 265.0,
+      "ac_zero_count": 1,
+      "named_sdds": [
+        "Thakurgaon S&D"
+      ],
+      "unassigned_count": 0,
+      "first_year": 2020,
+      "last_year": 2026
+    }
+  ],
+  "sdd_wise": [
+    {
+      "sdd": "Bogura S&D 1",
+      "district": "Bogura",
+      "unassigned": false,
+      "systems": 8,
+      "dc_kwp": 154.4,
+      "ac_kw": 100.0,
+      "ac_zero_count": 7,
+      "first_year": 2019,
+      "last_year": 2026
+    },
+    {
+      "sdd": "Bogura S&D 3",
+      "district": "Bogura",
+      "unassigned": false,
+      "systems": 2,
+      "dc_kwp": 12.0,
+      "ac_kw": 0,
+      "ac_zero_count": 2,
+      "first_year": 2021,
+      "last_year": 2023
+    },
+    {
+      "sdd": "Bogura S&D 4",
+      "district": "Bogura",
+      "unassigned": false,
+      "systems": 2,
+      "dc_kwp": 421.0,
+      "ac_kw": 350.0,
+      "ac_zero_count": 0,
+      "first_year": 2025,
+      "last_year": 2026
+    },
+    {
+      "sdd": "Sherpur S&D",
+      "district": "Bogura",
+      "unassigned": false,
+      "systems": 1,
+      "dc_kwp": 10.0,
+      "ac_kw": 0,
+      "ac_zero_count": 1,
+      "first_year": 2021,
+      "last_year": 2021
+    },
+    {
+      "sdd": "Chapainawabganj S&D 1",
+      "district": "Chapainawabganj",
+      "unassigned": false,
+      "systems": 8,
+      "dc_kwp": 1962.7,
+      "ac_kw": 1028.0,
+      "ac_zero_count": 4,
+      "first_year": 2022,
+      "last_year": 2026
+    },
+    {
+      "sdd": "Gomostapur S&D",
+      "district": "Chapainawabganj",
+      "unassigned": false,
+      "systems": 1,
+      "dc_kwp": 386.0,
+      "ac_kw": 330.0,
+      "ac_zero_count": 0,
+      "first_year": 2026,
+      "last_year": 2026
+    },
+    {
+      "sdd": "Dinajpur S&D 1",
+      "district": "Dinajpur",
+      "unassigned": false,
+      "systems": 3,
+      "dc_kwp": 751.0,
+      "ac_kw": 610.0,
+      "ac_zero_count": 1,
+      "first_year": 2020,
+      "last_year": 2026
+    },
+    {
+      "sdd": "Dinajpur S&D 2",
+      "district": "Dinajpur",
+      "unassigned": false,
+      "systems": 1,
+      "dc_kwp": 10.0,
+      "ac_kw": 0,
+      "ac_zero_count": 1,
+      "first_year": 2020,
+      "last_year": 2020
+    },
+    {
+      "sdd": "Parbatipur Electricity Supply",
+      "district": "Dinajpur",
+      "unassigned": false,
+      "systems": 1,
+      "dc_kwp": 10.0,
+      "ac_kw": 0,
+      "ac_zero_count": 1,
+      "first_year": 2020,
+      "last_year": 2020
+    },
+    {
+      "sdd": "Phulbari Electricity Supply",
+      "district": "Dinajpur",
+      "unassigned": false,
+      "systems": 1,
+      "dc_kwp": 10.0,
+      "ac_kw": 0,
+      "ac_zero_count": 1,
+      "first_year": 2020,
+      "last_year": 2020
+    },
+    {
+      "sdd": "Setabganj Electricity Supply",
+      "district": "Dinajpur",
+      "unassigned": false,
+      "systems": 1,
+      "dc_kwp": 10.0,
+      "ac_kw": 0,
+      "ac_zero_count": 1,
+      "first_year": 2019,
+      "last_year": 2019
+    },
+    {
+      "sdd": "Gaibandha S&D 1",
+      "district": "Gaibandha",
+      "unassigned": false,
+      "systems": 2,
+      "dc_kwp": 30.32,
+      "ac_kw": 20.0,
+      "ac_zero_count": 1,
+      "first_year": 2021,
+      "last_year": 2026
+    },
+    {
+      "sdd": "Gaibandha S&D 2",
+      "district": "Gaibandha",
+      "unassigned": false,
+      "systems": 1,
+      "dc_kwp": 10.0,
+      "ac_kw": 0,
+      "ac_zero_count": 1,
+      "first_year": 2021,
+      "last_year": 2021
+    },
+    {
+      "sdd": "Joypurhat S&D",
+      "district": "Joypurhat",
+      "unassigned": false,
+      "systems": 3,
+      "dc_kwp": 68.0,
+      "ac_kw": 0,
+      "ac_zero_count": 3,
+      "first_year": 2021,
+      "last_year": 2023
+    },
+    {
+      "sdd": "Kurigram S&D",
+      "district": "Kurigram",
+      "unassigned": false,
+      "systems": 1,
+      "dc_kwp": 10.0,
+      "ac_kw": 0,
+      "ac_zero_count": 1,
+      "first_year": 2020,
+      "last_year": 2020
+    },
+    {
+      "sdd": "Kaliganj S&D",
+      "district": "Lalmonirhat",
+      "unassigned": false,
+      "systems": 1,
+      "dc_kwp": 350.0,
+      "ac_kw": 0,
+      "ac_zero_count": 1,
+      "first_year": 2024,
+      "last_year": 2024
+    },
+    {
+      "sdd": "Lalmonirhat S&D",
+      "district": "Lalmonirhat",
+      "unassigned": false,
+      "systems": 1,
+      "dc_kwp": 10.0,
+      "ac_kw": 0,
+      "ac_zero_count": 1,
+      "first_year": 2020,
+      "last_year": 2020
+    },
+    {
+      "sdd": "Naogaon North S&D",
+      "district": "Naogaon",
+      "unassigned": false,
+      "systems": 1,
+      "dc_kwp": 7.0,
+      "ac_kw": 0,
+      "ac_zero_count": 1,
+      "first_year": 2023,
+      "last_year": 2023
+    },
+    {
+      "sdd": "Naogaon S&D",
+      "district": "Naogaon",
+      "unassigned": false,
+      "systems": 1,
+      "dc_kwp": 10.0,
+      "ac_kw": 0,
+      "ac_zero_count": 1,
+      "first_year": 2021,
+      "last_year": 2021
+    },
+    {
+      "sdd": "Naogaon South S&D",
+      "district": "Naogaon",
+      "unassigned": false,
+      "systems": 1,
+      "dc_kwp": 4.5,
+      "ac_kw": 0,
+      "ac_zero_count": 1,
+      "first_year": 2023,
+      "last_year": 2023
+    },
+    {
+      "sdd": "Natore S&D",
+      "district": "Natore",
+      "unassigned": false,
+      "systems": 4,
+      "dc_kwp": 40.0,
+      "ac_kw": 0,
+      "ac_zero_count": 4,
+      "first_year": 2021,
+      "last_year": 2022
+    },
+    {
+      "sdd": "Nilphamari S&D",
+      "district": "Nilphamari",
+      "unassigned": false,
+      "systems": 3,
+      "dc_kwp": 70.0,
+      "ac_kw": 60.0,
+      "ac_zero_count": 1,
+      "first_year": 2023,
+      "last_year": 2026
+    },
+    {
+      "sdd": "Saidpur S&D",
+      "district": "Nilphamari",
+      "unassigned": false,
+      "systems": 2,
+      "dc_kwp": 50.0,
+      "ac_kw": 30.0,
+      "ac_zero_count": 1,
+      "first_year": 2020,
+      "last_year": 2025
+    },
+    {
+      "sdd": "Ishwardi S&D",
+      "district": "Pabna",
+      "unassigned": false,
+      "systems": 7,
+      "dc_kwp": 1544.0,
+      "ac_kw": 1370.0,
+      "ac_zero_count": 6,
+      "first_year": 2019,
+      "last_year": 2026
+    },
+    {
+      "sdd": "Pabna S&D 1",
+      "district": "Pabna",
+      "unassigned": false,
+      "systems": 1,
+      "dc_kwp": 10.0,
+      "ac_kw": 0,
+      "ac_zero_count": 1,
+      "first_year": 2021,
+      "last_year": 2021
+    },
+    {
+      "sdd": "Pabna S&D 2",
+      "district": "Pabna",
+      "unassigned": false,
+      "systems": 2,
+      "dc_kwp": 20.0,
+      "ac_kw": 0,
+      "ac_zero_count": 2,
+      "first_year": 2021,
+      "last_year": 2021
+    },
+    {
+      "sdd": "Panchagarh S&D",
+      "district": "Panchagarh",
+      "unassigned": false,
+      "systems": 4,
+      "dc_kwp": 993.13,
+      "ac_kw": 305.0,
+      "ac_zero_count": 2,
+      "first_year": 2021,
+      "last_year": 2026
+    },
+    {
+      "sdd": "Tetulia Electricity Supply",
+      "district": "Panchagarh",
+      "unassigned": false,
+      "systems": 1,
+      "dc_kwp": 1294.0,
+      "ac_kw": 1050.0,
+      "ac_zero_count": 0,
+      "first_year": 2022,
+      "last_year": 2022
+    },
+    {
+      "sdd": "Bimanbandar S&D",
+      "district": "Rajshahi",
+      "unassigned": false,
+      "systems": 5,
+      "dc_kwp": 40.1,
+      "ac_kw": 10.0,
+      "ac_zero_count": 4,
+      "first_year": 2023,
+      "last_year": 2026
+    },
+    {
+      "sdd": "Godagari S&D",
+      "district": "Rajshahi",
+      "unassigned": false,
+      "systems": 1,
+      "dc_kwp": 8.0,
+      "ac_kw": 0,
+      "ac_zero_count": 1,
+      "first_year": 2022,
+      "last_year": 2022
+    },
+    {
+      "sdd": "Kashiadanga S&D",
+      "district": "Rajshahi",
+      "unassigned": false,
+      "systems": 1,
+      "dc_kwp": 18.0,
+      "ac_kw": 0,
+      "ac_zero_count": 1,
+      "first_year": 2022,
+      "last_year": 2022
+    },
+    {
+      "sdd": "Rajshahi S&D 1",
+      "district": "Rajshahi",
+      "unassigned": false,
+      "systems": 8,
+      "dc_kwp": 76.2,
+      "ac_kw": 14.0,
+      "ac_zero_count": 7,
+      "first_year": 2019,
+      "last_year": 2024
+    },
+    {
+      "sdd": "Rajshahi S&D 2",
+      "district": "Rajshahi",
+      "unassigned": false,
+      "systems": 4,
+      "dc_kwp": 81.1,
+      "ac_kw": 25.0,
+      "ac_zero_count": 3,
+      "first_year": 2018,
+      "last_year": 2024
+    },
+    {
+      "sdd": "Rajshahi S&D 3",
+      "district": "Rajshahi",
+      "unassigned": false,
+      "systems": 8,
+      "dc_kwp": 63.8,
+      "ac_kw": 10.0,
+      "ac_zero_count": 7,
+      "first_year": 2018,
+      "last_year": 2026
+    },
+    {
+      "sdd": "Rajshahi S&D 4",
+      "district": "Rajshahi",
+      "unassigned": false,
+      "systems": 5,
+      "dc_kwp": 34.9,
+      "ac_kw": 7.5,
+      "ac_zero_count": 4,
+      "first_year": 2020,
+      "last_year": 2026
+    },
+    {
+      "sdd": "Rajshahi S&D 5",
+      "district": "Rajshahi",
+      "unassigned": false,
+      "systems": 9,
+      "dc_kwp": 79.0,
+      "ac_kw": 0,
+      "ac_zero_count": 9,
+      "first_year": 2018,
+      "last_year": 2023
+    },
+    {
+      "sdd": "Rangpur S&D 1",
+      "district": "Rangpur",
+      "unassigned": false,
+      "systems": 5,
+      "dc_kwp": 45.0,
+      "ac_kw": 10.0,
+      "ac_zero_count": 4,
+      "first_year": 2019,
+      "last_year": 2026
+    },
+    {
+      "sdd": "Rangpur S&D 2",
+      "district": "Rangpur",
+      "unassigned": false,
+      "systems": 4,
+      "dc_kwp": 44.0,
+      "ac_kw": 0,
+      "ac_zero_count": 4,
+      "first_year": 2019,
+      "last_year": 2022
+    },
+    {
+      "sdd": "Rangpur S&D 3",
+      "district": "Rangpur",
+      "unassigned": false,
+      "systems": 7,
+      "dc_kwp": 209.0,
+      "ac_kw": 88.0,
+      "ac_zero_count": 3,
+      "first_year": 2019,
+      "last_year": 2025
+    },
+    {
+      "sdd": "Sirajganj S&D 2",
+      "district": "Sirajganj",
+      "unassigned": false,
+      "systems": 4,
+      "dc_kwp": 14.2,
+      "ac_kw": 0,
+      "ac_zero_count": 4,
+      "first_year": 2021,
+      "last_year": 2023
+    },
+    {
+      "sdd": "Thakurgaon S&D",
+      "district": "Thakurgaon",
+      "unassigned": false,
+      "systems": 3,
+      "dc_kwp": 275.0,
+      "ac_kw": 265.0,
+      "ac_zero_count": 1,
+      "first_year": 2020,
+      "last_year": 2026
+    },
+    {
+      "sdd": "Unassigned",
+      "district": "Bogura",
+      "unassigned": true,
+      "systems": 8,
+      "dc_kwp": 2735.05,
+      "ac_kw": 2261.0,
+      "ac_zero_count": 3,
+      "first_year": 2021,
+      "last_year": 2026
+    },
+    {
+      "sdd": "Unassigned",
+      "district": "Kurigram",
+      "unassigned": true,
+      "systems": 1,
+      "dc_kwp": 33.0,
+      "ac_kw": 28.0,
+      "ac_zero_count": 0,
+      "first_year": 2025,
+      "last_year": 2025
+    },
+    {
+      "sdd": "Unassigned",
+      "district": "Lalmonirhat",
+      "unassigned": true,
+      "systems": 1,
+      "dc_kwp": 33.0,
+      "ac_kw": 30.0,
+      "ac_zero_count": 0,
+      "first_year": 2026,
+      "last_year": 2026
+    },
+    {
+      "sdd": "Unassigned",
+      "district": "Naogaon",
+      "unassigned": true,
+      "systems": 2,
+      "dc_kwp": 630.0,
+      "ac_kw": 493.0,
+      "ac_zero_count": 0,
+      "first_year": 2025,
+      "last_year": 2026
+    },
+    {
+      "sdd": "Unassigned",
+      "district": "Natore",
+      "unassigned": true,
+      "systems": 2,
+      "dc_kwp": 9.0,
+      "ac_kw": 7.0,
+      "ac_zero_count": 0,
+      "first_year": 2026,
+      "last_year": 2026
+    },
+    {
+      "sdd": "Unassigned",
+      "district": "Nilphamari",
+      "unassigned": true,
+      "systems": 1,
+      "dc_kwp": 33.0,
+      "ac_kw": 30.0,
+      "ac_zero_count": 0,
+      "first_year": 2025,
+      "last_year": 2025
+    },
+    {
+      "sdd": "Unassigned",
+      "district": "Pabna",
+      "unassigned": true,
+      "systems": 7,
+      "dc_kwp": 112.0,
+      "ac_kw": 66.5,
+      "ac_zero_count": 4,
+      "first_year": 2021,
+      "last_year": 2026
+    },
+    {
+      "sdd": "Unassigned",
+      "district": "Panchagarh",
+      "unassigned": true,
+      "systems": 1,
+      "dc_kwp": 40.0,
+      "ac_kw": 33.0,
+      "ac_zero_count": 0,
+      "first_year": 2025,
+      "last_year": 2025
+    },
+    {
+      "sdd": "Unassigned",
+      "district": "Rajshahi",
+      "unassigned": true,
+      "systems": 8,
+      "dc_kwp": 762.72,
+      "ac_kw": 622.0,
+      "ac_zero_count": 1,
+      "first_year": 2022,
+      "last_year": 2026
+    },
+    {
+      "sdd": "Unassigned",
+      "district": "Sirajganj",
+      "unassigned": true,
+      "systems": 6,
+      "dc_kwp": 214.0,
+      "ac_kw": 205.0,
+      "ac_zero_count": 0,
+      "first_year": 2023,
+      "last_year": 2026
+    }
+  ],
+  "records": [
+    {
+      "sid": "9731",
+      "project_name": "100 kWp (100 kW AC) NEM RTS by DC Office Bogura (S&D:Bogura-1)",
+      "district": "Bogura",
+      "upazila": "Bogra Sadar",
+      "location": "Bogura City",
+      "sdd": "Bogura S&D 1",
+      "dc_kwp": 100.0,
+      "ac_kw": 100.0,
+      "cod": "2026-09-30",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "SDD/S&D assigned from explicit project/consumer-name reference: Bogura S&D 1.",
+      "flags": []
+    },
+    {
+      "sid": "9729",
+      "project_name": "1.4 MWp (1.4 MW AC) NEM RTS by Iswardi EPZ (S&D: Ishwardi)",
+      "district": "Pabna",
+      "upazila": "Ishwardi Upazila",
+      "location": "Ishwardi EPZ",
+      "sdd": "Ishwardi S&D",
+      "dc_kwp": 1434.0,
+      "ac_kw": 1370.0,
+      "cod": "2026-09-24",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "SDD/S&D assigned from explicit project/consumer-name reference: Ishwardi S&D. Capacity description in project name differs from dedicated capacity field(s); dedicated DC/AC values used.",
+      "flags": [
+        "name_capacity_differs"
+      ]
+    },
+    {
+      "sid": "9599",
+      "project_name": "3 kWp (3 kW AC) NEM RTS by Upazilla ICT Office, Dupchanchia",
+      "district": "Bogura",
+      "upazila": "Dhupchanchia",
+      "location": "Dupchanchia Sadar",
+      "sdd": "Unassigned",
+      "dc_kwp": 3.05,
+      "ac_kw": 3.0,
+      "cod": "2026-09-10",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference. Capacity description in project name differs from dedicated capacity field(s); dedicated DC/AC values used.",
+      "flags": [
+        "sdd_unassigned",
+        "name_capacity_differs"
+      ]
+    },
+    {
+      "sid": "9598",
+      "project_name": "6 kWp (5 kW AC) NEM RTS by Adarsha Clinic (S&D Panchagarh)",
+      "district": "Panchagarh",
+      "upazila": "Panchagarh Sadar",
+      "location": "Panchagarh Sadar",
+      "sdd": "Panchagarh S&D",
+      "dc_kwp": 6.25,
+      "ac_kw": 5.0,
+      "cod": "2026-09-07",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "Capacity description in project name differs from dedicated capacity field(s); dedicated DC/AC values used.",
+      "flags": [
+        "name_capacity_differs"
+      ]
+    },
+    {
+      "sid": "9597",
+      "project_name": "15 kWp (15 kW AC) NEM RTS by Md. Mudasser Hossain (S&D: Thakurgaon)",
+      "district": "Thakurgaon",
+      "upazila": "Thakurgaon Sadar Upazila",
+      "location": "Thakurgaon Sadar",
+      "sdd": "Thakurgaon S&D",
+      "dc_kwp": 15.0,
+      "ac_kw": 15.0,
+      "cod": "2026-09-01",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "SDD/S&D assigned from explicit project/consumer-name reference: Thakurgaon S&D.",
+      "flags": []
+    },
+    {
+      "sid": "9730",
+      "project_name": "120 kWp (100 kW AC) NEM RTS by BPDB",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Rajshahi City",
+      "sdd": "Unassigned",
+      "dc_kwp": 120.0,
+      "ac_kw": 100.0,
+      "cod": "2026-08-23",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "9562",
+      "project_name": "250 kWp (250 kW AC) NEM RTS by Kader & Sons Cold Storage (S&D: Thakurgaon)",
+      "district": "Thakurgaon",
+      "upazila": "Thakurgaon Sadar Upazila",
+      "location": "Thakurgaon Sadar",
+      "sdd": "Thakurgaon S&D",
+      "dc_kwp": 250.0,
+      "ac_kw": 250.0,
+      "cod": "2026-08-13",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "",
+      "flags": []
+    },
+    {
+      "sid": "9546",
+      "project_name": "191 kWp (150 kW AC) NEM RTS by Khandakar Jute Mills ( S&D: Bogura-4)",
+      "district": "Bogura",
+      "upazila": "Bogra Sadar",
+      "location": "Khandaker Jute Mills",
+      "sdd": "Bogura S&D 4",
+      "dc_kwp": 191.0,
+      "ac_kw": 150.0,
+      "cod": "2026-08-03",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "SDD/S&D assigned from explicit project/consumer-name reference: Bogura S&D 4.",
+      "flags": []
+    },
+    {
+      "sid": "9561",
+      "project_name": "48 kWp (45 kW AC) NEM RTS by DC Office, Nilphamari (S&D: Nilphamari)",
+      "district": "Nilphamari",
+      "upazila": "Nilphamari Sadar",
+      "location": "DC Office, Nilphamari",
+      "sdd": "Nilphamari S&D",
+      "dc_kwp": 48.0,
+      "ac_kw": 45.0,
+      "cod": "2026-08-03",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "",
+      "flags": []
+    },
+    {
+      "sid": "9548",
+      "project_name": "47 kWp (47 kW AC) NEM RTS by DC Office, Pabna",
+      "district": "Pabna",
+      "upazila": "Pabna Sadar Upazila",
+      "location": "Office of the Deputy Commissioner, Pabna",
+      "sdd": "Unassigned",
+      "dc_kwp": 47.0,
+      "ac_kw": 47.0,
+      "cod": "2026-07-22",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "9594",
+      "project_name": "50 kWp (50 kW AC) NEM RTS by DC Office, Sirajganj",
+      "district": "Sirajganj",
+      "upazila": "Sirajganj Sadar Upazila",
+      "location": "DC Office Sirajganj",
+      "sdd": "Unassigned",
+      "dc_kwp": 50.0,
+      "ac_kw": 50.0,
+      "cod": "2026-07-22",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "9595",
+      "project_name": "50 kWp (50 kW AC) NEM RTS by DC Office Sirajganj",
+      "district": "Sirajganj",
+      "upazila": "Sirajganj Sadar Upazila",
+      "location": "DC Office Sirajganj",
+      "sdd": "Unassigned",
+      "dc_kwp": 50.0,
+      "ac_kw": 50.0,
+      "cod": "2026-07-22",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "9596",
+      "project_name": "50 kWp (50 kW AC) NEM RTS by DC Office Sirajganj",
+      "district": "Sirajganj",
+      "upazila": "Sirajganj Sadar Upazila",
+      "location": "DC Office Sirajganj",
+      "sdd": "Unassigned",
+      "dc_kwp": 50.0,
+      "ac_kw": 50.0,
+      "cod": "2026-07-22",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "9547",
+      "project_name": "729 kWp (600 kW AC) NEM RTS by North Hair Products Bangladesh LTD. (S&D: DInajpur-1)",
+      "district": "Dinajpur",
+      "upazila": "Dinajpur Sadar Upazila",
+      "location": "Dinajpur Sadar",
+      "sdd": "Dinajpur S&D 1",
+      "dc_kwp": 729.0,
+      "ac_kw": 600.0,
+      "cod": "2026-07-20",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "",
+      "flags": []
+    },
+    {
+      "sid": "9270",
+      "project_name": "20 kWp (20 kW AC) NEM RTS by MANAGING DIRECTOR, EVERLAST;S&D: Gaibandha-1",
+      "district": "Gaibandha",
+      "upazila": "Gaibandha sadar",
+      "location": "Gaibandha Sadar",
+      "sdd": "Gaibandha S&D 1",
+      "dc_kwp": 20.32,
+      "ac_kw": 20.0,
+      "cod": "2026-06-03",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "Capacity description in project name differs from dedicated capacity field(s); dedicated DC/AC values used.",
+      "flags": [
+        "name_capacity_differs"
+      ]
+    },
+    {
+      "sid": "9269",
+      "project_name": "12 kWp (10 kW AC) NEM RTS by Sarkar Filling Station; S&D: Bimanbandar, Rajshahi",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Naodapara, Rajshahi",
+      "sdd": "Bimanbandar S&D",
+      "dc_kwp": 12.0,
+      "ac_kw": 10.0,
+      "cod": "2026-04-28",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "SDD/S&D assigned from explicit project/consumer-name reference: Bimanbandar S&D.",
+      "flags": []
+    },
+    {
+      "sid": "8907",
+      "project_name": "11 kWp (10 kW AC) NEM RTS by Grameen Bank Ranjshahi",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Holding No: 281, Bonolota Residential Area, Sopu",
+      "sdd": "Rajshahi S&D 3",
+      "dc_kwp": 10.5,
+      "ac_kw": 10.0,
+      "cod": "2026-03-24",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "Capacity description in project name differs from dedicated capacity field(s); dedicated DC/AC values used.",
+      "flags": [
+        "name_capacity_differs"
+      ]
+    },
+    {
+      "sid": "8909",
+      "project_name": "5 kWp (4 kW AC) NEM RTS by Superintendent PTI, Natore",
+      "district": "Natore",
+      "upazila": "Natore Sadar Upazila",
+      "location": "PTI",
+      "sdd": "Unassigned",
+      "dc_kwp": 5.0,
+      "ac_kw": 4.0,
+      "cod": "2026-03-16",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "8910",
+      "project_name": "4 kWp (3 kW AC) NEM RTS by Natore Sadar Upazilla Model Mosque",
+      "district": "Natore",
+      "upazila": "Natore Sadar Upazila",
+      "location": "Model Mosque Natore, Sadar Upazilla",
+      "sdd": "Unassigned",
+      "dc_kwp": 4.0,
+      "ac_kw": 3.0,
+      "cod": "2026-03-15",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "8908",
+      "project_name": "25 kWp (20 kW AC) NEM RTS by 250 Bed Sadar Hospital, Sirajganj",
+      "district": "Sirajganj",
+      "upazila": "Sirajganj Sadar Upazila",
+      "location": "250 Bed Sadar Hospital, Sirajganj",
+      "sdd": "Unassigned",
+      "dc_kwp": 25.0,
+      "ac_kw": 20.0,
+      "cod": "2026-03-11",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "8873",
+      "project_name": "200 kWp (175 kW AC) NEM RTS by TMSS Agro Based Industry",
+      "district": "Bogura",
+      "upazila": "Dhupchanchia",
+      "location": "TMSS Agro Based Industry, Dupchanchia",
+      "sdd": "Unassigned",
+      "dc_kwp": 200.0,
+      "ac_kw": 175.0,
+      "cod": "2026-03-02",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "8871",
+      "project_name": "260 kWp (250 kW AC) NEM RTS by BCL Food & Baverage Ltd",
+      "district": "Bogura",
+      "upazila": "Bogra Sadar",
+      "location": "TMSS BCL Food & Baverage Ltd",
+      "sdd": "Unassigned",
+      "dc_kwp": 260.0,
+      "ac_kw": 250.0,
+      "cod": "2026-02-26",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "8869",
+      "project_name": "540 kWp (450 kW AC) NEM RTS by Sarkar Cold Storage",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Sarkar Cold Storage, Nawhata, Rajshahi",
+      "sdd": "Unassigned",
+      "dc_kwp": 540.0,
+      "ac_kw": 450.0,
+      "cod": "2026-02-23",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "8870",
+      "project_name": "33 kWp (30 kW AC) NEM RTS by Deputy Co-ordinator YTC Lalmonirhat",
+      "district": "Lalmonirhat",
+      "upazila": "Lalmanirhat Sadar",
+      "location": "Police Line, Lalmonirhat",
+      "sdd": "Unassigned",
+      "dc_kwp": 33.0,
+      "ac_kw": 30.0,
+      "cod": "2026-02-19",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "8874",
+      "project_name": "10 kWp (8 kW AC) NEM RTS by Rajshahi Mail Processing Center, Rajshahi",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "C&B Mail Processing Center",
+      "sdd": "Rajshahi S&D 4",
+      "dc_kwp": 10.0,
+      "ac_kw": 7.5,
+      "cod": "2026-02-15",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "Capacity description in project name differs from dedicated capacity field(s); dedicated DC/AC values used.",
+      "flags": [
+        "name_capacity_differs"
+      ]
+    },
+    {
+      "sid": "8415",
+      "project_name": "386 kWp (330 kW AC) NEM RTS by AGROW",
+      "district": "Chapainawabganj",
+      "upazila": "Nachole Upazila",
+      "location": null,
+      "sdd": "Gomostapur S&D",
+      "dc_kwp": 386.0,
+      "ac_kw": 330.0,
+      "cod": "2026-01-29",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "Location is missing in source.",
+      "flags": []
+    },
+    {
+      "sid": "8872",
+      "project_name": "4 kWp (3 kW AC) NEM RTS by Assistan",
+      "district": "Rajshahi",
+      "upazila": "Paba",
+      "location": "PABA, BAYA,RAJSHAHI",
+      "sdd": "Unassigned",
+      "dc_kwp": 4.0,
+      "ac_kw": 3.0,
+      "cod": "2026-01-27",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "8599",
+      "project_name": "10 kWp (8 kW AC) NEM RTS by ISHWARDI",
+      "district": "Pabna",
+      "upazila": "Ishwardi Upazila",
+      "location": "POURO PARA ISHWARDI",
+      "sdd": "Unassigned",
+      "dc_kwp": 10.0,
+      "ac_kw": 7.5,
+      "cod": "2026-01-22",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference. Capacity description in project name differs from dedicated capacity field(s); dedicated DC/AC values used.",
+      "flags": [
+        "sdd_unassigned",
+        "name_capacity_differs"
+      ]
+    },
+    {
+      "sid": "8818",
+      "project_name": "32 kWp (30 kW AC) NEM RTS by UCEP",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "PABA, BAYA,RAJSHAHI",
+      "sdd": "Unassigned",
+      "dc_kwp": 31.72,
+      "ac_kw": 30.0,
+      "cod": "2026-01-16",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference. Capacity description in project name differs from dedicated capacity field(s); dedicated DC/AC values used.",
+      "flags": [
+        "sdd_unassigned",
+        "name_capacity_differs"
+      ]
+    },
+    {
+      "sid": "9167",
+      "project_name": "33 kWp (30 kW AC) NEM RTS by Co-ordinator YTC Sirajganj",
+      "district": "Sirajganj",
+      "upazila": "Sirajganj Sadar Upazila",
+      "location": "Dirabiddanath, SIrajganj Sadar",
+      "sdd": "Unassigned",
+      "dc_kwp": 33.0,
+      "ac_kw": 30.0,
+      "cod": "2026-01-15",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "8906",
+      "project_name": "6 kWp (5 kW AC) NEM RTS by Managing Director, Abdul Monem Ltd.",
+      "district": "Chapainawabganj",
+      "upazila": "Chapai Nawabganj Sadar Upazila",
+      "location": null,
+      "sdd": "Chapainawabganj S&D 1",
+      "dc_kwp": 6.0,
+      "ac_kw": 5.0,
+      "cod": "2026-01-13",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "Location is missing in source.",
+      "flags": []
+    },
+    {
+      "sid": "8819",
+      "project_name": "590 kWp (460 kW AC) NEM RTS by T.K",
+      "district": "Naogaon",
+      "upazila": "Naogaon Sadar Upazila",
+      "location": "KUMURIA, HAPANIA, NAOGAON SADAR.",
+      "sdd": "Unassigned",
+      "dc_kwp": 590.0,
+      "ac_kw": 460.0,
+      "cod": "2026-01-12",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "8417",
+      "project_name": "12 kWp (10 kW AC) NEM RTS by Rangpur",
+      "district": "Rangpur",
+      "upazila": "Rangpur Sadar",
+      "location": null,
+      "sdd": "Rangpur S&D 1",
+      "dc_kwp": 12.0,
+      "ac_kw": 10.0,
+      "cod": "2026-01-11",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "Location is missing in source.",
+      "flags": []
+    },
+    {
+      "sid": "8820",
+      "project_name": "40 kWp (33 kW AC) NEM RTS by Deputy",
+      "district": "Bogura",
+      "upazila": "Bogra Sadar",
+      "location": "Center Rail Gate , Bogura",
+      "sdd": "Unassigned",
+      "dc_kwp": 40.0,
+      "ac_kw": 33.0,
+      "cod": "2026-01-05",
+      "year": 2026,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "7488",
+      "project_name": "20 kWp (15 kW AC) NEM RTS by MD AKTHER HOSSAIN SHOPON",
+      "district": "Nilphamari",
+      "upazila": "Nilphamari Sadar",
+      "location": "BABU PARA",
+      "sdd": "Nilphamari S&D",
+      "dc_kwp": 20.0,
+      "ac_kw": 15.0,
+      "cod": "2025-05-15",
+      "year": 2025,
+      "status": "Completed & Running",
+      "notes": "",
+      "flags": []
+    },
+    {
+      "sid": "7487",
+      "project_name": "40 kWp (33 kW AC) NEM RTS by Deputy Co-ordinator Youth Training Center, Panchagarh",
+      "district": "Panchagarh",
+      "upazila": "Panchagarh Sadar",
+      "location": "YTC Panchagarh",
+      "sdd": "Unassigned",
+      "dc_kwp": 40.0,
+      "ac_kw": 33.0,
+      "cod": "2025-04-30",
+      "year": 2025,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "7486",
+      "project_name": "360 kWp (300 kW AC) NEM RTS by KAZI FARMS LTD. S&D: Panchagarh",
+      "district": "Panchagarh",
+      "upazila": "Tetulia",
+      "location": "LANGALGAON DHEMSIMARY,PANCHAGARH",
+      "sdd": "Panchagarh S&D",
+      "dc_kwp": 360.0,
+      "ac_kw": 300.0,
+      "cod": "2025-04-24",
+      "year": 2025,
+      "status": "Completed & Running",
+      "notes": "SDD/S&D assigned from explicit project/consumer-name reference: Panchagarh S&D.",
+      "flags": []
+    },
+    {
+      "sid": "7485",
+      "project_name": "40 kWp (30 kW AC) NEM RTS by Common Facility Center (CFC) ;Saidpur",
+      "district": "Nilphamari",
+      "upazila": "Saidpur",
+      "location": "Habib Bari, Saidpur-Dinajpur Bypass Road, Saidpu",
+      "sdd": "Saidpur S&D",
+      "dc_kwp": 40.0,
+      "ac_kw": 30.0,
+      "cod": "2025-04-23",
+      "year": 2025,
+      "status": "Completed & Running",
+      "notes": "",
+      "flags": []
+    },
+    {
+      "sid": "8817",
+      "project_name": "1.9 MWp (1.8 MW AC) NEM RTS by MANAGING",
+      "district": "Bogura",
+      "upazila": "Bogra Sadar",
+      "location": "Fresh gate Matidali Bogura",
+      "sdd": "Unassigned",
+      "dc_kwp": 1852.0,
+      "ac_kw": 1800.0,
+      "cod": "2025-03-24",
+      "year": 2025,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference. Capacity description in project name differs from dedicated capacity field(s); dedicated DC/AC values used.",
+      "flags": [
+        "sdd_unassigned",
+        "name_capacity_differs"
+      ]
+    },
+    {
+      "sid": "7484",
+      "project_name": "10 kWp (8 kW AC) NEM RTS by ADDITIONAL DIRECTOR NSI",
+      "district": "Rangpur",
+      "upazila": "Rangpur Sadar",
+      "location": "ROBERTSONGONJ ALAMNAGAR",
+      "sdd": "Rangpur S&D 3",
+      "dc_kwp": 10.0,
+      "ac_kw": 8.0,
+      "cod": "2025-03-20",
+      "year": 2025,
+      "status": "Completed & Running",
+      "notes": "",
+      "flags": []
+    },
+    {
+      "sid": "6947",
+      "project_name": "40 kWp (33 kW AC) NEM RTS by Deputy Co-ordinator Youth Training Center, Chapai-Nawabganj",
+      "district": "Chapainawabganj",
+      "upazila": "Chapai Nawabganj Sadar Upazila",
+      "location": "DD YTC",
+      "sdd": "Chapainawabganj S&D 1",
+      "dc_kwp": 40.0,
+      "ac_kw": 33.0,
+      "cod": "2025-03-17",
+      "year": 2025,
+      "status": "Completed & Running",
+      "notes": "",
+      "flags": []
+    },
+    {
+      "sid": "7480",
+      "project_name": "230 kWp (200 kW AC) NEM RTS by T.M.S.S PUBLIC SCHOOL&COLLEGE ; S&D: Bogura-4",
+      "district": "Bogura",
+      "upazila": "Bogra Sadar",
+      "location": "JOYPURPARA MATIDALI BOGURA SARDAR BOGURA",
+      "sdd": "Bogura S&D 4",
+      "dc_kwp": 230.0,
+      "ac_kw": 200.0,
+      "cod": "2025-03-16",
+      "year": 2025,
+      "status": "Completed & Running",
+      "notes": "SDD/S&D assigned from explicit project/consumer-name reference: Bogura S&D 4.",
+      "flags": []
+    },
+    {
+      "sid": "6945",
+      "project_name": "33 kWp (28 kW AC) NEM RTS by Deputy Co-ordinator Youth Training Center, Kurigram",
+      "district": "Kurigram",
+      "upazila": "Kurigram Sadar",
+      "location": "Kurigram S&D",
+      "sdd": "Unassigned",
+      "dc_kwp": 33.0,
+      "ac_kw": 28.0,
+      "cod": "2025-03-10",
+      "year": 2025,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "7483",
+      "project_name": "25 kWp (21 kW AC) NEM RTS by CO-ORDINATOR",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "S&D :Kashiadanga",
+      "sdd": "Unassigned",
+      "dc_kwp": 25.0,
+      "ac_kw": 21.0,
+      "cod": "2025-03-09",
+      "year": 2025,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "7481",
+      "project_name": "33 kWp (30 kW AC) NEM RTS by Deputy Co-ordinator Youth Training Center, Nilphamari",
+      "district": "Nilphamari",
+      "upazila": "Nilphamari Sadar",
+      "location": "DEVELOPMENT YOUTH TRINING CENTER ,NILPHAMARY",
+      "sdd": "Unassigned",
+      "dc_kwp": 33.0,
+      "ac_kw": 30.0,
+      "cod": "2025-03-06",
+      "year": 2025,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "8821",
+      "project_name": "40 kWp (33 kW AC) NEM RTS by Deputy Co-ordinator Youth Training Center, Naogaon",
+      "district": "Naogaon",
+      "upazila": "Naogaon Sadar Upazila",
+      "location": "Masherpur, Naogaon Sadar",
+      "sdd": "Unassigned",
+      "dc_kwp": 40.0,
+      "ac_kw": 33.0,
+      "cod": "2025-02-15",
+      "year": 2025,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "7482",
+      "project_name": "15 kWp (12 kW AC) NEM RTS by ZEBUN NESSA",
+      "district": "Pabna",
+      "upazila": "Pabna Sadar Upazila",
+      "location": "SHALGARIA",
+      "sdd": "Unassigned",
+      "dc_kwp": 15.0,
+      "ac_kw": 12.0,
+      "cod": "2025-02-13",
+      "year": 2025,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "6946",
+      "project_name": "65 kWp (60 kW AC) NEM RTS by MD. ABDUL MOJID",
+      "district": "Rangpur",
+      "upazila": "Rangpur Sadar",
+      "location": "Mahigonj",
+      "sdd": "Rangpur S&D 3",
+      "dc_kwp": 65.0,
+      "ac_kw": 60.0,
+      "cod": "2025-01-15",
+      "year": 2025,
+      "status": "Completed & Running",
+      "notes": "",
+      "flags": []
+    },
+    {
+      "sid": "8548",
+      "project_name": "29 kWp (25 kW AC) NEM RTS by FA ENGINEERING (FARHANA TASNIM)",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": null,
+      "sdd": "Rajshahi S&D 2",
+      "dc_kwp": 28.5,
+      "ac_kw": 25.0,
+      "cod": "2024-12-22",
+      "year": 2024,
+      "status": "Completed & Running",
+      "notes": "Capacity description in project name differs from dedicated capacity field(s); dedicated DC/AC values used. Location is missing in source.",
+      "flags": [
+        "name_capacity_differs"
+      ]
+    },
+    {
+      "sid": "6720",
+      "project_name": "Ali Fruits and Vegetables Cold Storage,Kaliganj",
+      "district": "Lalmonirhat",
+      "upazila": "Kaliganj",
+      "location": "2 no Modati Union",
+      "sdd": "Kaliganj S&D",
+      "dc_kwp": 350.0,
+      "ac_kw": 0.0,
+      "cod": "2024-10-11",
+      "year": 2024,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "8378",
+      "project_name": "15 kWp (14 kW AC) NEM RTS by Md. Ariful Haque",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Vodra Bou Bazar",
+      "sdd": "Rajshahi S&D 1",
+      "dc_kwp": 15.0,
+      "ac_kw": 14.0,
+      "cod": "2024-02-23",
+      "year": 2024,
+      "status": "Completed & Running",
+      "notes": "",
+      "flags": []
+    },
+    {
+      "sid": "5783",
+      "project_name": "Iktezer Morshed, S&D-4, Rajshahi.",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Kazihata, Rajshahi.",
+      "sdd": "Rajshahi S&D 4",
+      "dc_kwp": 6.0,
+      "ac_kw": 0.0,
+      "cod": "2023-10-29",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5781",
+      "project_name": "Emtiaz Ahmed, S&D-3, Rajshahi.",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Dabtola, Terokhadia, Rajshahi.",
+      "sdd": "Rajshahi S&D 3",
+      "dc_kwp": 9.6,
+      "ac_kw": 0.0,
+      "cod": "2023-10-09",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5782",
+      "project_name": "Obaidul Muktadir, S&D-4, Rajshahi.",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Hatem Khan, Rajshahi.",
+      "sdd": "Rajshahi S&D 4",
+      "dc_kwp": 2.7,
+      "ac_kw": 0.0,
+      "cod": "2023-10-09",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5780",
+      "project_name": "Mazizul Islam, S&D-5, Rajshahi.",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Near Sugar Mill, Rajshahi.",
+      "sdd": "Rajshahi S&D 5",
+      "dc_kwp": 1.0,
+      "ac_kw": 0.0,
+      "cod": "2023-10-07",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5779",
+      "project_name": "Sumiya Zebin, S&D-1, Bogura.",
+      "district": "Bogura",
+      "upazila": "Bogra Sadar",
+      "location": "Bark Road, Bogura.",
+      "sdd": "Bogura S&D 1",
+      "dc_kwp": 2.4,
+      "ac_kw": 0.0,
+      "cod": "2023-10-05",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Bogura S&D 1.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5777",
+      "project_name": "Zakir Hossain, S&D-1, Bogura.",
+      "district": "Bogura",
+      "upazila": "Bogra Sadar",
+      "location": "Betgari, Shajanpur, Bogura.",
+      "sdd": "Bogura S&D 1",
+      "dc_kwp": 12.0,
+      "ac_kw": 0.0,
+      "cod": "2023-10-04",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Bogura S&D 1.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5778",
+      "project_name": "Rowzatur Rumana, S&D-1, Bogura.",
+      "district": "Bogura",
+      "upazila": "Bogra Sadar",
+      "location": "Bogura Sadar, Bogura.",
+      "sdd": "Bogura S&D 1",
+      "dc_kwp": 5.0,
+      "ac_kw": 0.0,
+      "cod": "2023-10-04",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Bogura S&D 1.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5776",
+      "project_name": "United Model Tower, S&D-Naogaon North.",
+      "district": "Naogaon",
+      "upazila": "Naogaon Sadar Upazila",
+      "location": "Naogaon Sadar.",
+      "sdd": "Naogaon North S&D",
+      "dc_kwp": 7.0,
+      "ac_kw": 0.0,
+      "cod": "2023-10-02",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Naogaon North S&D.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5775",
+      "project_name": "Nikta Alam, S&D-3, Bogura.",
+      "district": "Bogura",
+      "upazila": "Kahaloo",
+      "location": "Porapara, Santaher Road, Bogura",
+      "sdd": "Bogura S&D 3",
+      "dc_kwp": 2.0,
+      "ac_kw": 0.0,
+      "cod": "2023-09-25",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Bogura S&D 3.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5774",
+      "project_name": "Kobir Hossain, S&D-1, Rajshahi.",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Seroil, Ghoramara, Rajshahi.",
+      "sdd": "Rajshahi S&D 1",
+      "dc_kwp": 2.0,
+      "ac_kw": 0.0,
+      "cod": "2023-09-21",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5768",
+      "project_name": "Varendra University, S&D-Bimanbondor.",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Nawdapara Rajshahi.",
+      "sdd": "Bimanbandar S&D",
+      "dc_kwp": 3.6,
+      "ac_kw": 0.0,
+      "cod": "2023-09-17",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Bimanbandar S&D.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5773",
+      "project_name": "Masud Amin, S&D-4, Rajshahi.",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Mastar Para, Rajshahi.",
+      "sdd": "Rajshahi S&D 4",
+      "dc_kwp": 6.2,
+      "ac_kw": 0.0,
+      "cod": "2023-09-14",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5772",
+      "project_name": "Chest Diesease Hospital, S&D-2, Rajshahi.",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Laxmipur, Rajshahi.",
+      "sdd": "Rajshahi S&D 2",
+      "dc_kwp": 3.6,
+      "ac_kw": 0.0,
+      "cod": "2023-09-13",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5771",
+      "project_name": "Nawabganj Govt. Collage, S&D-1, Chapai nawabganj.",
+      "district": "Chapainawabganj",
+      "upazila": "Chapai Nawabganj Sadar Upazila",
+      "location": "Chapai Nawabganj Sadar.",
+      "sdd": "Chapainawabganj S&D 1",
+      "dc_kwp": 12.0,
+      "ac_kw": 0.0,
+      "cod": "2023-09-12",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5770",
+      "project_name": "Shamim-Al-Mamun, S&D-3, Rajshahi.",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Zinnah Nagor, Rajshahi.",
+      "sdd": "Rajshahi S&D 3",
+      "dc_kwp": 7.5,
+      "ac_kw": 0.0,
+      "cod": "2023-09-07",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5767",
+      "project_name": "Motiur rahman, S&D-Naogaon south.",
+      "district": "Naogaon",
+      "upazila": "Naogaon Sadar Upazila",
+      "location": "Chamra gudam, Naogaon Sadar.",
+      "sdd": "Naogaon South S&D",
+      "dc_kwp": 4.5,
+      "ac_kw": 0.0,
+      "cod": "2023-09-05",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Naogaon South S&D.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5769",
+      "project_name": "Motiur rahman, S&D-Bimanbondor.",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Nawdapara Rajshahi.",
+      "sdd": "Bimanbandar S&D",
+      "dc_kwp": 7.5,
+      "ac_kw": 0.0,
+      "cod": "2023-09-04",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Bimanbandar S&D.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5766",
+      "project_name": "Bariul islam, S&D-Bimanbondor.",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Bosua, Rajshahi.",
+      "sdd": "Bimanbandar S&D",
+      "dc_kwp": 9.5,
+      "ac_kw": 0.0,
+      "cod": "2023-08-27",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Bimanbandar S&D.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5765",
+      "project_name": "Islamic Foundation, S&D-Joypurhat.",
+      "district": "Joypurhat",
+      "upazila": "Joypurhat Sadar",
+      "location": "Joypurhat, Sadar.",
+      "sdd": "Joypurhat S&D",
+      "dc_kwp": 3.0,
+      "ac_kw": 0.0,
+      "cod": "2023-08-24",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Joypurhat S&D.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5764",
+      "project_name": "Moin Uddin, S&D-1, Rajshahi.",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Siroil, Rajshahi sadar, Rajshahi.",
+      "sdd": "Rajshahi S&D 1",
+      "dc_kwp": 5.2,
+      "ac_kw": 0.0,
+      "cod": "2023-08-21",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5763",
+      "project_name": "Habibur Rahman, S&D-Bimanbondor.",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Spark view Terokhadia, Rajpara, Rajshahi.",
+      "sdd": "Bimanbandar S&D",
+      "dc_kwp": 7.5,
+      "ac_kw": 0.0,
+      "cod": "2023-08-16",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Bimanbandar S&D.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5762",
+      "project_name": "Islamic Foundation, S&D-1, Chapai nawabganj.",
+      "district": "Chapainawabganj",
+      "upazila": "Chapai Nawabganj Sadar Upazila",
+      "location": "Chapai nawabganj, Sadar.",
+      "sdd": "Chapainawabganj S&D 1",
+      "dc_kwp": 3.0,
+      "ac_kw": 0.0,
+      "cod": "2023-08-08",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5761",
+      "project_name": "Maa Daal Mill, S&D-2, Sirajganj.",
+      "district": "Sirajganj",
+      "upazila": "Sirajganj Sadar Upazila",
+      "location": "Char Raypur, Purbopara, Ramganti, Sirajganj.",
+      "sdd": "Sirajganj S&D 2",
+      "dc_kwp": 0.2,
+      "ac_kw": 0.0,
+      "cod": "2023-08-06",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Sirajganj S&D 2.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5760",
+      "project_name": "Md. Abdul Kader, S&D-3, Rajshahi.",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Bisic, Sopura, Rajshahi.",
+      "sdd": "Rajshahi S&D 3",
+      "dc_kwp": 3.2,
+      "ac_kw": 0.0,
+      "cod": "2023-08-03",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5784",
+      "project_name": "820 kWp (660 kW AC) NEM RTS by Nabab Auto Rice Mill",
+      "district": "Chapainawabganj",
+      "upazila": "Chapai Nawabganj Sadar Upazila",
+      "location": "Bulonpur, Chapainawabganj.",
+      "sdd": "Chapainawabganj S&D 1",
+      "dc_kwp": 819.68,
+      "ac_kw": 660.0,
+      "cod": "2023-07-06",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Capacity description in project name differs from dedicated capacity field(s); dedicated DC/AC values used.",
+      "flags": [
+        "name_capacity_differs"
+      ]
+    },
+    {
+      "sid": "5785",
+      "project_name": "412 kWp (330 kW AC) NEM RTS by Bismillah Auto Rice Mill(Nabab Auto Rice MIlls Ltd)",
+      "district": "Chapainawabganj",
+      "upazila": "Chapai Nawabganj Sadar Upazila",
+      "location": "Bulonpur, Chapainawabganj.",
+      "sdd": "Chapainawabganj S&D 1",
+      "dc_kwp": 412.02,
+      "ac_kw": 330.0,
+      "cod": "2023-07-06",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Capacity description in project name differs from dedicated capacity field(s); dedicated DC/AC values used.",
+      "flags": [
+        "name_capacity_differs"
+      ]
+    },
+    {
+      "sid": "5786",
+      "project_name": "Nawab Auto Rice Mill, S&D-1, Chapainawabganj.",
+      "district": "Chapainawabganj",
+      "upazila": "Chapai Nawabganj Sadar Upazila",
+      "location": "Bulonpur, Chapainawabganj.",
+      "sdd": "Chapainawabganj S&D 1",
+      "dc_kwp": 660.0,
+      "ac_kw": 0.0,
+      "cod": "2023-07-06",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5485",
+      "project_name": "DISTRICT SEED CERTIFICATION, S&D-Nilphamari.",
+      "district": "Nilphamari",
+      "upazila": "Nilphamari Sadar",
+      "location": "Dakbanglo road, Nilphamari.",
+      "sdd": "Nilphamari S&D",
+      "dc_kwp": 2.0,
+      "ac_kw": 0.0,
+      "cod": "2023-03-14",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5484",
+      "project_name": "KARUPANNYA LTD. of S & D-3, Rangpur",
+      "district": "Rangpur",
+      "upazila": "Rangpur Sadar",
+      "location": "Alamnagar, Rangpur Sadar, Rangpur.",
+      "sdd": "Rangpur S&D 3",
+      "dc_kwp": 80.0,
+      "ac_kw": 0.0,
+      "cod": "2023-02-16",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5482",
+      "project_name": "6 kWp (5 kW AC) NEM RTS by DEPUTY DIRECTOR, DISTRICT SOCIAL SERVICE OFFICE , SIRAJGANJ",
+      "district": "Sirajganj",
+      "upazila": "Sirajganj Sadar Upazila",
+      "location": "Sirajgonj Sadar, Sirajganj.",
+      "sdd": "Unassigned",
+      "dc_kwp": 6.0,
+      "ac_kw": 5.0,
+      "cod": "2023-01-24",
+      "year": 2023,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "5486",
+      "project_name": "MOHAMMED MAHBUB ALAM, S&D-2 Sirajganj, HAZI BARI,Sirajgonj.",
+      "district": "Sirajganj",
+      "upazila": "Sirajganj Sadar Upazila",
+      "location": "HAZI BARI,HAZI AHMED ALI ROAD,MASIMPUR,SIRAJGONJ",
+      "sdd": "Sirajganj S&D 2",
+      "dc_kwp": 3.0,
+      "ac_kw": 0.0,
+      "cod": "2022-12-19",
+      "year": 2022,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Sirajganj S&D 2.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5487",
+      "project_name": "MOHAMMAD ELEAS ASSAD, BRIGHT HEALTH SPECIALIZED HOSPITAL,S&D-2, ShirajGonj.",
+      "district": "Sirajganj",
+      "upazila": "Sirajganj Sadar Upazila",
+      "location": "Sirajgonj Sadar, Sirajganj.",
+      "sdd": "Sirajganj S&D 2",
+      "dc_kwp": 1.0,
+      "ac_kw": 0.0,
+      "cod": "2022-12-03",
+      "year": 2022,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Sirajganj S&D 2.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5503",
+      "project_name": "WARID TELECOM INTERNATIONAL, S&D-2 RANGPUR",
+      "district": "Rangpur",
+      "upazila": "Rangpur Sadar",
+      "location": "DHAP HAZIPARA ,RANGPUR.",
+      "sdd": "Rangpur S&D 2",
+      "dc_kwp": 8.0,
+      "ac_kw": 0.0,
+      "cod": "2022-11-07",
+      "year": 2022,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5502",
+      "project_name": "12 kWp (10 kW AC) NEM RTS by R0BI AXIATA PLC",
+      "district": "Dinajpur",
+      "upazila": "Dinajpur Sadar Upazila",
+      "location": "KALITOLA, DINAJPUR.",
+      "sdd": "Dinajpur S&D 1",
+      "dc_kwp": 12.0,
+      "ac_kw": 10.0,
+      "cod": "2022-10-17",
+      "year": 2022,
+      "status": "Completed & Running",
+      "notes": "",
+      "flags": []
+    },
+    {
+      "sid": "5506",
+      "project_name": "MD.OMAR ALI, S&D Kashiadanga, .",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "HARUPUR KASHIADANGA ,RAJSHAHI.",
+      "sdd": "Kashiadanga S&D",
+      "dc_kwp": 18.0,
+      "ac_kw": 0.0,
+      "cod": "2022-10-17",
+      "year": 2022,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Kashiadanga S&D.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5507",
+      "project_name": "12 kWp (10 kW AC) NEM RTS by Robi Axiata PLC",
+      "district": "Rajshahi",
+      "upazila": "Paba",
+      "location": "ANDHARKOTA CATHLIC CHURCH,HARIPUR PABA ,RAJSHAHI",
+      "sdd": "Unassigned",
+      "dc_kwp": 12.0,
+      "ac_kw": 10.0,
+      "cod": "2022-09-20",
+      "year": 2022,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "5505",
+      "project_name": "10 kWp (8 kW AC) NEM RTS by R0BI AXIATA PLC",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "ADMINISTRATION DARUSHA HAT ,RAJSHAHI.",
+      "sdd": "Unassigned",
+      "dc_kwp": 10.0,
+      "ac_kw": 8.0,
+      "cod": "2022-07-31",
+      "year": 2022,
+      "status": "Completed & Running",
+      "notes": "No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "5504",
+      "project_name": "Divisional Commissioner Office, S&D-2 RANGPUR",
+      "district": "Rangpur",
+      "upazila": "Rangpur Sadar",
+      "location": "DIVISIONAL HEAD QUARTER, UTTOM RANGPUR.",
+      "sdd": "Rangpur S&D 2",
+      "dc_kwp": 20.0,
+      "ac_kw": 0.0,
+      "cod": "2022-07-20",
+      "year": 2022,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5500",
+      "project_name": "12 kWp (10 kW AC) NEM RTS by R0BI AXIATA PLC",
+      "district": "Rangpur",
+      "upazila": "Pirgachha",
+      "location": "INTERNATIONAL L. L.C MAHIGONJ,RANGPUR.",
+      "sdd": "Rangpur S&D 3",
+      "dc_kwp": 12.0,
+      "ac_kw": 10.0,
+      "cod": "2022-07-17",
+      "year": 2022,
+      "status": "Completed & Running",
+      "notes": "",
+      "flags": []
+    },
+    {
+      "sid": "5499",
+      "project_name": "12 kWp (10 kW AC) NEM RTS by R0BI AXIATA PLC",
+      "district": "Rangpur",
+      "upazila": "Rangpur Sadar",
+      "location": "WARID TELECOM ROBERTSONS GONJ TATI PARA,RANGPUR",
+      "sdd": "Rangpur S&D 3",
+      "dc_kwp": 12.0,
+      "ac_kw": 10.0,
+      "cod": "2022-07-10",
+      "year": 2022,
+      "status": "Completed & Running",
+      "notes": "",
+      "flags": []
+    },
+    {
+      "sid": "4907",
+      "project_name": "Net Metering by Robi Axiata Ltd",
+      "district": "Pabna",
+      "upazila": "Ishwardi Upazila",
+      "location": "Gokulnagar",
+      "sdd": "Unassigned",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2022-06-15",
+      "year": 2022,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "ac_zero",
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "4867",
+      "project_name": "Net Metering by Robi Axiata Ltd",
+      "district": "Rajshahi",
+      "upazila": "Godagari",
+      "location": "Mohishalbari",
+      "sdd": "Godagari S&D",
+      "dc_kwp": 8.0,
+      "ac_kw": 0.0,
+      "cod": "2022-06-14",
+      "year": 2022,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. Office/Program ends with Chapainowabganj, but dedicated District is Rajshahi. Godagari S&D and dedicated district retained; conflicting office geography requires source confirmation.",
+      "flags": [
+        "ac_zero",
+        "geo_conflict"
+      ]
+    },
+    {
+      "sid": "4866",
+      "project_name": "10 kw Net metering on by Robi Axiata Ltd.",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Robi tower in S&D-5 area",
+      "sdd": "Rajshahi S&D 5",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2022-05-12",
+      "year": 2022,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "4908",
+      "project_name": "Net Metering by Robi Axiata Ltd",
+      "district": "Chapainawabganj",
+      "upazila": "Chapai Nawabganj Sadar Upazila",
+      "location": "Robi tower in S&D-1 area",
+      "sdd": "Chapainawabganj S&D 1",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2022-05-10",
+      "year": 2022,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "4865",
+      "project_name": "Net metering at LGED office",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "LGED Office , Rajshahi.",
+      "sdd": "Unassigned",
+      "dc_kwp": 20.0,
+      "ac_kw": 0.0,
+      "cod": "2022-04-17",
+      "year": 2022,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "ac_zero",
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "4904",
+      "project_name": "Net Metering by Robi Axiata Ltd",
+      "district": "Natore",
+      "upazila": "Natore Sadar Upazila",
+      "location": "Jhaotola, Natore.",
+      "sdd": "Natore S&D",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2022-04-12",
+      "year": 2022,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "4903",
+      "project_name": "Net Metering on Sheikh Kamal IT Training and Incubation Center Natore",
+      "district": "Natore",
+      "upazila": "Natore Sadar Upazila",
+      "location": "PTI Road, Natore.",
+      "sdd": "Natore S&D",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2022-03-23",
+      "year": 2022,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "4909",
+      "project_name": "Net Metering by Robi Axiata Ltd",
+      "district": "Panchagarh",
+      "upazila": "Panchagarh Sadar",
+      "location": "Robi Tower in S&D Panchgar area",
+      "sdd": "Panchagarh S&D",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2022-03-23",
+      "year": 2022,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "4902",
+      "project_name": "Net Metering by Robi Axiata Ltd",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Binodpur gate.",
+      "sdd": "Rajshahi S&D 1",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2022-02-16",
+      "year": 2022,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "5483",
+      "project_name": "1.3 MWp (1.1 MW AC) NEM RTS by Kazi",
+      "district": "Panchagarh",
+      "upazila": "Tetulia",
+      "location": "Sarkarpara, Buraburi, Tetulia , Panchagarh",
+      "sdd": "Tetulia Electricity Supply",
+      "dc_kwp": 1294.0,
+      "ac_kw": 1050.0,
+      "cod": "2022-01-24",
+      "year": 2022,
+      "status": "Completed & Running",
+      "notes": "Capacity description in project name differs from dedicated capacity field(s); dedicated DC/AC values used.",
+      "flags": [
+        "name_capacity_differs"
+      ]
+    },
+    {
+      "sid": "5501",
+      "project_name": "Institute of Mining, Mineralogy and Metallurgy, BCSIR, S&DD Joypurhat",
+      "district": "Joypurhat",
+      "upazila": "Joypurhat Sadar",
+      "location": "KHANJONPUR ,JOYPURHAT.",
+      "sdd": "Joypurhat S&D",
+      "dc_kwp": 55.0,
+      "ac_kw": 0.0,
+      "cod": "2022-01-02",
+      "year": 2022,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Joypurhat S&D.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "4644",
+      "project_name": "Net Metering Rooftop Solar on Kazi Firms, Panchgar",
+      "district": "Panchagarh",
+      "upazila": "Panchagarh Sadar",
+      "location": "Kazi Firms office",
+      "sdd": "Panchagarh S&D",
+      "dc_kwp": 616.88,
+      "ac_kw": 0.0,
+      "cod": "2021-11-17",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "4385",
+      "project_name": "10 kW Solar Net Metering System on Natore Alaipur 33 by 11 KV Substation, S&D Natore, NESCO.",
+      "district": "Natore",
+      "upazila": "Natore Sadar Upazila",
+      "location": "Alaipur",
+      "sdd": "Natore S&D",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-11-16",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "4386",
+      "project_name": "10 kW Solar Net Metering System on Natore Alaipur 33 by 11 KV Substation, S&D Natore, NESCO.",
+      "district": "Natore",
+      "upazila": "Natore Sadar Upazila",
+      "location": "Alaipur",
+      "sdd": "Natore S&D",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-11-16",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "4382",
+      "project_name": "10 kW Solar Net Metering System on CE Office, Rangpur, NESCO.",
+      "district": "Rangpur",
+      "upazila": "Rangpur Sadar",
+      "location": "Chief Office, NESCO",
+      "sdd": "Rangpur S&D 1",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-10-28",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "4381",
+      "project_name": "10 kW Solar Net Metering System on NESCO Head Office, Rajshahi.",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Hetem Khan, Rajshahi.",
+      "sdd": "Rajshahi S&D 3",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-10-04",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "4384",
+      "project_name": "10 kW Solar Net Metering System on 33-11 KV substation, Sales and Distribution Division Naogaon, NESCO.",
+      "district": "Naogaon",
+      "upazila": "Naogaon Sadar Upazila",
+      "location": "Kathaltoli, NESCO Substation.",
+      "sdd": "Naogaon S&D",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-09-29",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Naogaon S&D.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "4383",
+      "project_name": "10 kW Solar Net Metering System on Sales & Distribution Division Joypurhat, NESCO.",
+      "district": "Joypurhat",
+      "upazila": "Joypurhat Sadar",
+      "location": "Biddyut Bhaban.",
+      "sdd": "Joypurhat S&D",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-09-15",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Joypurhat S&D.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "4232",
+      "project_name": "10 kW Solar Net Metering System on Puthiyabari Substation of SnDD 2 Shirajganj NESCO",
+      "district": "Sirajganj",
+      "upazila": "Sirajganj Sadar Upazila",
+      "location": "Puthiabari",
+      "sdd": "Sirajganj S&D 2",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-08-19",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Sirajganj S&D 2.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "4231",
+      "project_name": "10 kW Solar Net Metering System on substation under SnDD Sherpur Bogura, NESCO.",
+      "district": "Bogura",
+      "upazila": "Bogra Sadar",
+      "location": "Sherpur,",
+      "sdd": "Sherpur S&D",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-08-09",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Sherpur S&D.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "4206",
+      "project_name": "10 kW Solar Net Metering System on Nurpur 33 by 11 kv Substation at SND2 Pabna",
+      "district": "Pabna",
+      "upazila": "Pabna Sadar Upazila",
+      "location": "Nurpur",
+      "sdd": "Pabna S&D 2",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-07-29",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Pabna S&D 2.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "4205",
+      "project_name": "10 kW Solar Net Metering System on Chatiyani 33kv Substation of SND2 Pabna NESCO",
+      "district": "Pabna",
+      "upazila": "Pabna Sadar Upazila",
+      "location": "Chatiyani",
+      "sdd": "Pabna S&D 2",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-07-25",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Pabna S&D 2.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "4185",
+      "project_name": "10 kW Solar Net Metering System on Pabna Lashkarpur Substation",
+      "district": "Pabna",
+      "upazila": "Pabna Sadar Upazila",
+      "location": "Lashkarpur Substation",
+      "sdd": "Unassigned",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-06-28",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "ac_zero",
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "4184",
+      "project_name": "10 kW Solar Net Metering System on Pabna Pailanpur Substation",
+      "district": "Pabna",
+      "upazila": "Pabna Sadar Upazila",
+      "location": "Pailanpur Substation",
+      "sdd": "Unassigned",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-06-03",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "ac_zero",
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "4183",
+      "project_name": "10 kW Solar Net Metering System on Office Building of SNDD1 Pabna",
+      "district": "Pabna",
+      "upazila": "Pabna Sadar Upazila",
+      "location": "Sales & Distribution Division-1, NESCO, Pabna",
+      "sdd": "Pabna S&D 1",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-05-26",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Pabna S&D 1.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "4136",
+      "project_name": "10 kW Solar Net Metering System on Ishurdi Schoolpara Substation NESCO",
+      "district": "Pabna",
+      "upazila": "Ishwardi Upazila",
+      "location": "Babupara, Schoolpara, Ishurdi",
+      "sdd": "Unassigned",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-05-02",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "ac_zero",
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "4135",
+      "project_name": "10 kW Solar Net Metering System on office building SnDD Ishurdi NESCO",
+      "district": "Pabna",
+      "upazila": "Ishwardi Upazila",
+      "location": "Alobag, Ishurdi",
+      "sdd": "Ishwardi S&D",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-04-28",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Ishwardi S&D.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "4134",
+      "project_name": "10 kW Solar Net Metering System on SNDD 3 Bogura NESCO",
+      "district": "Bogura",
+      "upazila": "Bogra Sadar",
+      "location": "Jamilnagar",
+      "sdd": "Bogura S&D 3",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-04-12",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Bogura S&D 3.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "4133",
+      "project_name": "10 kW Solar Net Metering System on Shibbati Substation under SNDD 2",
+      "district": "Bogura",
+      "upazila": "Bogra Sadar",
+      "location": "Shibbati, Bogura",
+      "sdd": "Unassigned",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-03-24",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference. Project name mentions SNDD 2 without a named place; division not inferred from location or district.",
+      "flags": [
+        "ac_zero",
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "4036",
+      "project_name": "10 kW Solar Net Metering System on Rahman Nagar 33/11 KV Substation, S&D-1 Bogura, NESCO.",
+      "district": "Bogura",
+      "upazila": "Bogra Sadar",
+      "location": "Rahmannagar, Bogura",
+      "sdd": "Bogura S&D 1",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-03-24",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Bogura S&D 1.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3946",
+      "project_name": "10 kW Solar Net Metering System on Sales & Distribution Division-1 Bogura, NESCO.",
+      "district": "Bogura",
+      "upazila": "Bogra Sadar",
+      "location": "Shatmatha, Bogura.",
+      "sdd": "Bogura S&D 1",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-02-23",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Bogura S&D 1.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3958",
+      "project_name": "10 kW Solar Net Metering System on SE Office, Bogura, NESCO.",
+      "district": "Bogura",
+      "upazila": "Bogra Sadar",
+      "location": "Puran Bogura",
+      "sdd": "Unassigned",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-02-23",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference.",
+      "flags": [
+        "ac_zero",
+        "sdd_unassigned"
+      ]
+    },
+    {
+      "sid": "3826",
+      "project_name": "10 kW Solar Net Metering System on Sales & Distribution Division-2 Gaibandha, NESCO.",
+      "district": "Gaibandha",
+      "upazila": "Gaibandha sadar",
+      "location": "Sales &Distribution Division-2,",
+      "sdd": "Gaibandha S&D 2",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-01-14",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3823",
+      "project_name": "10 kW Solar Net Metering System on Sales & Distribution Division-1 Gaibandha, NESCO.",
+      "district": "Gaibandha",
+      "upazila": "Gaibandha sadar",
+      "location": "Sales &Distribution Division-1,",
+      "sdd": "Gaibandha S&D 1",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2021-01-13",
+      "year": 2021,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3795",
+      "project_name": "10 kW Solar Net Metering System on 33/11 kV Substation, Lalmonirhat, NESCO.",
+      "district": "Lalmonirhat",
+      "upazila": "Lalmanirhat Sadar",
+      "location": "33/11 kV Substation, Lalmonirhat",
+      "sdd": "Lalmonirhat S&D",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2020-12-28",
+      "year": 2020,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3794",
+      "project_name": "10 kW Solar Net Metering System on Sales & Distribution Division, Kurigram, NESCO.",
+      "district": "Kurigram",
+      "upazila": "Kurigram Sadar",
+      "location": "Sales & Distribution Division,",
+      "sdd": "Kurigram S&D",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2020-12-22",
+      "year": 2020,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3643",
+      "project_name": "10kW Solar Net Metering System on 33/11kV Mahiganj Substation Control Room, Sales & Distribution Division-3, NESCO Ltd., Rangpur",
+      "district": "Rangpur",
+      "upazila": "Rangpur Sadar",
+      "location": "Mahiganj Substation, S&D-3, NESC",
+      "sdd": "Rangpur S&D 3",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2020-11-16",
+      "year": 2020,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3642",
+      "project_name": "10kW Solar Net Metering System on Sales & Distribution Division-1, NESCO Ltd., Ranpgur",
+      "district": "Rangpur",
+      "upazila": "Rangpur Sadar",
+      "location": "S&D-1, Shapla, NESCO Ltd., Rangp",
+      "sdd": "Rangpur S&D 1",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2020-11-03",
+      "year": 2020,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3641",
+      "project_name": "10kW Solar Net Metering System on 33/11kV Kotkipara Substation Control Room, Sales & Distribution Division-2, NESCO Ltd., Rangpur",
+      "district": "Rangpur",
+      "upazila": "Rangpur Sadar",
+      "location": "Kotkipara Sub-S, S&D-2, NESCO Lt",
+      "sdd": "Rangpur S&D 2",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2020-10-28",
+      "year": 2020,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3640",
+      "project_name": "10kW Solar Net Metering System on Sales & Distribution Division, NESCO Ltd., Saidpur, Nilphamari",
+      "district": "Nilphamari",
+      "upazila": "Saidpur",
+      "location": "S&D, NESCO Ltd., Saidpur, Nilpha",
+      "sdd": "Saidpur S&D",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2020-10-22",
+      "year": 2020,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3639",
+      "project_name": "10kW Solar Net Metering System on Electricity Supply Unit Parbatipur, NESCO Ltd., Dinajpur",
+      "district": "Dinajpur",
+      "upazila": "Parbatipur Upazila",
+      "location": "ESU Parbatipur, NESCO Ltd., Dina",
+      "sdd": "Parbatipur Electricity Supply",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2020-10-03",
+      "year": 2020,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3638",
+      "project_name": "10kW Solar Net Metering System on Electricity Supply Unit Phulbari, NESCO Ltd., Dinajpur",
+      "district": "Dinajpur",
+      "upazila": "Phulbari Upazila",
+      "location": "ESU Phulbari, NESCO Ltd., Dinajp",
+      "sdd": "Phulbari Electricity Supply",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2020-09-20",
+      "year": 2020,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3637",
+      "project_name": "10kW Solar Net Metering System on Sales & Distribution Division-1, NESCO Ltd., Dinajpur",
+      "district": "Dinajpur",
+      "upazila": "Dinajpur Sadar Upazila",
+      "location": "S&D-1, NESCO Ltd., Dinajpur",
+      "sdd": "Dinajpur S&D 1",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2020-09-10",
+      "year": 2020,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3636",
+      "project_name": "10kW Solar Net Metering System on Sales & Distribution Division-2, NESCO Ltd., Dinajpur",
+      "district": "Dinajpur",
+      "upazila": "Dinajpur Sadar Upazila",
+      "location": "S&D-2, NESCO Ltd., Dinajpur",
+      "sdd": "Dinajpur S&D 2",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2020-09-07",
+      "year": 2020,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3635",
+      "project_name": "10kW Solar Net Metering System on 33/11kV Katakhali Substation Control Room, Sales & Distribution Division-5, NESCO Ltd., Rajshahi",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Katakhali Sub-S, S&D-5, NESCO Lt",
+      "sdd": "Rajshahi S&D 5",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2020-08-30",
+      "year": 2020,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3634",
+      "project_name": "10kW Solar Net Metering System on Sales & Distribution Division-5, NESCO Ltd., Rajshahi",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "S&D-5, Katakhali, NESCO Ltd., Ra",
+      "sdd": "Rajshahi S&D 5",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2020-08-27",
+      "year": 2020,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3633",
+      "project_name": "10kW Solar Net Metering System on 33/11kV Pathanpara Substation Control Room, Sales & Distribution Division-4, NESCO Ltd., Rajshahi",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Pathanpara Sub-S, S&D-2, NESCO L",
+      "sdd": "Rajshahi S&D 4",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2020-08-18",
+      "year": 2020,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3632",
+      "project_name": "10kW Solar Net Metering System on 33/11kV Talaimari Substation Control Room, Sales & Distribution Division-1, NESCO Ltd., Rajshahi",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Talaimar Substation, S&D-1, NESC",
+      "sdd": "Rajshahi S&D 1",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2020-08-05",
+      "year": 2020,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3631",
+      "project_name": "10kW Solar Net Metering System on Sales & Distribution Division-1, NESCO Ltd., Rajshahi",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "S&D-1, Sagorpara, NESCO Ltd., Ra",
+      "sdd": "Rajshahi S&D 1",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2020-08-03",
+      "year": 2020,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3630",
+      "project_name": "10kW Solar Net Metering System on 33/11kV Horogram Substation Control Room, Sales & Distribution Division-2, NESCO Ltd., Rajshahi",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Horogram Substation, S&D-2, NESC",
+      "sdd": "Rajshahi S&D 2",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2020-07-29",
+      "year": 2020,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3629",
+      "project_name": "10kW Solar Net Metering System on 33/11kV Shalbangan Substation Control Room, Sales & Distribution Division-3, NESCO Ltd., Rajshahi",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Salbagan Power House, NESCO Ltd.",
+      "sdd": "Rajshahi S&D 3",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2020-07-20",
+      "year": 2020,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3628",
+      "project_name": "10kW Solar Net Metering System on Sales & Distribution Division-3, NESCO Ltd., Rajshahi",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "S&D-3, Hetem Khan, NESCO Ltd., R",
+      "sdd": "Rajshahi S&D 3",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2020-07-15",
+      "year": 2020,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "3627",
+      "project_name": "10kW Solar Net Metering System on Sales & Distribution Division, NESCO Ltd., Thakurgaon",
+      "district": "Thakurgaon",
+      "upazila": "Thakurgaon Sadar Upazila",
+      "location": "S&D, NESCO Ltd., Thakurgaon",
+      "sdd": "Thakurgaon S&D",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2020-07-12",
+      "year": 2020,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "1053",
+      "project_name": "20 kWp NEM rooftop Solar system by 1250 SQFT 15 STORIED BULLDING of S & D- Ishwardi, Pabna",
+      "district": "Pabna",
+      "upazila": "Ishwardi Upazila",
+      "location": "Ruppur",
+      "sdd": "Ishwardi S&D",
+      "dc_kwp": 20.0,
+      "ac_kw": 0.0,
+      "cod": "2019-10-14",
+      "year": 2019,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Ishwardi S&D.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "1052",
+      "project_name": "20 kWp NEM rooftop Solar system by 850 SQFT. 20 STORE YED BUILDING of S & D- Ishwardi, Pabna",
+      "district": "Pabna",
+      "upazila": "Ishwardi Upazila",
+      "location": "Ruppur",
+      "sdd": "Ishwardi S&D",
+      "dc_kwp": 20.0,
+      "ac_kw": 0.0,
+      "cod": "2019-09-18",
+      "year": 2019,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Ishwardi S&D.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "1034",
+      "project_name": "20 kWp NEM rooftop Solar system by Rajshahi University of S & D-1, Rajshahi",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Binodpur",
+      "sdd": "Rajshahi S&D 1",
+      "dc_kwp": 20.0,
+      "ac_kw": 0.0,
+      "cod": "2019-08-10",
+      "year": 2019,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Rajshahi S&D 1.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "1051",
+      "project_name": "20 kWp NEM rooftop Solar system by BAEC , 850 SQFT BHABAN-2 of S & D- Ishwardi, Pabna",
+      "district": "Pabna",
+      "upazila": "Ishwardi Upazila",
+      "location": "Ruppur",
+      "sdd": "Ishwardi S&D",
+      "dc_kwp": 20.0,
+      "ac_kw": 0.0,
+      "cod": "2019-08-09",
+      "year": 2019,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Ishwardi S&D.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "1050",
+      "project_name": "20 kWp NEM rooftop Solar system by BAEC (GREEN CITY 1250SFT) of S & D- Ishwardi, Pabna",
+      "district": "Pabna",
+      "upazila": "Ishwardi Upazila",
+      "location": "Ruppur",
+      "sdd": "Ishwardi S&D",
+      "dc_kwp": 20.0,
+      "ac_kw": 0.0,
+      "cod": "2019-06-12",
+      "year": 2019,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Ishwardi S&D.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "1047",
+      "project_name": "10 kWp NEM rooftop Solar system by Chief Judicial Magistrate Court of S & D-1, Bogura",
+      "district": "Bogura",
+      "upazila": "Bogra Sadar",
+      "location": "Romena Afaj Road",
+      "sdd": "Bogura S&D 1",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2019-06-07",
+      "year": 2019,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Bogura S&D 1.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "1046",
+      "project_name": "20 kWp NEM rooftop Solar system by M/S KARUPANNYA LTD. of S & D-3, Rangpur",
+      "district": "Rangpur",
+      "upazila": "Rangpur Sadar",
+      "location": "Alamnagar",
+      "sdd": "Rangpur S&D 3",
+      "dc_kwp": 20.0,
+      "ac_kw": 0.0,
+      "cod": "2019-05-09",
+      "year": 2019,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Rangpur S&D 3.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "1048",
+      "project_name": "5 kWp NEM rooftop Solar system by Public Works Department of S & D-1, Bogura",
+      "district": "Bogura",
+      "upazila": "Bogra Sadar",
+      "location": "Sherpur Road",
+      "sdd": "Bogura S&D 1",
+      "dc_kwp": 5.0,
+      "ac_kw": 0.0,
+      "cod": "2019-05-03",
+      "year": 2019,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Bogura S&D 1.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "1049",
+      "project_name": "20 kWp NEM rooftop Solar system by BANG. ATOMIC ENGRGY COMMISSION of S & D- Ishwardi, Pabna",
+      "district": "Pabna",
+      "upazila": "Ishwardi Upazila",
+      "location": "Ruppur",
+      "sdd": "Ishwardi S&D",
+      "dc_kwp": 20.0,
+      "ac_kw": 0.0,
+      "cod": "2019-04-20",
+      "year": 2019,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Ishwardi S&D.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "1042",
+      "project_name": "10 kWp NEM rooftop Solar system by Protibondi Unnoyon Songstha of S & D-5, Rajshahi",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Katakhali",
+      "sdd": "Rajshahi S&D 5",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2019-04-11",
+      "year": 2019,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Rajshahi S&D 5.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "1041",
+      "project_name": "4 kWp NEM rooftop Solar system by V.C, RUET of S & D-1, Rajshahi",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Talaimari",
+      "sdd": "Rajshahi S&D 1",
+      "dc_kwp": 4.0,
+      "ac_kw": 0.0,
+      "cod": "2019-03-15",
+      "year": 2019,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Rajshahi S&D 1.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "1039",
+      "project_name": "4 kWp NEM rooftop Solar system by Rangpur Polytechnique Institute of S & D-1, Rangpur",
+      "district": "Rangpur",
+      "upazila": "Rangpur Sadar",
+      "location": "Rangpur Polytechnique",
+      "sdd": "Rangpur S&D 1",
+      "dc_kwp": 4.0,
+      "ac_kw": 0.0,
+      "cod": "2019-03-03",
+      "year": 2019,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Rangpur S&D 1.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "1038",
+      "project_name": "9 kWp NEM rooftop Solar system by Begum Rokeya University of S & D-1, Rangpur",
+      "district": "Rangpur",
+      "upazila": "Rangpur Sadar",
+      "location": "Mordern Mor",
+      "sdd": "Rangpur S&D 1",
+      "dc_kwp": 9.0,
+      "ac_kw": 0.0,
+      "cod": "2019-02-23",
+      "year": 2019,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Rangpur S&D 1.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "1045",
+      "project_name": "6 kWp NEM rooftop Solar system by Manager, Rangpur Parjatan of S & D-2, Rangpur",
+      "district": "Rangpur",
+      "upazila": "Rangpur Sadar",
+      "location": "Satgara",
+      "sdd": "Rangpur S&D 2",
+      "dc_kwp": 6.0,
+      "ac_kw": 0.0,
+      "cod": "2019-02-04",
+      "year": 2019,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Rangpur S&D 2.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "1040",
+      "project_name": "10 kWp NEM rooftop Solar system by Talukdar Auto Rice Mill of Setabganj Electric Supply",
+      "district": "Dinajpur",
+      "upazila": "Bochaganj Upazila",
+      "location": "islampur",
+      "sdd": "Setabganj Electricity Supply",
+      "dc_kwp": 10.0,
+      "ac_kw": 0.0,
+      "cod": "2019-01-27",
+      "year": 2019,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Setabganj Electricity Supply.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "1043",
+      "project_name": "8 kWp NEM rooftop Solar system by Horian Sugar Mill of S & D-5, Rajshahi",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Horian",
+      "sdd": "Rajshahi S&D 5",
+      "dc_kwp": 8.0,
+      "ac_kw": 0.0,
+      "cod": "2019-01-15",
+      "year": 2019,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Rajshahi S&D 5.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "1044",
+      "project_name": "8 kWp NEM rooftop Solar system by Reja Cold Storage of S & D-5, Rajshahi",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Khokhori",
+      "sdd": "Rajshahi S&D 5",
+      "dc_kwp": 8.0,
+      "ac_kw": 0.0,
+      "cod": "2019-01-05",
+      "year": 2019,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Rajshahi S&D 5.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "1037",
+      "project_name": "3 kWp NEM rooftop Solar system by Christian Missionaries of S & D-3, Rajshahi",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Christian Mission Hospital",
+      "sdd": "Rajshahi S&D 3",
+      "dc_kwp": 3.0,
+      "ac_kw": 0.0,
+      "cod": "2018-10-25",
+      "year": 2018,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Rajshahi S&D 3.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "1033",
+      "project_name": "39 kWp NEM rooftop Solar system by COMMANDING OFFICER (RAB-5) of S & D-2, Rajshahi",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Miapur",
+      "sdd": "Rajshahi S&D 2",
+      "dc_kwp": 39.0,
+      "ac_kw": 0.0,
+      "cod": "2018-10-07",
+      "year": 2018,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Rajshahi S&D 2.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "1035",
+      "project_name": "19 kWp NEM rooftop Solar system by Rajshahi University of S & D-5, Rajshahi",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Binodpur",
+      "sdd": "Rajshahi S&D 5",
+      "dc_kwp": 19.0,
+      "ac_kw": 0.0,
+      "cod": "2018-08-10",
+      "year": 2018,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Rajshahi S&D 5.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "1036",
+      "project_name": "3 kWp NEM rooftop Solar system by Rajshahi University of S & D-5, Rajshahi",
+      "district": "Rajshahi",
+      "upazila": "Rajshahi City",
+      "location": "Binodpur",
+      "sdd": "Rajshahi S&D 5",
+      "dc_kwp": 3.0,
+      "ac_kw": 0.0,
+      "cod": "2018-07-20",
+      "year": 2018,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. SDD/S&D assigned from explicit project/consumer-name reference: Rajshahi S&D 5.",
+      "flags": [
+        "ac_zero"
+      ]
+    },
+    {
+      "sid": "371",
+      "project_name": "360 kW NEM rooftop solar piloting at Shantaher Silo",
+      "district": "Bogura",
+      "upazila": "Adamdighi",
+      "location": null,
+      "sdd": "Unassigned",
+      "dc_kwp": 360.0,
+      "ac_kw": 0.0,
+      "cod": null,
+      "year": null,
+      "status": "Completed & Running",
+      "notes": "Dedicated AC Capacity explicitly reports 0 kW; retained without estimation. Source confirmation needed. COD is invalid or missing in source (0000-00-00); grouped under Unknown year. No reliable named SDD/S&D or supply office in Office/Program or explicit project/consumer reference. Location is missing in source.",
+      "flags": [
+        "ac_zero",
+        "sdd_unassigned",
+        "cod_missing"
+      ]
+    }
+  ]
+}
